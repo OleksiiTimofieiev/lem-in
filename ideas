@@ -8,6 +8,12 @@
 - best ways to go through the linked list and the queque (maybe some sort of the search algorithm)
 - ​Hash table for lem1
 - i don`t need to keep the quantity of ants in the each specific node;
+- adjustment matrix;
+- bool for the ant detection in a room;
+calculate from the end;
+- file / output;
+- bool 0 1;
 
 - how to store the highths and links;
 - how to analyze them;
+
