@@ -3,6 +3,8 @@
 - https://www.youtube.com/watch?v=Bp0ahdeGLnI
 - https://www.youtube.com/watch?v=4A5vN9p0YTY
 - https://www.youtube.com/watch?v=dRPzPwzslK0
+- http://opendatastructures.org/ods-java/12_1_AdjacencyMatrix_Repres.html
+https://www.hackerearth.com/practice/notes/graph-theory-part-i/
 - breadth - first search;
 - find the shortest way (from the start or from special point);
 - best ways to go through the linked list and the queque (maybe some sort of the search algorithm)
@@ -13,6 +15,8 @@
 calculate from the end;
 - file / output;
 - bool 0 1;
+- is nbr;
+- get the parsing done;
 
 - how to store the highths and links;
 - how to analyze them;
