@@ -7,3 +7,7 @@
 - find the shortest way (from the start or from special point);
 - best ways to go through the linked list and the queque (maybe some sort of the search algorithm)
 - ​Hash table for lem1
+- i don`t need to keep the quantity of ants in the each specific node;
+
+- how to store the highths and links;
+- how to analyze them;
