@@ -1,75 +1,69 @@
-- https://www.youtube.com/watch?v=gXgEDyodOJU
-- https://www.youtube.com/watch?v=s-CYnVz-uh4
-- data type -> queque data type for the highth;
-- google the data structures
-- https://www.youtube.com/watch?v=Bp0ahdeGLnI
-- https://www.youtube.com/watch?v=4A5vN9p0YTY
-- https://www.youtube.com/watch?v=dRPzPwzslK0
+Building the adjacency matrix:
 - http://opendatastructures.org/ods-java/12_1_AdjacencyMatrix_Repres.html
-- https://stackoverflow.com/questions/3287003/three-ways-to-store-a-graph-in-memory-advantages-and-disadvantages
+
+Buiding the adjecency list:
+- https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
+- https://www.geeksforgeeks.org/graph-and-its-representations/
+- http://www.martinbroadhurst.com/graph-data-structures.html
+- https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
+- https://medium.com/basecs/from-theory-to-practice-representing-graphs-cfd782c5be38
+- https://www.sanfoundry.com/c-program-represent-graph-adjacency-list/
+- https://stackoverflow.com/questions/5324914/adjacency-list-graph-implementation-in-c-any-libraries
+- https://medium.com/basecs/a-gentle-introduction-to-graph-theory-77969829ead8
+- https://www.youtube.com/watch?v=dRPzPwzslK0
 - https://stackoverflow.com/questions/20197463/the-best-way-to-store-graph-into-the-memory
-https://www.hackerearth.com/practice/notes/graph-theory-part-i/
-- https://stackoverflow.com/questions/5886274/comparing-object-graph-representation-to-adjacency-list-and-matrix-representatio
-- breadth - first search;
+- http://www.cprograms.in/Graphs/adjacency-list.html
+- https://www.sanfoundry.com/c-program-implement-adjacency-list/
+- https://codereview.stackexchange.com/questions/142444/implementing-an-adjacency-list-in-c
+- http://www.techiedelight.com/implement-graph-data-structure-c/
+
+BFS:
+- https://ru.wikipedia.org/wiki/Поиск_в_ширину 
+- http://c-program-example.com/2011/10/c-program-to-implement-breadth-first-search-bfs.html
+- https://en.wikipedia.org/wiki/Graph_traversal
+- https://stackoverflow.com/questions/18953546/ideal-algorithm-for-finding-all-paths-in-a-graph
+- https://www.youtube.com/watch?v=s-CYnVz-uh4
+- https://www.youtube.com/watch?v=4A5vN9p0YTY
+- https://www.hackerearth.com/practice/notes/graph-theory-part-i/
+- https://medium.com/basecs/deep-dive-through-a-graph-dfs-traversal-8177df5d0f13
+- https://medium.com/basecs/going-broad-in-a-graph-bfs-traversal-959bd1a09255
+- https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/tutorial/
+- https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/tutorial/
+dn.intra.42.fr
+- https://stackoverflow.com/questions/37256242/bfs-find-all-paths-from-s-to-t-that-have-at-most-a-certain-length
+- https://www.coursera.org/learn/algorithms-part2/lecture/DjaET/breadth-first-search?authMode=login
+- http://www.techiedelight.com/breadth-first-search/
+- https://www.google.com/search?client=safari&rls=en&q=Implementing+Breadth+First+Search+c&ie=UTF-8&oe=UTF-8
+- https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
+- https://stackoverflow.com/questions/2879068/find-all-possible-path-between-two-nodes-in-a-undirected-graph
+
+Misc: 
 - find the shortest way (from the start or from special point);
 - best ways to go through the linked list and the queque (maybe some sort of the search algorithm)
-- ​Hash table for lem1
 - i don`t need to keep the quantity of ants in the each specific node;
-- adjustment matrix;
 - bool for the ant detection in a room;
 calculate from the end;
-- file / output;
 - bool 0 1;
 - is nbr;
-- get the parsing done;
 
-- how to store the highths and links;
-- how to analyze them;
 
 - https://www.youtube.com/watch?v=9xuMBR9_BNs
+- https://www.youtube.com/watch?v=WtfGRS1BsBI&index=31&list=PL9Dk8axBIC8Tr_AfR928n7t7UTtFp5pRC
+- https://www.youtube.com/watch?v=ls4cHglfc0g
+- https://www.youtube.com/watch?v=kyUpc_5705s
+- https://www.youtube.com/watch?v=zVrPdF7f4-I
+- https://www.youtube.com/watch?v=e5IAmuSYDHQ
+- https://www.youtube.com/watch?v=rerVzVtTu8A
+- https://www.youtube.com/watch?v=kRxXZI2FWic
+- https://www.youtube.com/watch?v=X-filsfR_S8
+- https://www.youtube.com/watch?v=0OQjzWthrOY
+- https://www.youtube.com/watch?v=zaBhtODEL0w
+- https://www.youtube.com/watch?v=ZVJFOrsHxMs
+- https://www.youtube.com/watch?v=5pNIul92cj0
+- https://www.youtube.com/watch?v=1wu2sojwsyQ
+- https://gist.github.com/tahia-khan/875671ae5e22483919e3
+   
+   
 
-https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/tutorial/
-dn.intra.42.fr
 
-https://www.youtube.com/watch?v=WtfGRS1BsBI&index=31&list=PL9Dk8axBIC8Tr_AfR928n7t7UTtFp5pRC
- https://ru.wikipedia.org/wiki/Поиск_в_ширину
-
- https://www.youtube.com/watch?v=ls4cHglfc0g
- - https://www.youtube.com/watch?v=kyUpc_5705s
- - https://www.geeksforgeeks.org/graph-and-its-representations/
- - https://www.sanfoundry.com/c-program-represent-graph-adjacency-list/
-  - http://www.martinbroadhurst.com/graph-data-structures.html
-  - https://stackoverflow.com/questions/5324914/adjacency-list-graph-implementation-in-c-any-libraries
-  - http://www.techiedelight.com/implement-graph-data-structure-c/
-  - https://www.youtube.com/watch?v=zVrPdF7f4-I
-  - https://www.youtube.com/watch?v=e5IAmuSYDHQ
-  - https://www.youtube.com/watch?v=rerVzVtTu8A
-  - https://www.youtube.com/watch?v=kRxXZI2FWic
-   - https://www.youtube.com/watch?v=X-filsfR_S8
-   - https://www.youtube.com/watch?v=0OQjzWthrOY
-   - https://www.youtube.com/watch?v=zaBhtODEL0w
-   - https://www.youtube.com/watch?v=ZVJFOrsHxMs
-   - https://en.wikipedia.org/wiki/Graph_traversal
-   - https://medium.com/basecs/from-theory-to-practice-representing-graphs-cfd782c5be38
-   - https://www.coursera.org/learn/algorithms-part2/lecture/DjaET/breadth-first-search?authMode=login
-   - https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
-   - https://stackoverflow.com/questions/18953546/ideal-algorithm-for-finding-all-paths-in-a-graph
-
-   - https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
-   - https://stackoverflow.com/questions/2879068/find-all-possible-path-between-two-nodes-in-a-undirected-graph
-   - https://www.youtube.com/watch?v=5pNIul92cj0
-   - http://c-program-example.com/2011/10/c-program-to-implement-breadth-first-search-bfs.html
-   - http://www.techiedelight.com/breadth-first-search/
-
-   - https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
-   - https://www.google.com/search?client=safari&rls=en&q=Implementing+Breadth+First+Search+c&ie=UTF-8&oe=UTF-8
-   - https://stackoverflow.com/questions/37256242/bfs-find-all-paths-from-s-to-t-that-have-at-most-a-certain-length
-   - https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/tutorial/
-   - https://www.youtube.com/watch?v=1wu2sojwsyQ
-   - https://gist.github.com/tahia-khan/875671ae5e22483919e3
-   - https://codereview.stackexchange.com/questions/142444/implementing-an-adjacency-list-in-c
-   - https://www.sanfoundry.com/c-program-implement-adjacency-list/
-   - http://www.cprograms.in/Graphs/adjacency-list.html
-   - https://medium.com/basecs/a-gentle-introduction-to-graph-theory-77969829ead8
-   - https://medium.com/basecs/going-broad-in-a-graph-bfs-traversal-959bd1a09255
-   - https://medium.com/basecs/deep-dive-through-a-graph-dfs-traversal-8177df5d0f13
+  
