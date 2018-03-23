@@ -2,6 +2,14 @@ Building the adjacency matrix:
 - http://opendatastructures.org/ods-java/12_1_AdjacencyMatrix_Repres.html
 
 Buiding the adjecency list:
+- https://github.com/search?l=C&q=adjacency+list+c&type=Repositories&utf8=✓
+- https://www.sanfoundry.com/cpp-program-represent-graph-using-linked-list/
+- http://math.hws.edu/eck/cs327_s04/chapter8.pdf
+- http://wikistack.com/graph-adjacency-list-representation-c/
+- http://www.cs.princeton.edu/courses/archive/spr02/cs226/lectures/undirected-4up.pdf
+- http://www.programmingworldtech.com/2014/03/bfs-and-dfs-on-graph-represented-using.html
+- https://stackoverflow.com/questions/16876327/graph-implementation-with-adjacency-lists-in-c
+- http://iamsoftwareengineer.blogspot.com/2012/06/c-graph-implementation-with-adjacency.html
 - https://www.youtube.com/watch?v=zVrPdF7f4-I
 - https://www.youtube.com/watch?v=e5IAmuSYDHQ
 - https://www.youtube.com/watch?v=rerVzVtTu8A
@@ -23,8 +31,16 @@ Buiding the adjecency list:
 - https://www.sanfoundry.com/c-program-implement-adjacency-list/
 - https://codereview.stackexchange.com/questions/142444/implementing-an-adjacency-list-in-c
 - http://www.techiedelight.com/implement-graph-data-structure-c/
+- http://lagodiuk.github.io/computer_science/2016/12/19/efficient_adjacency_lists_in_c.html
+- http://simplestcodings.blogspot.com/2013/09/graphs.html
+- https://www.programiz.com/dsa/graph-adjacency-list
+- https://algorithms.tutorialhorizon.com/graph-representation-adjacency-matrix-and-adjacency-list/
+- http://faculty.cse.tamu.edu/djimenez/ut/utsa/cs1723/lecture15.html
 
 BFS:
+- https://github.com/search?l=C&q=Breadth+First+Search&type=Repositories&utf8=✓
+- http://www.roman10.net/2011/05/21/graph-traversal-using-queue-a-c-implementation/
+- http://www.kaushikbaruah.com/posts/algorithms-in-c-breadth-first-search/
 - https://www.youtube.com/watch?v=0OQjzWthrOY
 - https://www.youtube.com/watch?v=ZVJFOrsHxMs
 - https://www.youtube.com/watch?v=5pNIul92cj0
@@ -49,6 +65,9 @@ dn.intra.42.fr
 - https://stackoverflow.com/questions/2879068/find-all-possible-path-between-two-nodes-in-a-undirected-graph
 - https://www.youtube.com/watch?v=9xuMBR9_BNs
 - https://www.youtube.com/watch?v=ls4cHglfc0g
+- https://www.youtube.com/watch?v=sabNsfTdDRE
+- https://www.youtube.com/watch?v=0XgVhsMOcQM&t=182s
+- https://www.youtube.com/watch?v=wu0ckYkltus
 
 Misc: 
 - find the shortest way (from the start or from special point);
