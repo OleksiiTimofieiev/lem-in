@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reader.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: otimofie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/23 13:56:34 by otimofie          #+#    #+#             */
+/*   Updated: 2018/03/23 13:56:37 by otimofie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem-in.h"
 
 t_read	*new_read_node(char *str)
@@ -12,9 +24,9 @@ t_read	*new_read_node(char *str)
 
 t_read	*initial_read(void) //func to read the stdio for the validation and further processing;
 {
-	char *line;
-	t_read *head;
-	t_read *current;
+	char	*line;
+	t_read	*head;
+	t_read	*current;
 
 	line = NULL;
 	head = NULL;
@@ -25,14 +37,12 @@ t_read	*initial_read(void) //func to read the stdio for the validation and furth
 		{
 			current = new_read_node(line);
 			head = current;
-			// ft_printf("%s\n", current->line);
 		}
 		else
 		{
 			while (current->next)
 				current = current->next;
 			current->next = new_read_node(line);
-			// ft_printf("%s\n", current->line);
 		}
 	}
 	return (head);
@@ -43,19 +53,19 @@ void	print_list(t_data *test)
 	t_read *head;
 
 	head = test->initial_information;
-	while(head)
+	while (head)
 	{
 		ft_printf("%s\n", head->line);
 		head = head->next;
 	}
 }
 
-int main(void)
+int		main(void)
 {
 	t_data test;
-	test.initial_information = NULL;
 
+	test.initial_information = NULL;
 	test.initial_information = initial_read();
 	print_list(&test);
-	return 0;
+	return (0);
 }
