@@ -2,6 +2,10 @@ Building the adjacency matrix:
 - http://opendatastructures.org/ods-java/12_1_AdjacencyMatrix_Repres.html
 
 Buiding the adjecency list:
+- https://www.youtube.com/watch?v=kRxXZI2FWic
+- https://www.youtube.com/watch?v=X-filsfR_S8
+- https://gist.github.com/tahia-khan/875671ae5e22483919e3
+- https://www.youtube.com/watch?v=WtfGRS1BsBI&index=31&list=PL9Dk8axBIC8Tr_AfR928n7t7UTtFp5pRC
 - https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
 - https://www.geeksforgeeks.org/graph-and-its-representations/
 - http://www.martinbroadhurst.com/graph-data-structures.html
@@ -18,6 +22,10 @@ Buiding the adjecency list:
 - http://www.techiedelight.com/implement-graph-data-structure-c/
 
 BFS:
+- https://www.youtube.com/watch?v=0OQjzWthrOY
+- https://www.youtube.com/watch?v=ZVJFOrsHxMs
+- https://www.youtube.com/watch?v=5pNIul92cj0
+- https://www.youtube.com/watch?v=1wu2sojwsyQ
 - https://ru.wikipedia.org/wiki/Поиск_в_ширину 
 - http://c-program-example.com/2011/10/c-program-to-implement-breadth-first-search-bfs.html
 - https://en.wikipedia.org/wiki/Graph_traversal
@@ -36,6 +44,8 @@ dn.intra.42.fr
 - https://www.google.com/search?client=safari&rls=en&q=Implementing+Breadth+First+Search+c&ie=UTF-8&oe=UTF-8
 - https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
 - https://stackoverflow.com/questions/2879068/find-all-possible-path-between-two-nodes-in-a-undirected-graph
+- https://www.youtube.com/watch?v=9xuMBR9_BNs
+- https://www.youtube.com/watch?v=ls4cHglfc0g
 
 Misc: 
 - find the shortest way (from the start or from special point);
@@ -47,21 +57,11 @@ calculate from the end;
 - is nbr;
 
 
-- https://www.youtube.com/watch?v=9xuMBR9_BNs
-- https://www.youtube.com/watch?v=WtfGRS1BsBI&index=31&list=PL9Dk8axBIC8Tr_AfR928n7t7UTtFp5pRC
-- https://www.youtube.com/watch?v=ls4cHglfc0g
-- https://www.youtube.com/watch?v=kyUpc_5705s
-- https://www.youtube.com/watch?v=zVrPdF7f4-I
-- https://www.youtube.com/watch?v=e5IAmuSYDHQ
-- https://www.youtube.com/watch?v=rerVzVtTu8A
-- https://www.youtube.com/watch?v=kRxXZI2FWic
-- https://www.youtube.com/watch?v=X-filsfR_S8
-- https://www.youtube.com/watch?v=0OQjzWthrOY
-- https://www.youtube.com/watch?v=zaBhtODEL0w
-- https://www.youtube.com/watch?v=ZVJFOrsHxMs
-- https://www.youtube.com/watch?v=5pNIul92cj0
-- https://www.youtube.com/watch?v=1wu2sojwsyQ
-- https://gist.github.com/tahia-khan/875671ae5e22483919e3
+https://www.youtube.com/watch?v=kyUpc_5705s
+https://www.youtube.com/watch?v=zVrPdF7f4-I
+https://www.youtube.com/watch?v=e5IAmuSYDHQ
+https://www.youtube.com/watch?v=rerVzVtTu8A
+https://www.youtube.com/watch?v=kRxXZI2FWic
    
    
 
