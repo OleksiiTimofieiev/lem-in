@@ -38,6 +38,8 @@ Buiding the adjecency list:
 - http://faculty.cse.tamu.edu/djimenez/ut/utsa/cs1723/lecture15.html
 
 BFS:
+- https://www.thecrazyprogrammer.com/2015/09/breadth-first-search-bfs-program-in-c.html
+- https://stackoverflow.com/questions/39803712/implementing-bfs-algorithm-with-a-max-depth-and-that-prints-all-shortest-paths
 - https://github.com/search?l=C&q=Breadth+First+Search&type=Repositories&utf8=✓
 - http://www.roman10.net/2011/05/21/graph-traversal-using-queue-a-c-implementation/
 - http://www.kaushikbaruah.com/posts/algorithms-in-c-breadth-first-search/
@@ -68,6 +70,7 @@ dn.intra.42.fr
 - https://www.youtube.com/watch?v=sabNsfTdDRE
 - https://www.youtube.com/watch?v=0XgVhsMOcQM&t=182s
 - https://www.youtube.com/watch?v=wu0ckYkltus
+- https://stackoverflow.com/questions/20895596/bfs-algorithm-in-c
 
 Finding paths:
 - https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
