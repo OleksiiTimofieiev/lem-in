@@ -69,6 +69,9 @@ dn.intra.42.fr
 - https://www.youtube.com/watch?v=0XgVhsMOcQM&t=182s
 - https://www.youtube.com/watch?v=wu0ckYkltus
 
+Finding paths:
+- https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
+
 Misc: 
 - find the shortest way (from the start or from special point);
 - best ways to go through the linked list and the queque (maybe some sort of the search algorithm)
