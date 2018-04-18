@@ -12,7 +12,7 @@
 
 NAME = lem-in
 
-LIB = filler.a
+# LIB = filler.a
 
 SRCS = main.c 
 		# main_1.c \
