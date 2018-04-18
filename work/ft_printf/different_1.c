@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   different_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otimofie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/18 12:49:44 by otimofie          #+#    #+#             */
-/*   Updated: 2018/04/18 12:49:46 by otimofie         ###   ########.fr       */
+/*   Created: 2018/02/28 20:31:25 by otimofie          #+#    #+#             */
+/*   Updated: 2018/02/28 20:31:27 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "ft_printf.h"
 
-int		main(void)
+int		ft_decimal_length_u(size_t nbr)
 {
-	ft_printf("%s\n", "And here we go :)"); 
-	
-	return (0);
+	int	i;
+
+	i = 0;
+	if (nbr == 0)
+		return (1);
+	while (nbr > 0)
+	{
+		nbr /= 10;
+		i++;
+	}
+	return (i);
 }
