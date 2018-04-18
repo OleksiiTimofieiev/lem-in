@@ -14,6 +14,7 @@
 
 int		main(void)
 {
-	ft_printf("%s\n", "And here we go :)");
+	ft_printf("%s\n", "And here we go :)"); 
+	
 	return (0);
 }

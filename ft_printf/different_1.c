@@ -25,4 +25,6 @@ int		ft_decimal_length_u(size_t nbr)
 		i++;
 	}
 	return (i);
+
+	
 }

@@ -10,16 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
+
+
 NAME = lem-in
 
-# LIB = filler.a
-
 SRCS = main.c 
-		# main_1.c \
-		# main_2.c \
-		# main_3.c \
-		# main_4.c \
-		# main_5.c \
 
 HEADER = filler.h
 
@@ -27,26 +22,32 @@ CFLAGS = -Wall -Wextra -Werror
 
 OBJECTS = $(SRCS:.c=.o)
 
-%.o: %.c
-	gcc $(CFLAGS) -c -o $@ $<
-	
-.PHONY: all clean fclean re
+LIB = $()
 
+PRINTF = $(addprefix ft_printf/, $(LIB)) // if smth changed in .c
+	
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	make -C ./ft_printf
-	gcc $(CFLAGS) -I. $(SRCS) -L ./ft_printf -lftprintf -o $(NAME)
-	# ar rc $(LIB) $(OBJECTS)
-	# ranlib $(LIB)
+$(OBJECTS): %.o: %.c
+	@gcc -c $(CFLAGS) $< -o $@
+
+$(NAME): $(OBJECTS) $()
+	@make -C ./ft_printf
+	@gcc $(CFLAGS) -I. $(SRCS) -L ./ft_printf -lftprintf -o $(NAME)
+	@echo "Compiling" [ $(NAME) ]
 
 clean:
-	/bin/rm -f $(OBJECTS)
-	make clean -C ./ft_printf
+	@/bin/rm -f $(OBJECTS)
+	@make clean -C ./ft_printf
+	@echo "Deleting" [ $(NAME) ]
 
 fclean: clean
-	/bin/rm -f $(NAME) $(LIB)
-	make fclean -C ./ft_printf
+	@/bin/rm -f $(NAME) $(LIB)
+	@make fclean -C ./ft_printf
+	@echo "Full Deleting" [ $(NAME) ]
 
 re: fclean all
+	@echo "Redone" [ $(NAME) ]
 
+
+.PHONY: all clean fclean re

@@ -112,42 +112,29 @@ CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I libft/
 
 LIBSRCS	= $(addprefix libft/, $(LIB))
-# $(addprefix prefix,names…)
-# The argument names is regarded as a series of names, separated by whitespace; prefix is used as a unit. 
-# The value of prefix is prepended to the front of each individual name and
-# the resulting larger names are concatenated with single spaces between them. 
-# For example,
-# $(addprefix src/,foo bar)
-# produces the result ‘src/foo src/bar’.
 
 OBJECTS = $(SRCS:.c=.o)
 LIBOBJ = $(LIBSRCS:.c=.o)
-# replaces in a string .c -> .o
 
 .PHONY: all clean fclean re 
-# not associated with files
 
 all: $(NAME)
 
 $(OBJECTS): %.o: %.c
-	gcc -c $(CFLAGS) $< -o $@
-# $< is the name of the first dependency;
-# $@ is the file name of the target / name of the file being generated;
-# name the files according to its *.c name;
+	@gcc -c $(CFLAGS) $< -o $@
 
 $(LIBOBJ): %.o: %.c
-	gcc -c $(CFLAGS) $(IFLAGS) $< -o $@
+	@gcc -c $(CFLAGS) $(IFLAGS) $< -o $@
 
 $(NAME): $(LIBOBJ) $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS) $(LIBOBJ)
+	@ar rcs $(NAME) $(OBJECTS) $(LIBOBJ)
 
 clean:
-	/bin/rm -f $(OBJECTS)
-	# bin <=> current directory;
-	make clean -C ./libft
+	@/bin/rm -f $(OBJECTS)
+	@make clean -C ./libft
 
 fclean: clean
-	/bin/rm -f $(NAME)
-	make fclean -C ./libft
+	@/bin/rm -f $(NAME)
+	@make fclean -C ./libft
 
 re: fclean all

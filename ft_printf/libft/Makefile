@@ -84,13 +84,13 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Wextra -Werror $(SRC) -I.
-	ar rc $(NAME) $(OBJ)
+	@gcc -c -Wall -Wextra -Werror $(SRC) -I.
+	@ar rc $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
