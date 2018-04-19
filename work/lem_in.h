@@ -25,6 +25,12 @@ typedef struct		s_g
 	int				read_status;
 }					t_g;
 
+typedef struct		s_str_keeper
+{
+	int				quantity_of_ants;
+	int				read_status;
+}					t_str_keeper;
+
 /*
 **-------------------------   list of functions   --------------------
 */

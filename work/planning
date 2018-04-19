@@ -20,3 +20,7 @@
 
 - breadth first search for all vertices (do not stop it in the end)
 - find all path while breadth first search(search pointer from the room from which i§ve came -> adding to the queque)
+
+
+Bonus:
+- error diagnosis
