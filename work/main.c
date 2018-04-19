@@ -19,22 +19,27 @@ void	ft_number_of_ants_check(t_g *initial_data_set)
 
 	i = 0;
 	get_next_line(0, &line);
-	if (!ft_strlen(line) || ft_strlen(line) < 1 || ft_strlen(line) > 10)
+	if (line[0] == '#')
+		;
+	else
 	{
-		ft_printf("%s\n", "ERROR");
-		exit(0);
-	}
-	while (i < (int)ft_strlen(line))
-	{
-		if (ft_isdigit(line[i]) && ft_atoi(&line[0]) != 0)
-			i++;
-		else
+		if (!ft_strlen(line) || ft_strlen(line) < 1 || ft_strlen(line) > 10)
 		{
 			ft_printf("%s\n", "ERROR");
 			exit(0);
 		}
+		while (i < (int)ft_strlen(line))
+		{
+			if (ft_isdigit(line[i]) && ft_atoi(&line[0]) != 0)
+				i++;
+			else
+			{
+				ft_printf("%s\n", "ERROR");
+				exit(0);
+			}
+		}
+		initial_data_set->quantity_of_ants = ft_atoi(line);
 	}
-	initial_data_set->quantity_of_ants = ft_atoi(line);
 }
 
 void	ft_validation(t_g *initial_data_set)
@@ -47,7 +52,7 @@ int		main(void)
 	t_g initial_data_set; //declaration of structure to store the initial data for the validator;
 
 	ft_validation(&initial_data_set); //validation of the initial data set;
-	ft_printf("%d\n", initial_data_set.quantity_of_ants);
+	// ft_printf("%d\n", initial_data_set.quantity_of_ants);
 
 	return (0);
 }
