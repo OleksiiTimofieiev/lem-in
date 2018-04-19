@@ -26,9 +26,9 @@ void	ft_number_of_ants_check(t_g *initial_data_set)
 	}
 	while (i < (int)ft_strlen(line))
 	{
-		if (ft_isdigit(line[i]))
+		if (!(ft_isdigit(line[i])))
 			i++;
-		else
+		else if(!ft_isdigit(line[i]))
 		{
 			ft_printf("%s\n", "ERROR");
 			exit(0);
