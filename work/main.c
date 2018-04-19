@@ -12,6 +12,7 @@
 
 // if the line is valid -> save this shitty something;
 // then function to output this shitty stuff;
+// how to stop reading;
 
 #include "lem_in.h"
 
