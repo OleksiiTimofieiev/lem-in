@@ -12,39 +12,43 @@
 
 #include "lem_in.h"
 
-void	ft_number_of_ants_check(t_g *initial_data_set)
+void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
 {
 	int		i;
-	char	*line;
 
 	i = 0;
-	get_next_line(0, &line);
-	if (line[0] == '#')
+	if (str[0] == '#')
 		;
 	else
 	{
-		if (!ft_strlen(line) || ft_strlen(line) < 1 || ft_strlen(line) > 10)
+		if (!ft_strlen(str) || ft_strlen(str) < 1 || ft_strlen(str) > 10)
 		{
 			ft_printf("%s\n", "ERROR");
 			exit(0);
 		}
-		while (i < (int)ft_strlen(line))
-		{
-			if (ft_isdigit(line[i]) && ft_atoi(&line[0]) != 0)
+		while (i < (int)ft_strlen(str))
+			if (ft_isdigit(str[i]) && ft_atoi(&str[0]) != 0)
 				i++;
 			else
 			{
 				ft_printf("%s\n", "ERROR");
 				exit(0);
 			}
-		}
-		initial_data_set->quantity_of_ants = ft_atoi(line);
+		initial_data_set->quantity_of_ants = ft_atoi(str);
+		initial_data_set->read_status = 1;
 	}
 }
 
 void	ft_validation(t_g *initial_data_set)
 {
-	ft_number_of_ants_check(initial_data_set);
+	char *line;
+
+	initial_data_set->read_status = 0;
+	while (get_next_line(0, &line))
+	{
+		if (initial_data_set->read_status == 0)
+			ft_number_of_ants_check(initial_data_set, line);
+	}
 }
 
 int		main(void)
@@ -52,7 +56,9 @@ int		main(void)
 	t_g initial_data_set; //declaration of structure to store the initial data for the validator;
 
 	ft_validation(&initial_data_set); //validation of the initial data set;
-	// ft_printf("%d\n", initial_data_set.quantity_of_ants);
+	ft_printf("%d\n", initial_data_set.quantity_of_ants);
+	ft_printf("%d\n", initial_data_set.read_status);
+
 
 	return (0);
 }
