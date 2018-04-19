@@ -26,6 +26,8 @@
 # define COMMENT 2
 # define ROOM 3
 # define LINK 4
+# define COMMAND_START 5 // hope i`ll use it;
+# define COMMAND_END 6 // hope i`ll use it;
 
 /*
 **-----   data structure to keep the initial data set  -------------------------

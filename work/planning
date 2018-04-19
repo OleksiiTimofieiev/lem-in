@@ -10,7 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-- rethink error handling; when exit, when break;
 - different status, keep data in the linked list of chars;
 - get it to the main;
 - identificator for each node in order to do something later with it;
