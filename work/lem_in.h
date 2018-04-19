@@ -10,10 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+**------------------------  runtime declarations  ------------------------------
+*/
+
 #ifndef LEM_IN_H
 # define LEM_IN_H
-# define DO_NOTHING
 # include "./ft_printf/ft_printf.h"
+
+/*
+**------------------------  type of the rooms  ---------------------------------
+*/
+
+# define ANTS_QUANTITY 1
+# define COMMENT 2
+# define ROOM 3
+# define LINK 4
 
 /*
 **-----   data structure to keep the initial data set  -------------------------
@@ -27,12 +39,12 @@ typedef struct		s_g
 
 typedef struct		s_str_keeper
 {
-	int				quantity_of_ants;
-	int				read_status;
+	char			valid_line;
+	int				type_of_the_line;
 }					t_str_keeper;
 
 /*
-**-------------------------   list of functions   --------------------
+**-------------------------   list of functions   ------------------------------
 */
 
 #endif

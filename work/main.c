@@ -12,7 +12,7 @@
 
 // if the line is valid -> save this shitty something;
 // then function to output this shitty stuff;
-// how to stop reading;
+// how to stop reading; <-break and continue;
 
 #include "lem_in.h"
 
@@ -74,6 +74,7 @@ void	ft_validation(t_g *initial_data_set)
 int		main(void)
 {
 	t_g initial_data_set; //declaration of structure to store the initial data for the validator;
+	//declare here a structure to save the valid lines;
 
 	ft_validation(&initial_data_set); //validation of the initial data set;
 	ft_printf("Ants -> %d\n", initial_data_set.quantity_of_ants);
