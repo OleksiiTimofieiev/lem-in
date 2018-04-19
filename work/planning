@@ -10,7 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-- think over the architecture of the validator;
+- different status, keep data in the linked list of chars;
+- identificator for each node in order to do something later with it;
+- function to print this shit;
 - create an adjacency list;
 
 
