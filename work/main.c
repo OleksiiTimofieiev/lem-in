@@ -12,7 +12,7 @@
 
 // if the line is valid -> save this shitty something;
 // then function to output this shitty stuff;
-// how to stop reading; <-break and continue;
+// how to stop reading; <-break and continue; print smth and continue;
 
 #include "lem_in.h"
 
@@ -56,6 +56,7 @@ void	ft_validation(t_g *initial_data_set)
 
 	// (get_next_line(0, &line) > 0 && (!has_char(&line, '-')))
 	//  (ret && get_next_line(0, &line) > 0 && ft_strcmp(line, "") != 0)
+	//	strsplit for the line;
 
 	while (get_next_line(0, &line) == 1)
 	{
