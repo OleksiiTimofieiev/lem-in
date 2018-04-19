@@ -70,7 +70,7 @@ void	ft_validation(t_g *initial_data_set)
 		// 	...
 		if (i = 0)
 		{
-
+			break ;
 		}
 	}
 	// if (initial_data_set->read_status == 0) // maybe rework it with ret value;
@@ -84,6 +84,7 @@ int		main(void)
 	//declare here a structure to save the valid lines;
 
 	ft_validation(&initial_data_set); //validation of the initial data set;
+	ft_buid_graph_and_data();
 	ft_printf("Ants -> %d\n", initial_data_set.quantity_of_ants);
 	// ft_printf("Read status -> %d\n", initial_data_set.read_status);
 	return (0);
