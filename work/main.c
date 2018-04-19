@@ -48,6 +48,10 @@ void	ft_validation(t_g *initial_data_set)
 	{
 		if (initial_data_set->read_status == 0)
 			ft_number_of_ants_check(initial_data_set, line);
+		// else if (initial_data_set->read_status == 1)
+		// 	...
+		// else if (initial_data_set->read_status == 2)
+		// 	...
 	}
 }
 
@@ -58,7 +62,5 @@ int		main(void)
 	ft_validation(&initial_data_set); //validation of the initial data set;
 	ft_printf("%d\n", initial_data_set.quantity_of_ants);
 	ft_printf("%d\n", initial_data_set.read_status);
-
-
 	return (0);
 }
