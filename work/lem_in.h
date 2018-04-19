@@ -15,14 +15,17 @@
 # include "./ft_printf/ft_printf.h"
 
 /*
-**-------------------------   data structure   -------------------------
+**-----   data structure to keep the initial data set  -------------------------
 */
 
-
+typedef struct		s_g
+{
+	int				quantity_of_ants;
+	int				read_status;
+}					t_g;
 
 /*
 **-------------------------   list of functions   --------------------
 */
-
 
 #endif
