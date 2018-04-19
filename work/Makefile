@@ -34,12 +34,12 @@ $(NAME): $(OBJECTS)
 clean:
 	@/bin/rm -f $(OBJECTS)
 	@make clean -C ft_printf
-	@echo "\033[0;31mDeleting => [ $(NAME) ]\033[0m"
+	@echo "\033[0;31mDeleted => [ $(NAME) ]\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME) $(LIB)
 	@make fclean -C ft_printf
-	@echo "\033[0;31mFull Deleting => [ $(NAME) ]\033[0m"
+	@echo "\033[0;31mFull Deleted => [ $(NAME) ]\033[0m"
 
 re: fclean all
 	@echo "\033[0;33mRedone => [ $(NAME) ]\033[0m"
