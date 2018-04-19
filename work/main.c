@@ -13,14 +13,10 @@
 // if the line is valid -> save this shitty something;
 // then function to output this shitty stuff;
 // how to stop reading; <-break and continue; print smth and continue;
+// remaster data structure to the new idea
+// get the intermidiary keeper -> have the graph built (node`s categoty will be a criteria);
 
 #include "lem_in.h"
-
-void	ft_error(void)
-{
-	ft_printf("%s\n", "ERROR");
-	exit(0);
-}
 
 void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
 {
@@ -28,21 +24,27 @@ void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
 
 	i = 0;
 	if (str[0] == '#' && str[1] == '#')
-		ft_error();
+		return (0);
 	else if (str[0] == '#')
+	{
 		ft_printf("%s\n", str);
+		...
+		return (1);
+	}
 	else
 	{
 		if (!ft_strlen(str) || ft_strlen(str) < 1 || ft_strlen(str) > 10)
-			ft_error();
+			return (0);
 		while (i < (int)ft_strlen(str))
 			if (ft_isdigit(str[i]) && ft_atoi(&str[0]) != 0)
 				i++;
 			else
-				ft_error();
+				return (0);
 		initial_data_set->quantity_of_ants = ft_atoi(str);
 		initial_data_set->read_status = 1;
+		return (1);
 	}
+	return (0);
 }
 
 
@@ -61,14 +63,18 @@ void	ft_validation(t_g *initial_data_set)
 	while (get_next_line(0, &line) == 1)
 	{
 		if (initial_data_set->read_status == 0)
-			ft_number_of_ants_check(initial_data_set, line);
+			int i = ft_number_of_ants_check(initial_data_set, line); // detect a non valid line;
 		// else if (initial_data_set->read_status == 1)
 		// 	...
 		// else if (initial_data_set->read_status == 2)
 		// 	...
+		if (i = 0)
+		{
+
+		}
 	}
-	if (initial_data_set->read_status == 0) // maybe rework it with ret value;
-		ft_error();
+	// if (initial_data_set->read_status == 0) // maybe rework it with ret value;
+	// 	ft_error();
 	// if bool = 1 (if the file contained data) then nothing else print error
 }
 
