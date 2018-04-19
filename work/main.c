@@ -46,7 +46,7 @@ void	ft_validation(t_g *initial_data_set)
 	char *line;
 
 	initial_data_set->read_status = 0;
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) > 0)
 	{
 		if (initial_data_set->read_status == 0)
 			ft_number_of_ants_check(initial_data_set, line);
