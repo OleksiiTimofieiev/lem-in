@@ -26,9 +26,9 @@ void	ft_number_of_ants_check(t_g *initial_data_set)
 	}
 	while (i < (int)ft_strlen(line))
 	{
-		if (!(ft_isdigit(line[i])) && ft_atoi(&line[i]) != 0) // clear it out to the case of '0' value of the ants quantity;
+		if (ft_isdigit(line[i]) && ft_atoi(&line[0]) != 0)
 			i++;
-		else 
+		else
 		{
 			ft_printf("%s\n", "ERROR");
 			exit(0);
@@ -47,7 +47,7 @@ int		main(void)
 	t_g initial_data_set; //declaration of structure to store the initial data for the validator;
 
 	ft_validation(&initial_data_set); //validation of the initial data set;
-	ft_printf("%d\n", initial_data_set.quantity_of_ants); //checing the function results;
+	ft_printf("%d\n", initial_data_set.quantity_of_ants);
 
 	return (0);
 }
