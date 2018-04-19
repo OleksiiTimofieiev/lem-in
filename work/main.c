@@ -51,7 +51,8 @@ void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
 
 void	ft_validation(t_g *initial_data_set)
 {
-	char *line;
+	int		detector;
+	char	*line;
 
 	line = NULL;
 	initial_data_set->read_status = 0; // remove with static variable;
@@ -63,12 +64,12 @@ void	ft_validation(t_g *initial_data_set)
 	while (get_next_line(0, &line) == 1)
 	{
 		if (initial_data_set->read_status == 0)
-			int i = ft_number_of_ants_check(initial_data_set, line); // detect a non valid line;
+			detector = ft_number_of_ants_check(initial_data_set, line); // detect a non valid line;
 		// else if (initial_data_set->read_status == 1)
 		// 	...
 		// else if (initial_data_set->read_status == 2)
 		// 	...
-		if (i = 0)
+		if (detector = 0)
 		{
 			break ;
 		}
