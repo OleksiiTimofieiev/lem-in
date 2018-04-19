@@ -12,6 +12,7 @@
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
+# define DO_NOTHING
 # include "./ft_printf/ft_printf.h"
 
 /*
