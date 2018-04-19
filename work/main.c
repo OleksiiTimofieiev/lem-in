@@ -38,6 +38,7 @@ void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
 				ft_error();
 		initial_data_set->quantity_of_ants = ft_atoi(str);
 		initial_data_set->read_status = 1;
+		ft_printf("Ants -> %d\n", initial_data_set->quantity_of_ants);
 	}
 }
 
@@ -60,6 +61,9 @@ void	ft_validation(t_g *initial_data_set)
 		// else if (initial_data_set->read_status == 2)
 		// 	...
 	}
+	if (initial_data_set->read_status == 0)
+		ft_error();
+	// if bool = 1 (if the file contained data) then nothing else print error
 }
 
 int		main(void)
@@ -67,7 +71,6 @@ int		main(void)
 	t_g initial_data_set; //declaration of structure to store the initial data for the validator;
 
 	ft_validation(&initial_data_set); //validation of the initial data set;
-	// ft_printf("Ants -> %d\n", initial_data_set.quantity_of_ants);
 	// ft_printf("Read status -> %d\n", initial_data_set.read_status);
 	return (0);
 }
