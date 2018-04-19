@@ -45,8 +45,13 @@ void	ft_validation(t_g *initial_data_set)
 {
 	char *line;
 
-	initial_data_set->read_status = 0;
-	while (get_next_line(0, &line) > 0)
+	line = NULL;
+	initial_data_set->read_status = 0; // remove with static variable;
+
+	// (get_next_line(0, &line) > 0 && (!has_char(&line, '-')))
+	//  (ret && get_next_line(0, &line) > 0 && ft_strcmp(line, "") != 0)
+
+	while (get_next_line(0, &line))
 	{
 		if (initial_data_set->read_status == 0)
 			ft_number_of_ants_check(initial_data_set, line);
@@ -62,7 +67,7 @@ int		main(void)
 	t_g initial_data_set; //declaration of structure to store the initial data for the validator;
 
 	ft_validation(&initial_data_set); //validation of the initial data set;
-	ft_printf("%d\n", initial_data_set.quantity_of_ants);
-	ft_printf("%d\n", initial_data_set.read_status);
+	// ft_printf("Ants -> %d\n", initial_data_set.quantity_of_ants);
+	// ft_printf("Read status -> %d\n", initial_data_set.read_status);
 	return (0);
 }
