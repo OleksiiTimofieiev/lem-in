@@ -29,7 +29,7 @@ $(NAME): $(OBJECTS)
 	@echo "\033[0;36mCompilation started => [ $(NAME) ]\033[0m"
 	@make -C ft_printf
 	@gcc $(CFLAGS) -I. $(SRCS) -L ./ft_printf -lftprintf -o $(NAME)
-	@echo "\033[32mCompilation finished => [ $(NAME) ]\033[0m"
+	@echo "\033[93mCompilation finished => [ $(NAME) ]\033[0m"
 
 clean:
 	@/bin/rm -f $(OBJECTS)
@@ -42,6 +42,6 @@ fclean: clean
 	@echo "\033[0;31mFull Deleted => [ $(NAME) ]\033[0m"
 
 re: fclean all
-	@echo "\033[0;33mRedone => [ $(NAME) ]\033[0m"
+	@echo "\033[94mRedone => [ $(NAME) ]\033[0m"
 
 .PHONY: all clean fclean re
