@@ -44,6 +44,8 @@ void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
 	}
 }
 
+
+
 void	ft_validation(t_g *initial_data_set)
 {
 	char *line;
