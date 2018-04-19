@@ -26,7 +26,7 @@ void	ft_number_of_ants_check(t_g *initial_data_set)
 	}
 	while (i < (int)ft_strlen(line))
 	{
-		if (!(ft_isdigit(line[i])))
+		if (!(ft_isdigit(line[i]))) // clear it out to the case of '0' value of the ants quantity;
 			i++;
 		else if(!ft_isdigit(line[i]))
 		{
