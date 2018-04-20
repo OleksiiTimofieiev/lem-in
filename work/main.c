@@ -72,8 +72,6 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if 
 	return (0);
 }
 
-
-
 void	ft_validation(void)
 {
 	int 	read_detector;
