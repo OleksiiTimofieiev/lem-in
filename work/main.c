@@ -23,6 +23,16 @@
 
 #include "lem_in.h"
 
+void	ft_error_handler(int read_status)
+{
+	if (read_status == 0)
+		ft_printf("%s\n", "ERROR: NO ANTS DATA ...");
+	else if (read_status == 1)
+		ft_printf("%s\n", "ERROR: INVALID ROOM ...");
+	else if (read_status == 2)
+		ft_printf("%s\n", "ERROR: INVALID LINK ...");
+}
+
 int		ft_ant_check(char *str, int *read_status) // add linked list methods;
 {
 	int		i;
@@ -50,28 +60,18 @@ int		ft_ant_check(char *str, int *read_status) // add linked list methods;
 		*read_status = 1;
 		return (1);
 	}
-	return (0);
+	// return (0);
 }
 
 int		ft_check_rooms(char *str, int *read_status) // if false with split change a status,  // add linked list methods;
 {
 	char	**array;
 
-
 	array = ft_strsplit(str, 32);
 	*read_status = 2;
 	return (0);
 }
 
-void	ft_error_handler(int read_status)
-{
-	if (read_status == 0)
-		ft_printf("%s\n", "ERROR: NO ANTS DATA ...");
-	else if (read_status == 1)
-		ft_printf("%s\n", "ERROR: INVALID ROOM ...");
-	else if (read_status == 2)
-		ft_printf("%s\n", "ERROR: INVALID LINK ...");
-}
 
 
 void	ft_validation(void)
@@ -94,9 +94,8 @@ void	ft_validation(void)
 			ft_error_handler(read_status);
 			break ;
 		}
+		// if no links -> exit(0);
 	}
-
-
 	ft_printf("Read_status -> %d\n", read_status);
 }
 
