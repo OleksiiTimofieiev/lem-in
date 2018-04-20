@@ -15,6 +15,7 @@
 // how to stop reading; <-break and continue; print smth and continue;
 // remaster data structure to the new idea
 // get the intermidiary keeper -> have the graph built (node`s categoty will be a criteria);
+// stderror -> type of the mistake;
 
 #include "lem_in.h"
 
