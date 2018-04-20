@@ -19,6 +19,7 @@
 // (get_next_line(0, &line) > 0 && (!has_char(&line, '-')))
 //  (ret && get_next_line(0, &line) > 0 && ft_strcmp(line, "") != 0)
 //	strsplit for the line;
+//	function to detect the rooms or links; if split returns false in a way;
 
 #include "lem_in.h"
 
