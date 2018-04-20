@@ -16,10 +16,13 @@
 // remaster data structure to the new idea
 // get the intermidiary keeper -> have the graph built (node`s categoty will be a criteria);
 // stderror -> type of the mistake;
+// (get_next_line(0, &line) > 0 && (!has_char(&line, '-')))
+//  (ret && get_next_line(0, &line) > 0 && ft_strcmp(line, "") != 0)
+//	strsplit for the line;
 
 #include "lem_in.h"
 
-void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
+int		ft_number_of_ants_check(char *str, int *read_status)
 {
 	int		i;
 
@@ -28,8 +31,8 @@ void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
 		return (0);
 	else if (str[0] == '#')
 	{
-		ft_printf("%s\n", str);
-		...
+		// ft_build(... , correspondent define);
+		ft_printf("%s\n", "create a linked list node for comments"); // reaplace with linked list building function;
 		return (1);
 	}
 	else
@@ -41,8 +44,9 @@ void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
 				i++;
 			else
 				return (0);
-		initial_data_set->quantity_of_ants = ft_atoi(str);
-		initial_data_set->read_status = 1;
+		// ft_build(... , correspondent define);
+		ft_printf("%s\n", "create a linked list node for ants data"); // reaplace with linked list building function;
+		*read_status = 1;
 		return (1);
 	}
 	return (0);
@@ -50,44 +54,39 @@ void	ft_number_of_ants_check(t_g *initial_data_set, char *str)
 
 
 
-void	ft_validation(t_g *initial_data_set)
+void	ft_validation(void)
 {
-	int		detector;
+	int 	read_status;
+	int		validity_detector;
 	char	*line;
 
-	line = NULL;
-	initial_data_set->read_status = 0; // remove with static variable;
-
-	// (get_next_line(0, &line) > 0 && (!has_char(&line, '-')))
-	//  (ret && get_next_line(0, &line) > 0 && ft_strcmp(line, "") != 0)
-	//	strsplit for the line;
-
+	read_status = 0;
 	while (get_next_line(0, &line) == 1)
 	{
-		if (initial_data_set->read_status == 0)
-			detector = ft_number_of_ants_check(initial_data_set, line); // detect a non valid line;
-		// else if (initial_data_set->read_status == 1)
-		// 	...
+		if (read_status == 0)
+			validity_detector = ft_number_of_ants_check(line, &read_status);
+		else if (read_status == 1)
+			ft_printf("%s\n", "asdfasdfasdf");
 		// else if (initial_data_set->read_status == 2)
 		// 	...
-		if (detector = 0)
+		if (validity_detector == 0)
 		{
-			break ;
+			ft_printf("%s\n", "ERROR");
+			break;
 		}
 	}
-	// if (initial_data_set->read_status == 0) // maybe rework it with ret value;
-	// 	ft_error();
-	// if bool = 1 (if the file contained data) then nothing else print error
+
+
+	ft_printf("Read_status -> %d\n", read_status);
 }
 
 int		main(void)
 {
-	t_g initial_data_set; //declaration of structure to store the initial data for the validator;
+	//declaration of structure to store the initial data for the validator;
 	//declare here a structure to save the valid lines;
 
-	ft_validation(&initial_data_set); //validation of the initial data set;
-	ft_buid_graph_and_data();
-	ft_printf("Ants -> %d\n", initial_data_set.quantity_of_ants);
+	ft_validation(); //validation of the initial data set;
+	// ft_buid_graph_and_data();
 	// ft_printf("Read status -> %d\n", initial_data_set.read_status);
 	return (0);
 }

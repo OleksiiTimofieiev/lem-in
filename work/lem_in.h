@@ -33,12 +33,6 @@
 **-----   data structure to keep the initial data set  -------------------------
 */
 
-typedef struct		s_g
-{
-	int				quantity_of_ants;
-	int				read_status;
-}					t_g;
-
 typedef struct		s_str_keeper
 {
 	char			valid_line;
