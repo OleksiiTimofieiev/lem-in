@@ -23,7 +23,7 @@
 
 #include "lem_in.h"
 
-int		ft_number_of_ants_check(char *str, int *read_status)
+int		ft_ant_check(char *str, int *read_status) // add linked list methods;
 {
 	int		i;
 
@@ -53,7 +53,7 @@ int		ft_number_of_ants_check(char *str, int *read_status)
 	return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_status) // if false with split change a status
+int		ft_check_rooms(char *str, int *read_status) // if false with split change a status,  // add linked list methods;
 {
 	char	**array;
 
@@ -84,7 +84,7 @@ void	ft_validation(void)
 	while (get_next_line(0, &line) == 1)
 	{
 		if (read_status == 0)
-			validity_detector = ft_number_of_ants_check(line, &read_status);
+			validity_detector = ft_ant_check(line, &read_status);
 		else if (read_status == 1)
 			validity_detector = ft_check_rooms(line, &read_status);
 		// else if (initial_data_set->read_status == 2)
