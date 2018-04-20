@@ -22,10 +22,10 @@
 **------------------------  type of the rooms  ---------------------------------
 */
 
-# define ANTS_QUANTITY 1
-# define COMMENT 2
-# define ROOM 3
-# define LINK 4
+# define ANTS_QUANTITY 1 // adhere to the linked list
+# define COMMENT 2 // adhere to the linked list
+# define ROOM 3 // adhere to the linked list
+# define LINK 4 // adhere to the linked list
 # define COMMAND_START 5 // hope i`ll use it;
 # define COMMAND_END 6 // hope i`ll use it;
 
