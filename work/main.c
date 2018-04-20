@@ -23,17 +23,17 @@
 
 #include "lem_in.h"
 
-void	ft_error_handler(int read_status)
+void	ft_error_handler(int read_detector)
 {
-	if (read_status == 0)
+	if (read_detector == 0)
 		ft_printf("%s\n", "ERROR: NO ANTS DATA ...");
-	else if (read_status == 1)
+	else if (read_detector == 1)
 		ft_printf("%s\n", "ERROR: INVALID ROOM ...");
-	else if (read_status == 2)
+	else if (read_detector == 2)
 		ft_printf("%s\n", "ERROR: INVALID LINK ...");
 }
 
-int		ft_ant_check(char *str, int *read_status) // add linked list methods;
+int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
 {
 	int		i;
 
@@ -57,18 +57,18 @@ int		ft_ant_check(char *str, int *read_status) // add linked list methods;
 				return (0);
 		// ft_build(... , correspondent define);
 		ft_printf("%s\n", "create a linked list node for ants data"); // reaplace with linked list building function;
-		*read_status = 1;
+		*read_detector = 1;
 		return (1);
 	}
-	// return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_status) // if false with split change a status,  // add linked list methods;
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if false with split change a status,  // add linked list methods;
 {
 	char	**array;
 
 	array = ft_strsplit(str, 32);
-	*read_status = 2;
+	*read_detector = 2;
+	*command_detector=0;
 	return (0);
 }
 
@@ -76,27 +76,29 @@ int		ft_check_rooms(char *str, int *read_status) // if false with split change a
 
 void	ft_validation(void)
 {
-	int 	read_status;
+	int 	read_detector;
 	int		validity_detector;
+	int		command_detector;
 	char	*line;
 
-	read_status = 0;
+
+	read_detector = 0;
 	while (get_next_line(0, &line) == 1)
 	{
-		if (read_status == 0)
-			validity_detector = ft_ant_check(line, &read_status);
-		else if (read_status == 1)
-			validity_detector = ft_check_rooms(line, &read_status);
-		// else if (initial_data_set->read_status == 2)
+		if (read_detector == 0)
+			validity_detector = ft_ant_check(line, &read_detector);
+		else if (read_detector == 1)
+			validity_detector = ft_check_rooms(line, &read_detector, &command_detector);
+		// else if (initial_data_set->read_detector == 2)
 		// 	...
 		if (validity_detector == 0)
 		{
-			ft_error_handler(read_status);
+			ft_error_handler(read_detector);
 			break ;
 		}
 		// if no links -> exit(0);
 	}
-	ft_printf("Read_status -> %d\n", read_status);
+	ft_printf("read_detector -> %d\n", read_detector);
 }
 
 int		main(void)
@@ -106,6 +108,6 @@ int		main(void)
 
 	ft_validation(); //validation of the initial data set;
 	// ft_buid_graph_and_data();
-	// ft_printf("Read status -> %d\n", initial_data_set.read_status);
+	// ft_printf("Read status -> %d\n", initial_data_set.read_detector);
 	return (0);
 }
