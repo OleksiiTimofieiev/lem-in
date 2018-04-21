@@ -5,6 +5,6 @@ Ants:
 
 Rooms:
 
-- exit(0) <- [ first line after the ants have been validated is not the rooms related one]
+- exit(0) <- [ first line after the ants have been validated is not the rooms related one (not a command or the incorrect line) ]
 - stop reading <- [ incorrect line ]  
 - skip and add to initial data set <- [ comment ]
