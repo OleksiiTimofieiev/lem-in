@@ -6,7 +6,7 @@
 #    By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/23 21:09:12 by otimofie          #+#    #+#              #
-#    Updated: 2018/03/09 12:08:43 by otimofie         ###   ########.fr        #
+#    Updated: 2018/04/21 16:31:09 by otimofie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,7 @@ LIB = ft_memset.c \
 		ft_print_octal.c \
 		ft_octal_length.c \
 		get_next_line.c \
+		ft_isint.c \
 
 CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I libft/

@@ -6,7 +6,7 @@
 #    By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/12 22:37:25 by otimofie          #+#    #+#              #
-#    Updated: 2018/03/09 12:10:26 by otimofie         ###   ########.fr        #
+#    Updated: 2018/04/21 16:31:34 by otimofie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,8 @@ SRC = 	ft_memset.c \
 		ft_print_octal.c \
 		ft_octal_length.c \
 		get_next_line.c \
-		
+		ft_isint.c \
+
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

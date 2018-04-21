@@ -26,11 +26,11 @@
 void	ft_error_handler(int read_detector)
 {
 	if (read_detector == 0)
-		ft_printf("%s\n", "ERROR: NO ANTS DATA ...");
+		ft_printf("%s\n", "ERROR: ANTS DATA ...");
 	else if (read_detector == 1)
-		ft_printf("%s\n", "ERROR: INVALID ROOM ...");
+		ft_printf("%s\n", "ERROR: ROOMS ...");
 	else if (read_detector == 2)
-		ft_printf("%s\n", "ERROR: INVALID LINK ...");
+		ft_printf("%s\n", "ERROR: LINKS ...");
 }
 
 int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
@@ -41,7 +41,7 @@ int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
 	if (str[0] == '#' && str[1] == '#' && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 		// ft_build(... , correspondent define);
 		return (1);
-	else if (str[0] == '#')
+	else if (str[0] == '#' && str[1] != '#')
 	{
 		// ft_build(... , correspondent define);
 		ft_printf("%s\n", "create a linked list node for comments"); // reaplace with linked list building function;
@@ -152,6 +152,7 @@ void	ft_validation(void)
 
 int		main(void)
 {
+	ft_printf("%d\n", ft_atoi("–2147483649"));
 	//declaration of structure to store the initial data for the validator;
 	//declare here a structure to save the valid lines;
 

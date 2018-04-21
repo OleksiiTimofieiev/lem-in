@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/04 18:47:36 by otimofie          #+#    #+#             */
-/*   Updated: 2018/03/12 14:10:59 by otimofie         ###   ########.fr       */
+/*   Updated: 2018/04/21 16:41:30 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ void				ft_print_hex_big(size_t n, size_t limit);
 void				ft_print_octal(size_t num, size_t limit);
 int					ft_octal_length(size_t num);
 int					get_next_line(const int fd, char **line);
+int					ft_isint(ssize_t nbr);
 
 #endif
