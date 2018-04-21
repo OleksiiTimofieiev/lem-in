@@ -110,7 +110,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if 
 	else if (*command_detector == 3) //ft_check_rooms_validity(str)
 	{
 		// add linked list stuff -> invalid command;
-		*command_detector = 0;
+		*command_detector = 0; // pass it to a linked list and
 		return (1);
 	}
 	else if (*command_detector == 0) //ft_check_rooms_validity(str)
