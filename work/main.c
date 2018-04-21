@@ -61,14 +61,14 @@ int		ft_detect_command(char *str, int **command_detector) // add linked list met
 {
 	if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##start"))
 	{
-		**command_detector = 1;
+		*command_detector[0] = 1;
 		// add linked list stuff
 		ft_printf("%s\n", str);
 		return (1);
 	}
 	else if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##end"))
 	{
-		**command_detector = 2;
+		*command_detector[0] = 2;
 		//add linked list stuff;
 		ft_printf("%s\n", str);
 
@@ -86,22 +86,21 @@ int		ft_detect_command(char *str, int **command_detector) // add linked list met
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if false with split change a status,  // add linked list methods;
 {
 	*read_detector = 1; //change this stuff;
-
-	if (*command_detector == 0 && ft_detect_command(str, &command_detector))
+	if (command_detector[0] == 0 && ft_detect_command(str, &command_detector))
 		return (1);
-	else if (*command_detector == 1) //ft_check_rooms_validity(str)
+	else if (command_detector[0] == 1) //ft_check_rooms_validity(str)
 	{
 		// add linked list stuff -> start;
-		*command_detector = 0;
+		command_detector[0] = 0;
 		return (1);
 	}
-	else if (*command_detector == 2) //ft_check_rooms_validity(str)
+	else if (command_detector[0] == 2) //ft_check_rooms_validity(str)
 	{
 		// add linked list stuff -> end;
-		*command_detector = 0;
+		command_detector[0] = 0;
 		return (1);
 	}
-	else if (*command_detector == 0) //ft_check_rooms_validity(str)
+	else if (command_detector[0] == 0) //ft_check_rooms_validity(str)
 	{
 		// add linked list stuff -> invalid command;
 		return (1);
@@ -113,18 +112,19 @@ void	ft_validation(void)
 {
 	int 	read_detector;
 	int		validity_detector;
-	int		command_detector;
+	int		command_detector[3];
+
 	char	*line;
 
 	read_detector = 0;
-	command_detector = 0;
+	command_detector[0] = 0;
 
 	while (get_next_line(0, &line) == 1)
 	{
 		if (read_detector == 0)
 			validity_detector = ft_ant_check(line, &read_detector);
 		else if (read_detector == 1)
-			validity_detector = ft_check_rooms(line, &read_detector, &command_detector);
+			validity_detector = ft_check_rooms(line, &read_detector, command_detector);
 		// else if (initial_data_set->read_detector == 2)
 		// 	...
 		if (validity_detector == 0)
