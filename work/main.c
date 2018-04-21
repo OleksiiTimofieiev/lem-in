@@ -62,24 +62,29 @@ int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
 	}
 }
 
-int		ft_detect_command(char *str, int *command_detector) // add linked list methods;
+int		ft_detect_command(char *str, int **command_detector) // add linked list methods;
 {
 	if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##start"))
 	{
-		*command_detector = 1;
+		**command_detector = 1;
 		// add linked list stuff
+		ft_printf("%s\n", str);
 		return (1);
 	}
 	else if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##end"))
 	{
-		*command_detector = 1;
+		**command_detector = 2;
 		//add linked list stuff;
+		ft_printf("%s\n", str);
+
 		return (1);
 	}
-	else if ((str[0] == '#' && str[1] == '#') && (!ft_strequ(str, "##start") || !ft_strequ(str, "##end")))
+	else if ((str[0] == '#' && str[1] == '#') && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 	{
-		*command_detector = 0;
+		**command_detector = 3;
 		//add linked list stuff;
+		ft_printf("%s\n", str);
+
 		return (1);
 	}
 	return (0);
@@ -87,23 +92,32 @@ int		ft_detect_command(char *str, int *command_detector) // add linked list meth
 
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if false with split change a status,  // add linked list methods;
 {
-	char	**array;
-
-	*read_detector = 2;
-
-
-
-
-	
-	ft_detect_command(line, &command_detector);
-
-
-
-
-
-
-	array = ft_strsplit(str, 32);
-	
+	*read_detector = 1; //change this stuff;
+	if (*command_detector == 0 && ft_detect_command(str, &command_detector))
+		return (1);
+	else if (*command_detector == 1) //ft_check_rooms_validity(str)
+	{
+		// add linked list stuff -> start;
+		*command_detector = 0;
+		return (1);
+	}
+	else if (*command_detector == 2) //ft_check_rooms_validity(str)
+	{
+		// add linked list stuff -> end;
+		*command_detector = 0;
+		return (1);
+	}
+	else if (*command_detector == 3) //ft_check_rooms_validity(str)
+	{
+		// add linked list stuff -> invalid command;
+		*command_detector = 0;
+		return (1);
+	}
+	else if (*command_detector == 0) //ft_check_rooms_validity(str)
+	{
+		// add linked list stuff -> invalid command;
+		return (1);
+	}
 	return (0);
 }
 
@@ -116,6 +130,7 @@ void	ft_validation(void)
 
 	read_detector = 0;
 	command_detector = 0;
+
 	while (get_next_line(0, &line) == 1)
 	{
 		if (read_detector == 0)
