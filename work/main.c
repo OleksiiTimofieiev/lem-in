@@ -82,10 +82,8 @@ int		ft_detect_command(char *str, int **command_detector) // add linked list met
 	}
 	else if ((str[0] == '#' && str[1] == '#') && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 	{
-		**command_detector = 3;
 		//add linked list stuff;
 		ft_printf("%s\n", str);
-
 		return (1);
 	}
 	return (0);
@@ -94,6 +92,7 @@ int		ft_detect_command(char *str, int **command_detector) // add linked list met
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if false with split change a status,  // add linked list methods;
 {
 	*read_detector = 1; //change this stuff;
+
 	if (*command_detector == 0 && ft_detect_command(str, &command_detector))
 		return (1);
 	else if (*command_detector == 1) //ft_check_rooms_validity(str)
@@ -106,12 +105,6 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if 
 	{
 		// add linked list stuff -> end;
 		*command_detector = 0;
-		return (1);
-	}
-	else if (*command_detector == 3) //ft_check_rooms_validity(str)
-	{
-		// add linked list stuff -> invalid command;
-		*command_detector = 0; // pass it to a linked list and
 		return (1);
 	}
 	else if (*command_detector == 0) //ft_check_rooms_validity(str)
