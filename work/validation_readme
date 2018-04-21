@@ -1,6 +1,6 @@
 Ants:
 
-- exit(0) <- [ first line is a command, line is a string (not an int value) ]
+- break <- [ first line is a command, line is a string (not an int value) ]
 - skip and add to initial data set <- [ line is a comment ]
 
 Rooms:
