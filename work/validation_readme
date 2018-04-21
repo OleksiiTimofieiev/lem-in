@@ -1,0 +1,10 @@
+Ants:
+
+- exit(0) <- [ first line is a command, line is a string (not an int value) ]
+- skip and add to initial data set <- [ line is a comment ]
+
+Rooms:
+
+- exit(0) <- [ first line after the ants have been validated is not the rooms related one]
+- stop reading <- [ incorrect line ]  
+- skip and add to initial data set <- [ comment ]

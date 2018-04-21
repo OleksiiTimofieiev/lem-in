@@ -68,7 +68,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if 
 
 	array = ft_strsplit(str, 32);
 	*read_detector = 2;
-	*command_detector=0;
+	*command_detector = 0;
 	return (0);
 }
 
