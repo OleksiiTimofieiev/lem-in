@@ -10,16 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// if the line is valid -> save this shitty something;
-// then function to output this shitty stuff;
-// how to stop reading; <-break and continue; print smth and continue;
-// remaster data structure to the new idea
-// get the intermidiary keeper -> have the graph built (node`s categoty will be a criteria);
-// stderror -> type of the mistake;
 // (get_next_line(0, &line) > 0 && (!has_char(&line, '-')))
-//  (ret && get_next_line(0, &line) > 0 && ft_strcmp(line, "") != 0)
-//	strsplit for the line;
-//	function to detect the rooms or links; if split returns false in a way;
+// (ret && get_next_line(0, &line) > 0 && ft_strcmp(line, "") != 0)
+// strsplit for the line;
+// function to detect the rooms or links; if split returns false in a way;
 
 #include "lem_in.h"
 
@@ -145,7 +139,6 @@ void	ft_validation(void)
 
 int		main(void)
 {
-	ft_printf("%d\n", ft_atoi("–2147483649"));
 	//declaration of structure to store the initial data for the validator;
 	//declare here a structure to save the valid lines;
 
