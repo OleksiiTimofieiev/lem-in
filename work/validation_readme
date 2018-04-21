@@ -5,6 +5,5 @@ Ants:
 
 Rooms:
 
-- break <- [ first line after the ants have been validated is not the rooms related one (not a command or the incorrect line) ]
-- stop reading <- [ incorrect line ]
+- break <- [ first line after the ants have been validated is not the rooms related one (not a command or the incorrect line), not a unique command, data doesn`t contains start and the end ]
 - skip and add to initial data set <- [ comment or invalid command ]
