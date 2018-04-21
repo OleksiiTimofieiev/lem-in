@@ -38,8 +38,9 @@ int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
 	int		i;
 
 	i = 0;
-	if (str[0] == '#' && str[1] == '#')
-		return (0);
+	if (str[0] == '#' && str[1] == '#' && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
+		// ft_build(... , correspondent define);
+		return (1);
 	else if (str[0] == '#')
 	{
 		// ft_build(... , correspondent define);
