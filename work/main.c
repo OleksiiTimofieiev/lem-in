@@ -10,11 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// (get_next_line(0, &line) > 0 && (!has_char(&line, '-')))
-// (ret && get_next_line(0, &line) > 0 && ft_strcmp(line, "") != 0)
-// strsplit for the line;
-// function to detect the rooms or links; if split returns false in a way;
-
 #include "lem_in.h"
 
 void	ft_error_handler(int read_detector)
@@ -57,12 +52,12 @@ int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
 	}
 }
 
-int		ft_detect_command(char *str, int **command_detector) // add linked list methods;
+int		ft_detect_command(char *str, int **command_detector) // add linked list methods; // add rooms check aspects;
 {
 	if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##start"))
 	{
 		*command_detector[0] = 1;
-		// add linked list stuff
+		// add linked list stuff //maybe delete;
 		ft_printf("%s\n", str);
 		return (1);
 	}
@@ -86,7 +81,7 @@ int		ft_detect_command(char *str, int **command_detector) // add linked list met
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if false with split change a status,  // add linked list methods;
 {
 	*read_detector = 1; //change this stuff;
-	if (command_detector[0] == 0 && ft_detect_command(str, &command_detector))
+	if (command_detector[0] == 0 && ft_detect_command(str, &command_detector)) // and there was no start or end before + 
 		return (1);
 	else if (command_detector[0] == 1) //ft_check_rooms_validity(str)
 	{
@@ -113,7 +108,6 @@ void	ft_validation(void)
 	int 	read_detector;
 	int		validity_detector;
 	int		command_detector[3];
-
 	char	*line;
 
 	read_detector = 0;
