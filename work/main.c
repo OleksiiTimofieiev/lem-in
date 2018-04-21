@@ -75,6 +75,7 @@ int		ft_detect_command(char *str, int **command_detector) // add linked list met
 		ft_printf("%s\n", str);
 		return (1);
 	}
+	// else if not room and a valid link;
 	return (0);
 }
 
