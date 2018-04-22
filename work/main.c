@@ -56,18 +56,16 @@ int		ft_detect_command(char *str, int *command_detector)
 {
 	if (str[0] == '#' && str[1] == '#' && ft_strequ(str, "##start") && command_detector[1] == 0)
 	{
-		ft_printf("%d\n", command_detector[1]);
-		ft_printf("%d\n", command_detector[2]);
-
+		// ft_printf("%d\n", command_detector[1]);
+		// ft_printf("%d\n", command_detector[2]);
 		command_detector[0] = 1;
 		command_detector[1] = 1;
 		return (1);
 	}
 	else if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##end") && command_detector[2] == 0)
 	{
-		ft_printf("%d\n", command_detector[1]);
-		ft_printf("%d\n", command_detector[2]);
-
+		// ft_printf("%d\n", command_detector[1]);
+		// ft_printf("%d\n", command_detector[2]);
 		command_detector[0] = 2;
 		command_detector[2] = 1;
 		return (1);
@@ -75,6 +73,15 @@ int		ft_detect_command(char *str, int *command_detector)
 	else if ((str[0] == '#' && str[1] == '#') && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 		return (1);
 	return (0);
+}
+
+int		ft_find_space_is_correct_quantity(str)
+{
+	int i;
+
+	i = 0;
+	//quantity of spaces == spaces before the char and == 2;
+	while (*str)
 }
 
 int		ft_room_validity_aspects(char *str)
@@ -98,10 +105,12 @@ int		ft_room_validity_aspects(char *str)
 		return (0);
 	else if (array[0][0] == '#' || array [0][0] == 'L') // unvalid room <- forbidden chars;
 		return (0);
-	else if (!ft_isposint(array[1]) || !ft_isposint(array[2])) // unvalid line <- wrong data, have to be a positive int values;
+	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str)) // unvalid line <- wrong data, have to be a positive int values;
 		return (0);
-	return (1);
+	// if (!room is unique) 
+	// 		return (0);
 	// free array;
+	return (1);
 }
 
 int		ft_alpha_and_omega(int *command_detector)
