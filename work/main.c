@@ -12,9 +12,47 @@
 
 #include "lem_in.h"
 
-void	ft_build(t_str_keeper *var, int i) // just do it;
+t_str_keeper	*line_builder(char *valid_line, int i) // just do it;
 {
-	ft_printf("%d\n", i);
+	t_str_keeper *tmp;
+
+	if (!(tmp = (t_str_keeper*)malloc(sizeof(t_str_keeper))))
+		return (NULL);
+
+	tmp->type_of_the_line = i;
+	tmp->valid_line = ft_strdup(valid_line);
+	tmp->next = NULL;
+
+	return (tmp);
+}
+
+void	ft_list_builder(t_str_keeper ****initial_data, char *valid_line, int i)
+{
+	// t_str_keeper **tmp;
+	// valid_line[0] = 0;
+	// i = 0;
+		ft_printf("%p\n", NULL);
+
+		ft_printf("%s\n", "1");
+	// tmp = *initial_data;
+		ft_printf("%s\n", "2");
+
+	if (!(***initial_data))
+	{
+		ft_printf("%s\n", "3");
+
+		***initial_data = line_builder(valid_line, i);
+	}
+	else
+	{
+		ft_printf("%s\n", "4");
+
+		// while ((tmp)->next)
+		// 	(tmp) = (tmp)->next;
+		// (tmp)->next = line_builder(valid_line, i);
+		// ft_printf("%s\n", "5");
+
+	}
 }
 
 void	ft_error_handler(int read_detector) // delete the extras after error in the end of the validator processing;
@@ -27,14 +65,21 @@ void	ft_error_handler(int read_detector) // delete the extras after error in the
 		ft_printf("%s\n", "ERROR: READING LINKS");
 }
 
-int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
+int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) // add linked list methods;
 {
 	int		i;
 
 	i = 0;
 	if (str[0] == '#' && str[1] == '#' && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
-		// ft_build(... , correspondent define);
+	{
+		ft_printf("%s\n", "Before build");
+
+		ft_list_builder(&initial_data, str, 1); // add unvalid command to define;
+
+		ft_printf("%s\n", "Build is successfull");
+
 		return (1);
+	}
 	else if (str[0] == '#' && str[1] != '#')
 	{
 		// ft_build(... , correspondent define);
@@ -175,7 +220,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 	return (0); // will return false if the next line is not valid room;
 }
 
-void	ft_validation(void) // finalyze with rooms and links;
+void	ft_validation(t_str_keeper **initial_data) // finalyze with rooms and links;
 {
 	int 	read_detector;
 	int		validity_detector;
@@ -190,7 +235,11 @@ void	ft_validation(void) // finalyze with rooms and links;
 	while (get_next_line(0, &line) == 1)
 	{
 		if (read_detector == 0)
-			validity_detector = ft_ant_check(line, &read_detector);
+		{
+			validity_detector = ft_ant_check(line, &read_detector, &initial_data);
+			break ; //////for testinf -> remove;
+		}
+
 		else if (read_detector == 1)
 			validity_detector = ft_check_rooms(line, &read_detector, command_detector);
 		// else if (initial_data_set->read_detector == 2)
@@ -207,7 +256,22 @@ void	ft_validation(void) // finalyze with rooms and links;
 
 int		main(void)
 {
-	ft_build(ANTS_QUANTITY);
+	t_str_keeper *initial_data; //keep the initial valid data;
+
+	initial_data = NULL;
+
+		ft_printf("%p\n", initial_data);
+
+
+	
+	
+
+		ft_printf("%s\n", initial_data);
+		ft_printf("%s\n", "Here1");
+
+
+
+	// ft_build(ANTS_QUANTITY);
 	// char **array = ft_strsplit("1--1", '-');
 
 	// ft_printf("%s\n", array[0]);
@@ -218,7 +282,13 @@ int		main(void)
 	//declaration of structure to store the initial data for the validator;
 	//declare here a structure to save the valid lines;
 
-	ft_validation(); //validation of the initial data set;
+	ft_validation(&initial_data); //validation of the initial data set;
+		ft_printf("%s\n", "Here final");
+
+		ft_printf("%d\n", initial_data->type_of_the_line);
+
+		ft_printf("%s\n", initial_data->valid_line);
+
 	// ft_buid_graph_and_data();
 	// ft_printf("Read status -> %d\n", initial_data_set.read_detector);
 	return (0);

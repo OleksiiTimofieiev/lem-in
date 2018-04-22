@@ -24,6 +24,7 @@
 
 # define ANTS_QUANTITY 1 // adhere to the linked list
 # define COMMAND_START 2 // hope i`ll use it;
+// add unvalid command
 # define COMMAND_END 3 // hope i`ll use it;
 # define COMMENT 4 // adhere to the linked list
 # define ROOM 5 // adhere to the linked list
@@ -33,12 +34,12 @@
 **-----   data structure to keep the initial data set  -------------------------
 */
 
-typedef struct		s_str_keeper
+typedef struct			s_str_keeper
 {
-	int				type_of_the_line;
-	char			valid_line;
-	int				room_nbr; // maybe;
-}					t_str_keeper;
+	int					type_of_the_line;
+	char				*valid_line;
+	struct s_str_keeper	*next;
+}						t_str_keeper;
 
 /*
 **-------------------------   list of functions   ------------------------------
