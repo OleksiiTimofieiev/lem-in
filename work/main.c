@@ -52,7 +52,7 @@ int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
 	}
 }
 
-int		ft_detect_command(char *str, int **command_detector) // add linked list methods; // add rooms check aspects;
+int		ft_detect_command(char *str, int **command_detector)
 {
 	if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##start"))
 	{
