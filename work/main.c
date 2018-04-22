@@ -95,10 +95,10 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if 
 		// add linked list stuff -> start;
 		return (1);
 	}
-	else if (command_detector[0] == 1) //ft_check_rooms_validity(str) - valid room or a comment, if it is a command -> kill (return (0));
+	else if (command_detector[0] == 1) //ft_check_rooms_validity(str) - valid room or a comment, if it is a command -> kill (return (0)); return 2 if ti was a comment
 	{
 		// add linked list stuff -> start;
-		command_detector[0] = 0; // in the function
+		command_detector[0] = 0; // in the function ternary function;
 		return (1);
 	}
 	else if (command_detector[0] == 2) //ft_check_rooms_validity(str) - valid room or a comment
