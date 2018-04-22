@@ -123,14 +123,14 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 	{
 		// add linked list stuff -> start;
 		ft_printf("%s\n", "command has been detected and the start line is valid");
-		command_detector[0] = 0;
+		command_detector[0] = 0; // maybe i`ll have to add it to the linked list function
 		return (1);
 	}
 	else if (command_detector[0] == 2 && ft_room_validity_aspects(str)) //ft_check_rooms_validity(str) - valid room 
 	{
 		// add linked list stuff -> end;
 		ft_printf("%s\n", "command has been detected and the end line is valid");
-		command_detector[0] = 0;
+		command_detector[0] = 0; // maybe i`ll have to add it to the linked list function
 		return (1);
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str)) //ft_check_rooms_validity(str) - valid room or a comment: unvalid command or comment or valid rooms == o.k.;
@@ -140,6 +140,8 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 	}
 	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str))
 	{
+		// 1. check if we have start and end;
+		// 2. check if the link is valid
 		if (ft_alpha_and_omega(command_detector))
 			ft_printf("%s\n", "Maybe we have a link ?");
 		*read_detector = 2;
@@ -182,9 +184,9 @@ void	ft_validation(void)
 
 int		main(void)
 {
-	// char **array = ft_strsplit("1 1 1", ' ');
+	// char **array = ft_strsplit("1--1", '-');
 
-	// ft_printf("%d\n", array[0]);
+	// ft_printf("%s\n", array[0]);
 	// ft_printf("%s\n", array[1]);
 	// ft_printf("%s\n", array[2]);
 	// ft_printf("%s\n", array[3]);
