@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-void	ft_error_handler(int read_detector)
+void	ft_error_handler(int read_detector) // delete the extras after error;
 {
 	if (read_detector == 0)
 		ft_printf("%s\n", "ERROR: READING ANTS");
@@ -52,20 +52,16 @@ int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
 	}
 }
 
-int		ft_detect_command(char *str, int *command_detector)
+int		ft_detect_command(char *str, int *command_detector) /* + */
 {
 	if (str[0] == '#' && str[1] == '#' && ft_strequ(str, "##start") && command_detector[1] == 0)
 	{
-		// ft_printf("%d\n", command_detector[1]);
-		// ft_printf("%d\n", command_detector[2]);
 		command_detector[0] = 1;
 		command_detector[1] = 1;
 		return (1);
 	}
 	else if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##end") && command_detector[2] == 0)
 	{
-		// ft_printf("%d\n", command_detector[1]);
-		// ft_printf("%d\n", command_detector[2]);
 		command_detector[0] = 2;
 		command_detector[2] = 1;
 		return (1);
@@ -75,7 +71,7 @@ int		ft_detect_command(char *str, int *command_detector)
 	return (0);
 }
 
-int		ft_find_space_is_correct_quantity(char *str)
+int		ft_find_space_is_correct_quantity(char *str) /* + */
 {
 	int i;
 	int s_general;
@@ -97,7 +93,7 @@ int		ft_find_space_is_correct_quantity(char *str)
 	return (0);
 }
 
-int		ft_room_validity_aspects(char *str)
+int		ft_room_validity_aspects(char *str) // ?: (room is unique); free array;
 {
 	char	**array;
 	int		array_size;	
@@ -126,14 +122,14 @@ int		ft_room_validity_aspects(char *str)
 	return (1);
 }
 
-int		ft_alpha_and_omega(int *command_detector)
+int		ft_alpha_and_omega(int *command_detector) /* + */
 {
 	if (command_detector[1] && command_detector[2])
 		return (1);
 	return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add linked list methods;
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add linked list methods; finalize with ERROR type and read_detector;
 {
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
@@ -169,25 +165,23 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 		if (ft_alpha_and_omega(command_detector))
 			ft_printf("%s\n", "Maybe we have a link ?");
 		*read_detector = 2;
-		// add data tp list;
+		// add data to list;
 	}
 	return (0); // will return false if the next line is not valid room;
 }
 
-void	ft_validation(void)
+void	ft_validation(void) // finalyze with rooms and links;
 {
-	int 	read_detector; // add to the array of flags maybe
-	int		validity_detector; // add to the array of flags maybe
+	int 	read_detector;
+	int		validity_detector;
 	int		command_detector[3]; 
 	char	*line;
 
-	//refactor with bitwise operations;
-	read_detector = 0; //add to an array;
 
+	read_detector = 0;
 	command_detector[0] = 0;
 	command_detector[1] = 0;
 	command_detector[2] = 0;
-
 	while (get_next_line(0, &line) == 1)
 	{
 		if (read_detector == 0)
