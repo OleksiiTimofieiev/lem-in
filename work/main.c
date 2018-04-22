@@ -63,7 +63,7 @@ int		ft_detect_command(char *str, int **command_detector)
 	}
 	else if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##end"))
 	{
-		*command_detector[0] = 1;
+		*command_detector[0] = 2;
 		*command_detector[2] = 1;
 		ft_printf("%s\n", str);
 		return (1);
@@ -120,7 +120,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 	{
 		// add linked list stuff -> start;
 		ft_printf("%s\n", "command has been detected and the start line is valid");
-		command_detector[0] = 0; // in the function ternary function; or a comment
+		// (ft_room_validity_aspects(str) != 2) ? command_detector[0] = 0 : 0 ; // in the function ternary function; or a comment
 		return (1);
 	}
 	else if (command_detector[0] == 2) //ft_check_rooms_validity(str) - valid room 
@@ -175,10 +175,11 @@ void	ft_validation(void)
 
 int		main(void)
 {
-	char **array = ft_strsplit("1 1 1", ' ');
-	ft_printf("%s\n", array[0]);
-	ft_printf("%s\n", array[1]);
-	ft_printf("%s\n", array[2]);
+	// char **array = ft_strsplit("1 1 1", ' ');
+
+	// ft_printf("%d\n", array[0]);
+	// ft_printf("%s\n", array[1]);
+	// ft_printf("%s\n", array[2]);
 	// ft_printf("%s\n", array[3]);
 	// ft_printf("%s\n", array[1]);
 	//declaration of structure to store the initial data for the validator;
