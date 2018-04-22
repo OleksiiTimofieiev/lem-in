@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_atoi_here(const char *str)
+static ssize_t	ft_atoi_here(const char *str)
 {
 	ssize_t	i;
 	ssize_t	res;
@@ -38,7 +38,7 @@ static int	ft_atoi_here(const char *str)
 	return (res * mark);
 }
 
-int			ft_isposint(char *str)
+int				ft_isposint(char *str)
 {
 	int i;
 	int len;
@@ -56,5 +56,5 @@ int			ft_isposint(char *str)
 			return (0);
 	if (!ft_isint(ft_atoi_here(str)))
 		return (0);
-	return (0);
+	return (1);
 }
