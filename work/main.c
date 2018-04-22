@@ -12,7 +12,12 @@
 
 #include "lem_in.h"
 
-void	ft_error_handler(int read_detector) // delete the extras after error;
+void	ft_build(t_str_keeper *var, int i) // just do it;
+{
+	ft_printf("%d\n", i);
+}
+
+void	ft_error_handler(int read_detector) // delete the extras after error in the end of the validator processing;
 {
 	if (read_detector == 0)
 		ft_printf("%s\n", "ERROR: READING ANTS");
@@ -162,7 +167,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 		// 2. check if the link is valid
 		// 3. two flags regarding the validity of the room and the link;
 
-		if (ft_alpha_and_omega(command_detector))
+		if (ft_alpha_and_omega(command_detector)) // and a valid link, else ->
 			ft_printf("%s\n", "Maybe we have a link ?");
 		*read_detector = 2;
 		// add data to list;
@@ -202,6 +207,7 @@ void	ft_validation(void) // finalyze with rooms and links;
 
 int		main(void)
 {
+	ft_build(ANTS_QUANTITY);
 	// char **array = ft_strsplit("1--1", '-');
 
 	// ft_printf("%s\n", array[0]);
