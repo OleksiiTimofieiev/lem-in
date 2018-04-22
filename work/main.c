@@ -165,10 +165,10 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 		// 1. check if we have start and end;
 		// 2. check if the link is valid
 		// 3. two flags regarding the validity of the room and the link;
+
 		if (ft_alpha_and_omega(command_detector))
 			ft_printf("%s\n", "Maybe we have a link ?");
 		*read_detector = 2;
-		// return (0);
 		// add data tp list;
 	}
 	return (0); // will return false if the next line is not valid room;
