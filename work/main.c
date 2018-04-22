@@ -88,7 +88,7 @@ int		ft_room_validity_aspects(char *str) //create func regarding the quantity of
 
 	if (ft_strequ(str, "##start") || ft_strequ(str, "##end"))
 		return (0);
-	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end")) && (str[0] == '#' & str[1] == '#'))
+	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end")) && (str[0] == '#' && str[1] == '#'))
 		return (2);
 	else if (array_size != 3)
 		return (0);
