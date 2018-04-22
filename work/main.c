@@ -82,19 +82,15 @@ int		ft_room_validity_aspects(char *str)
 	char	**array;
 	int		array_size;	
 
-	array = ft_strsplit(str, ' ');
-
-
-	if (!array)
+	if (!(array = ft_strsplit(str, ' ')))
 		return (0);
-
 	array_size = ft_2d_arr_size(array);
-
 	if (ft_strequ(str, "##start") || ft_strequ(str, "##end")) // command was repeated;
 		return (0);
 	else if (array_size == 1 && str[0] == '#' && str[1] != '#') // line is a comment;
 		return (2);
-	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end")) && (str[0] == '#' && str[1] == '#')) // unvalid command can be saved;			
+	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end"))
+				 && (str[0] == '#' && str[1] == '#')) // unvalid command can be saved;			
 		return (2);
 	else if (array_size != 3) // not a valid line -> not sufficient data;
 		return (0);
