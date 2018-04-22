@@ -135,14 +135,15 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str)) //ft_check_rooms_validity(str) - valid room or a comment: unvalid command or comment or valid rooms == o.k.;
 	{
-		// add linked list stuff
+		// add linked list stuff -> the correspondent room;
 		return (1);
 	}
 	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str))
 	{
 		if (ft_alpha_and_omega(command_detector))
-		ft_printf("%s\n", "Maybe we have a link ?");
+			ft_printf("%s\n", "Maybe we have a link ?");
 		*read_detector = 2;
+		// add data tp list;
 	}
 	return (0); // will return false if the next line is not valid room;
 }
