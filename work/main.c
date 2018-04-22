@@ -88,10 +88,11 @@ int		ft_find_space_is_correct_quantity(char *str)
 	//quantity of spaces == spaces before the char and == 2;
 	while (str[i])
 	{
-		if (str[i] == 32)
+		if (str[i] == ' ')
 			s_general++;
-		else if (str[i] != 32 && str[i - 1] == 32)
+		else if (str[i] != ' ' && str[i - 1] == ' ')
 			s_inline++;
+		i++;
 	}
 	ft_printf("%d\n", s_general);
 	ft_printf("%d\n", s_inline);
@@ -122,7 +123,7 @@ int		ft_room_validity_aspects(char *str)
 		return (0);
 	else if (array[0][0] == '#' || array [0][0] == 'L') // unvalid room <- forbidden chars;
 		return (0);
-	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) ) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
+	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str) ) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
 		return (0);
 	// if (!room is unique) 
 	// 		return (0);
