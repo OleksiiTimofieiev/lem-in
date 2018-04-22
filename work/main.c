@@ -76,6 +76,17 @@ int		ft_detect_command(char *str, int **command_detector) // add linked list met
 	return (0);
 }
 
+int		ft_room_validity_aspects(char *str) //create func regarding the quantity of the 2d array elements;
+{
+
+}
+
+int		ft_room_validity_core(char *str)
+{
+
+}
+
+
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if false with split change a status,  // add linked list methods;
 {
 	*read_detector = 1; //change this stuff; / when a valid link is detected;
