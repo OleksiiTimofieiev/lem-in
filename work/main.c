@@ -104,12 +104,18 @@ int		ft_room_validity_aspects(char *str)
 	// free array;
 }
 
+int		ft_alpha_and_omega(int *command_detector)
+{
+	if (command_detector[1] && command_detector[2])
+		return (1);
+	return (0);
+}
+
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add linked list methods;
 {
-	*read_detector = 1; //change this stuff; / when a valid link is detected;
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
-		// add linked list stuff -> start;
+		// add linked list stuff -> command/invalid command/comment;
 		ft_printf("%s\n", "command has been detected");
 		return (1);
 	}
@@ -117,7 +123,6 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 	{
 		// add linked list stuff -> start;
 		ft_printf("%s\n", "command has been detected and the start line is valid");
-		// (ft_room_validity_aspects(str) != 2) ? command_detector[0] = 0 : 0 ; // in the function ternary function; or a comment
 		command_detector[0] = 0;
 		return (1);
 	}
@@ -126,7 +131,6 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 		// add linked list stuff -> end;
 		ft_printf("%s\n", "command has been detected and the end line is valid");
 		command_detector[0] = 0;
-
 		return (1);
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str)) //ft_check_rooms_validity(str) - valid room or a comment: unvalid command or comment or valid rooms == o.k.;
@@ -134,11 +138,12 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 		// add linked list stuff
 		return (1);
 	}
-	// else if (!valid room && valid link)
-	// {
-	// 	read status == ...
-	// 	add to list 
-	// }
+	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str))
+	{
+		if (ft_alpha_and_omega(command_detector))
+		ft_printf("%s\n", "Maybe we have a link ?");
+		*read_detector = 2;
+	}
 	return (0); // will return false if the next line is not valid room;
 }
 
