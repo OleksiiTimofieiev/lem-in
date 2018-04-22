@@ -57,64 +57,70 @@ int		ft_detect_command(char *str, int **command_detector) // add linked list met
 	if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##start"))
 	{
 		*command_detector[0] = 1;
-		// add linked list stuff //maybe delete;
+		*command_detector[1] = 1;
 		ft_printf("%s\n", str);
 		return (1);
 	}
 	else if ((str[0] == '#' && str[1] == '#') && ft_strequ(str, "##end"))
 	{
 		*command_detector[0] = 2;
-		//add linked list stuff;
+		*command_detector[2] = 1;
 		ft_printf("%s\n", str);
-
 		return (1);
 	}
 	else if ((str[0] == '#' && str[1] == '#') && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 	{
-		//add linked list stuff;
 		ft_printf("%s\n", str);
 		return (1);
-		
 	}
-	// else if not room and a valid link;
 	return (0);
 }
 
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if false with split change a status,  // add linked list methods;
 {
-	*read_detector = 1; //change this stuff;
+	*read_detector = 1; //change this stuff; / when a valid link is detected;
 	if (command_detector[0] == 0 && ft_detect_command(str, &command_detector)) // and there was no start or end before + 
-		return (1);
-	else if (command_detector[0] == 1) //ft_check_rooms_validity(str)
 	{
 		// add linked list stuff -> start;
-		command_detector[0] = 0;
 		return (1);
 	}
-	else if (command_detector[0] == 2) //ft_check_rooms_validity(str)
+	else if (command_detector[0] == 1) //ft_check_rooms_validity(str) - valid room or a comment, if it is a command -> kill (return (0));
+	{
+		// add linked list stuff -> start;
+		command_detector[0] = 0; // in the function
+		return (1);
+	}
+	else if (command_detector[0] == 2) //ft_check_rooms_validity(str) - valid room or a comment
 	{
 		// add linked list stuff -> end;
-		command_detector[0] = 0;
+		command_detector[0] = 0; // in the function
 		return (1);
 	}
-	else if (command_detector[0] == 0) //ft_check_rooms_validity(str)
+	else if (command_detector[0] == 0) //ft_check_rooms_validity(str) - valid room or a comment: unvalid command or comment or valid rooms == o.k.;
 	{
-		// add linked list stuff -> invalid command;
+		// add linked list stuff
 		return (1);
 	}
-	return (0);
+	// else if (!valid room && valid link)
+	// {
+	// 	read status == ...
+	// 	add to list 
+	// }
+	return (0); // will return false if the next line is not valid room;
 }
 
 void	ft_validation(void)
 {
-	int 	read_detector;
-	int		validity_detector;
-	int		command_detector[3];
+	int 	read_detector; // add to the array of flags maybe
+	int		validity_detector; // add to the array of flags maybe
+	int		command_detector[3]; 
 	char	*line;
 
-	read_detector = 0;
+	//refactor with bitwise operations;
+	read_detector = 0; //add to an array;
 	command_detector[0] = 0;
-
+	command_detector[1] = 0;
+	command_detector[2] = 0;
 	while (get_next_line(0, &line) == 1)
 	{
 		if (read_detector == 0)
