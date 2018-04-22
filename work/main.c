@@ -75,13 +75,30 @@ int		ft_detect_command(char *str, int *command_detector)
 	return (0);
 }
 
-int		ft_find_space_is_correct_quantity(str)
+int		ft_find_space_is_correct_quantity(char *str)
 {
 	int i;
+	int s_general;
+	int s_inline;
+
 
 	i = 0;
+	s_general = 0;
+	s_inline = 0;
 	//quantity of spaces == spaces before the char and == 2;
-	while (*str)
+	while (str[i])
+	{
+		if (str[i] == 32)
+			s_general++;
+		else if (str[i] != 32 && str[i - 1] == 32)
+			s_inline++;
+	}
+	ft_printf("%d\n", s_general);
+	ft_printf("%d\n", s_inline);
+
+	if ((s_general == s_inline) && s_general == 2)
+			return (1);
+	return (0);
 }
 
 int		ft_room_validity_aspects(char *str)
@@ -105,7 +122,7 @@ int		ft_room_validity_aspects(char *str)
 		return (0);
 	else if (array[0][0] == '#' || array [0][0] == 'L') // unvalid room <- forbidden chars;
 		return (0);
-	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str)) // unvalid line <- wrong data, have to be a positive int values;
+	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) ) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
 		return (0);
 	// if (!room is unique) 
 	// 		return (0);
@@ -154,6 +171,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 		if (ft_alpha_and_omega(command_detector))
 			ft_printf("%s\n", "Maybe we have a link ?");
 		*read_detector = 2;
+		// return (0);
 		// add data tp list;
 	}
 	return (0); // will return false if the next line is not valid room;
