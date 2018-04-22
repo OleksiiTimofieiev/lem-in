@@ -81,11 +81,9 @@ int		ft_find_space_is_correct_quantity(char *str)
 	int s_general;
 	int s_inline;
 
-
 	i = 0;
 	s_general = 0;
 	s_inline = 0;
-	//quantity of spaces == spaces before the char and == 2;
 	while (str[i])
 	{
 		if (str[i] == ' ')
@@ -94,9 +92,6 @@ int		ft_find_space_is_correct_quantity(char *str)
 			s_inline++;
 		i++;
 	}
-	ft_printf("%d\n", s_general);
-	ft_printf("%d\n", s_inline);
-
 	if ((s_general == s_inline) && s_general == 2)
 			return (1);
 	return (0);
@@ -169,6 +164,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 	{
 		// 1. check if we have start and end;
 		// 2. check if the link is valid
+		// 3. two flags regarding the validity of the room and the link;
 		if (ft_alpha_and_omega(command_detector))
 			ft_printf("%s\n", "Maybe we have a link ?");
 		*read_detector = 2;
