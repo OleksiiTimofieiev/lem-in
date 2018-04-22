@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_2d_arr_size.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otimofie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/21 16:31:45 by otimofie          #+#    #+#             */
-/*   Updated: 2018/04/21 16:46:14 by otimofie         ###   ########.fr       */
+/*   Created: 2018/04/22 13:26:42 by otimofie          #+#    #+#             */
+/*   Updated: 2018/04/22 13:28:22 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int		ft_isint(ssize_t nbr)
+int		ft_2d_arr_size(char **str)
 {
-	ssize_t intmin;
-	ssize_t intmax;
+	int i;
 
-	intmin = -2147483648;
-	intmax = 2147483647;
-	if (nbr >= intmin && nbr <= intmax)
-		return (1);
-	return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

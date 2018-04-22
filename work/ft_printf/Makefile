@@ -108,6 +108,9 @@ LIB = ft_memset.c \
 		ft_octal_length.c \
 		get_next_line.c \
 		ft_isint.c \
+		ft_2d_arr_size.c \
+		ft_isposint.c \
+		ft_str_find_chr.c \
 
 CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I libft/

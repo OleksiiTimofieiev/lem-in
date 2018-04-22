@@ -76,36 +76,32 @@ int		ft_detect_command(char *str, int **command_detector)
 	return (0);
 }
 
-int		ft_room_validity_aspects(char *str) //create func regarding the quantity of the 2d array elements;
+int		ft_room_validity_aspects(char *str)
 {
 	char	**array;
 	int		array_size;	
 
-	if (!(array = ft_strsplit(str, 32)))
+	array = ft_strsplit(str, 32);
+
+	if (!array)
 		return (0);
 
 	array_size = ft_2d_arr_size(array);
 
 	if (ft_strequ(str, "##start") || ft_strequ(str, "##end"))
 		return (0);
-	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end")) && (str[0] == '#' && str[1] == '#'))
+	else if (array_size == 1 && str[0] == '#' && str[1] != '#')
 		return (2);
 	else if (array_size != 3)
 		return (0);
 	else if (array[0][0] == '#' || array [0][0] == 'L')
 		return (0);
-	else if (array[1] || array[2]) //isdigit and isinteger and > 0;
-		// while (i < (int)ft_strlen(str))
-		// 	if (ft_isdigit(str[i]) && ft_atoi(&str[0]) != 0)
-		// 		i++;
+	else if (ft_isposint(array[1]) && ft_isposint(array[2]))
 		return (1);
-	else if (array_size == 1 && array[0] == '#' && array[1] != '#')
-		return (2);
+	else if (ft_str_find_chr(array[0], '-'))
+		return (0);
 	return (0);
 }
-
-
-
 
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if false with split change a status,  // add linked list methods;
 {
@@ -172,6 +168,12 @@ void	ft_validation(void)
 
 int		main(void)
 {
+	// char **array = ft_strsplit("     1 1 2   23", ' ');
+	// ft_printf("%s\n", array[0]);
+	// ft_printf("%s\n", array[1]);
+	// ft_printf("%s\n", array[2]);
+	// ft_printf("%s\n", array[3]);
+	// ft_printf("%s\n", array[1]);
 	//declaration of structure to store the initial data for the validator;
 	//declare here a structure to save the valid lines;
 

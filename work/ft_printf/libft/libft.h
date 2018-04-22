@@ -101,5 +101,8 @@ void				ft_print_octal(size_t num, size_t limit);
 int					ft_octal_length(size_t num);
 int					get_next_line(const int fd, char **line);
 int					ft_isint(ssize_t nbr);
+int					ft_2d_arr_size(char **str);
+int					ft_isposint(char *str);
+int					ft_str_find_chr(const char *str, char c);
 
 #endif

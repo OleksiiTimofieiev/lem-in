@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_str_find_chr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otimofie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/21 16:31:45 by otimofie          #+#    #+#             */
-/*   Updated: 2018/04/21 16:46:14 by otimofie         ###   ########.fr       */
+/*   Created: 2018/04/22 14:19:21 by otimofie          #+#    #+#             */
+/*   Updated: 2018/04/22 14:19:28 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int		ft_isint(ssize_t nbr)
+int		ft_str_find_chr(const char *str, char c)
 {
-	ssize_t intmin;
-	ssize_t intmax;
-
-	intmin = -2147483648;
-	intmax = 2147483647;
-	if (nbr >= intmin && nbr <= intmax)
-		return (1);
+	while (*str)
+	{
+		if (*str == c)
+			return (1);
+		str++;
+	}
 	return (0);
 }
