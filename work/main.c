@@ -15,11 +15,11 @@
 void	ft_error_handler(int read_detector)
 {
 	if (read_detector == 0)
-		ft_printf("%s\n", "ERROR: ANTS DATA ...");
+		ft_printf("%s\n", "ERROR: ANTS");
 	else if (read_detector == 1)
-		ft_printf("%s\n", "ERROR: ROOMS ...");
+		ft_printf("%s\n", "ERROR: ROOMS");
 	else if (read_detector == 2)
-		ft_printf("%s\n", "ERROR: LINKS ...");
+		ft_printf("%s\n", "ERROR: LINKS");
 }
 
 int		ft_ant_check(char *str, int *read_detector) // add linked list methods;
