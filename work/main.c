@@ -78,13 +78,33 @@ int		ft_detect_command(char *str, int **command_detector)
 
 int		ft_room_validity_aspects(char *str) //create func regarding the quantity of the 2d array elements;
 {
+	char	**array;
+	int		array_size;	
 
+	if (!(array = ft_strsplit(str, 32)))
+		return (0);
+
+	array_size = ft_2d_arr_size(array);
+
+	if (ft_strequ(str, "##start") || ft_strequ(str, "##end"))
+		return (0);
+	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end")) && (str[0] == '#' & str[1] == '#'))
+		return (2);
+	else if (array_size != 3)
+		return (0);
+	else if (array[0][0] == '#' || array [0][0] == 'L')
+		return (0);
+	else if (array[1] || array[2]) //isdigit and isinteger and > 0;
+		// while (i < (int)ft_strlen(str))
+		// 	if (ft_isdigit(str[i]) && ft_atoi(&str[0]) != 0)
+		// 		i++;
+		return (1);
+	else if (array_size == 1 && array[0] == '#' && array[1] != '#')
+		return (2);
+	return (0);
 }
 
-int		ft_room_validity_core(char *str)
-{
 
-}
 
 
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if false with split change a status,  // add linked list methods;
@@ -98,13 +118,13 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // if 
 	else if (command_detector[0] == 1) //ft_check_rooms_validity(str) - valid room or a comment, if it is a command -> kill (return (0)); return 2 if ti was a comment
 	{
 		// add linked list stuff -> start;
-		command_detector[0] = 0; // in the function ternary function;
+		command_detector[0] = 0; // in the function ternary function; or a comment
 		return (1);
 	}
-	else if (command_detector[0] == 2) //ft_check_rooms_validity(str) - valid room or a comment
+	else if (command_detector[0] == 2) //ft_check_rooms_validity(str) - valid room 
 	{
 		// add linked list stuff -> end;
-		command_detector[0] = 0; // in the function
+		command_detector[0] = 0; // in the function or a comment
 		return (1);
 	}
 	else if (command_detector[0] == 0) //ft_check_rooms_validity(str) - valid room or a comment: unvalid command or comment or valid rooms == o.k.;
