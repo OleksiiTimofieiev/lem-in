@@ -124,18 +124,31 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 int		ft_room_and_coord_unique(char *str, t_str_keeper ***initial_data)
 {
 
-	ft_printf("%s \n%s\n", str, (**initial_data)->valid_line);
+	ft_printf("%s\n",(**initial_data)->valid_line);
 
 	// (void)(str);
+	ft_putchar('1');
+	while ((**initial_data)->prev)
+		(**initial_data) = (**initial_data)->prev;
+	ft_putchar('2');
 
+	while ((**initial_data)) // ->next
+	{
+		ft_printf("another room -> %s \n ll data -> %s\n", str, (**initial_data)->valid_line);
+		(**initial_data) = (**initial_data)->next;
+	}
+		ft_putchar('3');
+		
 	while ((**initial_data)->prev)
 	{
 		// ft_printf("%s\n", (**initial_data)->valid_line);
-
+		ft_putchar('4');
 		(**initial_data) = (**initial_data)->prev;
 
 	}
-	ft_printf("%s \n%s\n", str, (**initial_data)->valid_line);
+	ft_putchar('5');
+
+
 
 	// while (**initial_data)
 	// {
