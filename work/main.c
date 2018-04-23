@@ -127,36 +127,15 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data)
 	t_str_keeper *current;
 
 	current = initial_data;
-
 	while (current->prev)
 		current = current->prev;
-	// ft_printf("valid line ->%s\n", current->valid_line);
 	while (current)
 	{
-		ft_printf("valid line ->%s\n", current->valid_line);
-
-		ft_putchar('1');
-		// ft_printf("%s\n", current->valid_line);
 		medium = ft_strsplit(current->valid_line, ' ');
-		// ft_printf("array -> %s %s %s\n", array[0], array[1], array[2]);
-
-		// if (current->type_of_the_line == ANTS_QUANTITY)
-		// {
-		// 	// ft_putchar('1');
+		// if (medium[1] == NULL)
 		// 	return (1);
-		// }
-		// ft_printf("medium -> %s %s %s\n", medium[0], medium[1], medium[2]);
-		// ft_printf("%s\n", array[0]);
-		// ft_printf("%s\n", medium[0]);
-		// 		ft_printf("%s\n", array[1]);
-		// ft_printf("%s\n", medium[1]);
-			ft_putchar('2');
-
-		if (ft_strequ(array[0], medium[0]) )
-		{
-		ft_putchar('3');
+		if (ft_strequ(array[0], medium[0]))
 			return (0);
-		}
 		current = current->next;
 	}
 	return (1);
