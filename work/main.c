@@ -175,7 +175,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 	else if (command_detector[0] == 2 && ft_room_validity_aspects(str)) //ft_check_rooms_validity(str) - valid room 
 	{
 		// add linked list stuff -> end;
-		ft_printf("%s\n", "command has been detected and the end line is valid");
+		// ft_printf("%s\n", "command has been detected and the end line is valid");
 		command_detector[0] = 0; // maybe i`ll have to add it to the linked list function
 		return (1);
 	}
@@ -188,12 +188,11 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 	{
 		// 1. check if we have start and end;
 		// 2. check if the link is valid
-		// 3. two flags regarding the validity of the room and the link;
-
+		*read_detector = 2;
 		if (ft_alpha_and_omega(command_detector)) // and a valid link, else ->
 			ft_printf("%s\n", "Maybe we have a link ?");
-		*read_detector = 1;
 		// add data to list;
+		return (1);
 	}
 	return (0); // will return false if the next line is not valid room;
 }
