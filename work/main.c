@@ -400,43 +400,9 @@ int		main(void)
 
 	initial_data = NULL;
 
-		// ft_printf("%p\n", initial_data);
-
-
-	
-	
-
-		// ft_printf("%s\n", initial_data);
-		// ft_printf("%s\n", "Here1");
-
-
-
-	// ft_build(ANTS_QUANTITY);
-	// char **array = ft_strsplit("1--1", '-');
-
-	// ft_printf("%s\n", array[0]);
-	// ft_printf("%s\n", array[1]);
-	// ft_printf("%s\n", array[2]);
-	// ft_printf("%s\n", array[3]);
-	// ft_printf("%s\n", array[1]);
-	//declaration of structure to store the initial data for the validator;
-	//declare here a structure to save the valid lines;
-	// ft_printf("start pointer -> %p\n", initial_data);
-
 	ft_validation(&initial_data); //validation of the initial data set;
 
-		// ft_printf("%s\n", "Here final");
-	// ft_printf("pointer after validation - > %p\n", initial_data);
-	// t_str_keeper *buf1 = initial_data; 
 	t_str_keeper *buf2 = initial_data; 
-
-	// while (buf1->prev)
-	// 	buf1 = (buf1)->prev;
-	// while (buf1)
-	// {
-	// 	ft_printf("%s\n", buf1->valid_line);
-	// 	buf1 = buf1->next;
-	// }
 
 	while (buf2->prev)
 		buf2 = (buf2)->prev;
