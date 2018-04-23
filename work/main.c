@@ -152,6 +152,7 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 		while (medium[i])
 	    	free(medium[i++]);
 		free(medium);
+		medium = NULL;
 	}
 	return (1);
 }
@@ -190,6 +191,7 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // free arr
     	i++;
 	}
 	free(array);
+	array = NULL;
 
 	return (1);
 }
@@ -242,8 +244,6 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, *initial_data))
 	{
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-			ft_printf("----->%p\n", initial_data);
-
 		return (1);
 	}
 	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str, *initial_data))
