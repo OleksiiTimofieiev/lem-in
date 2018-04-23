@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-t_str_keeper	*line_builder(char *valid_line, int i) // just do it;
+t_str_keeper	*line_builder(char *valid_line, int i) /* + */
 {
 	t_str_keeper *tmp;
 	if (!(tmp = (t_str_keeper*)malloc(sizeof(t_str_keeper))))
@@ -24,7 +24,7 @@ t_str_keeper	*line_builder(char *valid_line, int i) // just do it;
 	return (tmp);
 }
 
-void	ft_list_builder(t_str_keeper ****initial_data, char *valid_line, int i)
+void	ft_list_builder(t_str_keeper ****initial_data, char *valid_line, int i) /* + */
 {
 	t_str_keeper ****current;
 
@@ -50,7 +50,7 @@ void	ft_error_handler(int read_detector) // delete the extras after error in the
 		ft_printf("%s\n", "ERROR: READING LINKS");
 }
 
-int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) // add linked list methods;
+int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data)
 {
 	int		i;
 
@@ -58,7 +58,6 @@ int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) /
 	if (str[0] == '#' && str[1] == '#' && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 	{
 		ft_list_builder(&initial_data, str, UNVALID_COMMAND);
-
 		return (1);
 	}
 	else if (str[0] == '#' && str[1] != '#')
