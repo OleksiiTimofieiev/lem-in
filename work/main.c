@@ -162,7 +162,7 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // add f
 	return (1);
 }
 
-int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // add function to clean array, refactor it;
+int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // add function to clean array;
 {
 	char	**array;
 	int		array_size;	
@@ -267,7 +267,6 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // add func
 		array = NULL;
 			return (0);
 	}
-
 	// free array;
 	int i = 0;
 	while (array[i])
@@ -277,7 +276,6 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // add func
 	}
 	free(array);
 	array = NULL;
-
 	return (1);
 }
 
