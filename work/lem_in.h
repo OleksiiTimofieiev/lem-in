@@ -24,11 +24,11 @@
 
 # define ANTS_QUANTITY 1 // adhere to the linked list
 # define COMMAND_START 2 // hope i`ll use it;
-// add unvalid command
-# define COMMAND_END 3 // hope i`ll use it;
-# define COMMENT 4 // adhere to the linked list
-# define ROOM 5 // adhere to the linked list
-# define LINK 6 // adhere to the linked list
+# define UNVALID_COMMAND 3
+# define COMMAND_END 4 // hope i`ll use it;
+# define COMMENT 5 // adhere to the linked list
+# define ROOM 6 // adhere to the linked list
+# define LINK 7 // adhere to the linked list
 
 /*
 **-----   data structure to keep the initial data set  -------------------------
@@ -38,6 +38,7 @@ typedef struct			s_str_keeper
 {
 	int					type_of_the_line;
 	char				*valid_line;
+	struct s_str_keeper	*prev;
 	struct s_str_keeper	*next;
 }						t_str_keeper;
 

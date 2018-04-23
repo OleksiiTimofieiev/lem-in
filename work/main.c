@@ -21,24 +21,27 @@ t_str_keeper	*line_builder(char *valid_line, int i) // just do it;
 
 	tmp->type_of_the_line = i;
 	tmp->valid_line = ft_strdup(valid_line);
+	tmp->prev = NULL;
 	tmp->next = NULL;
-
 	return (tmp);
 }
 
 void	ft_list_builder(t_str_keeper ****initial_data, char *valid_line, int i)
 {
-	t_str_keeper ****tmp;
+	t_str_keeper ****current;
 
-	tmp = initial_data;
-	if (!(***initial_data))
-		***initial_data = line_builder(valid_line, i);
+	current = initial_data;
+	if (!(***current))
+		***current = line_builder(valid_line, i);
 	else
 	{
-		while ((***tmp)->next)
-			(***tmp) = (***tmp)->next;
-		(***tmp)->next = line_builder(valid_line, i);
+		while ((***current)->next)
+			(***current) = (***current)->next;
+		(***current)->next = line_builder(valid_line, i);
+		(***current)->next->prev = ***current;
 	}
+	
+
 }
 
 void	ft_error_handler(int read_detector) // delete the extras after error in the end of the validator processing;
@@ -58,18 +61,13 @@ int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) /
 	i = 0;
 	if (str[0] == '#' && str[1] == '#' && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 	{
-		ft_printf("%s\n", "Before build");
-
-		ft_list_builder(&initial_data, str, 1); // add unvalid command to define;
-
-		ft_printf("%s\n", "Build is successfull");
+		ft_list_builder(&initial_data, str, UNVALID_COMMAND);
 
 		return (1);
 	}
 	else if (str[0] == '#' && str[1] != '#')
 	{
-		// ft_build(... , correspondent define);
-		ft_printf("%s\n", "create a linked list node for comments"); // reaplace with linked list building function;
+		ft_list_builder(&initial_data, str, COMMENT);
 		return (1);
 	}
 	else
@@ -272,7 +270,12 @@ int		main(void)
 	ft_validation(&initial_data); //validation of the initial data set;
 		// ft_printf("%s\n", "Here final");
 
-
+	while (initial_data->prev)
+	{
+		// ft_putchar('1');
+		// ft_printf("%s\n", initial_data->valid_line);
+		(initial_data) = (initial_data)->prev;
+	}
 	while (initial_data)
 	{
 		ft_printf("%s\n", initial_data->valid_line);
