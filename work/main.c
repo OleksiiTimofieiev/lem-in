@@ -350,8 +350,6 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 	int		command_detector[3]; 
 	char	*line;
 
-	// line = NULL;
-
 	read_detector = 0;
 	command_detector[0] = 0;
 	command_detector[1] = 0;
@@ -368,10 +366,9 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 		{
 			free(line);
 			ft_error_handler(read_detector);
-			break ; //////for testing -> remove;
+			break ;
 		}
 		free(line);
-		// if no links -> exit(0);
 	}
 	ft_printf("read_detector -> %d\n", read_detector);
 }
