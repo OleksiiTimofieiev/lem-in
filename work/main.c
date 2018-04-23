@@ -131,8 +131,8 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 		current = current->prev;
 	while (current)
 	{
-		medium = ft_strsplit(current->valid_line, ' ');
-		if (current->type_of_the_line != ANTS_QUANTITY && (ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2])))
+		medium = ft_strsplit(current->valid_line, 32);
+		if (current->type_of_the_line != ANTS_QUANTITY && current->type_of_the_line != COMMAND && (ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2])))
 			return (0);
 		current = current->next;
 	}
@@ -180,24 +180,24 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	//adopt the "i" trick for return and command detector in a function;
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
-		ft_list_builder(&initial_data, str, COMMAND_START);
+		ft_list_builder(&initial_data, str, COMMAND);
 		return (1);
 	}
 	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room or a comment; return 2 if ti was a comment
 	{
-		ft_list_builder(&initial_data, str, UNVALID_COMMAND);
+		ft_list_builder(&initial_data, str, COMMAND_START);
 		command_detector[0] = 0; // maybe i`ll have to add it to the linked list function
 		return (1);
 	}
 	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room 
 	{
-		ft_list_builder(&initial_data, str, UNVALID_COMMAND);
+		ft_list_builder(&initial_data, str, COMMAND_END);
 		command_detector[0] = 0; // maybe i`ll have to add it to the linked list function
 		return (1);
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room or a comment: unvalid command or comment or valid rooms == o.k.;
 	{
-		ft_list_builder(&initial_data, str, UNVALID_COMMAND);
+		ft_list_builder(&initial_data, str, ROOM);
 		return (1);
 	}
 	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str, **initial_data))
@@ -213,7 +213,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	return (0); // will return false if the next line is not valid room;
 }
 
-void	ft_validation(t_str_keeper **initial_data) // finalyze with rooms and links;
+void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 {
 	int 	read_detector;
 	int		validity_detector;
@@ -234,7 +234,7 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with rooms and links
 		// 	...
 		if (validity_detector == 0)
 		{
-			break ; //////for testinf -> remove;
+			break ; //////for testing -> remove;
 			ft_error_handler(read_detector);
 		}
 		// if no links -> exit(0);

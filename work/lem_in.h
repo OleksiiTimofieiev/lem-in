@@ -23,12 +23,13 @@
 */
 
 # define ANTS_QUANTITY 1 // adhere to the linked list
-# define COMMAND_START 2 // hope i`ll use it;
-# define UNVALID_COMMAND 3
+# define COMMAND 2 // hope i`ll use it;
+# define COMMAND_START 3 // hope i`ll use it;
 # define COMMAND_END 4 // hope i`ll use it;
-# define COMMENT 5 // adhere to the linked list
-# define ROOM 6 // adhere to the linked list
-# define LINK 7 // adhere to the linked list
+# define UNVALID_COMMAND 5
+# define COMMENT 6 // adhere to the linked list
+# define ROOM 7 // adhere to the linked list
+# define LINK 8 // adhere to the linked list
 
 /*
 **-----   data structure to keep the initial data set  -------------------------
