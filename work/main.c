@@ -40,17 +40,17 @@ void	ft_list_builder(t_str_keeper ****initial_data, char *valid_line, int i) /* 
 	}
 }
 
-void	ft_error_handler(int read_detector) // delete the extras after error in the end of the validator processing;
+void	ft_error_handler(int read_detector) /* + */
 {
 	if (read_detector == 0)
-		ft_printf("%s\n", "ERROR: READING ANTS");
+		ft_printf("%s\n", "ERROR");
 	else if (read_detector == 1)
-		ft_printf("%s\n", "ERROR: READING ROOMS");
+		ft_printf("%s\n", "ERROR");
 	else if (read_detector == 2)
-		ft_printf("%s\n", "ERROR: READING LINKS");
+		ft_printf("%s\n", "ERROR");
 }
 
-int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data)
+int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) /* + */
 {
 	int		i;
 
@@ -144,7 +144,7 @@ int		ft_room_validity_aspects(char *str) // ?: (room is unique); free array;
 		return (0);
 	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str) ) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
 		return (0);
-	// if (!room is unique) 
+	// else if (!room and coords are unique) 
 	// 		return (0);
 	// free array;
 	return (1);
