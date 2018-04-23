@@ -144,7 +144,7 @@ int		ft_room_validity_aspects(char *str) // ?: (room is unique); free array;
 		return (0);
 	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str) ) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
 		return (0);
-	// else if (!room and coords are unique) if room is null -> o.k.
+	// else if (!room and coords are unique) if room is null -> o.k. and do not check coords;
 	// 		return (0);
 	// free array;
 	return (1);
