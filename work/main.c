@@ -30,7 +30,7 @@ void	ft_list_builder(t_str_keeper **initial_data, char *valid_line, int i) /* + 
 
 	current = initial_data;
 	if (!(*current))
-		*current = line_builder(valid_line, i);
+		(*current) = line_builder(valid_line, i);
 	else
 	{
 		while ((*current)->next)
@@ -38,6 +38,7 @@ void	ft_list_builder(t_str_keeper **initial_data, char *valid_line, int i) /* + 
 		(*current)->next = line_builder(valid_line, i);
 		(*current)->next->prev = *current;
 	}
+	// ft_putchar('4');
 }
 
 void	ft_error_handler(int read_detector) /* + */
@@ -311,21 +312,28 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 {
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
+		// ft_putchar('1');
 		ft_list_builder(initial_data, str, VALID_COMMAND);
 		return (1);
 	}
 	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, *initial_data))
 	{
+		// ft_putchar('2');
+
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
 	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, *initial_data))
 	{
+		// ft_putchar('3');
+
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, *initial_data))
 	{
+		// ft_putchar('4');
+
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
@@ -401,14 +409,17 @@ int		main(void)
 
 	ft_validation(&initial_data); //validation of the initial data set;
 
-	t_str_keeper *buf2 = initial_data; 
+	// ft_putchar('5');
 
+	t_str_keeper *buf2 = initial_data; 
+// ft_putchar('6');
 	while (buf2->prev)
 		buf2 = (buf2)->prev;
+// ft_putchar('7');
 	while (buf2)
 	{
 		// diagnostic function;
-		ft_printf("%s\n", buf2->valid_line);
+		ft_printf("%d\n", buf2->type_of_the_line);
 		buf2 = buf2->next;
 	}
 	system ("leaks lem-in");
