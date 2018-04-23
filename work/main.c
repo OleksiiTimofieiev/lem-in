@@ -214,27 +214,27 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
 		ft_list_builder(&initial_data, str, VALID_COMMAND);
-		ft_printf("%d\n", 1);
+		// ft_printf("%d\n", 1);
 		return (1);
 	}
 	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) //!(command_detector[0] = (  == 1) ? 0 : 1)
 	{
 		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-		ft_printf("%d\n", 2);
+		// ft_printf("%d\n", 2);
 
 		return (1);
 	}
 	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data))
 	{
 		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-		ft_printf("%d\n", 3);
+		// ft_printf("%d\n", 3);
 
 		return (1);
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, **initial_data))
 	{
 		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-		ft_printf("%d\n", 4);
+		// ft_printf("%d\n", 4);
 
 		return (1);
 	}
