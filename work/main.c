@@ -412,16 +412,8 @@ int		main(void)
 		ft_printf("%s\n", buf2->valid_line);
 		buf2 = buf2->next;
 	}
-
 	system ("leaks lem-in");
 
-
-
-
-	// ft_buid_graph_and_data();
-	// ft_printf("Read status -> %d\n", initial_data_set.read_detector);
-	// deleteList(&buf2);
-	// deleteList(&initial_data);
 
 
 
