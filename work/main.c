@@ -132,11 +132,12 @@ int		ft_exclusions(t_str_keeper *initial_data) /* + */
 	return (1);
 }
 
-int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // free array;
+int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 {
 	char **medium;
 	t_str_keeper *current;
 
+	medium = NULL;
 	current = initial_data;
 	while (current->prev)
 		current = current->prev;
@@ -147,13 +148,11 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // free 
 			if (ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2]))
 				return (0);
 		current = current->next;
+		int i = 0;
+		while (medium[i])
+	    	free(medium[i++]);
+		free(medium);
 	}
-	
-	int i = 0;
-	while (medium[i])
-    	free(medium[i++]);
-	free(medium);
-
 	return (1);
 }
 
@@ -290,10 +289,10 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 		if (validity_detector == 0)
 		{
 			break ; //////for testing -> remove;
+		free(line);
 			ft_error_handler(read_detector);
 		}
 		// if no links -> exit(0);
-		free(line);
 	}
 	ft_printf("read_detector -> %d\n", read_detector);
 	
@@ -381,8 +380,8 @@ int		main(void)
 	// ft_printf("Read status -> %d\n", initial_data_set.read_detector);
 	deleteList(&buf2);
 	deleteList(&initial_data);
-			system ("leaks lem-in");
 
+			system ("leaks lem-in");
 
 
 	return (0);
