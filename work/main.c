@@ -123,30 +123,40 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 
 int		ft_room_and_coord_unique(char *str, t_str_keeper ***initial_data)
 {
+	// t_str_keeper ***head = initial_data;
+	t_str_keeper ***current = initial_data;
 
-	ft_printf("%s\n",(**initial_data)->valid_line);
+	ft_printf("%p\n", (**current));
 
+	// ft_printf("%s\n",(**initial_data)->valid_line);
+	ft_printf("%s\n",str);
 	// (void)(str);
-	ft_putchar('1');
-	while ((**initial_data)->prev)
-		(**initial_data) = (**initial_data)->prev;
-	ft_putchar('2');
-
-	while ((**initial_data)) // ->next
+	// ft_putchar('1');
+	while ((**current)->prev)
+		(**current) = (**current)->prev;
+	// ft_putchar('2');
+	while ((**current)->next)
 	{
-		ft_printf("another room -> %s \n ll data -> %s\n", str, (**initial_data)->valid_line);
-		(**initial_data) = (**initial_data)->next;
+		ft_printf("%s\n",(**current)->valid_line);
+		(**current) = (**current)->next;
 	}
-		ft_putchar('3');
+	ft_printf("%p\n", (**current));
+
+	// while ((**current))
+	// {
+	// 	ft_printf("another room -> %s \n ll data -> %s\n", str, (**current)->valid_line);
+	// 	(**current) = (**current)->next;
+	// }
+	// ft_putchar('3');
 		
-	while ((**initial_data)->prev)
-	{
-		// ft_printf("%s\n", (**initial_data)->valid_line);
-		ft_putchar('4');
-		(**initial_data) = (**initial_data)->prev;
+	// while ((**initial_data)->prev)
+	// {
+	// 	// ft_printf("%s\n", (**initial_data)->valid_line);
+	// 	ft_putchar('4');
+	// 	(**initial_data) = (**initial_data)->prev;
 
-	}
-	ft_putchar('5');
+	// }
+	// ft_putchar('5');
 
 
 
@@ -156,11 +166,6 @@ int		ft_room_and_coord_unique(char *str, t_str_keeper ***initial_data)
 	// 	(**initial_data) = (**initial_data)->next;
 
 	// }
-
-
-
-
-
 
 	return (0);
 }
@@ -276,6 +281,7 @@ int		main(void)
 {
 	t_str_keeper *initial_data; //keep the initial valid data;
 
+
 	initial_data = NULL;
 
 		// ft_printf("%p\n", initial_data);
@@ -299,9 +305,11 @@ int		main(void)
 	// ft_printf("%s\n", array[1]);
 	//declaration of structure to store the initial data for the validator;
 	//declare here a structure to save the valid lines;
+	ft_printf("%p\n", initial_data);
 
 	ft_validation(&initial_data); //validation of the initial data set;
 		// ft_printf("%s\n", "Here final");
+	ft_printf("%p\n", initial_data);
 
 	while (initial_data->prev)
 	{
