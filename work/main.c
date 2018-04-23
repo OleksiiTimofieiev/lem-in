@@ -121,15 +121,15 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 	return (0);
 }
 
-int		ft_room_and_coord_unique(char *str, t_str_keeper *initial_data)
+int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data)
 {
 	// t_str_keeper ***head = initial_data;
 	t_str_keeper *current = initial_data;
 
-	ft_printf("%p\n", (current));
+	ft_printf("pointer in subfunction -> %p\n", (current));
 
 	// ft_printf("%s\n",(**initial_data)->valid_line);
-	ft_printf("%s\n",str);
+	ft_printf("%s\n",array[0]);
 	// (void)(str);
 	// ft_putchar('1');
 	while ((current)->prev)
@@ -140,7 +140,7 @@ int		ft_room_and_coord_unique(char *str, t_str_keeper *initial_data)
 		ft_printf("%s\n",(current)->valid_line);
 		(current) = (current)->next;
 	}
-	ft_printf("%p\n", (current));
+	ft_printf("sub after 2 while -> %p\n", (current));
 
 	// while ((**current))
 	// {
@@ -193,7 +193,7 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // ?: (room
 		return (0);
 	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str) ) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
 		return (0);
-	ft_room_and_coord_unique(str, initial_data);
+	ft_room_and_coord_unique(array, initial_data);
 	// else if (!room and coords are unique) if room is null -> o.k. and do not check coords;
 	// 		return (0);
 	// free array;
@@ -216,7 +216,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		ft_printf("%s\n", "command has been detected");
 		return (1);
 	}
-	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, ***initial_data)) //ft_check_rooms_validity(str) - valid room or a comment; return 2 if ti was a comment
+	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room or a comment; return 2 if ti was a comment
 	{
 		// add linked list stuff -> start;
 		ft_printf("%s\n", "command has been detected and the start line is valid");
@@ -243,7 +243,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		if (ft_alpha_and_omega(command_detector)) // and a valid link and not a room, else ->
 			ft_printf("%s\n", "Maybe we have a link ?");
 		// add data to list;
-		return (1);
+		return (0);
 	}
 	return (0); // will return false if the next line is not valid room;
 }
@@ -305,11 +305,11 @@ int		main(void)
 	// ft_printf("%s\n", array[1]);
 	//declaration of structure to store the initial data for the validator;
 	//declare here a structure to save the valid lines;
-	ft_printf("%p\n", initial_data);
+	ft_printf("start pointer -> %p\n", initial_data);
 
 	ft_validation(&initial_data); //validation of the initial data set;
 		// ft_printf("%s\n", "Here final");
-	ft_printf("%p\n", initial_data);
+	ft_printf("pointer after validation - > %p\n", initial_data);
 
 	while (initial_data->prev)
 	{
