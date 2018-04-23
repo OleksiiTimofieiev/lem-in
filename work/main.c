@@ -341,9 +341,9 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	{
 		// 1. check if we have start and end;
 		// 2. check if the link is valid
-		*read_detector = 2;
 		if (ft_alpha_and_omega(command_detector)) // and a valid link and not a room, else ->
 			ft_printf("%s\n", "Maybe we have a link ?");
+		*read_detector = 2;
 		// add data to list;
 		return (0); // we can use exit (0) <- no links -> nothing to build
 	}
