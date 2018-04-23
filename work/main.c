@@ -121,7 +121,7 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 	return (0);
 }
 
-int		ft_room_validity_aspects(char *str) // ?: (room is unique); free array;
+int		ft_room_validity_aspects(char *str) // ?: (room is unique); check the copy of the pointer idea;
 {
 	char	**array;
 	int		array_size;	
