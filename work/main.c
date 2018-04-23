@@ -354,7 +354,6 @@ int		main(void)
 		// ft_printf("%s\n", "Here final");
 	// ft_printf("pointer after validation - > %p\n", initial_data);
 	// t_str_keeper *buf1 = initial_data; 
-			system ("leaks lem-in");
 	t_str_keeper *buf2 = initial_data; 
 
 	// while (buf1->prev)
@@ -375,6 +374,7 @@ int		main(void)
 	}
 
 
+			system ("leaks lem-in");
 
 
 
