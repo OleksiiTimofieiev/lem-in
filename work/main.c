@@ -94,8 +94,6 @@ int		ft_detect_command(char *str, int *command_detector) /* + */
 		command_detector[2] = 1;
 		return (1);
 	}
-	// else if ((str[0] == '#' && str[1] == '#') && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
-	// 	return (1);
 	return (0);
 }
 
@@ -195,12 +193,12 @@ int		ft_detect_type_of_the_line(char *str, int *command_detector) /* + */
 		return (COMMENT);
 	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end")) && (str[0] == '#' && str[1] == '#'))
 		return (UNVALID_COMMAND);
-	else if (command_detector[0] == 0)
-		return (ROOM);
-	else if (command_detector[1] == 1)
+	else if (command_detector[1] == 1) // differ them;
 		return (ROOM_START);
-	else if (command_detector[2] == 1)
+	else if (command_detector[2] == 1) // differ them;
 		return (ROOM_END);
+	else
+		return (ROOM);
 	return (0);
 }
 
@@ -302,14 +300,25 @@ int		main(void)
 	ft_validation(&initial_data); //validation of the initial data set;
 		// ft_printf("%s\n", "Here final");
 	// ft_printf("pointer after validation - > %p\n", initial_data);
+	// t_str_keeper *buf1 = initial_data; 
+	t_str_keeper *buf2 = initial_data; 
 
-	while (initial_data->prev)
-		initial_data = (initial_data)->prev;
-	while (initial_data)
+	// while (buf1->prev)
+	// 	buf1 = (buf1)->prev;
+	// while (buf1)
+	// {
+	// 	ft_printf("%s\n", buf1->valid_line);
+	// 	buf1 = buf1->next;
+	// }
+
+	while (buf2->prev)
+		buf2 = (buf2)->prev;
+	while (buf2)
 	{
-		ft_printf("%s\n", initial_data->valid_line);
-		initial_data = initial_data->next;
+		ft_printf("%d\n", buf2->type_of_the_line);
+		buf2 = buf2->next;
 	}
+
 
 
 	// ft_buid_graph_and_data();
