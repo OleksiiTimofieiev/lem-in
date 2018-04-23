@@ -307,7 +307,7 @@ int		ft_detect_type_of_the_line(char *str, int **command_detector) /* + */
 	return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper **initial_data)
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper **initial_data) // finalize with invalid room, but a valid link;
 {
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
@@ -329,7 +329,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
-	else if (command_detector[0] == 0 && !(ft_room_validity_aspects(str, *initial_data)))
+	else if (command_detector[0] == 0 && !(ft_room_validity_aspects(str, *initial_data))) // think it over
 	{
 		// 1. check if we have start and end;
 		// 2. check if the link is valid
@@ -337,10 +337,9 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		if (ft_alpha_and_omega(command_detector)) // and a valid link and not a room, else ->
 			ft_printf("%s\n", "Maybe we have a link ?");
 		// add data to list;
-
-		return (0);
+		return (0); // we can use exit (0) <- no links -> nothing to build
 	}
-	return (0); // will return false if the next line is not valid room;
+	return (0);
 }
 
 void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
