@@ -216,7 +216,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		ft_printf("%s\n", "command has been detected");
 		return (1);
 	}
-	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room or a comment; return 2 if ti was a comment
+	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, ***initial_data)) //ft_check_rooms_validity(str) - valid room or a comment; return 2 if ti was a comment
 	{
 		// add linked list stuff -> start;
 		ft_printf("%s\n", "command has been detected and the start line is valid");
