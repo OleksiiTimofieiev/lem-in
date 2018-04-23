@@ -132,7 +132,7 @@ int		ft_exclusions(t_str_keeper *initial_data) /* + */
 	return (1);
 }
 
-int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
+int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // add function to clean array;
 {
 	int i;
 	char **medium;
