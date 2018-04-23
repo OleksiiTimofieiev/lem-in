@@ -26,9 +26,10 @@
 # define UNVALID_COMMAND 2
 # define COMMENT 3
 # define VALID_COMMAND 4
-# define ROOM 5 // adhere to the linked list
-# define ROOM_START 6 // adhere to the linked list
-# define ROOM_END 7 // adhere to the linked list
+# define ROOM 5
+# define ROOM_START 6
+# define ROOM_END 7
+
 
 
 
