@@ -38,6 +38,7 @@ void	ft_list_builder(t_str_keeper **initial_data, char *valid_line, int i) /* + 
 		(*current)->next = line_builder(valid_line, i);
 		(*current)->next->prev = *current;
 	}
+
 }
 
 void	ft_error_handler(int read_detector) /* + */
@@ -154,6 +155,7 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 		free(medium);
 		medium = NULL;
 	}
+
 	return (1);
 }
 
@@ -173,7 +175,17 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // free arr
 				 && (str[0] == '#' && str[1] == '#')) // unvalid command can be saved;			
 		return (2);
 	else if (array_size != 3) // not a valid line -> not sufficient data;
-		return (0);
+	{
+		int i = 0;
+		while (array[i])
+		{
+	    	free(array[i]);
+	    	i++;
+		}
+		free(array);
+		array = NULL;
+			return (0);
+	}
 	else if (ft_str_find_chr(array[0], '-')) // i really do not like if the room contains '-';
 		return (0);
 	else if (array[0][0] == '#' || array [0][0] == 'L') // unvalid room <- forbidden chars;
@@ -184,7 +196,7 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // free arr
 			return (0);
 
 	// free array;
-		int i = 0;
+	int i = 0;
 	while (array[i])
 	{
     	free(array[i]);
@@ -254,6 +266,8 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		if (ft_alpha_and_omega(command_detector)) // and a valid link and not a room, else ->
 			ft_printf("%s\n", "Maybe we have a link ?");
 		// add data to list;
+			system ("leaks lem-in");
+
 		return (0);
 	}
 	return (0); // will return false if the next line is not valid room;
@@ -288,9 +302,9 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 		// 	...
 		if (validity_detector == 0)
 		{
-		free(line);
-			break ; //////for testing -> remove;
+			free(line);
 			ft_error_handler(read_detector);
+			break ; //////for testing -> remove;
 		}
 		free(line);
 		// if no links -> exit(0);
@@ -374,7 +388,6 @@ int		main(void)
 	}
 
 
-			system ("leaks lem-in");
 
 
 
