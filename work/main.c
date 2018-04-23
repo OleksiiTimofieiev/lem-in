@@ -57,7 +57,7 @@ int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) /
 	i = 0;
 	if (str[0] == '#' && str[1] == '#' && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 	{
-		ft_list_builder(&initial_data, str, COMMAND);
+		ft_list_builder(&initial_data, str, UNVALID_COMMAND);
 		return (1);
 	}
 	else if (str[0] == '#' && str[1] != '#')
@@ -121,6 +121,8 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 	return (0);
 }
 
+
+
 int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 {
 	char **medium;
@@ -132,7 +134,8 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 	while (current)
 	{
 		medium = ft_strsplit(current->valid_line, 32);
-		if (current->type_of_the_line != ANTS_QUANTITY && current->type_of_the_line != COMMAND && (ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2])))
+		//function
+		if (... && (ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2])))
 			return (0);
 		current = current->next;
 	}
@@ -175,7 +178,7 @@ int		ft_alpha_and_omega(int *command_detector) /* + */
 	return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper ***initial_data) // add linked list methods; finalize with ERROR type and read_detector;
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper ***initial_data)
 {
 	//adopt the "i" trick for return and command detector in a function;
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
@@ -185,13 +188,13 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	}
 	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data))
 	{
-		ft_list_builder(&initial_data, str, COMMAND);
+		ft_list_builder(&initial_data, str, DATA_START);
 		command_detector[0] = 0;
 		return (1);
 	}
 	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data))
 	{
-		ft_list_builder(&initial_data, str, COMMAND);
+		ft_list_builder(&initial_data, str, DATA_END);
 		command_detector[0] = 0;
 		return (1);
 	}
