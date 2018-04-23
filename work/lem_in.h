@@ -22,14 +22,13 @@
 **------------------------  type of the rooms  ---------------------------------
 */
 
-# define UNIV 1 // adhere to the linked list
-# define ROOM 2 // adhere to the linked list
-# define DATA_START 3 // adhere to the linked list
-# define DATA_END 4 // adhere to the linked list
-# define UNVALID_COMMAND 5
-# define COMMENT 6
-# define ANTS_QUANTITY 7
-# define COMMAND 8
+# define ANTS_QUANTITY 1
+# define UNVALID_COMMAND 2
+# define VALID_COMMAND 3
+# define ROOM 4 // adhere to the linked list
+# define ROOM_START 5 // adhere to the linked list
+# define ROOM_END 6 // adhere to the linked list
+# define COMMENT 7
 
 
 
