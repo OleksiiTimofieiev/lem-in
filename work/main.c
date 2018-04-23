@@ -288,10 +288,11 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 		// 	...
 		if (validity_detector == 0)
 		{
-			break ; //////for testing -> remove;
 		free(line);
+			break ; //////for testing -> remove;
 			ft_error_handler(read_detector);
 		}
+		free(line);
 		// if no links -> exit(0);
 	}
 	ft_printf("read_detector -> %d\n", read_detector);
@@ -353,6 +354,7 @@ int		main(void)
 		// ft_printf("%s\n", "Here final");
 	// ft_printf("pointer after validation - > %p\n", initial_data);
 	// t_str_keeper *buf1 = initial_data; 
+			system ("leaks lem-in");
 	t_str_keeper *buf2 = initial_data; 
 
 	// while (buf1->prev)
@@ -378,10 +380,9 @@ int		main(void)
 
 	// ft_buid_graph_and_data();
 	// ft_printf("Read status -> %d\n", initial_data_set.read_detector);
-	deleteList(&buf2);
-	deleteList(&initial_data);
+	// deleteList(&buf2);
+	// deleteList(&initial_data);
 
-			system ("leaks lem-in");
 
 
 	return (0);
