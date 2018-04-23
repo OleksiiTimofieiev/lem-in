@@ -57,7 +57,7 @@ int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) /
 	i = 0;
 	if (str[0] == '#' && str[1] == '#' && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 	{
-		ft_list_builder(&initial_data, str, UNVALID_COMMAND);
+		ft_list_builder(&initial_data, str, COMMAND);
 		return (1);
 	}
 	else if (str[0] == '#' && str[1] != '#')
@@ -183,19 +183,19 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		ft_list_builder(&initial_data, str, COMMAND);
 		return (1);
 	}
-	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room or a comment; return 2 if ti was a comment
+	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data))
 	{
-		ft_list_builder(&initial_data, str, COMMAND_START);
-		command_detector[0] = 0; // maybe i`ll have to add it to the linked list function
+		ft_list_builder(&initial_data, str, COMMAND);
+		command_detector[0] = 0;
 		return (1);
 	}
-	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room 
+	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data))
 	{
-		ft_list_builder(&initial_data, str, COMMAND_END);
-		command_detector[0] = 0; // maybe i`ll have to add it to the linked list function
+		ft_list_builder(&initial_data, str, COMMAND);
+		command_detector[0] = 0;
 		return (1);
 	}
-	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room or a comment: unvalid command or comment or valid rooms == o.k.;
+	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, **initial_data))
 	{
 		ft_list_builder(&initial_data, str, ROOM);
 		return (1);
