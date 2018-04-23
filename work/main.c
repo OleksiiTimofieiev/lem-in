@@ -361,13 +361,7 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 		if (read_detector == 0)
 			validity_detector = ft_ant_check(line, &read_detector, initial_data);
 		else if (read_detector == 1)
-		{
-			
 			validity_detector = ft_check_rooms(line, &read_detector, command_detector, initial_data);
-
-			// system ("leaks lem-in");	
-
-		}
 		// else if (initial_data_set->read_detector == 2)
 		// 	...
 		if (validity_detector == 0)
