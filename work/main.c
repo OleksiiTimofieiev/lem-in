@@ -133,7 +133,7 @@ int		ft_exclusions(t_str_keeper *initial_data) /* + */
 	return (1);
 }
 
-int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
+int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // free array
 {
 	char **medium;
 	t_str_keeper *current;
@@ -147,7 +147,14 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 		medium = ft_strsplit(current->valid_line, 32);
 		if (ft_exclusions(current))
 			if (ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2]))
+			{
+				int i = 0;
+		while (medium[i])
+	    	free(medium[i++]);
+		free(medium);
+		medium = NULL;
 				return (0);
+			}
 		current = current->next;
 		int i = 0;
 		while (medium[i])
@@ -168,7 +175,17 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // free arr
 		return (0);
 	array_size = ft_2d_arr_size(array);
 	if (ft_strequ(str, "##start") || ft_strequ(str, "##end")) // command was repeated;
+	{
+		int i = 0;
+		while (array[i])
+		{
+	    	free(array[i]);
+	    	i++;
+		}
+		free(array);
+		array = NULL;
 		return (0);
+	}
 	else if (array_size == 1 && str[0] == '#' && str[1] != '#') // line is a comment;
 		return (2);
 	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end"))
@@ -187,13 +204,53 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // free arr
 			return (0);
 	}
 	else if (ft_str_find_chr(array[0], '-')) // i really do not like if the room contains '-';
+	{
+		int i = 0;
+		while (array[i])
+		{
+	    	free(array[i]);
+	    	i++;
+		}
+		free(array);
+		array = NULL;
 		return (0);
+	}
 	else if (array[0][0] == '#' || array [0][0] == 'L') // unvalid room <- forbidden chars;
+	{
+		int i = 0;
+		while (array[i])
+		{
+	    	free(array[i]);
+	    	i++;
+		}
+		free(array);
+		array = NULL;
 		return (0);
-	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str) ) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
-		return (0);
+	}
+	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str)) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
+	{
+		int i = 0;
+		while (array[i])
+		{
+	    	free(array[i]);
+	    	i++;
+		}
+		free(array);
+		array = NULL;
+		return (0); //free too
+	}
 	else if (!ft_room_and_coord_unique(array, initial_data))
+	{
+		int i = 0;
+		while (array[i])
+		{
+	    	free(array[i]);
+	    	i++;
+		}
+		free(array);
+		array = NULL;
 			return (0);
+	}
 
 	// free array;
 	int i = 0;
@@ -258,7 +315,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
-	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str, *initial_data))
+	else if (command_detector[0] == 0 && !(ft_room_validity_aspects(str, *initial_data)))
 	{
 		// 1. check if we have start and end;
 		// 2. check if the link is valid
@@ -266,7 +323,6 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		if (ft_alpha_and_omega(command_detector)) // and a valid link and not a room, else ->
 			ft_printf("%s\n", "Maybe we have a link ?");
 		// add data to list;
-			system ("leaks lem-in");
 
 		return (0);
 	}
@@ -387,6 +443,7 @@ int		main(void)
 		buf2 = buf2->next;
 	}
 
+			system ("leaks lem-in");
 
 
 
