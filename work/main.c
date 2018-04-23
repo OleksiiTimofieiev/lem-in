@@ -28,30 +28,16 @@ t_str_keeper	*line_builder(char *valid_line, int i) // just do it;
 
 void	ft_list_builder(t_str_keeper ****initial_data, char *valid_line, int i)
 {
-	// t_str_keeper **tmp;
-	// valid_line[0] = 0;
-	// i = 0;
-		ft_printf("%p\n", NULL);
+	t_str_keeper ****tmp;
 
-		ft_printf("%s\n", "1");
-	// tmp = *initial_data;
-		ft_printf("%s\n", "2");
-
+	tmp = initial_data;
 	if (!(***initial_data))
-	{
-		ft_printf("%s\n", "3");
-
 		***initial_data = line_builder(valid_line, i);
-	}
 	else
 	{
-		ft_printf("%s\n", "4");
-
-		// while ((tmp)->next)
-		// 	(tmp) = (tmp)->next;
-		// (tmp)->next = line_builder(valid_line, i);
-		// ft_printf("%s\n", "5");
-
+		while ((***tmp)->next)
+			(***tmp) = (***tmp)->next;
+		(***tmp)->next = line_builder(valid_line, i);
 	}
 }
 
@@ -214,7 +200,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 
 		if (ft_alpha_and_omega(command_detector)) // and a valid link, else ->
 			ft_printf("%s\n", "Maybe we have a link ?");
-		*read_detector = 2;
+		*read_detector = 1;
 		// add data to list;
 	}
 	return (0); // will return false if the next line is not valid room;
@@ -237,17 +223,18 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with rooms and links
 		if (read_detector == 0)
 		{
 			validity_detector = ft_ant_check(line, &read_detector, &initial_data);
-			break ; //////for testinf -> remove;
 		}
 
 		else if (read_detector == 1)
+		{
 			validity_detector = ft_check_rooms(line, &read_detector, command_detector);
-		// else if (initial_data_set->read_detector == 2)
+			break ;
+		}// else if (initial_data_set->read_detector == 2)
 		// 	...
 		if (validity_detector == 0)
 		{
+			break ; //////for testinf -> remove;
 			ft_error_handler(read_detector);
-			break ;
 		}
 		// if no links -> exit(0);
 	}
@@ -260,14 +247,14 @@ int		main(void)
 
 	initial_data = NULL;
 
-		ft_printf("%p\n", initial_data);
+		// ft_printf("%p\n", initial_data);
 
 
 	
 	
 
-		ft_printf("%s\n", initial_data);
-		ft_printf("%s\n", "Here1");
+		// ft_printf("%s\n", initial_data);
+		// ft_printf("%s\n", "Here1");
 
 
 
@@ -283,11 +270,15 @@ int		main(void)
 	//declare here a structure to save the valid lines;
 
 	ft_validation(&initial_data); //validation of the initial data set;
-		ft_printf("%s\n", "Here final");
+		// ft_printf("%s\n", "Here final");
 
-		ft_printf("%d\n", initial_data->type_of_the_line);
 
+	while (initial_data)
+	{
 		ft_printf("%s\n", initial_data->valid_line);
+
+		initial_data = initial_data->next;
+	}
 
 	// ft_buid_graph_and_data();
 	// ft_printf("Read status -> %d\n", initial_data_set.read_detector);
