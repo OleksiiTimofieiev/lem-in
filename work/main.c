@@ -38,7 +38,6 @@ void	ft_list_builder(t_str_keeper **initial_data, char *valid_line, int i) /* + 
 		(*current)->next = line_builder(valid_line, i);
 		(*current)->next->prev = *current;
 	}
-
 }
 
 void	ft_error_handler(int read_detector) /* + */
@@ -133,12 +132,11 @@ int		ft_exclusions(t_str_keeper *initial_data) /* + */
 	return (1);
 }
 
-int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // free array
+int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 {
 	char **medium;
 	t_str_keeper *current;
 
-	medium = NULL;
 	current = initial_data;
 	while (current->prev)
 		current = current->prev;
@@ -149,20 +147,17 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // free 
 			if (ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2]))
 			{
 				int i = 0;
-		while (medium[i])
-	    	free(medium[i++]);
-		free(medium);
-		medium = NULL;
+				while (medium[i])
+			    	free(medium[i++]);
+				free(medium);
 				return (0);
 			}
-		current = current->next;
-		int i = 0;
-		while (medium[i])
-	    	free(medium[i++]);
-		free(medium);
-		medium = NULL;
+				current = current->next;
+				int i = 0;
+				while (medium[i])
+			    	free(medium[i++]);
+				free(medium);
 	}
-
 	return (1);
 }
 
