@@ -419,7 +419,7 @@ int		main(void)
 	while (buf2)
 	{
 		// diagnostic function;
-		ft_printf("%d\n", buf2->type_of_the_line);
+		ft_printf("%s\n", buf2->valid_line);
 		buf2 = buf2->next;
 	}
 	system ("leaks lem-in");
