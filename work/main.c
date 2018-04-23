@@ -121,6 +121,19 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 	return (0);
 }
 
+int		ft_exclusions(t_str_keeper *initial_data)
+{
+	if (initial_data->type_of_the_line == COMMENT)
+		return (0);
+	else if (initial_data->type_of_the_line == UNVALID_COMMAND)
+		return (0);
+	else if (initial_data->type_of_the_line == ANTS_QUANTITY)
+		return (0);
+	else if (initial_data->type_of_the_line == VALID_COMMAND)
+		return (0);
+	return (1);
+}
+
 int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 {
 	char **medium;
@@ -132,9 +145,8 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 	while (current)
 	{
 		medium = ft_strsplit(current->valid_line, 32);
-		//function
-		if (current->type_of_the_line != ANTS_QUANTITY && current->type_of_the_line != VALID_COMMAND)
-			if ((ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2])))
+		if (ft_exclusions(current))
+			if (ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2]))
 				return (0);
 		current = current->next;
 	}
@@ -177,30 +189,35 @@ int		ft_alpha_and_omega(int *command_detector) /* + */
 	return (0);
 }
 
-//can be a room. unvalid link, comment;
-//detect the current type of the line;
+int		ft_detect_type_of_the_line(char *str, int *command_detector)
+{
+	if (str[0] == '#' && str[1] != '#')
+		return (COMMENT);
+	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end")) && (str[0] == '#' && str[1] == '#'))
+		return (UNVALID_COMMAND);
+	else if (command_detector[1] == 1)
+		return (ROOM_START);
+	else if (command_detector[2] == 1)
+		return (ROOM_END);
+	return (0);
+}
 
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper ***initial_data)
 {
 	//adopt the "i" trick for return and command detector in a function;
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
-		ft_list_builder(&initial_data, str, VALID_COMMAND); // automatically select a category (only valid command);
+		ft_list_builder(&initial_data, str, VALID_COMMAND);
 		return (1);
 	}
-	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) 
+	else if (command_detector[0] == 1 && (command_detector[0] = (ft_room_validity_aspects(str, **initial_data) == 1) ? 0 : 1)) 
 	{
-		ft_list_builder(&initial_data, str, ...); // automatically select a category (valid room, unvalid command, comment);
-
-		(ft_room_validity_aspects(str, **initial_data) == 1) ? command_detector[0] = 0 : 0;
-
-		ft_printf("%d\n", command_detector[0]);	
+		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, command_detector));
 		return (1);
 	}
-	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data))
+	else if (command_detector[0] == 2 && (command_detector[0] = (ft_room_validity_aspects(str, **initial_data) == 1) ? 0 : 1))
 	{
-		ft_list_builder(&initial_data, str, ...); //automatically select a category;
-		command_detector[0] = 0;
+		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, command_detector));
 		return (1);
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, **initial_data))
