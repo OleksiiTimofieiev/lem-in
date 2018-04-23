@@ -208,9 +208,8 @@ int		ft_detect_type_of_the_line(char *str, int **command_detector) /* + */
 	return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper ***initial_data) //add invalid room procesiing;
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper ***initial_data) //add invalid room procesiing; //adopt the "i" trick for return and command detector in a function;
 {
-	//adopt the "i" trick for return and command detector in a function;
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
 		ft_list_builder(&initial_data, str, VALID_COMMAND);
@@ -321,6 +320,7 @@ int		main(void)
 		buf2 = (buf2)->prev;
 	while (buf2)
 	{
+		// diagnostic function;
 		ft_printf("%d\n", buf2->type_of_the_line);
 		buf2 = buf2->next;
 	}
