@@ -121,26 +121,26 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 	return (0);
 }
 
-int		ft_room_and_coord_unique(char *str, t_str_keeper ***initial_data)
+int		ft_room_and_coord_unique(char *str, t_str_keeper *initial_data)
 {
 	// t_str_keeper ***head = initial_data;
-	t_str_keeper ***current = initial_data;
+	t_str_keeper *current = initial_data;
 
-	ft_printf("%p\n", (**current));
+	ft_printf("%p\n", (current));
 
 	// ft_printf("%s\n",(**initial_data)->valid_line);
 	ft_printf("%s\n",str);
 	// (void)(str);
 	// ft_putchar('1');
-	while ((**current)->prev)
-		(**current) = (**current)->prev;
+	while ((current)->prev)
+		(current) = (current)->prev;
 	// ft_putchar('2');
-	while ((**current)->next)
+	while ((current))
 	{
-		ft_printf("%s\n",(**current)->valid_line);
-		(**current) = (**current)->next;
+		ft_printf("%s\n",(current)->valid_line);
+		(current) = (current)->next;
 	}
-	ft_printf("%p\n", (**current));
+	ft_printf("%p\n", (current));
 
 	// while ((**current))
 	// {
@@ -170,7 +170,7 @@ int		ft_room_and_coord_unique(char *str, t_str_keeper ***initial_data)
 	return (0);
 }
 
-int		ft_room_validity_aspects(char *str, t_str_keeper ***initial_data) // ?: (room is unique); check the copy of the pointer idea;
+int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // ?: (room is unique); check the copy of the pointer idea;
 {
 	char	**array;
 	int		array_size;	
@@ -216,26 +216,26 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		ft_printf("%s\n", "command has been detected");
 		return (1);
 	}
-	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, initial_data)) //ft_check_rooms_validity(str) - valid room or a comment; return 2 if ti was a comment
+	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room or a comment; return 2 if ti was a comment
 	{
 		// add linked list stuff -> start;
 		ft_printf("%s\n", "command has been detected and the start line is valid");
 		command_detector[0] = 0; // maybe i`ll have to add it to the linked list function
 		return (1);
 	}
-	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, initial_data)) //ft_check_rooms_validity(str) - valid room 
+	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room 
 	{
 		// add linked list stuff -> end;
 		// ft_printf("%s\n", "command has been detected and the end line is valid");
 		command_detector[0] = 0; // maybe i`ll have to add it to the linked list function
 		return (1);
 	}
-	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, initial_data)) //ft_check_rooms_validity(str) - valid room or a comment: unvalid command or comment or valid rooms == o.k.;
+	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, **initial_data)) //ft_check_rooms_validity(str) - valid room or a comment: unvalid command or comment or valid rooms == o.k.;
 	{
 		// add linked list stuff -> the correspondent room;
 		return (1);
 	}
-	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str, initial_data))
+	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str, **initial_data))
 	{
 		// 1. check if we have start and end;
 		// 2. check if the link is valid
