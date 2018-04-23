@@ -187,16 +187,22 @@ int		ft_alpha_and_omega(int *command_detector) /* + */
 	return (0);
 }
 
-int		ft_detect_type_of_the_line(char *str, int *command_detector) /* + */
+int		ft_detect_type_of_the_line(char *str, int **command_detector) /* + */
 {
 	if (str[0] == '#' && str[1] != '#')
 		return (COMMENT);
 	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end")) && (str[0] == '#' && str[1] == '#'))
 		return (UNVALID_COMMAND);
-	else if (command_detector[1] == 1) // differ them;
+	else if (*command_detector[0] == 1) // differ them;
+	{
+		*command_detector[0] = 0;
 		return (ROOM_START);
-	else if (command_detector[2] == 1) // differ them;
+	}
+	else if (*command_detector[0] == 2) // differ them;
+	{
+		*command_detector[0] = 0;
 		return (ROOM_END);
+	}
 	else
 		return (ROOM);
 	return (0);
@@ -208,21 +214,28 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
 		ft_list_builder(&initial_data, str, VALID_COMMAND);
+		ft_printf("%d\n", 1);
 		return (1);
 	}
-	else if (command_detector[0] == 1 && (command_detector[0] = (ft_room_validity_aspects(str, **initial_data) == 1) ? 0 : 1)) 
+	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) //!(command_detector[0] = (  == 1) ? 0 : 1)
 	{
-		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, command_detector));
+		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+		ft_printf("%d\n", 2);
+
 		return (1);
 	}
-	else if (command_detector[0] == 2 && (command_detector[0] = (ft_room_validity_aspects(str, **initial_data) == 1) ? 0 : 1))
+	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data))
 	{
-		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, command_detector));
+		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+		ft_printf("%d\n", 3);
+
 		return (1);
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, **initial_data))
 	{
-		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, command_detector));
+		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+		ft_printf("%d\n", 4);
+
 		return (1);
 	}
 	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str, **initial_data))
