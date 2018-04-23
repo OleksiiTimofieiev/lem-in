@@ -159,6 +159,7 @@ int		ft_alpha_and_omega(int *command_detector) /* + */
 
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add linked list methods; finalize with ERROR type and read_detector;
 {
+	//adopt the "i" trick for return and command detector in a function;
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
 		// add linked list stuff -> command/invalid command/comment;
@@ -189,7 +190,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector) // add
 		// 1. check if we have start and end;
 		// 2. check if the link is valid
 		*read_detector = 2;
-		if (ft_alpha_and_omega(command_detector)) // and a valid link, else ->
+		if (ft_alpha_and_omega(command_detector)) // and a valid link and not a room, else ->
 			ft_printf("%s\n", "Maybe we have a link ?");
 		// add data to list;
 		return (1);
