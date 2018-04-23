@@ -127,14 +127,14 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data)
 	t_str_keeper *current;
 
 	current = initial_data;
-	while ((current)->prev)
-		(current) = (current)->prev;
-	while ((current))
+	while (current->prev)
+		current = current->prev;
+	while (current)
 	{
-		medium = ft_strsplit((current)->valid_line, 32);
+		medium = ft_strsplit(current->valid_line, 32);
 		if (array[0] == medium[0] || array[1] == medium[1] || array[2] == medium[2])
 			return (0);
-		(current) = (current)->next;
+		current = current->next;
 	}
 	return (1);
 }
