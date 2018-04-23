@@ -15,10 +15,8 @@
 t_str_keeper	*line_builder(char *valid_line, int i) // just do it;
 {
 	t_str_keeper *tmp;
-
 	if (!(tmp = (t_str_keeper*)malloc(sizeof(t_str_keeper))))
 		return (NULL);
-
 	tmp->type_of_the_line = i;
 	tmp->valid_line = ft_strdup(valid_line);
 	tmp->prev = NULL;
@@ -40,8 +38,6 @@ void	ft_list_builder(t_str_keeper ****initial_data, char *valid_line, int i)
 		(***current)->next = line_builder(valid_line, i);
 		(***current)->next->prev = ***current;
 	}
-	
-
 }
 
 void	ft_error_handler(int read_detector) // delete the extras after error in the end of the validator processing;
@@ -79,8 +75,7 @@ int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) /
 				i++;
 			else
 				return (0);
-		// ft_build(... , correspondent define);
-		ft_printf("%s\n", "create a linked list node for ants data"); // reaplace with linked list building function;
+		ft_list_builder(&initial_data, str, ANTS_QUANTITY);
 		*read_detector = 1;
 		return (1);
 	}
