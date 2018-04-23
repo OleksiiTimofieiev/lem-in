@@ -24,19 +24,19 @@ t_str_keeper	*line_builder(char *valid_line, int i) /* + */
 	return (tmp);
 }
 
-void	ft_list_builder(t_str_keeper ****initial_data, char *valid_line, int i) /* + */
+void	ft_list_builder(t_str_keeper **initial_data, char *valid_line, int i) /* + */
 {
-	t_str_keeper ****current;
+	t_str_keeper **current;
 
 	current = initial_data;
-	if (!(***current))
-		***current = line_builder(valid_line, i);
+	if (!(*current))
+		*current = line_builder(valid_line, i);
 	else
 	{
-		while ((***current)->next)
-			(***current) = (***current)->next;
-		(***current)->next = line_builder(valid_line, i);
-		(***current)->next->prev = ***current;
+		while ((*current)->next)
+			(*current) = (*current)->next;
+		(*current)->next = line_builder(valid_line, i);
+		(*current)->next->prev = *current;
 	}
 }
 
@@ -50,19 +50,19 @@ void	ft_error_handler(int read_detector) /* + */
 		ft_printf("%s\n", "ERROR");
 }
 
-int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) /* + */
+int		ft_ant_check(char *str, int *read_detector, t_str_keeper **initial_data) /* + */
 {
 	int		i;
 
 	i = 0;
 	if (str[0] == '#' && str[1] == '#' && (!ft_strequ(str, "##start") && !ft_strequ(str, "##end")))
 	{
-		ft_list_builder(&initial_data, str, UNVALID_COMMAND);
+		ft_list_builder(initial_data, str, UNVALID_COMMAND);
 		return (1);
 	}
 	else if (str[0] == '#' && str[1] != '#')
 	{
-		ft_list_builder(&initial_data, str, COMMENT);
+		ft_list_builder(initial_data, str, COMMENT);
 		return (1);
 	}
 	else
@@ -74,7 +74,7 @@ int		ft_ant_check(char *str, int *read_detector, t_str_keeper ***initial_data) /
 				i++;
 			else
 				return (0);
-		ft_list_builder(&initial_data, str, ANTS_QUANTITY);
+		ft_list_builder(initial_data, str, ANTS_QUANTITY);
 		*read_detector = 1;
 		return (1);
 	}
@@ -132,7 +132,7 @@ int		ft_exclusions(t_str_keeper *initial_data) /* + */
 	return (1);
 }
 
-int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
+int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // free array;
 {
 	char **medium;
 	t_str_keeper *current;
@@ -148,6 +148,12 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 				return (0);
 		current = current->next;
 	}
+	
+	int i = 0;
+	while (medium[i])
+    	free(medium[i++]);
+	free(medium);
+
 	return (1);
 }
 
@@ -176,7 +182,16 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // free arr
 		return (0);
 	else if (!ft_room_and_coord_unique(array, initial_data))
 			return (0);
+
 	// free array;
+		int i = 0;
+	while (array[i])
+	{
+    	free(array[i]);
+    	i++;
+	}
+	free(array);
+
 	return (1);
 }
 
@@ -208,29 +223,31 @@ int		ft_detect_type_of_the_line(char *str, int **command_detector) /* + */
 	return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper ***initial_data) //add invalid room procesiing; //adopt the "i" trick for return and command detector in a function;
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper **initial_data) //add invalid room procesiing; //adopt the "i" trick for return and command detector in a function;
 {
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
-		ft_list_builder(&initial_data, str, VALID_COMMAND);
+		ft_list_builder(initial_data, str, VALID_COMMAND);
 		return (1);
 	}
-	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) //!(command_detector[0] = (  == 1) ? 0 : 1)
+	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, *initial_data)) //!(command_detector[0] = (  == 1) ? 0 : 1)
 	{
-		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
-	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data))
+	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, *initial_data))
 	{
-		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
-	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, **initial_data))
+	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, *initial_data))
 	{
-		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+			ft_printf("----->%p\n", initial_data);
+
 		return (1);
 	}
-	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str, **initial_data))
+	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str, *initial_data))
 	{
 		// 1. check if we have start and end;
 		// 2. check if the link is valid
@@ -250,6 +267,8 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 	int		command_detector[3]; 
 	char	*line;
 
+	// line = NULL;
+
 	read_detector = 0;
 	command_detector[0] = 0;
 	command_detector[1] = 0;
@@ -257,9 +276,15 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 	while (get_next_line(0, &line) == 1)
 	{
 		if (read_detector == 0)
-			validity_detector = ft_ant_check(line, &read_detector, &initial_data);
+			validity_detector = ft_ant_check(line, &read_detector, initial_data);
 		else if (read_detector == 1)
-			validity_detector = ft_check_rooms(line, &read_detector, command_detector, &initial_data);
+		{
+			
+			validity_detector = ft_check_rooms(line, &read_detector, command_detector, initial_data);
+
+			// system ("leaks lem-in");	
+
+		}
 		// else if (initial_data_set->read_detector == 2)
 		// 	...
 		if (validity_detector == 0)
@@ -268,8 +293,30 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 			ft_error_handler(read_detector);
 		}
 		// if no links -> exit(0);
+		free(line);
 	}
 	ft_printf("read_detector -> %d\n", read_detector);
+	
+}
+
+/* Function to delete the entire linked list */
+void deleteList(t_str_keeper **initial_data)
+{
+   /* deref head_ref to get the real head */
+   t_str_keeper* current = *initial_data;
+   t_str_keeper* next;	
+ 
+   while (current != NULL) 
+   {
+       next = current->next;
+       free(current->valid_line);
+       free(current);
+       current = next;
+   }
+   
+   /* deref head_ref to affect the real head back
+      in the caller. */
+   *initial_data = NULL;
 }
 
 int		main(void)
@@ -303,6 +350,7 @@ int		main(void)
 	// ft_printf("start pointer -> %p\n", initial_data);
 
 	ft_validation(&initial_data); //validation of the initial data set;
+
 		// ft_printf("%s\n", "Here final");
 	// ft_printf("pointer after validation - > %p\n", initial_data);
 	// t_str_keeper *buf1 = initial_data; 
@@ -321,14 +369,21 @@ int		main(void)
 	while (buf2)
 	{
 		// diagnostic function;
-		ft_printf("%d\n", buf2->type_of_the_line);
+		ft_printf("%s\n", buf2->valid_line);
 		buf2 = buf2->next;
 	}
 
 
 
+
+
 	// ft_buid_graph_and_data();
 	// ft_printf("Read status -> %d\n", initial_data_set.read_detector);
-	// system ("leaks lem-in");
+	deleteList(&buf2);
+	deleteList(&initial_data);
+			system ("leaks lem-in");
+
+
+
 	return (0);
 }
