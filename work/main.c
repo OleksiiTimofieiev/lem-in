@@ -119,7 +119,7 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 	return (0);
 }
 
-int		ft_exclusions(t_str_keeper *initial_data)
+int		ft_exclusions(t_str_keeper *initial_data) /* + */
 {
 	if (initial_data->type_of_the_line == COMMENT)
 		return (0);
@@ -193,12 +193,12 @@ int		ft_detect_type_of_the_line(char *str, int **command_detector) /* + */
 		return (COMMENT);
 	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end")) && (str[0] == '#' && str[1] == '#'))
 		return (UNVALID_COMMAND);
-	else if (*command_detector[0] == 1) // differ them;
+	else if (*command_detector[0] == 1)
 	{
 		*command_detector[0] = 0;
 		return (ROOM_START);
 	}
-	else if (*command_detector[0] == 2) // differ them;
+	else if (*command_detector[0] == 2)
 	{
 		*command_detector[0] = 0;
 		return (ROOM_END);
@@ -208,34 +208,27 @@ int		ft_detect_type_of_the_line(char *str, int **command_detector) /* + */
 	return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper ***initial_data)
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper ***initial_data) //add invalid room procesiing;
 {
 	//adopt the "i" trick for return and command detector in a function;
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
 		ft_list_builder(&initial_data, str, VALID_COMMAND);
-		// ft_printf("%d\n", 1);
 		return (1);
 	}
 	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, **initial_data)) //!(command_detector[0] = (  == 1) ? 0 : 1)
 	{
 		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-		// ft_printf("%d\n", 2);
-
 		return (1);
 	}
 	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, **initial_data))
 	{
 		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-		// ft_printf("%d\n", 3);
-
 		return (1);
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, **initial_data))
 	{
 		ft_list_builder(&initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-		// ft_printf("%d\n", 4);
-
 		return (1);
 	}
 	else if (command_detector[0] == 0 && !ft_room_validity_aspects(str, **initial_data))
@@ -336,5 +329,6 @@ int		main(void)
 
 	// ft_buid_graph_and_data();
 	// ft_printf("Read status -> %d\n", initial_data_set.read_detector);
+	// system ("leaks lem-in");
 	return (0);
 }
