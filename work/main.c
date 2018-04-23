@@ -123,51 +123,20 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 
 int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data)
 {
-	// t_str_keeper ***head = initial_data;
-	t_str_keeper *current = initial_data;
+	char **medium;
+	t_str_keeper *current;
 
-	ft_printf("pointer in subfunction -> %p\n", (current));
-
-	// ft_printf("%s\n",(**initial_data)->valid_line);
-	ft_printf("%s\n",array[0]);
-	// (void)(str);
-	// ft_putchar('1');
+	current = initial_data;
 	while ((current)->prev)
 		(current) = (current)->prev;
-	// ft_putchar('2');
 	while ((current))
 	{
-		ft_printf("%s\n",(current)->valid_line);
+		medium = ft_strsplit((current)->valid_line, 32);
+		if (array[0] == medium[0] || array[1] == medium[1] || array[2] == medium[2])
+			return (0);
 		(current) = (current)->next;
 	}
-	ft_printf("sub after 2 while -> %p\n", (current));
-
-	// while ((**current))
-	// {
-	// 	ft_printf("another room -> %s \n ll data -> %s\n", str, (**current)->valid_line);
-	// 	(**current) = (**current)->next;
-	// }
-	// ft_putchar('3');
-		
-	// while ((**initial_data)->prev)
-	// {
-	// 	// ft_printf("%s\n", (**initial_data)->valid_line);
-	// 	ft_putchar('4');
-	// 	(**initial_data) = (**initial_data)->prev;
-
-	// }
-	// ft_putchar('5');
-
-
-
-	// while (**initial_data)
-	// {
-	// 	ft_printf("%s\n", (**initial_data)->valid_line);
-	// 	(**initial_data) = (**initial_data)->next;
-
-	// }
-
-	return (0);
+	return (1);
 }
 
 int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // ?: (room is unique); check the copy of the pointer idea;
@@ -193,9 +162,8 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // ?: (room
 		return (0);
 	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str) ) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
 		return (0);
-	ft_room_and_coord_unique(array, initial_data);
-	// else if (!room and coords are unique) if room is null -> o.k. and do not check coords;
-	// 		return (0);
+	if (!ft_room_and_coord_unique(array, initial_data))
+			return (0);
 	// free array;
 	return (1);
 }
