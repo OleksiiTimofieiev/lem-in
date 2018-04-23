@@ -274,7 +274,7 @@ int		main(void)
 	{
 		// ft_putchar('1');
 		// ft_printf("%s\n", initial_data->valid_line);
-		(initial_data) = (initial_data)->prev;
+		initial_data = (initial_data)->prev;
 	}
 	while (initial_data)
 	{
