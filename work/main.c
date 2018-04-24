@@ -204,7 +204,7 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) /* + */
 	else if (!ft_room_and_coord_unique(array, initial_data))
 	{
 		ft_clean_2d_char(array);
-			return (0);
+		return (0);
 	}
 	ft_clean_2d_char(array);
 	return (1);
