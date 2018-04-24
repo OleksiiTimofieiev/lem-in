@@ -320,7 +320,7 @@ int		ft_check_links(char *str, t_str_keeper **initial_data) /* + */
 	return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper **initial_data) // finalize with invalid room, but a valid link;
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper **initial_data) /* + */
 {
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
@@ -354,7 +354,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	return (0);
 }
 
-void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
+void	ft_validation(t_str_keeper **initial_data) /* + */;
 {
 	int 	read_detector;
 	int		validity_detector;
@@ -373,7 +373,6 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 			validity_detector = ft_check_rooms(line, &read_detector, command_detector, initial_data);
 		else if (read_detector == 2)
 			validity_detector = ft_check_links(line, initial_data);
-
 		if (validity_detector == 0)
 		{
 			free(line);
@@ -382,7 +381,6 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 		}
 		free(line);
 	}
-	ft_printf("read_detector -> %d\n", read_detector);
 }
 
 /* Function to delete the entire linked list */
