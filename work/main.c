@@ -276,7 +276,7 @@ int		ft_rooms_exist(char **array, t_str_keeper *initial_data) // ?
 
 		if (ft_strequ(array[0], medium[0]) && current->type_of_the_line != ANTS_QUANTITY)
 			room1++;
-		if (ft_strequ(array[0], medium[1]) && current->type_of_the_line != ANTS_QUANTITY)
+		if (ft_strequ(array[1], medium[0]) && current->type_of_the_line != ANTS_QUANTITY)
 			room2++;
 		ft_clean_2d_char(medium);
 		current = current->next;
