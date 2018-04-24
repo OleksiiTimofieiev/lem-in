@@ -39,7 +39,6 @@ void	ft_list_builder(t_str_keeper **initial_data, char *valid_line, int i) /* + 
 		(*current)->next = line_builder(valid_line, i);
 		(*current)->next->prev = *current;
 	}
-	// ft_putchar('4');
 }
 
 void	ft_error_handler(int read_detector) /* + */
