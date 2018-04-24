@@ -412,6 +412,7 @@ int		main(void) // add build adjacency list method;
 	ft_validation(&initial_data); //validation of the initial data set;
 
 	// ?display;
+	//after build delete and adjecency list;
 
 	t_str_keeper *buf2 = initial_data; 
 	while (buf2->prev)
