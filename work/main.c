@@ -238,43 +238,7 @@ int		ft_detect_type_of_the_line(char *str, int **command_detector) /* + */
 	return (0);
 }
 
-int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper **initial_data) // finalize with invalid room, but a valid link;
-{
-	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
-	{
-		ft_list_builder(initial_data, str, VALID_COMMAND);
-		return (1);
-	}
-	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, *initial_data))
-	{
-		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-		return (1);
-	}
-	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, *initial_data))
-	{
-		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-		return (1);
-	}
-	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, *initial_data))
-	{
-		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
-		return (1);
-	}
-	else if (command_detector[0] == 0 && !(ft_room_validity_aspects(str, *initial_data))) // think it over
-	{
-		// 1. check if we have start and end;
-		// 2. check if the link is valid
-		ft_putstr("Here\n");
-		if (ft_alpha_and_omega(command_detector)) // and a valid link and not a room, else ->
-			ft_printf("%s\n", "Maybe we have a link ?");
-		*read_detector = 1;
-		// add data to list;
-		return (0); // we can use exit (0) <- no links -> nothing to build
-	}
-	return (0);
-}
-
-int		ft_check_quantity(char *str) /* + */
+int		ft_check_quantity(char *str) // ?
 {
 	int i;
 	int count;
@@ -307,13 +271,19 @@ int		ft_rooms_exist(char **array, t_str_keeper *initial_data) // ?
 	while (current)
 	{
 		medium = ft_strsplit(current->valid_line, 32);
-		if (ft_strequ(array[0], medium[0]))
+		ft_printf("%s %s\n", array[0], medium[0]);
+		ft_printf("%s %s\n", array[0], medium[1]);
+
+		if (ft_strequ(array[0], medium[0]) && current->type_of_the_line != ANTS_QUANTITY)
 			room1++;
-		else if (ft_strequ(array[1], medium[1]))
+		if (ft_strequ(array[0], medium[1]) && current->type_of_the_line != ANTS_QUANTITY)
 			room2++;
 		ft_clean_2d_char(medium);
 		current = current->next;
 	}
+	ft_printf("1->>>>>>>>>>> %d\n", room1);
+	ft_printf("2->>>>>>>>>>> %d\n", room2);
+
 	if (room1 == room2)
 		return (1);
 	return (0);
@@ -339,9 +309,11 @@ int 	ft_link_validity_aspects(char *str, t_str_keeper *initial_data) // ?
 	}
  	else if (!ft_rooms_exist(array, initial_data))
 	{
+		ft_putstr("rooms are not present in the list\n");
 		ft_clean_2d_char(array);
 		return (0);
 	}
+	ft_clean_2d_char(array);
 	return (1);
 }
 
@@ -351,6 +323,46 @@ int		ft_check_links(char *str, t_str_keeper **initial_data) // ?
 	{
 		ft_list_builder(initial_data, str, VALID_COMMAND);
 		return (1);
+	}
+	return (0);
+}
+
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_keeper **initial_data) // finalize with invalid room, but a valid link;
+{
+	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
+	{
+		ft_list_builder(initial_data, str, VALID_COMMAND);
+		return (1);
+	}
+	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, *initial_data))
+	{
+		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+		return (1);
+	}
+	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, *initial_data))
+	{
+		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+		return (1);
+	}
+	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, *initial_data))
+	{
+		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
+		return (1);
+	}
+	else if (command_detector[0] == 0 && !(ft_room_validity_aspects(str, *initial_data))) // think it over
+	{
+		// 1. check if we have start and end;
+		// 2. check if the link is valid
+		ft_printf("%s\n", "Maybe we have a link");
+
+		if (ft_alpha_and_omega(command_detector)) // and a valid link and not a room, else ->
+		{
+			ft_link_validity_aspects(str, *initial_data);
+			ft_printf("%s\n", "We have a link");
+			*read_detector = 2;
+			// add data to list;
+			return(1);
+		}
 	}
 	return (0);
 }
