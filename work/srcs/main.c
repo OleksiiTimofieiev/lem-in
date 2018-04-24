@@ -409,6 +409,10 @@ int		main(void) // add build adjacency list method;
 
 	ft_validation(&initial_data); //validation of the initial data set;
 
+	// if no data -> exit -> test empty file
+
+
+
 	// ?display;
 	//after build delete and adjecency list;
 
