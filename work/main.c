@@ -344,9 +344,8 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	}
 	else if (command_detector[0] == 0 && !(ft_room_validity_aspects(str, *initial_data)))
 	{
-		if (ft_alpha_and_omega(command_detector))
+		if (ft_alpha_and_omega(command_detector) && ft_link_validity_aspects(str, *initial_data))
 		{
-			ft_link_validity_aspects(str, *initial_data);
 			ft_list_builder(initial_data, str, LINK);
 			*read_detector = 2;
 			return(1);
