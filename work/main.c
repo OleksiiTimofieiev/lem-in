@@ -271,8 +271,8 @@ int		ft_rooms_exist(char **array, t_str_keeper *initial_data) // ?
 	while (current)
 	{
 		medium = ft_strsplit(current->valid_line, 32);
-		ft_printf("%s %s\n", array[0], medium[0]);
-		ft_printf("%s %s\n", array[0], medium[1]);
+		// ft_printf("%s %s\n", array[0], medium[0]);
+		// ft_printf("%s %s\n", array[0], medium[1]);
 
 		if (ft_strequ(array[0], medium[0]) && current->type_of_the_line != ANTS_QUANTITY)
 			room1++;
@@ -281,8 +281,8 @@ int		ft_rooms_exist(char **array, t_str_keeper *initial_data) // ?
 		ft_clean_2d_char(medium);
 		current = current->next;
 	}
-	ft_printf("1->>>>>>>>>>> %d\n", room1);
-	ft_printf("2->>>>>>>>>>> %d\n", room2);
+	// ft_printf("1->>>>>>>>>>> %d\n", room1);
+	// ft_printf("2->>>>>>>>>>> %d\n", room2);
 
 	if (room1 == room2)
 		return (1);
@@ -321,7 +321,7 @@ int		ft_check_links(char *str, t_str_keeper **initial_data) // ?
 {
 	if (ft_link_validity_aspects(str, *initial_data))
 	{
-		ft_list_builder(initial_data, str, VALID_COMMAND);
+		ft_list_builder(initial_data, str, LINK);
 		return (1);
 	}
 	return (0);
@@ -349,18 +349,13 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
-	else if (command_detector[0] == 0 && !(ft_room_validity_aspects(str, *initial_data))) // think it over
+	else if (command_detector[0] == 0 && !(ft_room_validity_aspects(str, *initial_data)))
 	{
-		// 1. check if we have start and end;
-		// 2. check if the link is valid
-		ft_printf("%s\n", "Maybe we have a link");
-
-		if (ft_alpha_and_omega(command_detector)) // and a valid link and not a room, else ->
+		if (ft_alpha_and_omega(command_detector))
 		{
 			ft_link_validity_aspects(str, *initial_data);
-			ft_printf("%s\n", "We have a link");
+			ft_list_builder(initial_data, str, LINK);
 			*read_detector = 2;
-			// add data to list;
 			return(1);
 		}
 	}
@@ -418,7 +413,7 @@ void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 //    *initial_data = NULL;
 // }
 
-int		main(void)
+int		main(void) // check leaks
 {
 	t_str_keeper *initial_data; //keep the initial valid data;
 
@@ -436,6 +431,6 @@ int		main(void)
 		ft_printf("%s\n", buf2->valid_line);
 		buf2 = buf2->next;
 	}
-	system ("leaks lem-in");
+	// system ("leaks lem-in");
 	return (0);
 }
