@@ -380,6 +380,7 @@ void	ft_validation(t_str_keeper **initial_data) /* + */
 	}
 }
 
+
 /* Function to delete the entire linked list */
 // void deleteList(t_str_keeper **initial_data)
 // {

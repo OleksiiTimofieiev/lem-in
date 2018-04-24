@@ -16,7 +16,7 @@
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
-# include "./ft_printf/ft_printf.h"
+# include "../ft_printf/ft_printf.h"
 
 /*
 **------------------------  type of the rooms  ---------------------------------
