@@ -196,7 +196,7 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) /* + */
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str))
+	else if (/*!ft_isposint(array[1]) || !ft_isposint(array[2]) || */!ft_find_space_is_correct_quantity(str))
 	{
 		ft_clean_2d_char(array);
 		return (0); //free too
@@ -245,7 +245,7 @@ int		ft_check_quantity(char *str) /* + */
 
 	i = 0;
 	count = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '-')
 			count++;
@@ -283,7 +283,7 @@ int		ft_rooms_exist(char **array, t_str_keeper *initial_data) /* + */
 	return (0);
 }
 
-int 	ft_link_validity_aspects(char *str, t_str_keeper *initial_data) /* + */
+int		ft_link_validity_aspects(char *str, t_str_keeper *initial_data) /* + */
 {
 	char	**array;
 	int		array_size;
@@ -292,16 +292,14 @@ int 	ft_link_validity_aspects(char *str, t_str_keeper *initial_data) /* + */
 		return (1);
 	else if (!ft_check_quantity(str))
 		return (0);
-
 	array = ft_strsplit(str, '-');
 	array_size = ft_2d_arr_size(array);
-
 	if (array_size != 2)
 	{
 		ft_clean_2d_char(array);
 		return (0);
 	}
- 	else if (!ft_rooms_exist(array, initial_data))
+	else if (!ft_rooms_exist(array, initial_data))
 	{
 		ft_clean_2d_char(array);
 		return (0);
@@ -348,7 +346,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 		{
 			ft_list_builder(initial_data, str, LINK);
 			*read_detector = 2;
-			return(1);
+			return (1);
 		}
 	}
 	return (0);
@@ -356,9 +354,9 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 
 void	ft_validation(t_str_keeper **initial_data) /* + */
 {
-	int 	read_detector;
+	int		read_detector;
 	int		validity_detector;
-	int		command_detector[3]; 
+	int		command_detector[3];
 	char	*line;
 
 	read_detector = 0;
@@ -397,7 +395,7 @@ void	ft_validation(t_str_keeper **initial_data) /* + */
 //        free(current);
 //        current = next;
 //    }
-   
+
 //    /* deref head_ref to affect the real head back
 //       in the caller. */
 //    *initial_data = NULL;
