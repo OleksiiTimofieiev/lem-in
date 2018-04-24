@@ -273,6 +273,69 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	return (0);
 }
 
+int		ft_check_quantity(char *str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	while(str[i])
+	{
+		if (str[i] == '-')
+			count++;
+		i++;
+	}
+	if (count == 1)
+		return (1);
+	return (0);
+}
+
+int 	ft_link_validity_aspects(char *str, t_str_keeper *initial_data)
+{
+	char	**array;
+	int		array_size;
+
+	if (str[0] == '#' && str[1] != '#')
+		return (1);
+	else if ()
+
+
+
+
+
+	else if (array_size != 3)
+	{
+		ft_clean_2d_char(array);
+		return (0);
+	}
+	else if (ft_str_find_chr(array[0], '-'))
+	{
+		ft_clean_2d_char(array);
+		return (0);
+	}
+
+	ft_clean_2d_char(array);
+	
+	if (!(array = ft_strsplit(str, ' ')))
+		return (0);
+	array_size = ft_2d_arr_size(array);
+
+		else if (!ft_room_and_coord_unique(array, initial_data))
+	{
+		ft_clean_2d_char(array);
+		return (0);
+	}
+	
+	return (1);
+
+}
+
+int		ft_check_link(char *str, int *read_detector, int *command_detector, t_str_keeper **initial_data)
+{
+	if (link is valid)
+		add to list;
+}
+
 void	ft_validation(t_str_keeper **initial_data) // finalyze with links;
 {
 	int 	read_detector;
@@ -327,21 +390,17 @@ int		main(void)
 {
 	t_str_keeper *initial_data; //keep the initial valid data;
 
-
 	initial_data = NULL;
 
 	ft_validation(&initial_data); //validation of the initial data set;
 
-	// ft_putchar('5');
+
 
 	t_str_keeper *buf2 = initial_data; 
-// ft_putchar('6');
 	while (buf2->prev)
 		buf2 = (buf2)->prev;
-// ft_putchar('7');
 	while (buf2)
 	{
-		// diagnostic function;
 		ft_printf("%s\n", buf2->valid_line);
 		buf2 = buf2->next;
 	}
