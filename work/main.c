@@ -354,7 +354,7 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 	return (0);
 }
 
-void	ft_validation(t_str_keeper **initial_data) /* + */;
+void	ft_validation(t_str_keeper **initial_data) /* + */
 {
 	int 	read_detector;
 	int		validity_detector;
@@ -403,7 +403,7 @@ void	ft_validation(t_str_keeper **initial_data) /* + */;
 //    *initial_data = NULL;
 // }
 
-int		main(void) // check leaks
+int		main(void) // add build adjacency list method;
 {
 	t_str_keeper *initial_data; //keep the initial valid data;
 
@@ -411,16 +411,16 @@ int		main(void) // check leaks
 
 	ft_validation(&initial_data); //validation of the initial data set;
 
-
+	// ?display;
 
 	t_str_keeper *buf2 = initial_data; 
 	while (buf2->prev)
 		buf2 = (buf2)->prev;
 	while (buf2)
 	{
-		ft_printf("%d\n", buf2->type_of_the_line);
+		ft_printf("%s\n", buf2->valid_line);
 		buf2 = buf2->next;
 	}
-	// system ("leaks lem-in");
+	system ("leaks lem-in");
 	return (0);
 }
