@@ -15,6 +15,7 @@
 t_str_keeper	*line_builder(char *valid_line, int i) /* + */
 {
 	t_str_keeper *tmp;
+
 	if (!(tmp = (t_str_keeper*)malloc(sizeof(t_str_keeper))))
 		return (NULL);
 	tmp->type_of_the_line = i;
@@ -116,7 +117,7 @@ int		ft_find_space_is_correct_quantity(char *str) /* + */
 		i++;
 	}
 	if ((s_general == s_inline) && s_general == 2)
-			return (1);
+		return (1);
 	return (0);
 }
 
@@ -139,14 +140,14 @@ void	ft_clean_2d_char(char **array) /* + */
 
 	i = 0;
 	while (array[i])
-    	free(array[i++]);
+		free(array[i++]);
 	free(array);
 }
 
 int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 {
-	char **medium;
-	t_str_keeper *current;
+	char			**medium;
+	t_str_keeper	*current;
 
 	current = initial_data;
 	while (current->prev)
@@ -160,7 +161,7 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 				ft_clean_2d_char(medium);
 				return (0);
 			}
-			ft_clean_2d_char(medium);
+		ft_clean_2d_char(medium);
 		current = current->next;
 	}
 	return (1);
@@ -169,43 +170,43 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) /* + */
 {
 	char	**array;
-	int		array_size;	
+	int		array_size;
 
 	if (!(array = ft_strsplit(str, ' ')))
 		return (0);
 	array_size = ft_2d_arr_size(array);
-	if (ft_strequ(str, "##start") || ft_strequ(str, "##end")) // command was repeated;
+	if (ft_strequ(str, "##start") || ft_strequ(str, "##end"))
 	{
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (array_size == 1 && str[0] == '#' && str[1] != '#') // line is a comment;
+	else if (array_size == 1 && str[0] == '#' && str[1] != '#')
 	{
 		ft_clean_2d_char(array);
 		return (2);
 	}
 	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end"))
-				 && (str[0] == '#' && str[1] == '#')) // unvalid command can be saved;		
+			&& (str[0] == '#' && str[1] == '#'))
 	{
-		ft_clean_2d_char(array);	
+		ft_clean_2d_char(array);
 		return (2);
 	}
-	else if (array_size != 3) // not a valid line -> not sufficient data;
+	else if (array_size != 3)
 	{
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (ft_str_find_chr(array[0], '-')) // i really do not like if the room contains '-';
+	else if (ft_str_find_chr(array[0], '-'))
 	{
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (array[0][0] == '#' || array [0][0] == 'L') // unvalid room <- forbidden chars;
+	else if (array[0][0] == '#' || array[0][0] == 'L')
 	{
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str)) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
+	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str))
 	{
 		ft_clean_2d_char(array);
 		return (0); //free too
@@ -251,28 +252,21 @@ int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_str_
 {
 	if (command_detector[0] == 0 && ft_detect_command(str, command_detector))
 	{
-		// ft_putchar('1');
 		ft_list_builder(initial_data, str, VALID_COMMAND);
 		return (1);
 	}
 	else if (command_detector[0] == 1 && ft_room_validity_aspects(str, *initial_data))
 	{
-		// ft_putchar('2');
-
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
 	else if (command_detector[0] == 2 && ft_room_validity_aspects(str, *initial_data))
 	{
-		// ft_putchar('3');
-
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
 	else if (command_detector[0] == 0 && ft_room_validity_aspects(str, *initial_data))
 	{
-		// ft_putchar('4');
-
 		ft_list_builder(initial_data, str, ft_detect_type_of_the_line(str, &command_detector));
 		return (1);
 	}
