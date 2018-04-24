@@ -134,16 +134,6 @@ int		ft_exclusions(t_str_keeper *initial_data) /* + */
 	return (1);
 }
 
-void	ft_clean_2d_char(char **array) /* + */
-{
-	int i;
-
-	i = 0;
-	while (array[i])
-		free(array[i++]);
-	free(array);
-}
-
 int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 {
 	char			**medium;
@@ -356,9 +346,5 @@ int		main(void)
 		buf2 = buf2->next;
 	}
 	system ("leaks lem-in");
-
-
-
-
 	return (0);
 }

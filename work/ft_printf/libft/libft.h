@@ -104,5 +104,6 @@ int					ft_isint(ssize_t nbr);
 int					ft_2d_arr_size(char **str);
 int					ft_isposint(char *str);
 int					ft_str_find_chr(const char *str, char c);
+void    			ft_clean_2d_char(char **array);
 
 #endif

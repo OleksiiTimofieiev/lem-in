@@ -82,6 +82,7 @@ SRC = 	ft_memset.c \
 		ft_2d_arr_size.c \
 		ft_isposint.c \
 		ft_str_find_chr.c \
+		ft_clean_2d_char.c \
 
 OBJ = $(SRC:.c=.o)
 
