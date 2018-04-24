@@ -133,7 +133,7 @@ int		ft_exclusions(t_str_keeper *initial_data) /* + */
 	return (1);
 }
 
-void	ft_clean_2d_char(char **array)
+void	ft_clean_2d_char(char **array) /* + */
 {
 	int i;
 
@@ -166,7 +166,7 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
 	return (1);
 }
 
-int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // add function to clean array;
+int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) /* + */
 {
 	char	**array;
 	int		array_size;	
@@ -176,110 +176,46 @@ int		ft_room_validity_aspects(char *str, t_str_keeper *initial_data) // add func
 	array_size = ft_2d_arr_size(array);
 	if (ft_strequ(str, "##start") || ft_strequ(str, "##end")) // command was repeated;
 	{
-		int i = 0;
-		while (array[i])
-		{
-	    	free(array[i]);
-	    	i++;
-		}
-		free(array);
-		array = NULL;
+		ft_clean_2d_char(array);
 		return (0);
 	}
 	else if (array_size == 1 && str[0] == '#' && str[1] != '#') // line is a comment;
 	{
-		int i = 0;
-		while (array[i])
-		{
-	    	free(array[i]);
-	    	i++;
-		}
-		free(array);
-		array = NULL;
+		ft_clean_2d_char(array);
 		return (2);
 	}
 	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end"))
 				 && (str[0] == '#' && str[1] == '#')) // unvalid command can be saved;		
 	{
-		int i = 0;
-		while (array[i])
-		{
-	    	free(array[i]);
-	    	i++;
-		}
-		free(array);
-		array = NULL;	
+		ft_clean_2d_char(array);	
 		return (2);
 	}
 	else if (array_size != 3) // not a valid line -> not sufficient data;
 	{
-		int i = 0;
-		while (array[i])
-		{
-	    	free(array[i]);
-	    	i++;
-		}
-		free(array);
-		array = NULL;
-			return (0);
+		ft_clean_2d_char(array);
+		return (0);
 	}
 	else if (ft_str_find_chr(array[0], '-')) // i really do not like if the room contains '-';
 	{
-		int i = 0;
-		while (array[i])
-		{
-	    	free(array[i]);
-	    	i++;
-		}
-		free(array);
-		array = NULL;
+		ft_clean_2d_char(array);
 		return (0);
 	}
 	else if (array[0][0] == '#' || array [0][0] == 'L') // unvalid room <- forbidden chars;
 	{
-		int i = 0;
-		while (array[i])
-		{
-	    	free(array[i]);
-	    	i++;
-		}
-		free(array);
-		array = NULL;
+		ft_clean_2d_char(array);
 		return (0);
 	}
 	else if (!ft_isposint(array[1]) || !ft_isposint(array[2]) || !ft_find_space_is_correct_quantity(str)) // unvalid line <- wrong data, have to be a positive int values;|| !ft_find_space_is_correct_quantity(str)
 	{
-		int i = 0;
-		while (array[i])
-		{
-	    	free(array[i]);
-	    	i++;
-		}
-		free(array);
-		array = NULL;
+		ft_clean_2d_char(array);
 		return (0); //free too
 	}
 	else if (!ft_room_and_coord_unique(array, initial_data))
 	{
-		int i = 0;
-		while (array[i])
-		{
-	    	free(array[i]);
-	    	i++;
-		}
-		free(array);
-		array = NULL;
+		ft_clean_2d_char(array);
 			return (0);
 	}
-	// free array;
-	int i = 0;
-	while (array[i])
-	{
-    	free(array[i]);
-    	i++;
-	}
-	free(array);
-	array = NULL;
+	ft_clean_2d_char(array);
 	return (1);
 }
 
