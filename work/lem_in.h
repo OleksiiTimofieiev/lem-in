@@ -29,11 +29,7 @@
 # define ROOM 5
 # define ROOM_START 6
 # define ROOM_END 7
-
-
-
-
-# define LINK 8 // adhere to the linked list
+# define LINK 8
 
 /*
 **-----   data structure to keep the initial data set  -------------------------

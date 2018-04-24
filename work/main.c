@@ -238,7 +238,7 @@ int		ft_detect_type_of_the_line(char *str, int **command_detector) /* + */
 	return (0);
 }
 
-int		ft_check_quantity(char *str) // ?
+int		ft_check_quantity(char *str) /* + */
 {
 	int i;
 	int count;
@@ -256,7 +256,7 @@ int		ft_check_quantity(char *str) // ?
 	return (0);
 }
 
-int		ft_rooms_exist(char **array, t_str_keeper *initial_data) // ?
+int		ft_rooms_exist(char **array, t_str_keeper *initial_data) /* + */
 {
 	int				room1;
 	int				room2;
@@ -271,9 +271,6 @@ int		ft_rooms_exist(char **array, t_str_keeper *initial_data) // ?
 	while (current)
 	{
 		medium = ft_strsplit(current->valid_line, 32);
-		// ft_printf("%s %s\n", array[0], medium[0]);
-		// ft_printf("%s %s\n", array[0], medium[1]);
-
 		if (ft_strequ(array[0], medium[0]) && current->type_of_the_line != ANTS_QUANTITY)
 			room1++;
 		if (ft_strequ(array[1], medium[0]) && current->type_of_the_line != ANTS_QUANTITY)
@@ -281,15 +278,12 @@ int		ft_rooms_exist(char **array, t_str_keeper *initial_data) // ?
 		ft_clean_2d_char(medium);
 		current = current->next;
 	}
-	// ft_printf("1->>>>>>>>>>> %d\n", room1);
-	// ft_printf("2->>>>>>>>>>> %d\n", room2);
-
 	if (room1 == room2)
 		return (1);
 	return (0);
 }
 
-int 	ft_link_validity_aspects(char *str, t_str_keeper *initial_data) // ?
+int 	ft_link_validity_aspects(char *str, t_str_keeper *initial_data) /* + */
 {
 	char	**array;
 	int		array_size;
@@ -309,7 +303,6 @@ int 	ft_link_validity_aspects(char *str, t_str_keeper *initial_data) // ?
 	}
  	else if (!ft_rooms_exist(array, initial_data))
 	{
-		ft_putstr("rooms are not present in the list\n");
 		ft_clean_2d_char(array);
 		return (0);
 	}
@@ -317,7 +310,7 @@ int 	ft_link_validity_aspects(char *str, t_str_keeper *initial_data) // ?
 	return (1);
 }
 
-int		ft_check_links(char *str, t_str_keeper **initial_data) // ?
+int		ft_check_links(char *str, t_str_keeper **initial_data) /* + */
 {
 	if (ft_link_validity_aspects(str, *initial_data))
 	{
@@ -428,7 +421,7 @@ int		main(void) // check leaks
 		buf2 = (buf2)->prev;
 	while (buf2)
 	{
-		ft_printf("%s\n", buf2->valid_line);
+		ft_printf("%d\n", buf2->type_of_the_line);
 		buf2 = buf2->next;
 	}
 	// system ("leaks lem-in");
