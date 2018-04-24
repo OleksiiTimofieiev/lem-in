@@ -133,9 +133,18 @@ int		ft_exclusions(t_str_keeper *initial_data) /* + */
 	return (1);
 }
 
-int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // add function to clean array;
+void	ft_clean_2d_char(char **array)
 {
 	int i;
+
+	i = 0;
+	while (array[i])
+    	free(array[i++]);
+	free(array);
+}
+
+int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) /* + */
+{
 	char **medium;
 	t_str_keeper *current;
 
@@ -148,17 +157,11 @@ int		ft_room_and_coord_unique(char **array, t_str_keeper *initial_data) // add f
 		if (ft_exclusions(current))
 			if (ft_strequ(array[0], medium[0]) || ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2]))
 			{
-				i = 0;
-				while (medium[i])
-			    	free(medium[i++]);
-				free(medium);
+				ft_clean_2d_char(medium);
 				return (0);
 			}
+			ft_clean_2d_char(medium);
 		current = current->next;
-		i = 0;
-		while (medium[i])
-	    	free(medium[i++]);
-		free(medium);
 	}
 	return (1);
 }
