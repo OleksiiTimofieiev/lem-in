@@ -61,24 +61,14 @@ int		ft_find_space_is_correct_quantity(char *str)
 int		ft_aspects_help_1(char *str, int array_size)
 {
 	if (ft_strequ(str, "##start") || ft_strequ(str, "##end"))
-	{
 		return (0);
-	}
 	else if (array_size == 1 && str[0] == '#' && str[1] != '#')
-	{
-		ft_printf("%s %d\n", str, array_size);
-		ft_putstr("This one 1\n");
 		return (1);
-	}
 	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end"))
 			&& (str[0] == '#' && str[1] == '#'))
-	{
 		return (1);
-	}
 	else if (array_size != 3)
-	{
 		return (0);
-	}
 	return (1);
 }
 
