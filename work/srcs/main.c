@@ -14,34 +14,7 @@
 
 //can be graph built: start &&end then do smthing;
 
-void	ft_validation(t_init **initial_data)
-{
-	int		r_det;
-	int		validity_detector;
-	int		command_detector[3];
-	char	*line;
 
-	r_det = 0;
-	command_detector[0] = 0;
-	command_detector[1] = 0;
-	command_detector[2] = 0;
-	while (get_next_line(0, &line) == 1)
-	{
-		if (r_det == 0)
-			validity_detector = ft_ant_check(line, &r_det, initial_data);
-		else if (r_det == 1)
-			validity_detector = ft_check_rooms(line, &r_det, command_detector, initial_data);
-		else if (r_det == 2)
-			validity_detector = ft_check_links(line, initial_data);
-		if (validity_detector == 0)
-		{
-			free(line);
-			ft_printf("%s\n", "ERROR");
-			break ;
-		}
-		free(line);
-	}
-}
 
 
 /* Function to delete the entire linked list */

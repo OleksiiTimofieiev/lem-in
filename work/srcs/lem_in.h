@@ -47,6 +47,7 @@ typedef struct			s_init
 **-------------------------   list of functions   ------------------------------
 */
 
+void					ft_validation(t_init **initial_data);
 t_init					*line_builder(char *valid_line, int i);
 void					ft_list_builder(t_init **i, char *v, int iq);
 int						ft_ant_check(char *str, int *r, t_init **it);
