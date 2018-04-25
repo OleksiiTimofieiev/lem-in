@@ -41,7 +41,7 @@ void	ft_list_builder(t_init **initial_data, char *valid_line, int i)
 	}
 }
 
-int		ft_exclusions(t_init *initial_data) 
+int		ft_exclusions(t_init *initial_data)
 {
 	if (initial_data->type_of_the_line == COMMENT)
 		return (0);
