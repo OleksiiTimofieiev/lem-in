@@ -39,20 +39,19 @@ typedef struct			s_init
 {
 	int					type_of_the_line;
 	char				*valid_line;
-	struct s_init	*prev;
-	struct s_init	*next;
+	struct s_init		*prev;
+	struct s_init		*next;
 }						t_init;
 
 /*
 **-------------------------   list of functions   ------------------------------
 */
 
-t_init	*line_builder(char *valid_line, int i);
-void			ft_list_builder(t_init **initial_data, char *valid_line, int i);
-int			ft_ant_check(char *str, int *read_detector, t_init **initial_data);
-int		ft_check_quantity(char *str); // delete with libft
-int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_init **initial_data);
-int		ft_check_links(char *str, t_init **initial_data);
-
+t_init					*line_builder(char *valid_line, int i);
+void					ft_list_builder(t_init **i, char *v, int iq);
+int						ft_ant_check(char *str, int *r, t_init **it);
+int						ft_check_quantity(char *str); // delete with libft
+int						ft_check_rooms(char *s, int *r, int *c, t_init **i);
+int						ft_check_links(char *str, t_init **initial_data);
 
 #endif

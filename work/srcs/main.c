@@ -12,6 +12,8 @@
 
 #include "lem_in.h"
 
+//can be graph built: start &&end then do smthing;
+
 void	ft_validation(t_init **initial_data)
 {
 	int		r_det;
