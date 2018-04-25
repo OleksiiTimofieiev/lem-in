@@ -16,7 +16,6 @@
 
 
 
-
 /* Function to delete the entire linked list */
 // void deleteList(t_init **initial_data)
 // {
