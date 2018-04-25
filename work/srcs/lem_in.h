@@ -48,11 +48,11 @@ typedef struct			s_init
 */
 
 void					ft_validation(t_init **initial_data);
-t_init					*line_builder(char *valid_line, int i);
 void					ft_list_builder(t_init **i, char *v, int iq);
 int						ft_ant_check(char *str, int *r, t_init **it);
 int						ft_check_quantity(char *str); // delete with libft
 int						ft_check_rooms(char *s, int *r, int *c, t_init **i);
 int						ft_check_links(char *str, t_init **initial_data);
+t_init					*line_builder(char *valid_line, int i);
 
 #endif
