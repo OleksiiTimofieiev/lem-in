@@ -48,7 +48,7 @@ static int		ft_link_validity_aspects(char *str, t_init *initial_data)
 
 	if (str[0] == '#' && str[1] != '#')
 		return (1);
-	else if (!ft_check_quantity(str))
+	else if (!ft_check_quantity(str, '-', 1))
 		return (0);
 	array = ft_strsplit(str, '-');
 	array_size = ft_2d_arr_size(array);
