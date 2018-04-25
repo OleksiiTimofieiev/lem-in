@@ -46,7 +46,7 @@ int		main(void) // add build adjacency list method;
 	t_init *initial_data; //keep the initial valid data;
 
 	initial_data = NULL; //function init;
-		
+
 	ft_validation(&initial_data); //validation of the initial data set;
 	t_init *buf2 = initial_data; 
 
@@ -57,6 +57,6 @@ int		main(void) // add build adjacency list method;
 		ft_printf("%s\n", buf2->valid_line);
 		buf2 = buf2->next;
 	}
-	system ("leaks lem-in");
+	system ("leaks -q lem-in");
 	return (0);
 }
