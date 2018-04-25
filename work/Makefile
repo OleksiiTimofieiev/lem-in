@@ -12,9 +12,12 @@
 
 NAME = lem-in
 
-SRCS = ./srcs/main.c 
+SRCS =  ./srcs/general_functions.c \
+		./srcs/ants_check.c \
+		./srcs/rooms_validation.c \
+		./srcs/main.c \
 
-HEADER = ./srcs/lem-in.h
+HEADER = ./srcs/lem_in.h
 
 CFLAGS = -Wall -Wextra -Werror
 

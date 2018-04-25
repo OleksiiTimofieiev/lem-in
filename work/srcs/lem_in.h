@@ -35,16 +35,23 @@
 **-----   data structure to keep the initial data set  -------------------------
 */
 
-typedef struct			s_str_keeper
+typedef struct			s_init
 {
 	int					type_of_the_line;
 	char				*valid_line;
-	struct s_str_keeper	*prev;
-	struct s_str_keeper	*next;
-}						t_str_keeper;
+	struct s_init	*prev;
+	struct s_init	*next;
+}						t_init;
 
 /*
 **-------------------------   list of functions   ------------------------------
 */
+
+t_init	*line_builder(char *valid_line, int i);
+void			ft_list_builder(t_init **initial_data, char *valid_line, int i);
+int			ft_ant_check(char *str, int *read_detector, t_init **initial_data);
+int		ft_check_quantity(char *str); // delete with libft
+int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_init **initial_data);
+
 
 #endif
