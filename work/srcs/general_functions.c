@@ -40,3 +40,16 @@ void	ft_list_builder(t_init **initial_data, char *valid_line, int i)
 		(*current)->next->prev = *current;
 	}
 }
+
+int		ft_exclusions(t_init *initial_data)
+{
+	if (initial_data->type_of_the_line == COMMENT)
+		return (0);
+	else if (initial_data->type_of_the_line == UNVALID_COMMAND)
+		return (0);
+	else if (initial_data->type_of_the_line == ANTS_QUANTITY)
+		return (0);
+	else if (initial_data->type_of_the_line == VALID_COMMAND)
+		return (0);
+	return (1);
+}

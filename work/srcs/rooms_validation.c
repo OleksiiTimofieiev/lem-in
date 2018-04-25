@@ -82,117 +82,11 @@ int		ft_det_line(char *str, int **c_det)
 	return (0);
 }
 
-int		ft_exclusions(t_init *initial_data)
-{
-	if (initial_data->type_of_the_line == COMMENT)
-		return (0);
-	else if (initial_data->type_of_the_line == UNVALID_COMMAND)
-		return (0);
-	else if (initial_data->type_of_the_line == ANTS_QUANTITY)
-		return (0);
-	else if (initial_data->type_of_the_line == VALID_COMMAND)
-		return (0);
-	return (1);
-}
 
-int		ft_room_and_coord_unique(char **array, t_init *initial_data)
-{
-	char	**medium;
-	t_init	*current;
 
-	current = initial_data;
-	while (current->prev)
-		current = current->prev;
-	while (current)
-	{
-		medium = ft_strsplit(current->valid_line, 32);
-		if (ft_exclusions(current))
-			if (ft_strequ(array[0], medium[0])
-			|| ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2]))
-			{
-				ft_clean_2d_char(medium);
-				return (0);
-			}
-		ft_clean_2d_char(medium);
-		current = current->next;
-	}
-	return (1);
-}
 
-int		ft_find_space_is_correct_quantity(char *str)
-{
-	int i;
-	int s_general;
-	int s_inline;
 
-	i = 0;
-	s_general = 0;
-	s_inline = 0;
-	while (str[i])
-	{
-		if (str[i] == ' ')
-			s_general++;
-		else if (str[i] != ' ' && str[i - 1] == ' ')
-			s_inline++;
-		i++;
-	}
-	if ((s_general == s_inline) && s_general == 2)
-		return (1);
-	return (0);
-}
 
-int		ft_aspects(char *str, t_init *initial_data)
-{
-	char	**array;
-	int		array_size;
-
-	if (!(array = ft_strsplit(str, ' ')))
-		return (0);
-	array_size = ft_2d_arr_size(array);
-	if (ft_strequ(str, "##start") || ft_strequ(str, "##end"))
-	{
-		ft_clean_2d_char(array);
-		return (0);
-	}
-	else if (array_size == 1 && str[0] == '#' && str[1] != '#')
-	{
-		ft_clean_2d_char(array);
-		return (2);
-	}
-	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end"))
-			&& (str[0] == '#' && str[1] == '#'))
-	{
-		ft_clean_2d_char(array);
-		return (2);
-	}
-	else if (array_size != 3)
-	{
-		ft_clean_2d_char(array);
-		return (0);
-	}
-	else if (ft_str_find_chr(array[0], '-'))
-	{
-		ft_clean_2d_char(array);
-		return (0);
-	}
-	else if (array[0][0] == '#' || array[0][0] == 'L')
-	{
-		ft_clean_2d_char(array);
-		return (0);
-	}
-	else if (!ft_find_space_is_correct_quantity(str))
-	{
-		ft_clean_2d_char(array);
-		return (0);
-	}
-	else if (!ft_room_and_coord_unique(array, initial_data))
-	{
-		ft_clean_2d_char(array);
-		return (0);
-	}
-	ft_clean_2d_char(array);
-	return (1);
-}
 
 int		ft_alpha_and_omega(int *c_det)
 {
