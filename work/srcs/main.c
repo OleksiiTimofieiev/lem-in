@@ -12,13 +12,13 @@
 
 #include "lem_in.h"
 
-void	ft_error_handler(int read_detector) /* + */
+void	ft_error_handler(int r_det) /* + */
 {
-	if (read_detector == 0)
+	if (r_det == 0)
 		ft_printf("%s\n", "ERROR");
-	else if (read_detector == 1)
+	else if (r_det == 1)
 		ft_printf("%s\n", "ERROR");
-	else if (read_detector == 2)
+	else if (r_det == 2)
 		ft_printf("%s\n", "ERROR");
 }
 
@@ -86,27 +86,27 @@ int		ft_check_links(char *str, t_init **initial_data) /* + */
 
 void	ft_validation(t_init **initial_data) /* + */
 {
-	int		read_detector;
+	int		r_det;
 	int		validity_detector;
 	int		command_detector[3];
 	char	*line;
 
-	read_detector = 0;
+	r_det = 0;
 	command_detector[0] = 0;
 	command_detector[1] = 0;
 	command_detector[2] = 0;
 	while (get_next_line(0, &line) == 1)
 	{
-		if (read_detector == 0)
-			validity_detector = ft_ant_check(line, &read_detector, initial_data);
-		else if (read_detector == 1)
-			validity_detector = ft_check_rooms(line, &read_detector, command_detector, initial_data);
-		else if (read_detector == 2)
+		if (r_det == 0)
+			validity_detector = ft_ant_check(line, &r_det, initial_data);
+		else if (r_det == 1)
+			validity_detector = ft_check_rooms(line, &r_det, command_detector, initial_data);
+		else if (r_det == 2)
 			validity_detector = ft_check_links(line, initial_data);
 		if (validity_detector == 0)
 		{
 			free(line);
-			ft_error_handler(read_detector);
+			ft_error_handler(r_det);
 			break ;
 		}
 		free(line);
