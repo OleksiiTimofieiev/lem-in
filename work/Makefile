@@ -15,6 +15,7 @@ NAME = lem-in
 SRCS =  ./srcs/general_functions.c \
 		./srcs/ants_check.c \
 		./srcs/rooms_validation.c \
+		./srcs/links_check.c \
 		./srcs/main.c \
 
 HEADER = ./srcs/lem_in.h

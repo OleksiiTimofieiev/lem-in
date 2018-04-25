@@ -52,6 +52,7 @@ void			ft_list_builder(t_init **initial_data, char *valid_line, int i);
 int			ft_ant_check(char *str, int *read_detector, t_init **initial_data);
 int		ft_check_quantity(char *str); // delete with libft
 int		ft_check_rooms(char *str, int *read_detector, int *command_detector, t_init **initial_data);
+int		ft_check_links(char *str, t_init **initial_data);
 
 
 #endif
