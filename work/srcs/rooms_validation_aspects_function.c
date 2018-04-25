@@ -90,7 +90,6 @@ int		ft_aspects(char *str, t_init *initial_data)
 	if (!(array = ft_strsplit(str, ' ')))
 		return (0);
 	array_size = ft_2d_arr_size(array);
-
 	if (!ft_aspects_help_1(str, array_size) || !ft_aspects_help_2(array))
 	{
 		ft_clean_2d_char(array);
@@ -101,7 +100,7 @@ int		ft_aspects(char *str, t_init *initial_data)
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (array_size != 1 &&!ft_room_and_coord_unique(array, initial_data) )
+	else if (array_size != 1 && !ft_room_and_coord_unique(array, initial_data))
 	{
 		ft_clean_2d_char(array);
 		return (0);
