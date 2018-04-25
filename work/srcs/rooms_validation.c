@@ -41,13 +41,6 @@ static int		ft_rooms_exist(char **array, t_init *init)
 	return (0);
 }
 
-int				ft_alpha_and_omega(int *c_det)
-{
-	if (c_det[1] == 1 && c_det[2] == 1)
-		return (1);
-	return (0);
-}
-
 static int		ft_link_aspects(char *str, t_init *init)
 {
 	char	**array;
@@ -71,6 +64,13 @@ static int		ft_link_aspects(char *str, t_init *init)
 	}
 	ft_clean_2d_char(array);
 	return (1);
+}
+
+int				ft_alpha_and_omega(int *c_det)
+{
+	if (c_det[1] == 1 && c_det[2] == 1)
+		return (1);
+	return (0);
 }
 
 int				ft_check_rooms(char *str, int *r_det, int *c_det, t_init **init)
