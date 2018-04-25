@@ -13,6 +13,9 @@
 #include "lem_in.h"
 
 //can be graph built: start &&end then do smthing;
+// if no data -> exit -> test empty file
+// ?display;
+//after build delete and adjecency list;
 
 
 
@@ -40,18 +43,12 @@ int		main(void) // add build adjacency list method;
 {
 	t_init *initial_data; //keep the initial valid data;
 
-	initial_data = NULL;
+	initial_data = NULL; //function init;
 
 	ft_validation(&initial_data); //validation of the initial data set;
 
-	// if no data -> exit -> test empty file
-
-
-
-	// ?display;
-	//after build delete and adjecency list;
-
 	t_init *buf2 = initial_data; 
+	
 	while (buf2->prev)
 		buf2 = (buf2)->prev;
 	while (buf2)
