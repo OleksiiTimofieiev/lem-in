@@ -53,6 +53,8 @@ int						ft_check_rooms(char *s, int *r, int *c, t_init **i);
 
 int		ft_aspects(char *str, t_init *initial_data);
 int		ft_exclusions(t_init *initial_data);
+int		ft_detect_command(char *str, int *c_det);
+int		ft_det_line(char *str, int **c_det);
 
 int						ft_check_links(char *str, t_init **initial_data);
 void					ft_list_builder(t_init **i, char *v, int iq);

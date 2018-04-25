@@ -12,26 +12,7 @@
 
 #include "lem_in.h"
 
-int		ft_detect_command(char *str, int *c_det)
-{
-	if (str[0] == '#' && str[1] == '#'
-		&& ft_strequ(str, "##start") && c_det[1] == 0)
-	{
-		c_det[0] = 1;
-		c_det[1] = 1;
-		return (1);
-	}
-	else if ((str[0] == '#' && str[1] == '#')
-			&& ft_strequ(str, "##end") && c_det[2] == 0)
-	{
-		c_det[0] = 2;
-		c_det[2] = 1;
-		return (1);
-	}
-	return (0);
-}
-
-static int		ft_rooms_exist(char **array, t_init *initial_data)
+static int		ft_rooms_exist(char **array, t_init *init)
 {
 	int				room1;
 	int				room2;
@@ -40,7 +21,7 @@ static int		ft_rooms_exist(char **array, t_init *initial_data)
 
 	room1 = 0;
 	room2 = 0;
-	current = initial_data;
+	current = init;
 	while (current->prev)
 		current = current->prev;
 	while (current)
@@ -60,42 +41,14 @@ static int		ft_rooms_exist(char **array, t_init *initial_data)
 	return (0);
 }
 
-int		ft_det_line(char *str, int **c_det)
-{
-	if (str[0] == '#' && str[1] != '#')
-		return (COMMENT);
-	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end"))
-			&& (str[0] == '#' && str[1] == '#'))
-		return (UNVALID_COMMAND);
-	else if (*c_det[0] == 1)
-	{
-		*c_det[0] = 0;
-		return (ROOM_START);
-	}
-	else if (*c_det[0] == 2)
-	{
-		*c_det[0] = 0;
-		return (ROOM_END);
-	}
-	else
-		return (ROOM);
-	return (0);
-}
-
-
-
-
-
-
-
-int		ft_alpha_and_omega(int *c_det)
+int				ft_alpha_and_omega(int *c_det)
 {
 	if (c_det[1] == 1 && c_det[2] == 1)
 		return (1);
 	return (0);
 }
 
-static int		ft_link_aspects(char *str, t_init *initial_data)
+static int		ft_link_aspects(char *str, t_init *init)
 {
 	char	**array;
 	int		array_size;
@@ -111,7 +64,7 @@ static int		ft_link_aspects(char *str, t_init *initial_data)
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (!ft_rooms_exist(array, initial_data))
+	else if (!ft_rooms_exist(array, init))
 	{
 		ft_clean_2d_char(array);
 		return (0);
@@ -120,33 +73,33 @@ static int		ft_link_aspects(char *str, t_init *initial_data)
 	return (1);
 }
 
-int		ft_check_rooms(char *str, int *r_det, int *c_det, t_init **initial_data)
+int				ft_check_rooms(char *str, int *r_det, int *c_det, t_init **init)
 {
 	if (c_det[0] == 0 && ft_detect_command(str, c_det))
 	{
-		ft_list_builder(initial_data, str, VALID_COMMAND);
+		ft_list_builder(init, str, VALID_COMMAND);
 		return (1);
 	}
-	else if (c_det[0] == 1 && ft_aspects(str, *initial_data))
+	else if (c_det[0] == 1 && ft_aspects(str, *init))
 	{
-		ft_list_builder(initial_data, str, ft_det_line(str, &c_det));
+		ft_list_builder(init, str, ft_det_line(str, &c_det));
 		return (1);
 	}
-	else if (c_det[0] == 2 && ft_aspects(str, *initial_data))
+	else if (c_det[0] == 2 && ft_aspects(str, *init))
 	{
-		ft_list_builder(initial_data, str, ft_det_line(str, &c_det));
+		ft_list_builder(init, str, ft_det_line(str, &c_det));
 		return (1);
 	}
-	else if (c_det[0] == 0 && ft_aspects(str, *initial_data))
+	else if (c_det[0] == 0 && ft_aspects(str, *init))
 	{
-		ft_list_builder(initial_data, str, ft_det_line(str, &c_det));
+		ft_list_builder(init, str, ft_det_line(str, &c_det));
 		return (1);
 	}
-	else if (c_det[0] == 0 && !(ft_aspects(str, *initial_data)))
+	else if (c_det[0] == 0 && !(ft_aspects(str, *init)))
 	{
-		if (ft_alpha_and_omega(c_det) && ft_link_aspects(str, *initial_data))
+		if (ft_alpha_and_omega(c_det) && ft_link_aspects(str, *init))
 		{
-			ft_list_builder(initial_data, str, LINK);
+			ft_list_builder(init, str, LINK);
 			*r_det = 2;
 			return (1);
 		}
