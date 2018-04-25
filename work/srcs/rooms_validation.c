@@ -73,6 +73,20 @@ int				ft_alpha_and_omega(int *c_det)
 	return (0);
 }
 
+int				ft_awesome(int *c_det, char *str, t_init **init, int *r_det)
+{
+	int checker;
+
+	checker = 0;
+	if (ft_alpha_and_omega(c_det) && ft_link_aspects(str, *init))
+	{
+		ft_list_builder(init, str, LINK);
+		*r_det = 2;
+		checker = 1;
+	}
+	return (checker);
+}
+
 int				ft_check_rooms(char *str, int *r_det, int *c_det, t_init **init)
 {
 	if (c_det[0] == 0 && ft_detect_command(str, c_det))
@@ -96,13 +110,7 @@ int				ft_check_rooms(char *str, int *r_det, int *c_det, t_init **init)
 		return (1);
 	}
 	else if (c_det[0] == 0 && !(ft_aspects(str, *init)))
-	{
-		if (ft_alpha_and_omega(c_det) && ft_link_aspects(str, *init))
-		{
-			ft_list_builder(init, str, LINK);
-			*r_det = 2;
+		if (ft_awesome(c_det, str, init, r_det))
 			return (1);
-		}
-	}
 	return (0);
 }
