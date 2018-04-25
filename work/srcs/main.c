@@ -46,9 +46,8 @@ int		main(void) // add build adjacency list method;
 	t_init *initial_data; //keep the initial valid data;
 
 	initial_data = NULL; //function init;
-
+		
 	ft_validation(&initial_data); //validation of the initial data set;
-
 	t_init *buf2 = initial_data; 
 
 	while (buf2->prev)
