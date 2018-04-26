@@ -27,11 +27,10 @@ void	ft_print_ll(t_init *data)
 	}
 }
 
-// we have empty data,
+// we have an empty data,
 // if we do not have start and the end, 
 // no links available, 
-// start is not connected with the end if we have one link, 
-// how to differ the reading error and valid line errror.
+// we have only one link but the start is not connected with the end.
 
 void	ft_detect_input(t_init *initial_data) 
 {
