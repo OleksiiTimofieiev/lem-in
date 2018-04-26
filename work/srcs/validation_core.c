@@ -39,7 +39,6 @@ void			ft_validation(t_init **initial_data)
 		if (validity_detector == 0)
 		{
 			free(line);
-			ft_printf("%s\n", "ERROR");
 			break ;
 		}
 		free(line);
