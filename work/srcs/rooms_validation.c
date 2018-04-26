@@ -36,7 +36,7 @@ static int		ft_rooms_exist(char **array, t_init *init)
 		ft_clean_2d_char(medium);
 		current = current->next;
 	}
-	if (room1 == room2)
+	if (room1 == room2 && room1 != 0 && room2 != 0)
 		return (1);
 	return (0);
 }
