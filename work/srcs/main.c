@@ -41,6 +41,17 @@
 //    *initial_data = NULL;
 // }
 
+void	ft_print_ll(t_init *data)
+{
+	while (data->prev)
+		data = (data)->prev;
+	while (data)
+	{
+		ft_printf("line->%s  type->%d\n", data->valid_line, data->type_of_the_line);
+		data = data->next;
+	}
+}
+
 int		main(void) // add build adjacency list method;
 {
 	t_init *initial_data; //keep the initial valid data;
@@ -48,15 +59,13 @@ int		main(void) // add build adjacency list method;
 	initial_data = NULL; //function init;
 
 	ft_validation(&initial_data); //validation of the initial data set;
-	t_init *buf2 = initial_data; 
 
-	while (buf2->prev)
-		buf2 = (buf2)->prev;
-	while (buf2)
-	{
-		ft_printf("%d\n", buf2->type_of_the_line);
-		buf2 = buf2->next;
-	}
+	ft_print_ll(initial_data);
+	ft_printf("\n");
+	ft_print_ll(initial_data);
+
+
+
 	system ("leaks -q lem-in");
 	return (0);
 }

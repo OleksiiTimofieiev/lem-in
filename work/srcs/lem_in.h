@@ -19,7 +19,7 @@
 # include "../ft_printf/ft_printf.h"
 
 /*
-**------------------------  type of the rooms  ---------------------------------
+**------------------------  type of the initial data  --------------------------
 */
 
 # define ANTS_QUANTITY 1
