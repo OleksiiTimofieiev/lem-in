@@ -75,14 +75,23 @@ int				ft_alpha_and_omega(int *c_det)
 
 int				ft_awesome(int *c_det, char *str, t_init **init, int *r_det)
 {
-	int checker;
+	int		checker;
+	char	**array;
+	int		type_of_the_link;
 
 	checker = 0;
+	type_of_the_link = 0;
 	if (ft_alpha_and_omega(c_det) && ft_link_aspects(str, *init))
 	{
-		ft_list_builder(init, str, LINK);
+		array = ft_strsplit(str, '-');
+		if (!ft_strequ(array[0], array[1]))
+			type_of_the_link = LINK;
+		else if (ft_strequ(array[0], array[1]))
+			type_of_the_link = SKIP;
+		ft_list_builder(init, str, type_of_the_link);
 		*r_det = 2;
 		checker = 1;
+		ft_clean_2d_char(array);
 	}
 	return (checker);
 }

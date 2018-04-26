@@ -66,11 +66,29 @@ static int		ft_link_validity_aspects(char *str, t_init *initial_data)
 	return (1);
 }
 
+static	int		ft_detect_link_command(char *str)
+{
+	char **array;
+
+	array = ft_strsplit(str, '-');
+	if (!ft_strequ(array[0], array[1]))
+	{
+		ft_clean_2d_char(array);
+		return (LINK);
+	}
+	else if (ft_strequ(array[0], array[1]))
+	{
+		ft_clean_2d_char(array);
+		return (SKIP);
+	}
+	return (0);
+}
+
 int				ft_check_links(char *str, t_init **initial_data)
 {
 	if (ft_link_validity_aspects(str, *initial_data))
 	{
-		ft_list_builder(initial_data, str, LINK);
+		ft_list_builder(initial_data, str, ft_detect_link_command(str));
 		return (1);
 	}
 	return (0);

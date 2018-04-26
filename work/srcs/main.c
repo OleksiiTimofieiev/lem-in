@@ -54,7 +54,7 @@ int		main(void) // add build adjacency list method;
 		buf2 = (buf2)->prev;
 	while (buf2)
 	{
-		ft_printf("%s\n", buf2->valid_line);
+		ft_printf("%d\n", buf2->type_of_the_line);
 		buf2 = buf2->next;
 	}
 	system ("leaks -q lem-in");

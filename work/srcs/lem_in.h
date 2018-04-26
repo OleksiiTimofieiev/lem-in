@@ -30,6 +30,7 @@
 # define ROOM_START 6
 # define ROOM_END 7
 # define LINK 8
+# define SKIP 9
 
 /*
 **-----   data structure to keep the initial data set  -------------------------
