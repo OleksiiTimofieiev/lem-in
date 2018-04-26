@@ -28,8 +28,8 @@ void	ft_print_ll(t_init *data)
 }
 
 // we have an empty data,
-// if we do not have start and the end, 
 // no links available, 
+// if we do not have start and the end, 
 // we have only one link but the start is not connected with the end.
 
 void	ft_detect_input(t_init *initial_data) 
