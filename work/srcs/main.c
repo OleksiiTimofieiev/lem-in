@@ -27,12 +27,26 @@ void	ft_print_ll(t_init *data)
 	}
 }
 
+// if we have start and the end, no links available, 
+// start is not connected with the end, 
+// how to differ the reading error and valid line errror.
+
+void	ft_detect_input(t_init *initial_data) 
+{
+	if (!initial_data)
+	{
+		ft_printf("%s\n", "ERROR");
+		exit(0);
+	}
+}
+
 int		main(void) // add build adjacency list method;
 {
 	t_init *initial_data;
 
 	initial_data = NULL;
 	ft_validation(&initial_data);
+	ft_detect_input(initial_data);
 	ft_to_start(&initial_data);
 	ft_print_ll(initial_data);
 

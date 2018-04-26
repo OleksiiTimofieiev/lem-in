@@ -12,7 +12,14 @@
 
 #include "lem_in.h"
 
-void	ft_validation(t_init **initial_data)
+static	void	init(int *c_d)
+{
+	c_d[0] = 0;
+	c_d[1] = 0;
+	c_d[2] = 0;
+}
+
+void			ft_validation(t_init **initial_data)
 {
 	int		r_det;
 	int		validity_detector;
@@ -20,9 +27,7 @@ void	ft_validation(t_init **initial_data)
 	char	*line;
 
 	r_det = 0;
-	c_d[0] = 0;
-	c_d[1] = 0;
-	c_d[2] = 0;
+	init(c_d);
 	while (get_next_line(0, &line) == 1)
 	{
 		if (r_det == 0)
