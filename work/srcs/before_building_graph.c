@@ -22,11 +22,11 @@ static	void	ft_error(void)
 	exit(0);
 }
 
-static	int		ft_detect_good_unique_link(t_init *initial_data)
+static	int		ft_valid_link(t_init *initial_data)
 {
 	// split the link;
 	// check that the line has the start and the end;
-
+	return (0);
 }
 
 static	int		ft_detect_link_start_end(t_init *initial_data)
@@ -48,12 +48,12 @@ static	int		ft_detect_link_start_end(t_init *initial_data)
 			start++;
 		initial_data = initial_data->next;
 	}
-	if (!link || !start || !end || (link == 1 && !... ) )
+	if (!link || !start || !end || (link == 1 && !ft_valid_link(initial_data)))
 		return (0);
 	return (1);
 }
 
-void			ft_detect_input(t_init *initial_data) 
+void			ft_detect_input(t_init *initial_data)
 {
 	if (initial_data == NULL)
 		ft_error();
