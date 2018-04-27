@@ -22,7 +22,7 @@ void	ft_print_ll(t_init *data)
 {
 	while (data)
 	{
-		ft_printf("%d\n", data->type_of_the_line);
+		ft_printf("%s\n", data->valid_line);
 		data = data->next;
 	}
 }
@@ -32,12 +32,11 @@ int		main(void) // add build adjacency list method;
 	t_init *initial_data;
 
 	initial_data = NULL;
-
 	ft_validation(&initial_data);
 	ft_to_start(&initial_data);
-	ft_detect_input(initial_data);
 	ft_print_ll(initial_data);
+	ft_detect_input(initial_data);
 
-	system ("leaks -q lem-in");
+	system("leaks -q lem-in");
 	return (0);
 }
