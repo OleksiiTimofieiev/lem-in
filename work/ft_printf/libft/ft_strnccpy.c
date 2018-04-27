@@ -31,7 +31,7 @@ char		*ft_strnccpy(char *src, char c)
 {
 	size_t	i;
 	char	*dst;
-	int		len;
+	size_t	len;
 
 	i = 0;
 	len = ft_size(src, c);
@@ -42,10 +42,6 @@ char		*ft_strnccpy(char *src, char c)
 		dst[i] = src[i];
 		i++;
 	}
-	while (i < len)
-	{
-		dst[i] = '\0';
-		i++;
-	}
+	dst[i] = '\0';
 	return (dst);
 }

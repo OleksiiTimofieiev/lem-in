@@ -106,5 +106,6 @@ int					ft_isposint(char *str);
 int					ft_str_find_chr(const char *str, char c);
 void				ft_clean_2d_char(char **array);
 int					ft_check_quantity(char *str, char c, int quantity);
+char				*ft_strnccpy(char *src, char c);
 
 #endif

@@ -18,46 +18,28 @@ static	void	ft_error(void)
 	exit(0);
 }
 
-static	int		ft_valid_link(t_init *initial_data)
-{
-	char	*start;
-	char	*end;
-
-	// data: start, end, link rooms;
-
-	// to the int array;
-	// 1. save the start;
-	// 2. save the end;
-	// 3. save the link to the char *str;
-	// 4. check if the link contains start and end, and that the link is not the 1-1 type of;
-	// check that the line has the start and the end;
-
-	// if (!O.K.)
-	// 	K.O.
-
-	return (1);
-}
-
 static	int		ft_detect_link_start_end(t_init *initial_data)
 {
-	int link;
-	int start;
-	int end;
+	int		link;
+	int		start;
+	int		end;
+	t_init	*head;
 
 	link = 0;
 	start = 0;
 	end = 0;
-	while (initial_data)
+	head = initial_data;
+	while (head)
 	{
-		if (initial_data->type_of_the_line == 8)
+		if (head->type_of_the_line == LINK)
 			link++;
-		if (initial_data->type_of_the_line == 7)
+		else if (head->type_of_the_line == ROOM_END)
 			end++;
-		if (initial_data->type_of_the_line == 6)
+		else if (head->type_of_the_line == ROOM_START)
 			start++;
-		initial_data = initial_data->next;
+		head = head->next;
 	}
-	if (!link || !start || !end || (link == 1 && !ft_valid_link(initial_data)))
+	if (!link || !start || !end)
 		return (0);
 	return (1);
 }
