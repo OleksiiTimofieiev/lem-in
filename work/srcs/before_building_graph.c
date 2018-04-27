@@ -24,7 +24,7 @@ static	void	ft_error(void)
 
 static	int		ft_valid_link(t_init *initial_data)
 {
-	//data: start, end, link roomsl
+	//data: start, end, link rooms;
 	// split the link;
 	// check that the line has the start and the end;
 	return (0);
