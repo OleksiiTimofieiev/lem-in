@@ -14,9 +14,22 @@
 
 // no links available, 
 // if we do not have start and the end, 
-// we have only one link but the start is not connected with the end.
+// we have only one link but the start is not connected with the end or we have the 1-1 type of the link;
 
-static int		ft_detect_link_start_end(t_init *initial_data)
+static	void	ft_error(void)
+{
+	ft_printf("%s\n", "ERROR");
+	exit(0);
+}
+
+static	int		ft_detect_good_unique_link(t_init *initial_data)
+{
+	// split the link;
+	// check that the line has the start and the end;
+
+}
+
+static	int		ft_detect_link_start_end(t_init *initial_data)
 {
 	int link;
 	int start;
@@ -25,33 +38,25 @@ static int		ft_detect_link_start_end(t_init *initial_data)
 	link = 0;
 	start = 0;
 	end = 0;
-	if (initial_data == NULL)
-		return (0);
 	while (initial_data)
 	{
-		if (initial_data->type_of_the_lyne == 8)
+		if (initial_data->type_of_the_line == 8)
 			link++;
-		if (initial_data->type_of_the_lyne == 6)
-			start++;
-		if (initial_data->type_of_the_lyne == 7)
+		if (initial_data->type_of_the_line == 7)
+			end++;
+		if (initial_data->type_of_the_line == 6)
 			start++;
 		initial_data = initial_data->next;
 	}
-	if (!link || !start || !end)
+	if (!link || !start || !end || (link == 1 && !... ) )
 		return (0);
 	return (1);
 }
 
 void			ft_detect_input(t_init *initial_data) 
 {
-	if (!(ft_detect_link_start_end(initial_data)))
-	{
-		ft_printf("%s\n", "ERROR");
-		exit(0);
-	}
-	else if (...)
-	{
-		ft_printf("%s\n", "ERROR");
-		exit(0);
-	}
+	if (initial_data == NULL)
+		ft_error();
+	else if (!(ft_detect_link_start_end(initial_data)))
+		ft_error();
 }

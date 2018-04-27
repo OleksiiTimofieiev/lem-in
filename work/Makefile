@@ -18,6 +18,7 @@ SRCS =  ./srcs/general_functions.c \
 		./srcs/rooms_validation_aspects_function.c \
 		./srcs/links_check.c \
 		./srcs/validation_core.c \
+		./srcs/before_building_graph.c \
 		./srcs/main.c \
 
 HEADER = ./srcs/lem_in.h
