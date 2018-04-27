@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-void	ft_to_start(t_init **initial_data) // maybe delete;
+void	ft_to_start(t_init **initial_data)
 {
 	while ((*initial_data)->prev)
 		(*initial_data) = (*initial_data)->prev;
@@ -27,7 +27,7 @@ void	ft_print_ll(t_init *data)
 	}
 }
 
-int		main(void) // add build adjacency list method;
+int		main(void)
 {
 	t_init *initial_data;
 
