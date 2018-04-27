@@ -12,10 +12,6 @@
 
 #include "lem_in.h"
 
-// no links available, 
-// if we do not have start and the end, 
-// we have only one link but the start is not connected with the end or we have the 1-1 type of the link;
-
 static	void	ft_error(void)
 {
 	ft_printf("%s\n", "ERROR");
@@ -24,8 +20,13 @@ static	void	ft_error(void)
 
 static	int		ft_valid_link(t_init *initial_data)
 {
-	//data: start, end, link rooms;
-	// split the link;
+	// data: start, end, link rooms;
+
+	// to the int array;
+	// 1. save the start;
+	// 2. save the end;
+	// 3. save the link to the char *str;
+	// 4. check if the link contains start and end, and that the link is not the 1-1 type of;
 	// check that the line has the start and the end;
 	return (0);
 }
