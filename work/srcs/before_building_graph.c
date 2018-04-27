@@ -20,26 +20,26 @@ static	void	ft_error(void)
 
 static	int		ft_detect_link_start_end(t_init *initial_data)
 {
+	int ants;
 	int		link;
 	int		start;
 	int		end;
 	t_init	*head;
 
+	ants = 0;
 	link = 0;
 	start = 0;
 	end = 0;
 	head = initial_data;
 	while (head)
 	{
-		if (head->type_of_the_line == LINK)
-			link++;
-		else if (head->type_of_the_line == ROOM_END)
-			end++;
-		else if (head->type_of_the_line == ROOM_START)
-			start++;
+		(head->type_of_the_line == LINK) ? link++ : 0;
+		(head->type_of_the_line == ROOM_END) ? end++ : 0;
+		(head->type_of_the_line == ROOM_START) ? start++ : 0;
+		(head->type_of_the_line == ANTS_QUANTITY) ? ants++ : 0;
 		head = head->next;
 	}
-	if (!link || !start || !end)
+	if (!ants || !start || !end || !link)
 		return (0);
 	return (1);
 }

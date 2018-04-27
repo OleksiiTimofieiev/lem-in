@@ -14,8 +14,14 @@
 
 void	ft_to_start(t_init **initial_data)
 {
-	while ((*initial_data)->prev)
-		(*initial_data) = (*initial_data)->prev;
+	if (*initial_data)
+		while ((*initial_data)->prev)
+			(*initial_data) = (*initial_data)->prev;
+	else
+	{
+		ft_printf("\n%s\n", "ERROR");
+		exit(0);
+	}
 }
 
 void	ft_print_ll(t_init *data)
