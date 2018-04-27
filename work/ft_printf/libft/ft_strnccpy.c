@@ -15,7 +15,7 @@
 static int	ft_size(char *src, char c)
 {
 	int count;
-	
+
 	if (!src)
 		return (0);
 	count = 0;
@@ -30,12 +30,13 @@ static int	ft_size(char *src, char c)
 char		*ft_strnccpy(char *src, char c)
 {
 	size_t	i;
-	char 	*dst;
+	char	*dst;
 	int		len;
 
 	i = 0;
 	len = ft_size(src, c);
-	dst = (char*)malloc(sizeof(char) * len + 1);
+	if (!(dst = (char*)malloc(sizeof(char) * len + 1)))
+		return (NULL);
 	while (i < len && src[i] != '\0')
 	{
 		dst[i] = src[i];
