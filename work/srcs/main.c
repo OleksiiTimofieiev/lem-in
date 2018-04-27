@@ -34,8 +34,8 @@ int		main(void)
 	initial_data = NULL;
 	ft_validation(&initial_data);
 	ft_to_start(&initial_data);
-	ft_print_ll(initial_data);
 	ft_detect_input(initial_data);
+	ft_print_ll(initial_data);
 
 	system("leaks -q lem-in");
 	return (0);
