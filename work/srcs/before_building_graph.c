@@ -28,6 +28,7 @@ static	int		ft_valid_link(t_init *initial_data)
 	// 3. save the link to the char *str;
 	// 4. check if the link contains start and end, and that the link is not the 1-1 type of;
 	// check that the line has the start and the end;
+	
 	return (0);
 }
 
