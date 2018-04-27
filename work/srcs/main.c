@@ -27,20 +27,6 @@ void	ft_print_ll(t_init *data)
 	}
 }
 
-// no links available, 
-// if we do not have start and the end, 
-// we have only one link but the start is not connected with the end.
-
-void	ft_detect_input(t_init *initial_data) 
-{
-	if (!initial_data)
-	{
-		ft_printf("%s\n", "ERROR");
-		exit(0);
-	}
-	
-}
-
 int		main(void) // add build adjacency list method;
 {
 	t_init *initial_data;
