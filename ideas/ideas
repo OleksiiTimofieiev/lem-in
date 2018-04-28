@@ -2,6 +2,8 @@ Building the adjacency matrix:
 - http://opendatastructures.org/ods-java/12_1_AdjacencyMatrix_Repres.html
 
 Buiding the adjecency list:
+- https://www.geeksforgeeks.org/graph-and-its-representations/
+- https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/representing-graphs
 - https://github.com/search?l=C&q=adjacency+list+c&type=Repositories&utf8=✓
 - https://www.sanfoundry.com/cpp-program-represent-graph-using-linked-list/
 - http://math.hws.edu/eck/cs327_s04/chapter8.pdf
@@ -22,9 +24,9 @@ Buiding the adjecency list:
 - http://www.martinbroadhurst.com/graph-data-structures.html
 - https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
 - https://medium.com/basecs/from-theory-to-practice-representing-graphs-cfd782c5be38
+- https://medium.com/basecs/a-gentle-introduction-to-graph-theory-77969829ead8
 - https://www.sanfoundry.com/c-program-represent-graph-adjacency-list/
 - https://stackoverflow.com/questions/5324914/adjacency-list-graph-implementation-in-c-any-libraries
-- https://medium.com/basecs/a-gentle-introduction-to-graph-theory-77969829ead8
 - https://www.youtube.com/watch?v=dRPzPwzslK0
 - https://stackoverflow.com/questions/20197463/the-best-way-to-store-graph-into-the-memory
 - http://www.cprograms.in/Graphs/adjacency-list.html
