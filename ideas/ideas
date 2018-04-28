@@ -38,8 +38,11 @@ Buiding the adjecency list:
 - https://www.programiz.com/dsa/graph-adjacency-list
 - https://algorithms.tutorialhorizon.com/graph-representation-adjacency-matrix-and-adjacency-list/
 - http://faculty.cse.tamu.edu/djimenez/ut/utsa/cs1723/lecture15.html
+- https://gist.github.com/dtinth/342069
+- https://www.roseindia.net/tutorial/datastructure/graph.html
 
 BFS:
+- https://www.youtube.com/watch?v=s-CYnVz-uh4&t=305s
 - https://workshape.github.io/visual-graph-algorithms/
 - https://www.thecrazyprogrammer.com/2015/09/breadth-first-search-bfs-program-in-c.html
 - https://stackoverflow.com/questions/39803712/implementing-bfs-algorithm-with-a-max-depth-and-that-prints-all-shortest-paths
@@ -50,6 +53,7 @@ BFS:
 - https://www.youtube.com/watch?v=ZVJFOrsHxMs
 - https://www.youtube.com/watch?v=5pNIul92cj0
 - https://www.youtube.com/watch?v=1wu2sojwsyQ
+- https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e
 - https://ru.wikipedia.org/wiki/Поиск_в_ширину 
 - http://c-program-example.com/2011/10/c-program-to-implement-breadth-first-search-bfs.html
 - https://en.wikipedia.org/wiki/Graph_traversal
