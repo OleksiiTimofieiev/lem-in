@@ -33,7 +33,13 @@ void	ft_print_ll(t_init *data)
 	}
 }
 
-void	ft_print_lg(t_vertex *vertex)
+void	ft_init(t_init **init, t_vertex **vertex)
+{
+	*init = NULL;
+	*vertex = NULL;
+}
+
+void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
 {
 	while (vertex)
 	{
@@ -47,16 +53,15 @@ int		main(void)
 	t_init		*initial_data;
 	t_vertex	*graph;
 
-	initial_data = NULL; // create init function;
-	graph = NULL; // create init function;
 
+	ft_init(&initial_data, &graph);
 	ft_validation(&initial_data);
 	ft_to_start(&initial_data);
 	ft_detect_input(initial_data);
 	ft_print_ll(initial_data);
 	ft_build_vertex_structure(initial_data, &graph);
 
-	ft_print_lg(graph);
+	ft_print_lg(graph);  // intermidiaty function;
 
 
 
