@@ -46,7 +46,7 @@ int		main(void)
 	ft_detect_input(initial_data);
 	ft_print_ll(initial_data);
 
-	ft_build_vertex_structure(initial_data);
+	ft_build_vertex_structure(initial_data, graph);
 
 
 	system("leaks -q lem-in");

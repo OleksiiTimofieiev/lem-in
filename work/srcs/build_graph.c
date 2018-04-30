@@ -12,6 +12,21 @@
 
 #include "lem_in.h"
 
+static t_vertex	*ft_vertex_builder(char *line)
+{
+	t_vertex	*tmp;
+	char		**medium_array;
+
+	if (!(tmp = (t_vertex*)malloc(sizeof(t_vertex))))
+		return (NULL);
+	medium_array = ft_strsplit(line, ' ');
+	tmp->vertex_name = ft_strdup(medium_array[0]);
+	ft_clean_2d_char(medium_array);
+	tmp->e_head = NULL;
+	tmp->v_head = NULL;
+	return (tmp);
+}
+
 static int		ft_valid_type_of_the_line(int type_of_the_line)
 {
 	if (type_of_the_line == ROOM || type_of_the_line == ROOM_START
@@ -20,12 +35,21 @@ static int		ft_valid_type_of_the_line(int type_of_the_line)
 	return (0);
 }
 
-void	ft_build_vertex_structure(t_init *initial_data)
+void	ft_build_vertex_structure(t_init *initial_data, t_vertex *graph)
 {
 	while (initial_data)
 	{
 		if (ft_valid_type_of_the_line(initial_data->type_of_the_line))
-			ft_printf("%s\n", "O.K.");
+		{
+			if (!graph)
+				graph = ft_vertex_builder(initial_data->valid_line);
+			else
+			{				
+				while (graph->v_head)
+					graph = graph->v_head;
+				graph->v_head = ft_vertex_builder(initial_data->valid_line);
+			}
+		}
 		initial_data = initial_data->next;
 	}
 }
