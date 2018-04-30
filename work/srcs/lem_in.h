@@ -57,8 +57,8 @@ typedef struct			s_edge
 typedef struct			s_vertex
 {
 	char				*vertex_name;
-	struct s_edge		*e_head;
-	struct s_vertex		*v_head;
+	struct s_edge		*e_next;
+	struct s_vertex		*v_next;
 }						t_vertex;
 
 /*
@@ -81,6 +81,6 @@ void					ft_detect_input(t_init *initial_data);
 **-------------------------   list of functions to build a graph  --------------
 */
 
-void	ft_build_vertex_structure(t_init *initial_data, t_vertex *link);
+void					ft_build_vertex_structure(t_init *initial_data, t_vertex **vertex);
 
 #endif

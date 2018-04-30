@@ -33,6 +33,15 @@ void	ft_print_ll(t_init *data)
 	}
 }
 
+void	ft_print_lg(t_vertex *vertex)
+{
+	while (vertex)
+	{
+		ft_printf("%s\n", vertex->vertex_name);
+		vertex = vertex->v_next;
+	}
+}
+
 int		main(void)
 {
 	t_init		*initial_data;
@@ -45,8 +54,10 @@ int		main(void)
 	ft_to_start(&initial_data);
 	ft_detect_input(initial_data);
 	ft_print_ll(initial_data);
+	ft_build_vertex_structure(initial_data, &graph);
 
-	ft_build_vertex_structure(initial_data, graph);
+	ft_print_lg(graph);
+
 
 
 	system("leaks -q lem-in");

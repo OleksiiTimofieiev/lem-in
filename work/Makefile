@@ -19,7 +19,7 @@ SRCS =  ./srcs/general_functions.c \
 		./srcs/links_check.c \
 		./srcs/validation_core.c \
 		./srcs/before_building_graph.c \
-		./srcs/build_graph.c \
+		./srcs/build_graph_vertex.c \
 		./srcs/main.c \
 
 HEADER = ./srcs/lem_in.h
