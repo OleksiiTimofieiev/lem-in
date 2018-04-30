@@ -81,6 +81,6 @@ void					ft_detect_input(t_init *initial_data);
 **-------------------------   list of functions to build a graph  --------------
 */
 
-void					ft_build_vertex_structure(t_init *initial_data, t_vertex **vertex);
+void					ft_build_vertex_structure(t_init *i_d, t_vertex **ver);
 
 #endif

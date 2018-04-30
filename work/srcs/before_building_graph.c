@@ -20,7 +20,7 @@ static	void	ft_error(void)
 
 static	int		ft_detect_link_start_end(t_init *initial_data)
 {
-	int ants;
+	int		ants;
 	int		link;
 	int		start;
 	int		end;
