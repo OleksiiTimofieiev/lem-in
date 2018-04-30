@@ -45,6 +45,23 @@ typedef struct			s_init
 }						t_init;
 
 /*
+**---------------------------   graph data structure  --------------------------
+*/
+
+typedef struct			s_edge
+{
+	char				*name_of_the_connected_room;
+	struct s_edge		*next;
+}						t_edge;
+
+typedef struct			s_vertex
+{
+	char				*vertex_name;
+	struct s_edge		*e_head;
+	struct s_vertex		*v_head;
+}						t_vertex;
+
+/*
 **-------------------------   list of functions for validation  ----------------
 */
 
@@ -63,5 +80,7 @@ void					ft_detect_input(t_init *initial_data);
 /*
 **-------------------------   list of functions to build a graph  --------------
 */
+
+void	ft_build_vertex_structure(t_init *initial_data);
 
 #endif
