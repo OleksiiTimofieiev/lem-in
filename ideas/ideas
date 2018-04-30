@@ -3,51 +3,38 @@ Building the adjacency matrix:
 
 Buiding the adjecency list:
 - intra forum
-- https://www.geeksforgeeks.org/graph-and-its-representations/
-- https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/representing-graphs
-- https://github.com/search?l=C&q=adjacency+list+c&type=Repositories&utf8=✓
-- https://www.sanfoundry.com/cpp-program-represent-graph-using-linked-list/
-- http://math.hws.edu/eck/cs327_s04/chapter8.pdf
-- http://wikistack.com/graph-adjacency-list-representation-c/
-- http://www.cs.princeton.edu/courses/archive/spr02/cs226/lectures/undirected-4up.pdf
-- http://www.programmingworldtech.com/2014/03/bfs-and-dfs-on-graph-represented-using.html
-- https://stackoverflow.com/questions/16876327/graph-implementation-with-adjacency-lists-in-c
-- http://iamsoftwareengineer.blogspot.com/2012/06/c-graph-implementation-with-adjacency.html
-- https://www.youtube.com/watch?v=zVrPdF7f4-I
-- https://www.youtube.com/watch?v=e5IAmuSYDHQ
-- https://www.youtube.com/watch?v=rerVzVtTu8A
-- https://www.youtube.com/watch?v=kRxXZI2FWic
-- https://www.youtube.com/watch?v=X-filsfR_S8
-- https://gist.github.com/tahia-khan/875671ae5e22483919e3
-- https://www.youtube.com/watch?v=WtfGRS1BsBI&index=31&list=PL9Dk8axBIC8Tr_AfR928n7t7UTtFp5pRC
-- https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
-- https://www.geeksforgeeks.org/graph-and-its-representations/
-- http://www.martinbroadhurst.com/graph-data-structures.html
-- https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
-- https://medium.com/basecs/from-theory-to-practice-representing-graphs-cfd782c5be38
-- https://medium.com/basecs/a-gentle-introduction-to-graph-theory-77969829ead8
-- https://www.sanfoundry.com/c-program-represent-graph-adjacency-list/
-- https://stackoverflow.com/questions/5324914/adjacency-list-graph-implementation-in-c-any-libraries
-- https://www.youtube.com/watch?v=dRPzPwzslK0
-- https://stackoverflow.com/questions/20197463/the-best-way-to-store-graph-into-the-memory
-- http://www.cprograms.in/Graphs/adjacency-list.html
-- https://www.sanfoundry.com/c-program-implement-adjacency-list/
-- https://codereview.stackexchange.com/questions/142444/implementing-an-adjacency-list-in-c
-- http://www.techiedelight.com/implement-graph-data-structure-c/
-- http://lagodiuk.github.io/computer_science/2016/12/19/efficient_adjacency_lists_in_c.html
-- http://simplestcodings.blogspot.com/2013/09/graphs.html
+- http://www.cs.princeton.edu/courses/archive/spr02/cs226/lectures/undirected-4up.pdf - general ADT structure;
 - https://www.programiz.com/dsa/graph-adjacency-list
-- https://algorithms.tutorialhorizon.com/graph-representation-adjacency-matrix-and-adjacency-list/
-- http://faculty.cse.tamu.edu/djimenez/ut/utsa/cs1723/lecture15.html
-- https://gist.github.com/dtinth/342069
-- https://www.roseindia.net/tutorial/datastructure/graph.html
+- https://www.youtube.com/watch?v=X-filsfR_S8 - general ADT and adj list implemantation;
+- http://iamsoftwareengineer.blogspot.com/2012/06/c-graph-implementation-with-adjacency.html - general ADT;
+- https://www.geeksforgeeks.org/graph-and-its-representations/ - way ti implement a graph;
+- https://github.com/search?l=C&q=adjacency+list+c&type=Repositories&utf8=✓ - different ways to implement a graph;
+- https://www.sanfoundry.com/cpp-program-represent-graph-using-linked-list/ - way to create adj list;
+- http://wikistack.com/graph-adjacency-list-representation-c/ - way to create adj list;
+- https://www.youtube.com/watch?v=zVrPdF7f4-I - C++ implementation;
+- https://www.youtube.com/watch?v=e5IAmuSYDHQ - C implementation;
+- https://www.youtube.com/watch?v=rerVzVtTu8A - C implementation;
+- https://www.youtube.com/watch?v=kRxXZI2FWic - C implementation;
+- http://www.martinbroadhurst.com/graph-data-structures.html - general;
+- https://www.sanfoundry.com/c-program-represent-graph-adjacency-list/ - c implementation;
+- http://www.cprograms.in/Graphs/adjacency-list.html - c implementation;
+- https://www.sanfoundry.com/c-program-implement-adjacency-list/ - c implementation;
+- https://codereview.stackexchange.com/questions/142444/implementing-an-adjacency-list-in-c - c implemantation;
+- http://www.techiedelight.com/implement-graph-data-structure-c/ - +;
+- http://lagodiuk.github.io/computer_science/2016/12/19/efficient_adjacency_lists_in_c.html - alternative way;
+- http://simplestcodings.blogspot.com/2013/09/graphs.html - cool;
+- https://gist.github.com/dtinth/342069 - cool;
 
 BFS:
 - https://www.youtube.com/watch?v=ZVJFOrsHxMs&t=246s
 - https://www.youtube.com/watch?v=s-CYnVz-uh4&t=305s
+- http://www.programmingworldtech.com/2014/03/bfs-and-dfs-on-graph-represented-using.html
 - https://workshape.github.io/visual-graph-algorithms/
 - https://www.thecrazyprogrammer.com/2015/09/breadth-first-search-bfs-program-in-c.html
+- http://faculty.cse.tamu.edu/djimenez/ut/utsa/cs1723/lecture15.html
+- http://math.hws.edu/eck/cs327_s04/chapter8.pdf
 - https://stackoverflow.com/questions/39803712/implementing-bfs-algorithm-with-a-max-depth-and-that-prints-all-shortest-paths
+- https://www.roseindia.net/tutorial/datastructure/graph.html
 - https://github.com/search?l=C&q=Breadth+First+Search&type=Repositories&utf8=✓
 - http://www.roman10.net/2011/05/21/graph-traversal-using-queue-a-c-implementation/
 - http://www.kaushikbaruah.com/posts/algorithms-in-c-breadth-first-search/
