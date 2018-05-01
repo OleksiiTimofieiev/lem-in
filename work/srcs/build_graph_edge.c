@@ -44,17 +44,17 @@ void 	add_data_to_the_vertex(t_vertex *vertex, char *medium)
 
 t_vertex	*ft_find_vetex_according_to_a_link(t_vertex *vertex, char *str) // find for the second;
 {
-	char **medium2;
+	char **medium;
 
 	while (vertex)
 	{
-		medium2 = ft_strsplit(vertex->vertex_name, ' ');
-		if (ft_strequ(medium2[0], str))
+		medium = ft_strsplit(vertex->vertex_name, ' ');
+		if (ft_strequ(medium[0], str))
 		{
-			ft_clean_2d_char(medium2);
+			ft_clean_2d_char(medium);
 			return (vertex);
 		}
-		ft_clean_2d_char(medium2);
+		ft_clean_2d_char(medium);
 		vertex = vertex->v_next;
 	}
 	return (NULL);
@@ -65,6 +65,8 @@ void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
 	t_vertex	*current;
 	char		**medium;
 
+	current = NULL; // maybe delete;
+	medium = NULL; // maybe delete;
 	while (initial_data)
 	{
 		if (ft_valid_type_of_the_line(initial_data->type_of_the_line))
@@ -72,8 +74,12 @@ void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
 			medium = ft_strsplit(initial_data->valid_line, '-');
 			current = ft_find_vetex_according_to_a_link(vertex, medium[0]);
 			add_data_to_the_vertex(current, *medium);
+
 			ft_clean_2d_char(medium);
 		}
+		current = NULL; // maybe delete;
+		medium = NULL; // maybe delete;
+		
 		initial_data = initial_data->next;
 	}
 }
