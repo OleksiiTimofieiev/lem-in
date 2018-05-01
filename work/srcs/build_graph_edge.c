@@ -32,14 +32,15 @@ static int		ft_valid_type_of_the_line(int type_of_the_line)
 
 void 	add_data_to_the_vertex(t_vertex *vertex, char *medium)
 {
+	t_edge *tmp = vertex->e_next;
 
 	if (!vertex->e_next)
 		vertex->e_next = ft_edge_builder(&medium[1]);
 	else
 	{
-		while (vertex->e_next->next)
-			vertex->e_next = vertex->e_next->next;
-		vertex->e_next->next = ft_edge_builder(&medium[1]);
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = ft_edge_builder(&medium[1]);
 	}
 
 }
