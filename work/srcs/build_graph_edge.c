@@ -12,16 +12,16 @@
 
 #include "lem_in.h"
 
-// static t_edge	*ft_edge_builder(char *line)
-// {
-// 	t_edge	*tmp;
+static t_edge	*ft_edge_builder(char *line)
+{
+	t_edge	*tmp;
 
-// 	if (!(tmp = (t_edge*)malloc(sizeof(t_edge))))
-// 		return (NULL);
-// 	tmp->room_name = ft_strdup(line);
-// 	tmp->next = NULL;
-// 	return (tmp);
-// }
+	if (!(tmp = (t_edge*)malloc(sizeof(t_edge))))
+		return (NULL);
+	tmp->room_name = ft_strdup(line);
+	tmp->next = NULL;
+	return (tmp);
+}
 
 static int		ft_valid_type_of_the_line(int type_of_the_line)
 {
@@ -85,6 +85,26 @@ static int		ft_valid_type_of_the_line(int type_of_the_line)
 // 	}
 // 	ft_clean_2d_char(medium);
 // }
+void 	add_data_to_the_vertex(t_vertex *vertex, char **medium)
+{
+	if (!vertex->e_next)
+	{
+		// ft_printf("vertex->name = %s\n", vertex->vertex_name);
+		vertex->e_next = ft_edge_builder(medium[1]);
+		// ft_printf("edge->name%s\n", vertex->e_next->room_name);
+
+
+	}
+	else
+	{
+		// ft_printf("vertex->name = %s\n", vertex->vertex_name);
+
+		while (vertex->e_next->next)
+			vertex->e_next = vertex->e_next->next;
+		vertex->e_next->next = ft_edge_builder(medium[1]);
+		// ft_printf("edge->name%s\n", vertex->e_next->room_name);
+	}
+}
 
 t_vertex	*ft_find_vetex_according_to_a_link(t_vertex *vertex, char *str) // find for the second;
 {
@@ -117,12 +137,12 @@ void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
 		{
 			medium = ft_strsplit(initial_data->valid_line, '-');
 			current = ft_find_vetex_according_to_a_link(vertex, medium[0]);
+			ft_printf("macro->name%s\n", current->vertex_name);
+			add_data_to_the_vertex(vertex, medium);
+		
 
-			// ft_printf("current->vertex_name%s\n", current->vertex_name);
 
 			ft_clean_2d_char(medium);
-
-			// free;
 		}
 		initial_data = initial_data->next;
 	}
