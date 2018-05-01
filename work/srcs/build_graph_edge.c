@@ -35,6 +35,8 @@ static void			data_to_vertex(t_vertex *vertex, char **medium, int flag)
 	t_edge *tmp;
 
 	tmp = vertex->e_next;
+	// if (flag == 0)
+	// 	return ;
 	if (!vertex->e_next)
 	{
 		if (flag == 0)
