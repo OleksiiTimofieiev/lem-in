@@ -23,13 +23,6 @@ static t_edge		*ft_edge_builder(char *line)
 	return (tmp);
 }
 
-static int			ft_valid_type_of_the_line(int type_of_the_line)
-{
-	if (type_of_the_line == LINK)
-		return (1);
-	return (0);
-}
-
 static void			data_to_vertex(t_vertex *vertex, char **medium, int flag)
 {
 	t_edge *tmp;
@@ -81,7 +74,7 @@ void				ft_build_edge_structure(t_init *ini, t_vertex *vertex)
 
 	while (ini)
 	{
-		if (ft_valid_type_of_the_line(ini->type_of_the_line))
+		if (ini->type_of_the_line == LINK)
 		{
 			flag = 0;
 			medium = ft_strsplit(ini->valid_line, '-');
