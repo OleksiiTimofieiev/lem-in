@@ -32,6 +32,7 @@ static int		ft_valid_type_of_the_line(int type_of_the_line)
 
 void 	add_data_to_the_vertex(t_vertex *vertex, char *medium)
 {
+
 	if (!vertex->e_next)
 		vertex->e_next = ft_edge_builder(&medium[1]);
 	else
@@ -40,9 +41,10 @@ void 	add_data_to_the_vertex(t_vertex *vertex, char *medium)
 			vertex->e_next = vertex->e_next->next;
 		vertex->e_next->next = ft_edge_builder(&medium[1]);
 	}
+
 }
 
-t_vertex	*ft_find_vetex_according_to_a_link(t_vertex *vertex, char *str) // find for the second;
+t_vertex	*ft_find_vetex_according_to_a_link(t_vertex *vertex, char *str) // find for the second -> two functions or two pointers;
 {
 	char **medium;
 
@@ -72,7 +74,9 @@ void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
 		if (ft_valid_type_of_the_line(initial_data->type_of_the_line))
 		{
 			medium = ft_strsplit(initial_data->valid_line, '-');
+
 			current = ft_find_vetex_according_to_a_link(vertex, medium[0]);
+			
 			add_data_to_the_vertex(current, *medium);
 
 			ft_clean_2d_char(medium);
