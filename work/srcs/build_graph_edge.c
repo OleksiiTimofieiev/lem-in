@@ -30,22 +30,31 @@ static int		ft_valid_type_of_the_line(int type_of_the_line)
 	return (0);
 }
 
-void			add_data_to_the_vertex(t_vertex *vertex, char *medium)
+void			add_data_to_the_vertex(t_vertex *vertex, char **medium, int flag)
 {
 	t_edge *tmp;
 
 	tmp = vertex->e_next;
 	if (!vertex->e_next)
-		vertex->e_next = ft_edge_builder(&medium[1]);
+	{
+		if (flag == 0)
+			vertex->e_next = ft_edge_builder(medium[1]);
+		else
+			vertex->e_next = ft_edge_builder(medium[0]);
+	}
 	else
 	{
 		while (tmp->next)
 			tmp = tmp->next;
-		tmp->next = ft_edge_builder(&medium[1]);
+		if (flag == 0)
+			tmp->next = ft_edge_builder(medium[1]);
+		else
+			tmp->next = ft_edge_builder(medium[0]);
+
 	}
 }
 
-t_vertex		*ft_find_vertex(t_vertex *vertex, char *str)  // find for the second -> two functions or two pointers;
+t_vertex		*ft_find_vertex(t_vertex *vertex, char *str)
 {
 	char **medium;
 
@@ -65,6 +74,7 @@ t_vertex		*ft_find_vertex(t_vertex *vertex, char *str)  // find for the second -
 
 void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
 {
+	int			flag;
 	t_vertex	*current;
 	char		**medium;
 
@@ -72,9 +82,17 @@ void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
 	{
 		if (ft_valid_type_of_the_line(initial_data->type_of_the_line))
 		{
+			flag = 0;
 			medium = ft_strsplit(initial_data->valid_line, '-');
-			current = ft_find_vertex(vertex, medium[0]);
-			add_data_to_the_vertex(current, *medium);
+
+			current = ft_find_vertex(vertex, medium[0]);			
+			add_data_to_the_vertex(current, medium, flag++);
+
+			current = ft_find_vertex(vertex, medium[1]);			
+			add_data_to_the_vertex(current, medium, flag);
+
+
+
 			ft_clean_2d_char(medium);
 		}
 		initial_data = initial_data->next;

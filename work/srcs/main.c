@@ -41,9 +41,22 @@ void	ft_init(t_init **init, t_vertex **vertex)
 
 void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
 {
+	t_edge *tmp;
+
 	while (vertex)
 	{
-		ft_printf("%s\n", vertex->vertex_name);
+
+		ft_printf("%s ->", vertex->vertex_name);
+		tmp = vertex->e_next;
+		while (tmp)
+		{
+			ft_printf(" %s", tmp->room_name);
+			tmp = tmp->next;
+		}
+		ft_printf("\n");
+
+
+
 		vertex = vertex->v_next;
 	}
 }
@@ -63,7 +76,7 @@ int		main(void)
 	ft_build_edge_structure(initial_data, graph);
 
 
-	// ft_print_lg(graph);  // intermidiaty function;
+	ft_print_lg(graph);  // intermidiaty function;
 
 
 
