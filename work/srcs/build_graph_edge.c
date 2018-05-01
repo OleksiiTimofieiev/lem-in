@@ -23,13 +23,34 @@ static t_edge		*ft_edge_builder(char *line)
 	return (tmp);
 }
 
+static int			repeat_check(t_edge *general, char **medium, int flag)
+{
+	char *check_str;
+
+	if (flag == 0)
+		check_str = ft_strdup(medium[1]);
+	else
+		check_str = ft_strdup(medium[0]);
+	while (general)
+	{
+		if (ft_strequ(general->room_name, check_str))
+		{
+			free(check_str);
+			return (1);
+		}
+		general = general->next;
+	}
+	free(check_str);
+	return (0);
+}
+
 static void			data_to_vertex(t_vertex *vertex, char **medium, int flag)
 {
 	t_edge *tmp;
 
 	tmp = vertex->e_next;
-	// if (flag == 0) in func if flag == 0 || flag == 1;
-	// 	return ;
+	if (repeat_check(vertex->e_next, medium, flag))
+		return ;
 	if (!vertex->e_next)
 	{
 		if (flag == 0)
@@ -79,9 +100,9 @@ void				ft_build_edge_structure(t_init *ini, t_vertex *vertex)
 			flag = 0;
 			medium = ft_strsplit(ini->valid_line, '-');
 			current = ft_find_vertex(vertex, medium[0]);
-			data_to_vertex(current, medium, flag++); // begin;
+			data_to_vertex(current, medium, flag++);
 			current = ft_find_vertex(vertex, medium[1]);
-			data_to_vertex(current, medium, flag); // end;
+			data_to_vertex(current, medium, flag);
 			ft_clean_2d_char(medium);
 		}
 		ini = ini->next;
