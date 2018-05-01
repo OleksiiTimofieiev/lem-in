@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-static t_edge	*ft_edge_builder(char *line)
+static t_edge		*ft_edge_builder(char *line)
 {
 	t_edge	*tmp;
 
@@ -23,14 +23,14 @@ static t_edge	*ft_edge_builder(char *line)
 	return (tmp);
 }
 
-static int		ft_valid_type_of_the_line(int type_of_the_line)
+static int			ft_valid_type_of_the_line(int type_of_the_line)
 {
 	if (type_of_the_line == LINK)
 		return (1);
 	return (0);
 }
 
-void			add_data_to_vertex(t_vertex *vertex, char **medium, int flag)
+static void			data_to_vertex(t_vertex *vertex, char **medium, int flag)
 {
 	t_edge *tmp;
 
@@ -53,7 +53,7 @@ void			add_data_to_vertex(t_vertex *vertex, char **medium, int flag)
 	}
 }
 
-t_vertex		*ft_find_vertex(t_vertex *vertex, char *str)
+static t_vertex		*ft_find_vertex(t_vertex *vertex, char *str)
 {
 	char **medium;
 
@@ -71,24 +71,24 @@ t_vertex		*ft_find_vertex(t_vertex *vertex, char *str)
 	return (NULL);
 }
 
-void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
+void				ft_build_edge_structure(t_init *ini, t_vertex *vertex)
 {
 	int			flag;
 	t_vertex	*current;
 	char		**medium;
 
-	while (initial_data)
+	while (ini)
 	{
-		if (ft_valid_type_of_the_line(initial_data->type_of_the_line))
+		if (ft_valid_type_of_the_line(ini->type_of_the_line))
 		{
 			flag = 0;
-			medium = ft_strsplit(initial_data->valid_line, '-');
+			medium = ft_strsplit(ini->valid_line, '-');
 			current = ft_find_vertex(vertex, medium[0]);
-			add_data_to_vertex(current, medium, flag++);
+			data_to_vertex(current, medium, flag++);
 			current = ft_find_vertex(vertex, medium[1]);
-			add_data_to_vertex(current, medium, flag);
+			data_to_vertex(current, medium, flag);
 			ft_clean_2d_char(medium);
 		}
-		initial_data = initial_data->next;
+		ini = ini->next;
 	}
 }
