@@ -89,7 +89,7 @@ void 	add_data_to_the_vertex(t_vertex *vertex, char **medium)
 {
 	if (!vertex->e_next)
 	{
-		// ft_printf("vertex->name = %s\n", vertex->vertex_name);
+		ft_printf("vertex->name = %s\n", vertex->vertex_name);
 		vertex->e_next = ft_edge_builder(medium[1]);
 		// ft_printf("edge->name%s\n", vertex->e_next->room_name);
 
@@ -137,7 +137,7 @@ void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
 		{
 			medium = ft_strsplit(initial_data->valid_line, '-');
 			current = ft_find_vetex_according_to_a_link(vertex, medium[0]);
-			ft_printf("macro->name%s\n", current->vertex_name);
+			// ft_printf("macro->name%s\n", current->vertex_name);
 			add_data_to_the_vertex(vertex, medium);
 		
 
