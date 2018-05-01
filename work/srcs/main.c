@@ -60,6 +60,8 @@ int		main(void)
 	ft_detect_input(initial_data);
 	ft_print_ll(initial_data);
 	ft_build_vertex_structure(initial_data, &graph);
+	ft_build_edge_structure(initial_data, graph);
+
 
 	ft_print_lg(graph);  // intermidiaty function;
 
