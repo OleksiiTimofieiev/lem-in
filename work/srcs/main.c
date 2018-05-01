@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-void	ft_to_start(t_init **initial_data)
+void	ft_to_start(t_init **initial_data) // el kostello ultima;s
 {
 	if (*initial_data)
 		while ((*initial_data)->prev)
@@ -54,9 +54,6 @@ void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
 			tmp = tmp->next;
 		}
 		ft_printf("\n");
-
-
-
 		vertex = vertex->v_next;
 	}
 }
@@ -65,7 +62,6 @@ int		main(void)
 {
 	t_init		*initial_data;
 	t_vertex	*graph;
-
 
 	ft_init(&initial_data, &graph);
 	ft_validation(&initial_data);
