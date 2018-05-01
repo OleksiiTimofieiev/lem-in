@@ -32,7 +32,12 @@ static int		ft_valid_type_of_the_line(int type_of_the_line)
 
 static void		ft_add_data_to_the_edge(t_vertex *vertex, char **medium)
 {
-	if (ft_strequ(vertex->vertex_name, medium))
+	if (ft_strequ(vertex->vertex_name, medium[0]))
+		ft_printf("%s\n", "1");
+	else if (ft_strequ(vertex->vertex_name, medium[1]))
+		ft_printf("%s\n", "2");
+
+	
 }
 
 static void	ft_add_edge(t_vertex *vertex, char *valid_line)
@@ -43,10 +48,11 @@ static void	ft_add_edge(t_vertex *vertex, char *valid_line)
 
 	while (vertex)
 	{
-		ft_printf("%s\n", vertex->vertex_name);
+		// ft_printf("%s\n", vertex->vertex_name);
 		
-		ft_printf("m0->%s\n", medium[0]);
-		ft_printf("m1->%s\n", medium[1]);
+		// ft_printf("m0->%s\n", medium[0]);
+		// ft_printf("m1->%s\n", medium[1]);
+		ft_add_data_to_the_edge(vertex, medium);
 
 		vertex = vertex->v_next;
 	}

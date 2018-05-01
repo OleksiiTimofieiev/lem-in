@@ -63,7 +63,7 @@ int		main(void)
 	ft_build_edge_structure(initial_data, graph);
 
 
-	ft_print_lg(graph);  // intermidiaty function;
+	// ft_print_lg(graph);  // intermidiaty function;
 
 
 
