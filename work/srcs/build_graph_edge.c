@@ -79,9 +79,9 @@ void				ft_build_edge_structure(t_init *ini, t_vertex *vertex)
 			flag = 0;
 			medium = ft_strsplit(ini->valid_line, '-');
 			current = ft_find_vertex(vertex, medium[0]);
-			data_to_vertex(current, medium, flag++);
+			data_to_vertex(current, medium, flag++); // begin;
 			current = ft_find_vertex(vertex, medium[1]);
-			data_to_vertex(current, medium, flag);
+			data_to_vertex(current, medium, flag); // end;
 			ft_clean_2d_char(medium);
 		}
 		ini = ini->next;
