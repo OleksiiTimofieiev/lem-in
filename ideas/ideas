@@ -72,6 +72,7 @@ Finding paths:
 - https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
 
 Misc: 
+- array of * to func, graph can be an array of pointers;
 - find the shortest way (from the start or from special point);
 - best ways to go through the linked list and the queque (maybe some sort of the search algorithm)
 - i don`t need to keep the quantity of ants in the each specific node;
