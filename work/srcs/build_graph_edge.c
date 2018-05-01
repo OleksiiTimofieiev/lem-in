@@ -96,12 +96,11 @@ t_vertex	*ft_find_vetex_according_to_a_link(t_vertex *vertex, char *str) // find
 		medium = ft_strsplit(vertex->vertex_name, ' ');
 		if (ft_strequ(medium[0], str))
 		{
-			ft_printf("O.K.\n");
+			// ft_printf("O.K.\n");
 			ft_clean_2d_char(medium);
 			return (vertex);
 		}
-			ft_clean_2d_char(medium);
-		
+		ft_clean_2d_char(medium);
 		vertex = vertex->v_next;
 	}
 	return (NULL);
@@ -119,7 +118,7 @@ void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
 			medium = ft_strsplit(initial_data->valid_line, '-');
 			current = ft_find_vetex_according_to_a_link(vertex, medium[0]);
 
-			ft_printf("current->vertex_name%s\n", current->vertex_name);
+			// ft_printf("current->vertex_name%s\n", current->vertex_name);
 
 			ft_clean_2d_char(medium);
 
