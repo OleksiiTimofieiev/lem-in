@@ -30,7 +30,7 @@ static int		ft_valid_type_of_the_line(int type_of_the_line)
 	return (0);
 }
 
-void			add_data_to_the_vertex(t_vertex *vertex, char **medium, int flag)
+void			add_data_to_vertex(t_vertex *vertex, char **medium, int flag)
 {
 	t_edge *tmp;
 
@@ -50,7 +50,6 @@ void			add_data_to_the_vertex(t_vertex *vertex, char **medium, int flag)
 			tmp->next = ft_edge_builder(medium[1]);
 		else
 			tmp->next = ft_edge_builder(medium[0]);
-
 	}
 }
 
@@ -84,15 +83,10 @@ void			ft_build_edge_structure(t_init *initial_data, t_vertex *vertex)
 		{
 			flag = 0;
 			medium = ft_strsplit(initial_data->valid_line, '-');
-
-			current = ft_find_vertex(vertex, medium[0]);			
-			add_data_to_the_vertex(current, medium, flag++);
-
-			current = ft_find_vertex(vertex, medium[1]);			
-			add_data_to_the_vertex(current, medium, flag);
-
-
-
+			current = ft_find_vertex(vertex, medium[0]);
+			add_data_to_vertex(current, medium, flag++);
+			current = ft_find_vertex(vertex, medium[1]);
+			add_data_to_vertex(current, medium, flag);
 			ft_clean_2d_char(medium);
 		}
 		initial_data = initial_data->next;
