@@ -50,7 +50,7 @@ typedef struct			s_init
 
 typedef struct			s_edge
 {
-	char				*name_of_the_connected_room;
+	char				*room_name;
 	struct s_edge		*next;
 }						t_edge;
 
