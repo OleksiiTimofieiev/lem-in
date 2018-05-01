@@ -77,6 +77,7 @@ void				ft_build_edge_structure(t_init *ini, t_vertex *vertex)
 	t_vertex	*current;
 	char		**medium;
 
+
 	while (ini)
 	{
 		if (ft_valid_type_of_the_line(ini->type_of_the_line))
