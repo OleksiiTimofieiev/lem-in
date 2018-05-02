@@ -27,8 +27,6 @@ Buiding the adjecency list:
 - https://gist.github.com/dtinth/342069 - cool;
 
 BFS:
-- https://www.youtube.com/watch?v=0OQjzWthrOY&t=561s
-- https://ru.wikipedia.org/wiki/Поиск_в_ширину
 - https://www.youtube.com/watch?v=ZVJFOrsHxMs&t=246s
 - https://www.youtube.com/watch?v=s-CYnVz-uh4&t=305s
 - http://www.programmingworldtech.com/2014/03/bfs-and-dfs-on-graph-represented-using.html
@@ -53,7 +51,6 @@ BFS:
 - https://www.youtube.com/watch?v=s-CYnVz-uh4
 - https://www.youtube.com/watch?v=4A5vN9p0YTY
 - https://www.hackerearth.com/practice/notes/graph-theory-part-i/
-- https://medium.com/basecs/deep-dive-through-a-graph-dfs-traversal-8177df5d0f13
 - https://medium.com/basecs/going-broad-in-a-graph-bfs-traversal-959bd1a09255
 - https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/tutorial/
 - https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/tutorial/
@@ -70,6 +67,7 @@ dn.intra.42.fr
 - https://www.youtube.com/watch?v=0XgVhsMOcQM&t=182s
 - https://www.youtube.com/watch?v=wu0ckYkltus
 - https://stackoverflow.com/questions/20895596/bfs-algorithm-in-c
+- https://medium.com/basecs/breaking-down-breadth-first-search-cebe696709d9
 
 Finding paths:
 - https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
