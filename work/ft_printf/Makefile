@@ -114,6 +114,7 @@ LIB = ft_memset.c \
 		ft_clean_2d_char.c \
 		ft_check_quantity.c \
 		ft_strnccpy.c \
+		ft_line_is_digit.c \
 
 CFLAGS = -Wall -Wextra -Werror
 IFLAGS = -I libft/
