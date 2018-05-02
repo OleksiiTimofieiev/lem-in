@@ -27,7 +27,6 @@ Buiding the adjecency list:
 - https://gist.github.com/dtinth/342069 - cool;
 
 BFS:
-- https://www.youtube.com/watch?v=ZVJFOrsHxMs&t=246s
 - https://www.youtube.com/watch?v=s-CYnVz-uh4&t=305s
 - http://www.programmingworldtech.com/2014/03/bfs-and-dfs-on-graph-represented-using.html
 - https://workshape.github.io/visual-graph-algorithms/
@@ -68,6 +67,26 @@ dn.intra.42.fr
 Finding paths:
 - https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
 - https://stackoverflow.com/questions/9590299/how-can-i-find-the-actual-path-found-by-bfs
+- https://www.youtube.com/watch?v=Uv1W80vMVC4
+
+Construct a tree:
+- http://deadrow.tumblr.com
+- https://www.tutorialspoint.com/data_structures_algorithms/tree_data_structure.htm
+- https://code.i-harness.com/en/q/2e59f
+- https://github.com/Chronic-Dev/libcnary/tree/master/include
+- https://kupdf.com/download/c-code-for-n-ary-tree_59bce59908bbc59709686eee_pdf
+- https://www.youtube.com/watch?v=DaOa2MHW2hw
+- https://www.slideshare.net/JohnSpence4/nary-trees-for-c-programming-language
+- https://www.quora.com/How-do-I-implement-an-N-ary-tree-in-C
+- https://sites.google.com/site/vikrantsinghbisen/data-structure-programs/n-ary-tree-implementation-in-c
+- https://stackoverflow.com/questions/29122456/how-to-create-a-n-ary-tree-in-c
+- http://courses.cs.vt.edu/cs2604/spring04/Notes/C08.GeneralTrees.pdf
+- https://www.sanfoundry.com/c-programming-examples-on-trees/
+- http://scanftree.com/programs/c/c-program-to-create-a-tree/
+- https://www.experts-exchange.com/questions/24574400/Implementing-General-Tree.html
+- http://www.cplusplus.com/forum/general/159743/
+- https://bytes.com/topic/c/answers/820648-non-binary-tree-implementation-c
+- https://www.sanfoundry.com/c-program-traverse-tree-without-recursion/
 
 Misc: 
 - array of * to func, graph can be an array of pointers;
