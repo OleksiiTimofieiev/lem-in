@@ -44,9 +44,6 @@ BFS:
 - https://www.youtube.com/watch?v=5pNIul92cj0
 - https://www.youtube.com/watch?v=1wu2sojwsyQ
 - https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e
-- https://ru.wikipedia.org/wiki/Поиск_в_ширину 
-- http://c-program-example.com/2011/10/c-program-to-implement-breadth-first-search-bfs.html
-- https://en.wikipedia.org/wiki/Graph_traversal
 - https://stackoverflow.com/questions/18953546/ideal-algorithm-for-finding-all-paths-in-a-graph
 - https://www.youtube.com/watch?v=s-CYnVz-uh4
 - https://www.youtube.com/watch?v=4A5vN9p0YTY
@@ -66,11 +63,11 @@ dn.intra.42.fr
 - https://www.youtube.com/watch?v=sabNsfTdDRE
 - https://www.youtube.com/watch?v=0XgVhsMOcQM&t=182s
 - https://www.youtube.com/watch?v=wu0ckYkltus
-- https://stackoverflow.com/questions/20895596/bfs-algorithm-in-c
-- https://medium.com/basecs/breaking-down-breadth-first-search-cebe696709d9
-- https://medium.com/basecs/going-broad-in-a-graph-bfs-traversal-959bd1a09255
+- https://stackoverflow.com/questions/20895596/bfs-algorithm-in-c5
+
 Finding paths:
 - https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
+- https://stackoverflow.com/questions/9590299/how-can-i-find-the-actual-path-found-by-bfs
 
 Misc: 
 - array of * to func, graph can be an array of pointers;
@@ -89,3 +86,5 @@ https://www.udemy.com/advanced-c-programming-pointers/
 
 Courses:
 - https://www.coursera.org/learn/algorithms-on-graphs/home/info
+
+Throughout the course of this series, we’ve made connections between things. We saw how linked lists were the foundations for stacks and queues, and how trees were a subset of graphs
