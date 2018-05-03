@@ -6,7 +6,7 @@
 #    By: otimofie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/18 11:59:13 by otimofie          #+#    #+#              #
-#    Updated: 2018/04/18 11:59:15 by otimofie         ###   ########.fr        #
+#    Updated: 2018/05/03 19:23:57 by otimofie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,6 @@ SRCS =  ./srcs/general_functions.c \
 		./srcs/build_graph_vertex.c \
 		./srcs/build_graph_edge.c \
 		./srcs/main.c \
-
-HEADER = ./srcs/lem_in.h
 
 CFLAGS = -Wall -Wextra -Werror
 
