@@ -45,7 +45,6 @@ void			enqueue(t_queue *q, char *str)
 	}
 	q->rear->next = temp;
 	q->rear = temp;
-	// free(temp);
 }
 
 t_qnode			*dequeue(t_queue *q)

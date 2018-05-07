@@ -42,9 +42,12 @@ void	bfs(t_data data)
 	enqueue(queue, "1");
 	enqueue(queue, "2");
 	enqueue(queue, "3");
+	enqueue(queue, "4");
+	enqueue(queue, "5");
 
 
 
+	// deleteList(&queue->front);
 
 	// t_qnode *n;
 	// n = dequeue(queue);
