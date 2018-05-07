@@ -63,5 +63,3 @@ t_qnode			*dequeue(t_queue *q)
 		q->front = q->front->next;
 	return (temp);
 }
-
-
