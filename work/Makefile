@@ -23,6 +23,7 @@ SRCS =  ./srcs/general_functions.c \
 		./srcs/build_graph_edge.c \
 		./srcs/add_data_to_graph.c \
 		./srcs/bfs.c \
+		./srcs/queue.c \
 		./srcs/main.c \
 
 CFLAGS = -Wall -Wextra -Werror

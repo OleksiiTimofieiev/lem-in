@@ -16,4 +16,7 @@ void	bfs(t_data data)
 {
 	ft_printf("start-> %s;\n", data.start);
 	ft_printf("end  -> %s;\n", data.end);
+
+
+
 }

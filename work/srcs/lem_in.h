@@ -100,6 +100,25 @@ void					ft_build_edge_structure(t_init *init, t_vertex *g);
 void					ft_add_data_to_graph(t_init *init, t_data *data);
 
 /*
+**---------------------------------------   queue  -----------------------------
+*/
+
+// A linked list (LL) node to store a queue entry
+typedef struct s_qnode
+{
+    int key;
+    struct s_qnode *next;
+}				t_qnode;
+// The queue, front stores the front node of LL and rear stores ths
+// last node of LL
+typedef	struct s_queue
+{
+	t_qnode *front;
+	t_qnode *rear;
+}			t_queue;
+
+
+/*
 **-----------------------------------------   bfs  -----------------------------
 */
 
