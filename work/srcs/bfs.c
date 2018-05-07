@@ -36,17 +36,19 @@ void	bfs(t_data data)
 
 	queue = createqueue();
 
-	enqueue(queue, "1");
+	enqueue(queue, data.start);
 	enqueue(queue, "2");
 	enqueue(queue, "3");
 	enqueue(queue, "4");
+	enqueue(queue, data.end);
+
 
 	// deleteList(&queue->front);
 
-	t_qnode *n;
-	n = dequeue(queue);
-	free(n->str);
-	free(n);
+	// t_qnode *n;
+	// n = dequeue(queue);
+	// free(n->str);
+	// free(n);
 	
 	// n = dequeue(queue);
 	// // free(n);
