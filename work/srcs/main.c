@@ -80,16 +80,9 @@ int		main(void)
 	ft_print_ll(initial_data);
 	ft_build_vertex_structure(initial_data, &graph);
 	ft_build_edge_structure(initial_data, graph);
-
-	ft_print_lg(graph);  // intermidiaty function;
-
-
-
 	ft_add_data_to_graph(initial_data, &data);
 
-	ft_printf("ANTS->%d\n", data.quantity_of_ants);
-	ft_printf("ROOM_START->%s\n", data.start);
-	ft_printf("ROOM_END->%s\n", data.end);
+	ft_print_lg(graph);  // intermidiaty function;
 
 	system("leaks -q lem-in");
 	return (0);
