@@ -47,9 +47,10 @@ void	bfs(t_data data)
 
 	// deleteList(&queue->front);
 
-	// t_qnode *n;
-	// n = dequeue(queue);
-	// // free(n);
+	t_qnode *n;
+	n = dequeue(queue);
+	free(n->str);
+	free(n);
 	
 	// n = dequeue(queue);
 	// // free(n);
