@@ -51,11 +51,16 @@ t_qnode			*dequeue(t_queue *q)
 {
 	t_qnode *temp;
 
+	temp = q->front;
 	if (q->front == NULL)
 		return (NULL);
-	temp = q->front;
-	q->front = q->front->next;
-	if (q->front == NULL)
+	if (q->front == q->rear)
+	{
+		q->front = NULL;
 		q->rear = NULL;
+	}
+	else
+		q->front = q->front->next;
+	
 	return (temp);
 }
