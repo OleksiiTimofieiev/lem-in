@@ -21,6 +21,7 @@ void deleteList(t_qnode** head_ref)
    while (current != NULL) 
    {
        next = current->next;
+       free(current->str);
        free(current);
        current = next;
    }
@@ -44,8 +45,6 @@ void	bfs(t_data data)
 	enqueue(queue, "3");
 	enqueue(queue, "4");
 
-
-
 	// deleteList(&queue->front);
 
 	// t_qnode *n;
@@ -58,12 +57,14 @@ void	bfs(t_data data)
 	// n = dequeue(queue);
 	// free(n);
 	// free(n);
+	
 
 
-
-	// ft_printf("front->%s\n", queue->front->str);
-	// ft_printf("rear ->%s\n", queue->rear->str);
-
+		ft_printf("front->%s\n", queue->front->str);
+		ft_printf("rear ->%s\n", queue->rear->str);
+		deleteList(&queue->front);
+		// deleteList(&queue->rear);
+// 
 	free(queue);
 
 }
