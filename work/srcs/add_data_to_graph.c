@@ -28,4 +28,3 @@ void	ft_add_data_to_graph(t_init *init, t_data *data)
 		tmp = tmp->next;
 	}
 }
-
