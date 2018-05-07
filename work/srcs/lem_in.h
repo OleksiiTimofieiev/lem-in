@@ -93,7 +93,7 @@ void					ft_detect_input(t_init *initial_data);
 */
 
 void					ft_build_vertex_structure(t_init *i_d, t_vertex **ver);
-void					ft_build_edge_structure(t_init *initial_data, t_vertex *g);
+void					ft_build_edge_structure(t_init *init, t_vertex *g);
 void					ft_add_data_to_graph(t_init *init, t_data *data);
 
 #endif
