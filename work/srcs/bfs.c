@@ -59,8 +59,8 @@ void	bfs(t_data data)
 	
 
 
-		ft_printf("front->%s\n", queue->front->str);
-		ft_printf("rear ->%s\n", queue->rear->str);
+		ft_printf("front-> %s\n", queue->front->str);
+		ft_printf("rear -> %s\n", queue->rear->str);
 		deleteList(&queue->front);
 		// deleteList(&queue->rear);
 // 
