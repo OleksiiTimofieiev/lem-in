@@ -37,10 +37,10 @@ void			enqueue(t_queue *q, char *str)
 	t_qnode *temp;
 
 	temp = newnode(str);
-	if (q->rear == NULL)
+	if (q->rear == NULL && q->front == NULL)
 	{
-		q->front = temp;
 		q->rear = temp;
+		q->front = q->rear;
 		return ;
 	}
 	q->rear->next = temp;

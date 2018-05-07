@@ -43,7 +43,6 @@ void	bfs(t_data data)
 	enqueue(queue, "2");
 	enqueue(queue, "3");
 	enqueue(queue, "4");
-	enqueue(queue, "5");
 
 
 
@@ -51,17 +50,19 @@ void	bfs(t_data data)
 
 	// t_qnode *n;
 	// n = dequeue(queue);
-	// free(n);
+	// // free(n);
 	
 	// n = dequeue(queue);
-	// free(n);
+	// // free(n);
 
 	// n = dequeue(queue);
 	// free(n);
+	// free(n);
 
 
-	ft_printf("front->%s\n", queue->front->str);
-	ft_printf("rear ->%s\n", queue->rear->str);
+
+	// ft_printf("front->%s\n", queue->front->str);
+	// ft_printf("rear ->%s\n", queue->rear->str);
 
 	free(queue);
 
