@@ -33,7 +33,7 @@
 # define SKIP 9
 
 /*
-**-----   data structure to keep the initial data set  -------------------------
+**---------------   data structure to keep the initial data set  ---------------
 */
 
 typedef struct			s_init
@@ -62,6 +62,17 @@ typedef struct			s_vertex
 }						t_vertex;
 
 /*
+**-------------   data struct to keep: start, end, quantity of ants  -----------
+*/
+
+typedef struct			s_data
+{
+	char				*start;
+	char				*end;
+	int					quantity_of_ants;
+}						t_data;
+
+/*
 **-------------------------   list of functions for validation  ----------------
 */
 
@@ -82,6 +93,7 @@ void					ft_detect_input(t_init *initial_data);
 */
 
 void					ft_build_vertex_structure(t_init *i_d, t_vertex **ver);
-void			ft_build_edge_structure(t_init *initial_data, t_vertex *g);
+void					ft_build_edge_structure(t_init *initial_data, t_vertex *g);
+void					ft_add_data_to_graph(t_init *init, t_data *data);
 
 #endif

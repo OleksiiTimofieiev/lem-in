@@ -21,6 +21,7 @@ SRCS =  ./srcs/general_functions.c \
 		./srcs/before_building_graph.c \
 		./srcs/build_graph_vertex.c \
 		./srcs/build_graph_edge.c \
+		./srcs/add_data_to_graph.c \
 		./srcs/main.c \
 
 CFLAGS = -Wall -Wextra -Werror
