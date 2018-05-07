@@ -18,6 +18,7 @@ static t_edge		*ft_edge_builder(char *line)
 
 	if (!(tmp = (t_edge*)malloc(sizeof(t_edge))))
 		return (NULL);
+	tmp->visited = 'w';
 	tmp->room_name = ft_strdup(line);
 	tmp->next = NULL;
 	return (tmp);

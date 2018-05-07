@@ -33,6 +33,13 @@ void	ft_print_ll(t_init *data)
 	}
 }
 
+void	ft_init_data(t_data *data)
+{
+	data->start = NULL;
+	data->end = NULL;
+	data->quantity_of_ants = 0;
+}
+
 void	ft_init(t_init **init, t_vertex **vertex)
 {
 	*init = NULL;
@@ -47,23 +54,20 @@ void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
 	while (vertex)
 	{
 
-		ft_printf("%s ->", vertex->vertex_name);
+		ft_printf("%s", vertex->vertex_name);
+		ft_printf(" <-%c !->", vertex->visited);
+
 		tmp = vertex->e_next;
 		while (tmp)
 		{
 			ft_printf(" %s", tmp->room_name);
+			ft_printf(" <-%c", tmp->visited);
+
 			tmp = tmp->next;
 		}
 		ft_printf("\n");
 		vertex = vertex->v_next;
 	}
-}
-
-void	ft_init_data(t_data *data)
-{
-	data->start = NULL;
-	data->end = NULL;
-	data->quantity_of_ants = 0;
 }
 
 int		main(void)
@@ -85,5 +89,7 @@ int		main(void)
 	ft_print_lg(graph);  // intermidiaty function;
 
 	system("leaks -q lem-in");
+
+	bfs(data);
 	return (0);
 }

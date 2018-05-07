@@ -51,12 +51,15 @@ typedef struct			s_init
 typedef struct			s_edge
 {
 	char				*room_name;
+	char				visited;
 	struct s_edge		*next;
 }						t_edge;
 
 typedef struct			s_vertex
 {
 	char				*vertex_name;
+	char				visited;
+	int					path;
 	struct s_edge		*e_next;
 	struct s_vertex		*v_next;
 }						t_vertex;
@@ -95,5 +98,11 @@ void					ft_detect_input(t_init *initial_data);
 void					ft_build_vertex_structure(t_init *i_d, t_vertex **ver);
 void					ft_build_edge_structure(t_init *init, t_vertex *g);
 void					ft_add_data_to_graph(t_init *init, t_data *data);
+
+/*
+**-----------------------------------------   bfs  -----------------------------
+*/
+
+void					bfs(t_data data);
 
 #endif

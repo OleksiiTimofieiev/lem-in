@@ -23,6 +23,8 @@ static t_vertex	*ft_vertex_builder(char *line)
 	tmp->vertex_name = ft_strdup(medium_array[0]);
 	tmp->e_next = NULL;
 	tmp->v_next = NULL;
+	tmp->visited = 'w';
+	tmp->path = 0;
 	ft_clean_2d_char(medium_array);
 	return (tmp);
 }
