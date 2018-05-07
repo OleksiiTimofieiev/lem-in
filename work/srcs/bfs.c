@@ -12,9 +12,8 @@
 
 #include "lem_in.h"
 
-void deleteList(t_qnode** head_ref)
+static void deleteList(t_qnode** head_ref)
 {
-   /* deref head_ref to get the real head */
    t_qnode* current = *head_ref;
    t_qnode* next;
  
@@ -25,9 +24,6 @@ void deleteList(t_qnode** head_ref)
        free(current);
        current = next;
    }
-   
-   /* deref head_ref to affect the real head back
-      in the caller. */
    *head_ref = NULL;
 }
 
