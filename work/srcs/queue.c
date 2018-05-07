@@ -35,15 +35,12 @@ t_queue			*createqueue(void)
 void			enqueue(t_queue *q, char *str)
 {
 	t_qnode *temp;
-	// t_qnode *buf = q->front;
-
 
 	temp = newnode(str);
 	if (q->rear == NULL)
 	{
 		q->front = temp;
 		q->rear = temp;
-		free(temp);
 		return ;
 	}
 	q->rear->next = temp;
