@@ -17,6 +17,28 @@ void	bfs(t_data data)
 	ft_printf("start-> %s;\n", data.start);
 	ft_printf("end  -> %s;\n", data.end);
 
+	t_queue *queue;
+
+	queue = createqueue();
+
+	enqueue(queue, 1);
+	enqueue(queue, 2);
+	enqueue(queue, 3);
+	enqueue(queue, 4);
+	enqueue(queue, 5);
+	enqueue(queue, 6);
+	enqueue(queue, 7);
+
+
+	t_qnode *n = dequeue(queue);
+	if (n != NULL)
+      ft_printf("Dequeued item is %d;\n", n->key);
+  	n = dequeue(queue);
+	if (n != NULL)
+      ft_printf("Dequeued item is %d;\n", n->key);
+  	n = dequeue(queue);
+	if (n != NULL)
+      ft_printf("Dequeued item is %d;\n", n->key);
 
 
 }
