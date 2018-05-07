@@ -106,7 +106,7 @@ void					ft_add_data_to_graph(t_init *init, t_data *data);
 // A linked list (LL) node to store a queue entry
 typedef struct s_qnode
 {
-    int key;
+    char *str;
     struct s_qnode *next;
 }				t_qnode;
 // The queue, front stores the front node of LL and rear stores ths
@@ -118,7 +118,7 @@ typedef	struct s_queue
 }			t_queue;
 
 t_queue *createqueue(void);
-void enqueue(t_queue *q, int k);
+void enqueue(t_queue *q, char *str);
 t_qnode *dequeue(t_queue *q);
 /*
 **-----------------------------------------   bfs  -----------------------------

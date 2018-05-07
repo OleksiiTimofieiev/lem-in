@@ -12,12 +12,12 @@
 
 #include "lem_in.h"
 
-static	t_qnode	*newnode(int k)
+static	t_qnode	*newnode(char *str)
 {
 	t_qnode *temp;
 
 	temp = (t_qnode*)malloc(sizeof(t_qnode));
-	temp->key = k;
+	temp->str = ft_strdup(str);
 	temp->next = NULL;
 	return (temp);
 }
@@ -32,19 +32,23 @@ t_queue			*createqueue(void)
 	return (q);
 }
 
-void			enqueue(t_queue *q, int k)
+void			enqueue(t_queue *q, char *str)
 {
 	t_qnode *temp;
+	// t_qnode *buf = q->front;
 
-	temp = newnode(k);
+
+	temp = newnode(str);
 	if (q->rear == NULL)
 	{
 		q->front = temp;
 		q->rear = temp;
+		free(temp);
 		return ;
 	}
 	q->rear->next = temp;
 	q->rear = temp;
+	// free(temp);
 }
 
 t_qnode			*dequeue(t_queue *q)
@@ -61,6 +65,7 @@ t_qnode			*dequeue(t_queue *q)
 	}
 	else
 		q->front = q->front->next;
-	
 	return (temp);
 }
+
+
