@@ -35,13 +35,11 @@ void	ft_visited(t_vertex *vertex, char *str, char c)
 	{
 		if (ft_strequ(str, vertex->vertex_name))
 			vertex->visited = c;
-
 		tmp = vertex->e_next;
 		while (tmp)
 		{
 			if (ft_strequ(str, tmp->room_name))
 				tmp->visited = c;
-
 			tmp = tmp->next;
 		}
 		vertex = vertex->v_next;
