@@ -27,8 +27,8 @@ t_queue			*createqueue(void)
 	t_queue *q;
 
 	q = (t_queue*)malloc(sizeof(t_queue));
-	q->front = NULL;
 	q->rear = NULL;
+	q->front = q->rear;
 	return (q);
 }
 
@@ -62,4 +62,9 @@ t_qnode			*dequeue(t_queue *q)
 	else
 		q->front = q->front->next;
 	return (temp);
+}
+
+int				isempty(t_queue *q)
+{
+    return (q->rear == NULL);
 }

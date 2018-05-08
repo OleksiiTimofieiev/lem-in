@@ -118,6 +118,7 @@ typedef	struct			s_queue
 t_queue					*createqueue(void);
 void					enqueue(t_queue *q, char *str);
 t_qnode					*dequeue(t_queue *q);
+int				isempty(t_queue *q);
 
 /*
 **-----------------------------------------   bfs  -----------------------------
