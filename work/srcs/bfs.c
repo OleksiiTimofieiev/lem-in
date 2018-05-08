@@ -133,10 +133,12 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			free(queue);
 
 			ft_printf("%s\n", "Woohoo !");
-			
+
 			return ;
 		}
+		
 		ft_visited(vertex, node->str, 'b');
+
 		adj_list_vertex = return_corresponding_edge(vertex, node);
 
 		free(node->str);
