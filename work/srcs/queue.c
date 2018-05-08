@@ -66,5 +66,5 @@ t_qnode			*dequeue(t_queue *q)
 
 int				isempty(t_queue *q)
 {
-    return (q->rear == NULL);
+	return (q->rear == NULL);
 }
