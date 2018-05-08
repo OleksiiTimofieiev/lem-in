@@ -131,7 +131,9 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			free(node->str);
 			free(node);
 			free(queue);
+
 			ft_printf("%s\n", "Woohoo !");
+			
 			return ;
 		}
 		ft_visited(vertex, node->str, 'b');
