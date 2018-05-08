@@ -27,6 +27,21 @@
 //    *head_ref = NULL;
 // }
 
+void	ft_clean_queue(t_qnode **front)
+{
+	t_qnode* current = *front;
+   t_qnode* next;
+ 
+   while (current != NULL) 
+   {
+       next = current->next;
+       free(current->str);
+       free(current);
+       current = next;
+   }
+   *front = NULL;
+}
+
 void	ft_print_lg_1(t_vertex *vertex) // intermidiaty function;
 {
 	t_edge *tmp;
@@ -126,16 +141,25 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	{
 		node = dequeue(queue);
 		// ft_printf("Dequeue -> %s\n", node->str);
+		// ft_putchar('1');
+		
 		if (ft_strequ(node->str, data.end))
 		{
 			free(node->str);
 			free(node);
-			free(queue);
+			// free(queue);
 
 			ft_printf("%s\n", "Woohoo !");
+			ft_clean_queue(&queue->front);
+			// enqueue(queue, data.start);
+			enqueue(queue, data.start);
+			ft_print_queue(queue->front);
+			node = dequeue(queue);
 
-			return ;
+			// return ;
 		}
+		// ft_putchar('2');
+
 		
 		ft_visited(vertex, node->str, 'b');
 
@@ -153,8 +177,12 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
-		// ft_print_lg_1(vertex);s
-		ft_print_queue(queue->front);
+			ft_print_queue(queue->front);
+		
+			// ft_print_queue(queue->front);
+		// ft_print_lg_1(vertex);
+		// enqueue(queue, data.start);
+
 	}
 
 
