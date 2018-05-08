@@ -115,8 +115,6 @@ void	ft_print_queue(t_qnode *front)
 
 void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 {
-	// ft_printf("start-> %s;\n", data.start);
-	// ft_printf("end  -> %s;\n", data.end);
 	t_queue *queue;
 	t_qnode *node;
 	t_edge *adj_list_vertex;
@@ -125,10 +123,9 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 	enqueue(queue, data.start);
 
-
 	while (!isempty(queue))
 	{
-		
+
 		node = dequeue(queue);
 		ft_printf("Dequeue -> %s\n", node->str);
 
@@ -156,8 +153,6 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		}
 		// ft_print_lg_1(vertex);
 		ft_print_queue(queue->front);
-
-
 	}
 
 
