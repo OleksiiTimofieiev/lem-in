@@ -118,29 +118,27 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	t_queue *queue;
 	t_qnode *node;
 	t_edge *adj_list_vertex;
+	//tree;
 
 	queue = createqueue();
-
 	enqueue(queue, data.start);
-
 	while (!isempty(queue))
 	{
-
 		node = dequeue(queue);
-		ft_printf("Dequeue -> %s\n", node->str);
-
-		
+		// ft_printf("Dequeue -> %s\n", node->str);
 		if (ft_strequ(node->str, data.end))
 		{
+			free(node->str);
+			free(node);
+			free(queue);
 			ft_printf("%s\n", "Woohoo !");
 			return ;
 		}
-
-
 		ft_visited(vertex, node->str, 'b');
-
 		adj_list_vertex = return_corresponding_edge(vertex, node);
 
+		free(node->str);
+		free(node);
 
 		while (adj_list_vertex)
 		{
@@ -151,7 +149,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
-		// ft_print_lg_1(vertex);
+		// ft_print_lg_1(vertex);s
 		ft_print_queue(queue->front);
 	}
 
@@ -179,11 +177,11 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 	// ft_printf("front-> %s\n", queue->front->str);
 	// ft_printf("rear -> %s\n", queue->rear->str);
-	// deleteList(&queue->front);
 
 	// ft_refresh_vertex(vertex); /////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// deleteList(&queue->rear);
 // 
+	// deleteList(&queue->front);
 	free(queue);
 
 }

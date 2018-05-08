@@ -75,6 +75,7 @@ int		main(void)
 	t_init		*initial_data;
 	t_vertex	*graph;
 	t_data		data;
+	// ways;
 
 	ft_init_data(&data);
 	ft_init(&initial_data, &graph);
