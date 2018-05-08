@@ -89,7 +89,9 @@ int		main(void)
 	ft_print_lg(graph);  // intermidiaty function;
 
 
-	bfs(data);
+	bfs(data, graph);
+	ft_print_lg(graph);  // intermidiaty function;
+	
 	system("leaks -q lem-in");
 	return (0);
 }

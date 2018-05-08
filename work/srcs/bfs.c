@@ -27,7 +27,28 @@ static void deleteList(t_qnode** head_ref)
    *head_ref = NULL;
 }
 
-void	bfs(t_data data)
+void	ft_visited(t_vertex *vertex, char *str, char c)
+{
+	t_edge *tmp;
+
+	while (vertex)
+	{
+		if (ft_strequ(str, vertex->vertex_name))
+			vertex->visited = c;
+
+		tmp = vertex->e_next;
+		while (tmp)
+		{
+			if (ft_strequ(str, tmp->room_name))
+				tmp->visited = c;
+
+			tmp = tmp->next;
+		}
+		vertex = vertex->v_next;
+	}
+}
+
+void	bfs(t_data data, t_vertex *vertex)
 {
 	ft_printf("start-> %s;\n", data.start);
 	ft_printf("end  -> %s;\n", data.end);
@@ -62,6 +83,8 @@ void	bfs(t_data data)
 		ft_printf("front-> %s\n", queue->front->str);
 		ft_printf("rear -> %s\n", queue->rear->str);
 		deleteList(&queue->front);
+		ft_visited(vertex, data.start, 'g');
+
 		// deleteList(&queue->rear);
 // 
 	free(queue);

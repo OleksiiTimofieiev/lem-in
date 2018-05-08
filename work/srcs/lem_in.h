@@ -123,6 +123,6 @@ t_qnode					*dequeue(t_queue *q);
 **-----------------------------------------   bfs  -----------------------------
 */
 
-void					bfs(t_data data);
+void					bfs(t_data data, t_vertex *vertex);
 
 #endif
