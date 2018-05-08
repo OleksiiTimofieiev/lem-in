@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-void	ft_to_start(t_init **initial_data) // el kostello ultima;s
+void	ft_to_start(t_init **initial_data) // el kostello ultima;
 {
 	if (*initial_data)
 		while ((*initial_data)->prev)
