@@ -125,13 +125,16 @@ t_tree	*find_tree_element(t_tree *tree, char *str)
 
 void	ft_add_children(t_tree *element, t_qnode *node)
 {
+	t_tree *tmp = element; 
+
+
 	if (!element->child)
 		element->child = ft_build_node(node);
 	else
 	{
-		while (element->child->next)
-			element->child = element->child->next;
-		element->child->next = ft_build_node(node);
+		while (tmp->child->next)
+			tmp->child = tmp->child->next;
+		tmp->child->next = ft_build_node(node);
 	}
 }
 
@@ -158,9 +161,19 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data)
 		else
 		{
 			ft_printf("parent ->>>%s\n", buf->vertex_name);
-			ft_printf("buf->%p\n", buf);
+			ft_printf("buf_pointer->%p\n", buf);
+
+
+
+
 
 			ft_add_children(buf, node); // add parent;
+
+
+
+
+
+			ft_printf("buf_children_name->%s\n", buf->child->vertex_name);
 
 	
 		}
@@ -168,7 +181,7 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data)
 
 	}
 
-	if (ft_strequ(node->str, data.end))
+	if (ft_strequ(node->str, data.end)) // add one node to a current buf; i have pointer to 3 but not 5;
 		ft_printf("I did it !\n");
 
 
