@@ -199,6 +199,8 @@ ft_printf("%s\n", "7");
 
 		
 		// ft_print_queue(queue->front);
+		
+
 		free(node->str);
 		free(node->parent);
 		free(node);
