@@ -135,17 +135,17 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	t_edge *adj_list_vertex;
 	t_tree	*tree;
 
-	if (!tree)
-
+	tree = NULL;
 	queue = createqueue();
 	enqueue(queue, data.start, "root");
 	while (!isempty(queue))
 	{
 		node = dequeue(queue);
+
+		ft_add_to_tree(&tree, node);
 		
 		if (ft_strequ(node->str, data.end))
 		{
-			// free(queue);
 
 			ft_printf("%s\n", "Woohoo !");
 			ft_clean_queue(&queue->front);
@@ -183,6 +183,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		free(node);
 
 	}
-	free(queue);
+	// ft_printf("%s\n", tree->vertex_name);
 
+	free(queue);
 }

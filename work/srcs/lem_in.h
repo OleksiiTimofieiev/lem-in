@@ -139,4 +139,19 @@ typedef struct			s_tree
 	struct s_tree		*next;
 }						t_tree;
 
+typedef struct			s_qtnode
+{
+	char				*name;
+	t_tree				*pointer_to_parent;
+	struct s_qtnode		*next;
+}						t_qtnode;
+
+typedef struct			s_qtree
+{
+	t_qtnode			*front;
+	t_qtnode			*rear;
+}						t_qtree;
+
+void	ft_add_to_tree(t_tree **tree, t_qnode *node);
+
 #endif
