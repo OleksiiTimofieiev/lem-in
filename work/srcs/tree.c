@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-t_tree	*ft_build_node(t_qnode *node)
+t_tree	*ft_build_node(t_qnode *node) // for a tree;
 {
 	t_tree *tmp;
 
@@ -99,9 +99,10 @@ t_tree	*find_tree_element(t_tree *tree, char *str)
 			return (node->pointer_to_parent);
 		}
 
+			// ft_putchar('Q');
 		while (node->pointer_to_parent->child)
 		{
-				enqueue_t(queue, node->pointer_to_parent);
+			enqueue_t(queue, node->pointer_to_parent->child);
 			node->pointer_to_parent->child = node->pointer_to_parent->child->next;
 		}
 	}
@@ -113,18 +114,18 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node)
 	t_tree *buf;
 
 	if (!*tree)
-	{
 		*tree = ft_build_node(node);
-		// ft_printf("%p\n", *tree);
-	}
-
 	else
 	{
 		ft_printf("%s\n", "Not empty");
-		buf = find_tree_element(*tree, "1");
+
+
+		buf = find_tree_element(*tree, node->parent);
+
 		if (!buf)
-			ft_printf("%s\n", "element not found");
-		// ft_printf("Vertex_name ->>>%s\n", buf->vertex_name);
+			ft_printf("%s\n", "element not found"); //add a child to parentl
+		else
+			ft_printf("Vertex_name ->>>%s\n", buf->vertex_name);
 		ft_printf("buf->%p\n", buf);
 	}
 

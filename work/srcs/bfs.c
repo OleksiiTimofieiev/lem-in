@@ -151,7 +151,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			ft_clean_queue(&queue->front);
 			// enqueue(queue, data.start);
 			enqueue(queue, data.start, "root");
-			ft_print_queue(queue->front);
+			// ft_print_queue(queue->front);
 
 			free(node->str);
 			free(node->parent);
@@ -176,7 +176,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			adj_list_vertex = adj_list_vertex->next;
 		}
 
-		ft_print_queue(queue->front);
+		// ft_print_queue(queue->front);
 	
 		free(node->str);
 		free(node->parent);
