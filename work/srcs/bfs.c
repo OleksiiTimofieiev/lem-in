@@ -163,10 +163,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		}
 		
 		ft_visited(vertex, node->str, 'b'); //except start; // add path only to the nodes which are not end or start;
-
 		adj_list_vertex = return_corresponding_edge(vertex, node);
-
-
 		while (adj_list_vertex)
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
@@ -176,9 +173,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
-
 		// ft_print_queue(queue->front);
-	
 		free(node->str);
 		free(node->parent);
 		free(node);
