@@ -91,9 +91,10 @@ int		main(void)
 
 
 	bfs(data, graph);
+	
 
 			// ft_printf("%s\n", "Here1 !!!!!!!!!!!!!");
-	
+
 
 	ft_printf("\n");
 	ft_print_lg(graph);  // intermidiaty function;

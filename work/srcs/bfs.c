@@ -104,15 +104,12 @@ void	ft_refresh_vertex(t_vertex *vertex) // add some possibilities;
 	}
 }
 
-t_edge	*return_corresponding_edge(t_vertex *vertex, t_qnode *node)
+t_edge	*return_corresponding_edge(t_vertex *vertex, t_qnode *node) /* + */
 {
 	while (vertex)
 	{
-		if (ft_strequ(vertex->vertex_name,node->str))
-		{
-			// ft_printf("%s\n", vertex->e_next->room_name);
+		if (ft_strequ(vertex->vertex_name, node->str))
 			return (vertex->e_next);
-		}
 		vertex = vertex->v_next;
 	}
 	return (NULL);
@@ -135,21 +132,35 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	t_edge 	*adj_list_vertex;
 	t_tree	*tree;
 
+		ft_printf("%s\n", "1");
+
+
 	tree = NULL;
+	ft_printf("%s\n", "2");
 	queue = createqueue();
+	ft_printf("%s\n", "3");
 	enqueue(queue, data.start, "root");
+	
+ft_printf("%s\n", "4");
 	while (!isempty(queue))
 	{
+		ft_printf("%s\n", "5");
 		node = dequeue(queue);
+
+ft_printf("%s\n", "6");
 
 		ft_printf("--->dequeue %s\n", node->str);
 
 		ft_add_to_tree(&tree, node, data);
+ft_printf("%s\n", "7");
 		
 		if (ft_strequ(node->str, data.end))
 		{
 
 			ft_printf("%s\n", "Woohoo !");
+
+			ft_print_queue(queue->front);
+
 
 			ft_clean_queue(&queue->front);
 			// enqueue(queue, data.start);
@@ -161,9 +172,19 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			free(node);
 			continue ;
 		}
+
+ft_printf("%s\n", "8");
+
 		
 		ft_visited(vertex, node->str, 'b'); //except start; // add path only to the nodes which are not end or start;
+		
+ft_printf("%s\n", "9");
+
+
 		adj_list_vertex = return_corresponding_edge(vertex, node);
+
+ft_printf("%s\n", "10");
+
 
 		while (adj_list_vertex)
 		{
@@ -174,6 +195,9 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
+ft_printf("%s\n", "11");
+
+		
 		// ft_print_queue(queue->front);
 		free(node->str);
 		free(node->parent);
@@ -184,4 +208,6 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	free(tree);
 			// ft_clean_queue(&queue->front);
 	free(queue); // clean all if not empty;
+ft_printf("%s\n", "12");
+
 }
