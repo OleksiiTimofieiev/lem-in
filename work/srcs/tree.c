@@ -159,49 +159,34 @@ void	ft_add_children(t_tree *element, t_qnode *node, t_tree *tree) /* + */
 void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 {
 	t_tree *buf = NULL;
-
 // ft_printf("%s\n", "1.1");
-
-
 	if (!*tree)
 	{
 		*tree = ft_build_node(node, NULL);
 // ft_printf("%s\n", "1.2");
-
 	}
 	else
 	{
 		t_tree *tmp = *tree;
 // ft_printf("%s\n", "1.3");
-
 		ft_printf("%s\n", "Not empty");
 		ft_printf("node name -> %s\n", node->str);
 		ft_printf("node parent -> %s\n", node->parent);
-
-
 		ft_printf("%s\n", (*tree)->vertex_name);
-		
 // ft_printf("%s\n", "1.4");
-
-
 		buf = find_tree_element(tmp, node->parent);
 // ft_printf("%s\n", "1.5");
-
-
 		if (!*tree)
 		{
 // ft_printf("%s\n", "1.6");
-
 			ft_printf("%s\n", "element not found");
 		}
 		else
 		{
 // ft_printf("%s\n", "1.7");
-
 			ft_printf("buf_pointer->%p\n", buf);
 			ft_printf("parent ->>>%s\n", buf->vertex_name);
 // ft_printf("%s\n", "1.8");
-
 			ft_add_children(buf, node, buf); // add parent;
 // ft_printf("%s\n", "1.9");
 
@@ -220,26 +205,20 @@ if (ft_strequ(node->str, data.end)) // add one node to a current buf; i have poi
 	//add tp way;	
 	t_tree *way = buf->child;
 // ft_printf("%s\n", "1.14");
-
 	while (way)
 	{
 		// ft_printf("%s\n", "1.15");
 		ft_printf("way node -> %s\n", way->vertex_name);
 		// ft_printf("%s\n", "1.16");
-
 		way = way->parent;
 		// ft_printf("%s\n", "1.17");
 		// ft_printf("%s\n", "1.18");
 	}
-
 		// ft_printf("start ->    %s\n", "0"); //data start;
 }
-
 		// ft_printf("%s\n", "--------->segfault2");
 		// node = find(tree);
 		// node->child = new node of a tree;
-
-
 	// free(tree->vertex_name);
 	// free(*tree);
 }
