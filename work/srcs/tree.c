@@ -15,14 +15,14 @@
 void	ft_clean_queue_qt(t_qtnode **front) /* + */
 {
 	t_qtnode* current = *front;
-   t_qtnode* next;
+	t_qtnode* next;
  
-   while (current) 
+	while (current) 
    {
-       next = current->next;
-       free(current->name);
-       free(current);
-       current = next;
+	   next = current->next;
+	   free(current->name);
+	   free(current);
+	   current = next;
    }
    *front = NULL;
 }
@@ -171,7 +171,7 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 	}
 	else
 	{
-	t_tree *tmp = *tree;
+		t_tree *tmp = *tree;
 // ft_printf("%s\n", "1.3");
 
 		ft_printf("%s\n", "Not empty");
