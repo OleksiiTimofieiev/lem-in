@@ -106,6 +106,7 @@ void					ft_add_data_to_graph(t_init *init, t_data *data);
 typedef struct			s_qnode
 {
 	char				*str;
+	char				*parent;
 	struct s_qnode		*next;
 }						t_qnode;
 
@@ -116,9 +117,9 @@ typedef	struct			s_queue
 }						t_queue;
 
 t_queue					*createqueue(void);
-void					enqueue(t_queue *q, char *str);
+void					enqueue(t_queue *q, char *str, char *parent);
 t_qnode					*dequeue(t_queue *q);
-int				isempty(t_queue *q);
+int						isempty(t_queue *q);
 
 /*
 **-----------------------------------------   bfs  -----------------------------

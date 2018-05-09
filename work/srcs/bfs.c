@@ -32,7 +32,7 @@ void	ft_clean_queue(t_qnode **front)
 	t_qnode* current = *front;
    t_qnode* next;
  
-   while (current != NULL) 
+   while (current) 
    {
        next = current->next;
        free(current->str);
@@ -122,7 +122,7 @@ void	ft_print_queue(t_qnode *front)
 {
 	while (front)
 	{
-		ft_printf("%s", front->str);
+		ft_printf("| %s %s | ", front->str, front->parent);
 		front = front->next;
 	}
 	ft_printf("\n");
@@ -136,22 +136,25 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	//tree;
 
 	queue = createqueue();
-	enqueue(queue, data.start);
+	enqueue(queue, data.start, "root");
 	while (!isempty(queue))
 	{
 		node = dequeue(queue);
 		
 		if (ft_strequ(node->str, data.end))
 		{
-			free(node->str);
-			free(node);
 			// free(queue);
 
 			ft_printf("%s\n", "Woohoo !");
 			ft_clean_queue(&queue->front);
 			// enqueue(queue, data.start);
-			enqueue(queue, data.start);
+			enqueue(queue, data.start, "root");
 			ft_print_queue(queue->front);
+
+			free(node->str);
+			free(node->parent);
+			free(node);
+
 			node = dequeue(queue);
 			// return ;
 		}
@@ -160,20 +163,22 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 		adj_list_vertex = return_corresponding_edge(vertex, node);
 
-		free(node->str);
-		free(node);
 
 		while (adj_list_vertex)
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
 			{
-				enqueue(queue, adj_list_vertex->room_name);
+				enqueue(queue, adj_list_vertex->room_name, node->str);
 				ft_visited(vertex, adj_list_vertex->room_name, 'g');
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
-			ft_print_queue(queue->front);
+		
+		ft_print_queue(queue->front);
 	
+		free(node->str);
+		free(node->parent);
+		free(node);
 
 	}
 	free(queue);

@@ -12,14 +12,15 @@
 
 #include "lem_in.h"
 
-static	t_qnode	*newnode(char *str)
+static	t_qnode	*newnode(char *str, char *parent)
 {
-	t_qnode *temp;
+	t_qnode *tmp;
 
-	temp = (t_qnode*)malloc(sizeof(t_qnode));
-	temp->str = ft_strdup(str);
-	temp->next = NULL;
-	return (temp);
+	tmp = (t_qnode*)malloc(sizeof(t_qnode));
+	tmp->str = ft_strdup(str);
+	tmp->parent = ft_strdup(parent);
+	tmp->next = NULL;
+	return (tmp);
 }
 
 t_queue			*createqueue(void)
@@ -32,26 +33,26 @@ t_queue			*createqueue(void)
 	return (q);
 }
 
-void			enqueue(t_queue *q, char *str)
+void			enqueue(t_queue *q, char *str, char *parent)
 {
-	t_qnode *temp;
+	t_qnode *tmp;
 
-	temp = newnode(str);
+	tmp = newnode(str, parent);
 	if (q->rear == NULL && q->front == NULL)
 	{
-		q->rear = temp;
+		q->rear = tmp;
 		q->front = q->rear;
 		return ;
 	}
-	q->rear->next = temp;
-	q->rear = temp;
+	q->rear->next = tmp;
+	q->rear = tmp;
 }
 
 t_qnode			*dequeue(t_queue *q)
 {
-	t_qnode *temp;
+	t_qnode *tmp;
 
-	temp = q->front;
+	tmp = q->front;
 	if (q->front == NULL)
 		return (NULL);
 	if (q->front == q->rear)
@@ -61,7 +62,7 @@ t_qnode			*dequeue(t_queue *q)
 	}
 	else
 		q->front = q->front->next;
-	return (temp);
+	return (tmp);
 }
 
 int				isempty(t_queue *q)
