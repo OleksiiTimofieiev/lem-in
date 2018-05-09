@@ -180,5 +180,5 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	}
 	// ft_printf("%s\n", tree->vertex_name);
 	free(tree);
-	free(queue);
+	free(queue); // clean all if not empty;
 }
