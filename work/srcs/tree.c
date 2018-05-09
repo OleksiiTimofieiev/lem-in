@@ -92,10 +92,10 @@ t_tree	*find_tree_element(t_tree *tree, char *str)
 	while (!isempty_t(queue))
 	{
 		node = dequeue_t(queue); //return the node with the parent;
+		ft_printf("tree node name ->  %s\n", node->name);
 
 		if (ft_strequ(node->name, str)) // if its the necessary one -> return it;
 		{
-			// ft_printf("%p\n", node->pointer_to_parent);
 			return (node->pointer_to_parent);
 		}
 
@@ -119,12 +119,12 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node)
 	else
 	{
 		ft_printf("%s\n", "Not empty");
+		ft_printf("node name -> %s\n", node->str);
+		ft_printf("node parent -> %s\n", node->parent);
+
 
 
 		buf = find_tree_element(*tree, node->parent); // find in a tree a parent of '1';
-
-
-
 
 
 
@@ -138,6 +138,7 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node)
 			ft_printf("Vertex_name ->>>%s\n", buf->child->vertex_name);
 		}
 	}
+	ft_printf("\n");
 
 		// node = find(tree);
 		// node->child = new node of a tree;
