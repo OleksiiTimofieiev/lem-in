@@ -207,6 +207,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 	}
 	// ft_printf("%s\n", tree->vertex_name);
+	ft_printf("first node of a tree - > %s\n", tree->vertex_name);
 	free(tree);
 			// ft_clean_queue(&queue->front);
 	free(queue); // clean all if not empty;
