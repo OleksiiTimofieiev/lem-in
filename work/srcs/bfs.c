@@ -156,7 +156,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			// return ;
 		}
 		
-		ft_visited(vertex, node->str, 'b'); //except start;
+		ft_visited(vertex, node->str, 'b'); //except start; // add path only to the nodes which are not end or start;
 
 		adj_list_vertex = return_corresponding_edge(vertex, node);
 
