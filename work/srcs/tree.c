@@ -163,18 +163,18 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data)
 	t_tree *buf = NULL;
 	t_tree *tmp = *tree;
 
-ft_printf("%s\n", "1.1");
+// ft_printf("%s\n", "1.1");
 
 
 	if (!*tree)
 	{
 		*tree = ft_build_node(node, NULL);
-ft_printf("%s\n", "1.2");
+// ft_printf("%s\n", "1.2");
 
 	}
 	else
 	{
-ft_printf("%s\n", "1.3");
+// ft_printf("%s\n", "1.3");
 
 		ft_printf("%s\n", "Not empty");
 		ft_printf("node name -> %s\n", node->str);
@@ -183,65 +183,64 @@ ft_printf("%s\n", "1.3");
 
 		ft_printf("%s\n", (*tree)->vertex_name);
 		
-ft_printf("%s\n", "1.4");
+// ft_printf("%s\n", "1.4");
 
 
 		buf = find_tree_element(tmp, node->parent);
-ft_printf("%s\n", "1.5");
+// ft_printf("%s\n", "1.5");
 
 
-		if (!buf)
+		if (!*tree)
 		{
-ft_printf("%s\n", "1.6");
+// ft_printf("%s\n", "1.6");
 
 			ft_printf("%s\n", "element not found");
 		}
 		else
 		{
-ft_printf("%s\n", "1.7");
+// ft_printf("%s\n", "1.7");
 
 			ft_printf("buf_pointer->%p\n", buf);
 			ft_printf("parent ->>>%s\n", buf->vertex_name);
-ft_printf("%s\n", "1.8");
+// ft_printf("%s\n", "1.8");
 
 			ft_add_children(buf, node, buf); // add parent;
-ft_printf("%s\n", "1.9");
+// ft_printf("%s\n", "1.9");
 
 			ft_printf("parent 2->>>%s\n", buf->child->parent->vertex_name);
 			ft_printf("buf_children_name->%s\n", buf->child->vertex_name);
-ft_printf("%s\n", "1.10");
+// ft_printf("%s\n", "1.10");
 
 		}
 		ft_printf("\n");
 	}
 
-ft_printf("%s\n", "1.11");
+// ft_printf("%s\n", "1.11");
 
 if (ft_strequ(node->str, data.end)) // add one node to a current buf; i have pointer to 3 but not 5;
 {
-ft_printf("%s\n", "1.12");
+// ft_printf("%s\n", "1.12");
 
 	ft_printf("I did it !\n");
 
 	//add to a way;
-	ft_printf("end ->      %s\n", buf->child->vertex_name);
-ft_printf("%s\n", "1.13");
+// ft_printf("%s\n", "1.13");
 	
-	t_tree *way = buf->child->parent;
-ft_printf("%s\n", "1.14");
+	t_tree *way = buf->child;
+// ft_printf("%s\n", "1.14");
 
 	while (way)
 	{
-		ft_printf("%s\n", "1.15");
+		// ft_printf("%s\n", "1.15");
 		ft_printf("way node -> %s\n", way->vertex_name);
-		ft_printf("%s\n", "1.16");
+		// ft_printf("%s\n", "1.16");
 
 		way = way->parent;
-		ft_printf("%s\n", "1.17");
-		ft_printf("%s\n", "1.18");
+		// ft_printf("%s\n", "1.17");
+		// ft_printf("%s\n", "1.18");
 	}
 
-		ft_printf("start ->    %s\n", "0"); //data start;
+		// ft_printf("start ->    %s\n", "0"); //data start;
 }
 
 		// ft_printf("%s\n", "--------->segfault2");

@@ -132,22 +132,22 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	t_edge 	*adj_list_vertex;
 	t_tree	*tree;
 
-		ft_printf("%s\n", "1");
+		// ft_printf("%s\n", "1");
 
 
 	tree = NULL;
-	ft_printf("%s\n", "2");
+	// ft_printf("%s\n", "2");
 	queue = createqueue();
-	ft_printf("%s\n", "3");
+	// ft_printf("%s\n", "3");
 	enqueue(queue, data.start, "root");
 	
-ft_printf("%s\n", "4");
+// ft_printf("%s\n", "4");
 	while (!isempty(queue))
 	{
-		ft_printf("%s\n", "5");
+		// ft_printf("%s\n", "5");
 		node = dequeue(queue);
 
-ft_printf("%s\n", "6");
+// ft_printf("%s\n", "6");
 
 		ft_printf("--->dequeue %s\n", node->str);
 
@@ -173,17 +173,17 @@ ft_printf("%s\n", "7");
 			continue ;
 		}
 
-ft_printf("%s\n", "8");
+// ft_printf("%s\n", "8");
 
 		
 		ft_visited(vertex, node->str, 'b'); //except start; // add path only to the nodes which are not end or start;
 		
-ft_printf("%s\n", "9");
+// ft_printf("%s\n", "9");
 
 
 		adj_list_vertex = return_corresponding_edge(vertex, node);
 
-ft_printf("%s\n", "10");
+// ft_printf("%s\n", "10");
 
 
 		while (adj_list_vertex)
@@ -195,7 +195,7 @@ ft_printf("%s\n", "10");
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
-ft_printf("%s\n", "11");
+// ft_printf("%s\n", "11");
 
 		
 		// ft_print_queue(queue->front);
@@ -208,6 +208,6 @@ ft_printf("%s\n", "11");
 	free(tree);
 			// ft_clean_queue(&queue->front);
 	free(queue); // clean all if not empty;
-ft_printf("%s\n", "12");
+// ft_printf("%s\n", "12");
 
 }
