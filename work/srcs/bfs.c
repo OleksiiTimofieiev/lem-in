@@ -208,6 +208,11 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	}
 	// ft_printf("%s\n", tree->vertex_name);
 	ft_printf("first node of a tree - >  %s\n", tree->vertex_name);
+	// free(tree->child->child->vertex_name);
+	// free(tree->child->child);
+
+	// free(tree->child->vertex_name);
+	// free(tree->child);
 
 	free(tree);
 			// ft_clean_queue(&queue->front);
