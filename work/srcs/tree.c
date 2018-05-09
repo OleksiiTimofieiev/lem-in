@@ -114,6 +114,9 @@ t_tree			*find_tree_element(t_tree *tree, char *str)
 		{
 			free(node->name);
 			free(node);
+			ft_printf("Pointer in searching    - > %p\n", node->pointer_to_parent); // how ?
+			ft_printf("Pointer in searching    - > %p\n", node); // how ?
+
 			return (node->pointer_to_parent);
 		}
 
@@ -175,6 +178,8 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 		ft_printf("%s\n", (*tree)->vertex_name);
 // ft_printf("%s\n", "1.4");
 		buf = find_tree_element(tmp, node->parent);
+			ft_printf("Pointer after searching - > %p\n", buf);
+
 // ft_printf("%s\n", "1.5");
 		if (!*tree)
 		{
