@@ -173,7 +173,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
-		
+
 		ft_print_queue(queue->front);
 	
 		free(node->str);
