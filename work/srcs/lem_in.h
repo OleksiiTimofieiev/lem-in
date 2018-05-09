@@ -152,6 +152,6 @@ typedef struct			s_qtree
 	t_qtnode			*rear;
 }						t_qtree;
 
-void	ft_add_to_tree(t_tree **tree, t_qnode *node);
+void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data);
 
 #endif

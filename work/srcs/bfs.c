@@ -144,7 +144,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 		ft_printf("dequeue %s\n", node->str);
 
-		ft_add_to_tree(&tree, node);
+		ft_add_to_tree(&tree, node, data);
 		
 		if (ft_strequ(node->str, data.end))
 		{
