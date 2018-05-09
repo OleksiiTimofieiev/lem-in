@@ -106,15 +106,19 @@ t_tree	*find_tree_element(t_tree *tree, char *str)
 		//buf;
 		ft_printf("tree node name 2 ->  %s\n", node->pointer_to_parent->vertex_name);
 			ft_printf("buf->%p\n", node->pointer_to_parent);
-		
+
 
 		if (node->pointer_to_parent->child == NULL)
 			ft_putstr("Hmmm\n");
-		while (node->pointer_to_parent->child) // if it is not necessary one add all children of the node to the queue;
+
+		t_tree *buf = node->pointer_to_parent->child;
+
+
+		while (buf) // if it is not necessary one add all children of the node to the queue;
 		{
-			ft_printf("add child %s\n", node->pointer_to_parent->child->vertex_name);
-			enqueue_t(queue, node->pointer_to_parent->child);
-			node->pointer_to_parent->child = node->pointer_to_parent->child->next;
+			ft_printf("add child %s\n", buf->vertex_name);
+			enqueue_t(queue, buf);
+			buf = buf->next;
 		}
 		if (isempty_t(queue))
 			ft_putstr("WTF\n");
