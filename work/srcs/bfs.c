@@ -133,7 +133,9 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	t_queue *queue;
 	t_qnode *node;
 	t_edge *adj_list_vertex;
-	//tree;
+	t_tree	*tree;
+
+	if (!tree)
 
 	queue = createqueue();
 	enqueue(queue, data.start, "root");
