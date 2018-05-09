@@ -167,10 +167,10 @@ ft_printf("%s\n", "7");
 			enqueue(queue, data.start, "root");
 
 			node = dequeue(queue);
-			free(node->str);
-			free(node->parent);
-			free(node);
-			continue ;
+			// free(node->str);
+			// free(node->parent);
+			// free(node);
+			// continue ;
 		}
 
 // ft_printf("%s\n", "8");
