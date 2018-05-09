@@ -115,15 +115,17 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node)
 	if (!*tree)
 	{
 		*tree = ft_build_node(node);
-		ft_printf("%p\n", *tree);
+		// ft_printf("%p\n", *tree);
 	}
 
 	else
 	{
 		ft_printf("%s\n", "Not empty");
-		buf = find_tree_element(*tree, "0");
-		ft_printf("Vertex_name ->>>%s\n", buf->vertex_name);
-		ft_printf("%p\n", buf);
+		buf = find_tree_element(*tree, "1");
+		if (!buf)
+			ft_printf("%s\n", "element not found");
+		// ft_printf("Vertex_name ->>>%s\n", buf->vertex_name);
+		ft_printf("buf->%p\n", buf);
 	}
 
 		// node = find(tree);
