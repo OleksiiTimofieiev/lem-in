@@ -91,17 +91,18 @@ t_tree	*find_tree_element(t_tree *tree, char *str)
 	enqueue_t(queue, tree);
 	while (!isempty_t(queue))
 	{
-		node = dequeue_t(queue);
+		node = dequeue_t(queue); //return the node with the parent;
 
-		if (ft_strequ(node->name, str))
+		if (ft_strequ(node->name, str)) // if its the necessary one -> return it;
 		{
 			// ft_printf("%p\n", node->pointer_to_parent);
 			return (node->pointer_to_parent);
 		}
 
 			// ft_putchar('Q');
-		while (node->pointer_to_parent->child)
+		while (node->pointer_to_parent->child) // if it is not necessary one add all children of the node to the queue;
 		{
+			ft_printf("children %s\n", node->pointer_to_parent->child->vertex_name);
 			enqueue_t(queue, node->pointer_to_parent->child);
 			node->pointer_to_parent->child = node->pointer_to_parent->child->next;
 		}
@@ -120,17 +121,22 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node)
 		ft_printf("%s\n", "Not empty");
 
 
-		buf = find_tree_element(*tree, node->parent);
+		buf = find_tree_element(*tree, node->parent); // find in a tree a parent of '1';
+
+
+
+
+
 
 		if (!buf)
 			ft_printf("%s\n", "element not found"); //add a child to parentl
 		else
 		{
 			ft_printf("parent ->>>%s\n", buf->vertex_name);
+			ft_printf("buf->%p\n", buf);
 			buf->child = ft_build_node(node);
 			ft_printf("Vertex_name ->>>%s\n", buf->child->vertex_name);
 		}
-		ft_printf("buf->%p\n", buf);
 	}
 
 		// node = find(tree);
