@@ -89,6 +89,9 @@ t_tree	*find_tree_element(t_tree *tree, char *str)
 
 	queue = createqueue_t();
 	enqueue_t(queue, tree);
+
+	// if (isempty_t(queue))
+	// 		ft_putstr("WTF\n");
 	while (!isempty_t(queue))
 	{
 		node = dequeue_t(queue); //return the node with the parent;
@@ -100,19 +103,47 @@ t_tree	*find_tree_element(t_tree *tree, char *str)
 		}
 
 			// ft_putchar('Q');
+		//buf;
+		ft_printf("tree node name 2 ->  %s\n", node->pointer_to_parent->vertex_name);
+			ft_printf("buf->%p\n", node->pointer_to_parent);
+		
+
+		if (node->pointer_to_parent->child == NULL)
+			ft_putstr("Hmmm\n");
 		while (node->pointer_to_parent->child) // if it is not necessary one add all children of the node to the queue;
 		{
-			ft_printf("children %s\n", node->pointer_to_parent->child->vertex_name);
+			ft_printf("add child %s\n", node->pointer_to_parent->child->vertex_name);
 			enqueue_t(queue, node->pointer_to_parent->child);
 			node->pointer_to_parent->child = node->pointer_to_parent->child->next;
 		}
+		if (isempty_t(queue))
+			ft_putstr("WTF\n");
 	}
 	return (NULL);
+}
+
+void	ft_add_children(t_tree *element, t_qnode *node)
+{
+
+				// t_tree *tmp = element;
+					
+				if (!element->child)
+					element->child = ft_build_node(node);
+				else
+				{
+					while (element->child->next)
+					{
+						element->child = element->child->next;
+						// ft_printf("name of child -> %s\n", element->child->vertex_name);
+					}
+					element->child->next = ft_build_node(node);
+				}
 }
 
 void	ft_add_to_tree(t_tree **tree, t_qnode *node)
 {
 	t_tree *buf;
+	t_tree *tmp = *tree;
 
 	if (!*tree)
 		*tree = ft_build_node(node);
@@ -123,9 +154,8 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node)
 		ft_printf("node parent -> %s\n", node->parent);
 
 
-
-		buf = find_tree_element(*tree, node->parent); // find in a tree a parent of '1';
-
+		ft_printf("%s\n", (*tree)->vertex_name);
+		buf = find_tree_element(tmp, node->parent); // find in a tree a parent of '1';
 
 
 		if (!buf)
@@ -134,11 +164,21 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node)
 		{
 			ft_printf("parent ->>>%s\n", buf->vertex_name);
 			ft_printf("buf->%p\n", buf);
-			buf->child = ft_build_node(node);
-			ft_printf("Vertex_name ->>>%s\n", buf->child->vertex_name);
+
+			ft_add_children(buf, node);
+
+			// buf->child = ft_build_node(node);
+			// while (buf->child)
+			// {
+			// 	ft_printf("childs ->>>%s\n", buf->child->vertex_name);
+			// 	buf->child = buf->child->next;
+			// }
 		}
+			ft_printf("\n");
+
 	}
-	ft_printf("\n");
+
+
 
 		// node = find(tree);
 		// node->child = new node of a tree;

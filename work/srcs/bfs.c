@@ -142,6 +142,8 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	{
 		node = dequeue(queue);
 
+		ft_printf("dequeue %s\n", node->str);
+
 		ft_add_to_tree(&tree, node);
 		
 		if (ft_strequ(node->str, data.end))
@@ -151,7 +153,6 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			ft_clean_queue(&queue->front);
 			// enqueue(queue, data.start);
 			enqueue(queue, data.start, "root");
-			// ft_print_queue(queue->front);
 
 			free(node->str);
 			free(node->parent);
