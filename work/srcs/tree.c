@@ -12,13 +12,13 @@
 
 #include "lem_in.h"
 
-t_tree	*ft_build_node(t_qnode *node) // for a tree;
+t_tree	*ft_build_node(t_qnode *node, t_tree *tree) // for a tree;
 {
 	t_tree *tmp;
 
 	tmp = (t_tree*)malloc(sizeof(t_tree));
 	tmp->vertex_name = ft_strdup(node->str);
-	tmp->parent = NULL;
+	tmp->parent = tree;
 	tmp->child = NULL;
 	tmp->next = NULL;
 	return (tmp);
@@ -123,28 +123,28 @@ t_tree	*find_tree_element(t_tree *tree, char *str)
 	return (NULL);
 }
 
-void	ft_add_children(t_tree *element, t_qnode *node)
+void	ft_add_children(t_tree *element, t_qnode *node, t_tree *tree)
 {
 	t_tree *tmp = element; 
 
 
 	if (!element->child)
-		element->child = ft_build_node(node);
+		element->child = ft_build_node(node, tree);
 	else
 	{
 		while (tmp->child->next)
 			tmp->child = tmp->child->next;
-		tmp->child->next = ft_build_node(node);
+		tmp->child->next = ft_build_node(node, tree);
 	}
 }
 
 void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data)
 {
-	t_tree *buf;
+	t_tree *buf = NULL;
 	t_tree *tmp = *tree;
 
 	if (!*tree)
-		*tree = ft_build_node(node);
+		*tree = ft_build_node(node, NULL);
 	else
 	{
 		ft_printf("%s\n", "Not empty");
@@ -160,17 +160,17 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data)
 			ft_printf("%s\n", "element not found");
 		else
 		{
-			ft_printf("parent ->>>%s\n", buf->vertex_name);
 			ft_printf("buf_pointer->%p\n", buf);
+			ft_printf("parent ->>>%s\n", buf->vertex_name);
 
 
 
 
 
-			ft_add_children(buf, node); // add parent;
 
+			ft_add_children(buf, node, buf); // add parent;
 
-
+			ft_printf("parent 2->>>%s\n", buf->child->parent->vertex_name);
 
 
 			ft_printf("buf_children_name->%s\n", buf->child->vertex_name);
@@ -179,12 +179,26 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data)
 		}
 		ft_printf("\n");
 
+
 	}
 
+
 	if (ft_strequ(node->str, data.end)) // add one node to a current buf; i have pointer to 3 but not 5;
+	{
 		ft_printf("I did it !\n");
 
+		//add to a way;
+		ft_printf("end ->      %s\n", buf->child->vertex_name);
+		
+		t_tree *way = buf->child->parent;
 
+		while (!ft_strequ(way->vertex_name, "0"))
+		{
+			ft_printf("way node -> %s\n", way->vertex_name);
+			way = way->parent;
+		}
+		ft_printf("start ->    %s\n", "0"); //data start;
+}
 
 		// node = find(tree);
 		// node->child = new node of a tree;
