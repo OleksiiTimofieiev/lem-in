@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-void	ft_clean_queue_qt(t_qtnode **front)
+void	ft_clean_queue_qt(t_qtnode **front) /* + */
 {
 	t_qtnode* current = *front;
    t_qtnode* next;
@@ -24,7 +24,7 @@ void	ft_clean_queue_qt(t_qtnode **front)
        free(current);
        current = next;
    }
-   // *front = NULL;
+   *front = NULL;
 }
 
 t_tree	*ft_build_node(t_qnode *node, t_tree *tree) /* + */
@@ -156,7 +156,7 @@ void	ft_add_children(t_tree *element, t_qnode *node, t_tree *tree) /* + */
 	}
 }
 
-void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data)
+void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 {
 	t_tree *buf = NULL;
 	t_tree *tmp = *tree;

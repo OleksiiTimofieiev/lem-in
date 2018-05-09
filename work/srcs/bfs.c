@@ -39,7 +39,7 @@ void	ft_clean_queue(t_qnode **front)
        free(current);
        current = next;
    }
-   // *front = NULL;
+   *front = NULL;
 }
 
 void	ft_print_lg_1(t_vertex *vertex) // intermidiaty function;
@@ -152,7 +152,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		ft_printf("--->dequeue %s\n", node->str);
 
 		ft_add_to_tree(&tree, node, data);
-ft_printf("%s\n", "7");
+// ft_printf("%s\n", "7");
 		
 		if (ft_strequ(node->str, data.end))
 		{
