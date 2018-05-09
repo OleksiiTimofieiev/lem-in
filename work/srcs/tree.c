@@ -159,7 +159,6 @@ void	ft_add_children(t_tree *element, t_qnode *node, t_tree *tree) /* + */
 void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 {
 	t_tree *buf = NULL;
-	t_tree *tmp = *tree;
 
 // ft_printf("%s\n", "1.1");
 
@@ -172,6 +171,7 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 	}
 	else
 	{
+	t_tree *tmp = *tree;
 // ft_printf("%s\n", "1.3");
 
 		ft_printf("%s\n", "Not empty");
