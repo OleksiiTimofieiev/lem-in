@@ -157,7 +157,6 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			free(node->str);
 			free(node->parent);
 			free(node);
-
 			node = dequeue(queue);
 			// return ;
 		}
@@ -180,6 +179,6 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 	}
 	// ft_printf("%s\n", tree->vertex_name);
-
+	free(tree);
 	free(queue);
 }
