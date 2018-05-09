@@ -146,15 +146,15 @@ t_tree			*find_tree_element(t_tree *tree, char *str)
 
 void	ft_add_children(t_tree *element, t_qnode *node, t_tree *tree) /* + */
 {
-	t_tree *tmp = element; 
+	// t_tree *tmp = element; 
 
 	if (!element->child)
 		element->child = ft_build_node(node, tree);
 	else
 	{
-		while (tmp->child->next)
-			tmp->child = tmp->child->next;
-		tmp->child->next = ft_build_node(node, tree);
+		while (element->child->next)
+			element->child = element->child->next;
+		element->child->next = ft_build_node(node, tree);
 	}
 }
 
@@ -249,5 +249,5 @@ if (ft_strequ(node->str, data.end)) // add one node to a current buf; i have poi
 
 
 	// free(tree->vertex_name);
-	// free(tree);
+	// free(*tree);
 }
