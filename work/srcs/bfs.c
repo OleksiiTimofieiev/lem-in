@@ -39,7 +39,7 @@ void	ft_clean_queue(t_qnode **front)
        free(current);
        current = next;
    }
-   *front = NULL;
+   // *front = NULL;
 }
 
 void	ft_print_lg_1(t_vertex *vertex) // intermidiaty function;
@@ -132,7 +132,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 {
 	t_queue *queue;
 	t_qnode *node;
-	t_edge *adj_list_vertex;
+	t_edge 	*adj_list_vertex;
 	t_tree	*tree;
 
 	tree = NULL;
@@ -142,7 +142,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	{
 		node = dequeue(queue);
 
-		ft_printf("dequeue %s\n", node->str);
+		ft_printf("--->dequeue %s\n", node->str);
 
 		ft_add_to_tree(&tree, node, data);
 		
@@ -150,19 +150,21 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		{
 
 			ft_printf("%s\n", "Woohoo !");
+
 			ft_clean_queue(&queue->front);
 			// enqueue(queue, data.start);
 			enqueue(queue, data.start, "root");
 
+			node = dequeue(queue);
 			free(node->str);
 			free(node->parent);
 			free(node);
-			node = dequeue(queue);
-			// return ;
+			continue ;
 		}
 		
 		ft_visited(vertex, node->str, 'b'); //except start; // add path only to the nodes which are not end or start;
 		adj_list_vertex = return_corresponding_edge(vertex, node);
+
 		while (adj_list_vertex)
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
@@ -180,5 +182,6 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	}
 	// ft_printf("%s\n", tree->vertex_name);
 	free(tree);
+			// ft_clean_queue(&queue->front);
 	free(queue); // clean all if not empty;
 }
