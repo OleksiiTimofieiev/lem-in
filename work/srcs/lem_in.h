@@ -127,4 +127,16 @@ int						isempty(t_queue *q);
 
 void					bfs(t_data data, t_vertex *vertex);
 
+/*
+**---------------------------------------   tree  ------------------------------
+*/
+
+typedef struct			s_tree
+{
+	char				*vertex_name;
+	struct s_tree		*parent;
+	struct s_tree		*child;
+	struct s_tree		*next;
+}						t_tree;
+
 #endif
