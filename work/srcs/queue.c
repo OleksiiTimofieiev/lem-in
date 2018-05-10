@@ -58,7 +58,10 @@ t_qnode			*dequeue(t_queue *q)
 
 	tmp = q->front;
 	if (q->front == NULL)
+	{
+		ft_putstr("here\n");
 		return (NULL);
+	}
 	if (q->front == q->rear)
 	{
 		q->front = NULL;

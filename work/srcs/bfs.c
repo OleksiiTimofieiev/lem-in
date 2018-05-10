@@ -149,7 +149,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 ft_printf("%s\n", "6");
 		if (node)
-		ft_printf("--->dequeue %s\n", node->str);
+		ft_printf("-------------------------------->dequeue %s\n", node->str);
 		// ft_printf("--->tree pointer 1 %p\n", tree);
 
 	// system("leaks -q lem-in");
@@ -173,35 +173,35 @@ ft_printf("%s\n", "7");
 
 			ft_printf("%s\n", "7.1");
 
-			if (tree)
-			{
-				free(tree->child->child->vertex_name);
-				free(tree->child->child);
-				tree->child->child = NULL;
+			// if (tree)
+			// {
+			// 	free(tree->child->child->vertex_name);
+			// 	free(tree->child->child);
+			// 	tree->child->child = NULL;
 
-				free(tree->child->vertex_name);
-				free(tree->child);
-				tree->child= NULL;
+			// 	free(tree->child->vertex_name);
+			// 	free(tree->child);
+			// 	tree->child= NULL;
 
-				t_tree *t = tree;
+			// 	t_tree *t = tree;
 
-				ft_printf("tree in bfs%p\n", t);
-				free(t->vertex_name);
-				free(t);
-				tree = NULL;
-			}
+			// 	ft_printf("tree in bfs%p\n", t);
+			// 	free(t->vertex_name);
+			// 	free(t);
+			// 	tree = NULL;
+			// }
 				// ft_printf("--->tree pointer 2 %p\n", tree);
 			// if (queue->front)
 			if (queue->front)
 			ft_printf("!!!!!!!!!!!!!!!!!!!!%s\n", queue->front->str);
-			if (queue->front)
-				ft_clean_queue(&queue->front);
+			// if (queue->front)
+			// 	ft_clean_queue(&queue->front);
 			// if (queue->rear)
 				// ft_clean_queue(&queue->rear);
 
 			// if (queue->rear)
 				// ft_clean_queue(&queue->rear);
-			queue = createqueue();
+			// queue = createqueue();
 			enqueue(queue, data.start, "root");
 
 			ft_putstr("blalallallallalalallalalallan\n");
