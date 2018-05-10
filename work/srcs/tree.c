@@ -112,6 +112,8 @@ t_tree			*find_tree_element(t_tree *tree, char *str)
 
 		if (ft_strequ(node->name, str))
 		{
+			if (node->next)
+				ft_printf("----------------------%s\n",node->next->name);
 			free(node->name);
 			t_tree *middle = node->pointer_to_parent;
 			free(node);
@@ -150,9 +152,6 @@ t_tree			*find_tree_element(t_tree *tree, char *str)
 
 void	ft_add_children(t_tree *element, t_qnode *node, t_tree *tree) /* + */
 {
-	// t_tree *tmp = element; 
-	// ft_printf("----->>>>>>>>>>>>>>>>>>%s\n", tree->vertex_name);
-
 	if (!element->child)
 		element->child = ft_build_node(node, tree);
 	else
@@ -183,7 +182,6 @@ ft_printf("%s\n", "1.2");
 // ft_printf("%s\n", "1.4");
 		buf = find_tree_element(*tree, node->parent);
 			ft_printf("Pointer after searching - > %p\n", buf);
-
 // ft_printf("%s\n", "1.5");
 		if (!*tree)
 		{
@@ -197,7 +195,6 @@ ft_printf("%s\n", "1.2");
 				ft_printf("buf_pointer->%p\n", buf);
 			else
 				ft_printf("end not found->%p\n", buf);
-
 			if (buf)
 				ft_printf("parent ->>>%s\n", buf->vertex_name);
 // ft_printf("%s\n", "1.8");
@@ -207,7 +204,6 @@ ft_printf("%s\n", "1.2");
 				ft_printf("%s\n", "children have been added");
 			}
 // ft_printf("%s\n", "1.9");
-
 			// ft_printf("parent 2->>>%s\n", buf->child->parent->vertex_name);
 			// ft_printf("buf_children_name->%s\n", buf->child->vertex_name);
 

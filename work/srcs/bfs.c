@@ -142,19 +142,16 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	while (!isempty(queue))
 	{
 		// ft_printf("%s\n", "5");
-
 		node = dequeue(queue);
 // ft_printf("%s\n", "6");
-
 		ft_printf("--->dequeue %s\n", node->str);
 		ft_printf("--->tree pointer 1 %p\n", tree);
 
-
 		ft_add_to_tree(&tree, node, data);
-	
 
-// ft_printf("%s\n", "7");
+	system("leaks -q lem-in");
 		
+// ft_printf("%s\n", "7");
 		if (ft_strequ(node->str, data.end))
 		{
 			if (tree)
@@ -177,17 +174,16 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			ft_clean_queue(&queue->rear);
 			// free(queue);
 
-			// enqueue(queue, data.start);
 			enqueue(queue, data.start, "root");
 				
 			ft_printf("first->%s\n", queue->front->str);
 			ft_printf("rear->%s\n", queue->rear->str);
 
-
 			// node = dequeue(queue);
 			free(node->str);
 			free(node->parent);
 			free(node);
+
 			ft_printf("%s\n", "Woohoo !");
 			continue ;
 		}
