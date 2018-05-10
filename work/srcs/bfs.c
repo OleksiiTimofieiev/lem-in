@@ -159,21 +159,19 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		{
 			if (tree)
 			{
-				// free(tree->child->child->vertex_name);
-				// free(tree->child->child);
-				// tree->child->child = NULL;
+				free(tree->child->child->vertex_name);
+				free(tree->child->child);
+				tree->child->child = NULL;
 
-				// free(tree->child->vertex_name);
-				// free(tree->child);
-				// tree->child= NULL;
+				free(tree->child->vertex_name);
+				free(tree->child);
+				tree->child= NULL;
 
-				// free(tree->vertex_name);
-				// free(tree);
+				free(tree->vertex_name);
+				free(tree);
 				tree = NULL;
 			}
 				ft_printf("--->tree pointer 2 %p\n", tree);
-
-			ft_printf("%s\n", "Woohoo !");
 
 			ft_clean_queue(&queue->front);
 			ft_clean_queue(&queue->rear);
@@ -190,6 +188,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			free(node->str);
 			free(node->parent);
 			free(node);
+			ft_printf("%s\n", "Woohoo !");
 			continue ;
 		}
 
