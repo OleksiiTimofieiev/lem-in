@@ -142,7 +142,7 @@ typedef struct			s_tree
 typedef struct			s_qtnode
 {
 	char				*name;
-	t_tree				*pointer_to_parent;
+	t_tree				**pointer_to_parent;
 	struct s_qtnode		*next;
 }						t_qtnode;
 

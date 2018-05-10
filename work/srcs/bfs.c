@@ -132,68 +132,79 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	t_edge 	*adj_list_vertex;
 	t_tree	*tree;
 	
-	ft_printf("%s\n", "1");
+	// ft_printf("%s\n", "1");
 	tree = NULL;
-	ft_printf("%s\n", "2");
+	ft_printf("tree in bfs------------------------------------------------->%p\n", &tree);
+	// ft_printf("%s\n", "2");
 	queue = createqueue();
-	ft_printf("%s\n", "3");
+	// ft_printf("%s\n", "3");
 	enqueue(queue, data.start, "root");
-	ft_printf("%s\n", "4");
+	// ft_printf("%s\n", "4");
 	while (!isempty(queue))
 	{
-		ft_printf("%s\n", "5");
+		// ft_printf("%s\n", "5");
 
 		node = dequeue(queue);
-		if (node)
-		ft_printf("node1->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%s\n", node->str);
+		// if (node)
+		// ft_printf("node1->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%s\n", node->str);
 
-ft_printf("%s\n", "6");
-		if (node)
-		ft_printf("-------------------------------->dequeue %s\n", node->str);
+// ft_printf("%s\n", "6");
+		// if (node)
+		// ft_printf("-------------------------------->dequeue %s\n", node->str);
 		// ft_printf("--->tree pointer 1 %p\n", tree);
 
 	// system("leaks -q lem-in");
-	if (!node)
-			ft_printf("%s\n", "7.0");
+	// if (!node)
+	// 		ft_printf("%s\n", "7.0");
 
 		ft_add_to_tree(&tree, node, data);
 
 	// system("leaks -q lem-in");
 
 
-ft_printf("%s\n", "7");
+// ft_printf("%s\n", "7");
 // ft_printf("%s\n", "WTF?");
 
-		// ft_printf("%s\n", node->str);
-		if (!node)
-			ft_printf("%s\n", "7.4");
+		// // ft_printf("%s\n", node->str);
+		// if (!node)
+		// 	ft_printf("%s\n", "7.4");
 
-		if (node && ft_strequ(node->str, data.end))
+		if (ft_strequ(node->str, data.end))
 		{
 
-			ft_printf("%s\n", "7.1");
+			// ft_printf("%s\n", "7.1");
 
-			// if (tree)
-			// {
-			// 	free(tree->child->child->vertex_name);
-			// 	free(tree->child->child);
-			// 	tree->child->child = NULL;
+			if (tree)
+			{
+				ft_printf("+++++++++++++++++++++++++++++++++%s\n", tree->child->vertex_name);
+				// free(tree->child->next->child);
 
-			// 	free(tree->child->vertex_name);
-			// 	free(tree->child);
-			// 	tree->child= NULL;
+				free(tree->child->next->vertex_name);
+				free(tree->child->next);
 
-			// 	t_tree *t = tree;
+				// free(tree->child->child->child->vertex_name);
+				// free(tree->child->child->child);
+				// tree->child->child = NULL;
 
-			// 	ft_printf("tree in bfs%p\n", t);
-			// 	free(t->vertex_name);
-			// 	free(t);
-			// 	tree = NULL;
-			// }
+				// free(tree->child->child->vertex_name);
+				// free(tree->child->child);
+				// tree->child->child = NULL;
+
+				free(tree->child->vertex_name);
+				free(tree->child);
+				tree->child= NULL;
+
+				t_tree *t = tree;
+
+				// ft_printf("tree in bfs%p\n", t);
+				free(t->vertex_name);
+				free(t);
+				tree = NULL;
+			}
 				// ft_printf("--->tree pointer 2 %p\n", tree);
 			// if (queue->front)
-			if (queue->front)
-			ft_printf("!!!!!!!!!!!!!!!!!!!!%s\n", queue->front->str);
+			// if (queue->front)
+			// ft_printf("!!!!!!!!!!!!!!!!!!!!%s\n", queue->front->str);
 			// if (queue->front)
 			// 	ft_clean_queue(&queue->front);
 			// if (queue->rear)
@@ -204,7 +215,7 @@ ft_printf("%s\n", "7");
 			// queue = createqueue();
 			enqueue(queue, data.start, "root");
 
-			ft_putstr("blalallallallalalallalalallan\n");
+			// ft_putstr("blalallallallalalallalalallan\n");
 
 			free(node->str);
 			free(node->parent);
@@ -216,32 +227,32 @@ ft_printf("%s\n", "7");
 			// ft_printf("rear->%s\n", queue->rear->str);
 
 			// node = dequeue(queue);
-ft_printf("%s\n", "7.2");
+// ft_printf("%s\n", "7.2");
 
 
 			// ft_printf("%s\n", "Woohoo !");
 			continue ;
 		}
 
-		ft_printf("%s\n", "8");		
+		// ft_printf("%s\n", "8");		
 		ft_visited(vertex, node->str, 'b'); //except start; // add path only to the nodes which are not end or start;
-			ft_printf("%s\n", "9");
+			// ft_printf("%s\n", "9");
 		adj_list_vertex = return_corresponding_edge(vertex, node);
 
 		// ft_printf("%s\n" , adj_list_vertex->room_name);
 			// ft_print_queue(queue->front);
-ft_printf("%s\n", "10");
+// ft_printf("%s\n", "10");
 		while (adj_list_vertex) 
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
 			{
-				ft_printf("add ---->>>>%s\n", adj_list_vertex->room_name);
+				// ft_printf("add ---->>>>%s\n", adj_list_vertex->room_name);
 				enqueue(queue, adj_list_vertex->room_name, node->str); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-here
 				ft_visited(vertex, adj_list_vertex->room_name, 'g');
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
-ft_printf("%s\n", "11");
+// ft_printf("%s\n", "11");
 
 		// ft_print_queue(queue->front);
 		
