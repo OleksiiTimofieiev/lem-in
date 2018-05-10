@@ -182,7 +182,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			// free(queue);
 
 			// enqueue(queue, data.start);
-			enqueue(queue, data.start, "root");
+			// enqueue(queue, data.start, "root");/
 
 			// node = dequeue(queue);
 			// free(node->str);
