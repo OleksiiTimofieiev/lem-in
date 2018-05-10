@@ -159,23 +159,21 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		{
 			if (tree)
 			{
-				free(tree->child->child->vertex_name);
-				free(tree->child->child);
-				tree->child->child = NULL;
+				// free(tree->child->child->vertex_name);
+				// free(tree->child->child);
+				// tree->child->child = NULL;
 
-				free(tree->child->vertex_name);
-				free(tree->child);
-				tree->child= NULL;
+				// free(tree->child->vertex_name);
+				// free(tree->child);
+				// tree->child= NULL;
 
-				free(tree->vertex_name);
-				free(tree);
+				// free(tree->vertex_name);
+				// free(tree);
 				tree = NULL;
 			}
 				ft_printf("--->tree pointer 2 %p\n", tree);
 
-			// ft_printf("%s\n", "Woohoo !");
-
-			// ft_print_queue(queue->front);
+			ft_printf("%s\n", "Woohoo !");
 
 			ft_clean_queue(&queue->front);
 			ft_clean_queue(&queue->rear);
@@ -183,23 +181,31 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 			// enqueue(queue, data.start);
 			enqueue(queue, data.start, "root");
+				
+			ft_printf("first->%s\n", queue->front->str);
+			ft_printf("rear->%s\n", queue->rear->str);
+
 
 			// node = dequeue(queue);
-			// free(node->str);
-			// free(node->parent);
-			// free(node);
-			// continue ;
+			free(node->str);
+			free(node->parent);
+			free(node);
+			continue ;
 		}
 
 // ft_printf("%s\n", "8");		
 		ft_visited(vertex, node->str, 'b'); //except start; // add path only to the nodes which are not end or start;
 // ft_printf("%s\n", "9");
 		adj_list_vertex = return_corresponding_edge(vertex, node);
+
+		ft_printf("%s\n" , adj_list_vertex->room_name);
+			// ft_print_queue(queue->front);
 // ft_printf("%s\n", "10");
 		while (adj_list_vertex) 
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
 			{
+				ft_printf("add ---->>>>%s\n", adj_list_vertex->room_name);
 				enqueue(queue, adj_list_vertex->room_name, node->str); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-here
 				ft_visited(vertex, adj_list_vertex->room_name, 'g');
 			}
