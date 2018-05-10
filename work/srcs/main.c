@@ -85,13 +85,13 @@ int		main(void)
 	ft_print_ll(initial_data);
 	ft_build_vertex_structure(initial_data, &graph);
 	ft_build_edge_structure(initial_data, graph);
-	ft_putstr("here\n");
 	ft_add_data_to_graph(initial_data, &data);
 
 	ft_print_lg(graph);  // intermidiaty function;
 
 
 	bfs(data, graph);
+	ft_putstr("here\n");
 
 	ft_printf("\n");
 	// ft_print_lg(graph);  // intermidiaty function;
