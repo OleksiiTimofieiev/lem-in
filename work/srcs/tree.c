@@ -217,13 +217,6 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 		// system("leaks -q lem-in");
 
 
-
-
-
-
-
-
-
 // ft_printf("%s\n", "1.5");
 		if (!*tree)
 		{

@@ -166,9 +166,11 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 				free(tree->child);
 				tree->child= NULL;
 
-				free(tree->vertex_name);
-				ft_printf("tree in bfs%p\n", tree);
-				free(tree);
+				t_tree *t = tree;
+
+				ft_printf("tree in bfs%p\n", t);
+				free(t->vertex_name);
+				free(t);
 				tree = NULL;
 			}
 				// ft_printf("--->tree pointer 2 %p\n", tree);
