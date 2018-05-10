@@ -215,7 +215,7 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 
 // ft_printf("%s\n", "1.11");
 
-if (ft_strequ(node->str, data.end)) // add one node to a current buf; i have pointer to 3 but not 5;
+if (buf && ft_strequ(node->str, data.end)) // add one node to a current buf; i have pointer to 3 but not 5;
 {
 	ft_printf("I did it !\n");
 	//add tp way;	
