@@ -134,7 +134,7 @@ t_tree			*find_tree_element(t_tree *tree, char *str)
 			// ft_printf("%p\n", middle);
 			if (queue)
 			{
-				ft_putstr("here\n");
+				ft_clean_queue_qt(&queue->front);
 				free(queue);
 			}
 			return (middle);
