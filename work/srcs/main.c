@@ -82,18 +82,18 @@ int		main(void)
 	ft_validation(&initial_data);
 	ft_to_start(&initial_data);
 	ft_detect_input(initial_data);
-	ft_print_ll(initial_data);
+	// ft_print_ll(initial_data);
 	ft_build_vertex_structure(initial_data, &graph);
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
 
-	ft_print_lg(graph);  // intermidiaty function;
+	// ft_print_lg(graph);  // intermidiaty function;
 
 
 	bfs(data, graph);
 
 	ft_printf("\n");
-	ft_print_lg(graph);  // intermidiaty function;
+	// ft_print_lg(graph);  // intermidiaty function;
 	
 	system("leaks -q lem-in");
 	
