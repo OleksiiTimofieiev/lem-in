@@ -142,28 +142,49 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	while (!isempty(queue))
 	{
 		// ft_printf("%s\n", "5");
+
 		node = dequeue(queue);
 // ft_printf("%s\n", "6");
 
-		// ft_printf("--->dequeue %s\n", node->str);
+		ft_printf("--->dequeue %s\n", node->str);
+		ft_printf("--->tree pointer 1 %p\n", tree);
 
-		// ft_add_to_tree(&tree, node, data);
-		
+
+		ft_add_to_tree(&tree, node, data);
+	
+
 // ft_printf("%s\n", "7");
 		
 		if (ft_strequ(node->str, data.end))
 		{
+			if (tree)
+			{
+			free(tree->child->child->vertex_name);
+			free(tree->child->child);
+			tree->child->child = NULL;
+
+			free(tree->child->vertex_name);
+			free(tree->child);
+			tree->child= NULL;
+
+			free(tree->vertex_name);
+			free(tree);
+			tree = NULL;
+			}
+				ft_printf("--->tree pointer 2 %p\n", tree);
+
 			// ft_printf("%s\n", "Woohoo !");
 
-			ft_print_queue(queue->front);
+			// ft_print_queue(queue->front);
 
 			ft_clean_queue(&queue->front);
 			ft_clean_queue(&queue->rear);
+			// free(queue);
 
 			// enqueue(queue, data.start);
 			enqueue(queue, data.start, "root");
 
-			node = dequeue(queue);
+			// node = dequeue(queue);
 			// free(node->str);
 			// free(node->parent);
 			// free(node);
@@ -175,11 +196,11 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 // ft_printf("%s\n", "9");
 		adj_list_vertex = return_corresponding_edge(vertex, node);
 // ft_printf("%s\n", "10");
-		while (adj_list_vertex) // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-here
+		while (adj_list_vertex) 
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
 			{
-				enqueue(queue, adj_list_vertex->room_name, node->str);
+				enqueue(queue, adj_list_vertex->room_name, node->str); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-here
 				ft_visited(vertex, adj_list_vertex->room_name, 'g');
 			}
 			adj_list_vertex = adj_list_vertex->next;
@@ -193,21 +214,18 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		free(node);
 
 	}
-	// ft_printf("%s\n", tree->vertex_name);
+	// 	// ft_printf("%s\n", tree->vertex_name);
 	// ft_printf("first node of a tree - >  %s\n", tree->child->child->vertex_name);
 	// ft_printf("first node of a tree - >  %s\n", tree->child->child->vertex_name);
 
-	// free(tree->child->child->vertex_name);
-	// free(tree->child->child);
-
-	// free(tree->child->vertex_name);
-	// free(tree->child);
-
-	// free(tree->vertex_name);
-	free(tree);
 	// // ft_printf("first node of a tree - >  %s\n", tree->child->vertex_name);
 	// // free(tree->child->vertex_name);
-	// free(tree->child);
+	// free(tree->vertex_name);
+	// if (tree)
+	// {
+		free(tree->vertex_name);
+		free(tree);
+	// }
 
 	// ft_printf("first node of a tree - >  %s\n", tree->vertex_name);
 	// free(tree->vertex_name);
