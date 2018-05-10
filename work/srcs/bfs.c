@@ -159,17 +159,17 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		{
 			if (tree)
 			{
-			free(tree->child->child->vertex_name);
-			free(tree->child->child);
-			tree->child->child = NULL;
+				free(tree->child->child->vertex_name);
+				free(tree->child->child);
+				tree->child->child = NULL;
 
-			free(tree->child->vertex_name);
-			free(tree->child);
-			tree->child= NULL;
+				free(tree->child->vertex_name);
+				free(tree->child);
+				tree->child= NULL;
 
-			free(tree->vertex_name);
-			free(tree);
-			tree = NULL;
+				free(tree->vertex_name);
+				free(tree);
+				tree = NULL;
 			}
 				ft_printf("--->tree pointer 2 %p\n", tree);
 
@@ -221,11 +221,14 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	// // ft_printf("first node of a tree - >  %s\n", tree->child->vertex_name);
 	// // free(tree->child->vertex_name);
 	// free(tree->vertex_name);
-	// if (tree)
-	// {
+	if (tree)
+	{
 		free(tree->vertex_name);
+		if (tree->child)
+			ft_putstr("asdf");
 		free(tree);
-	// }
+		tree = NULL;
+	}
 
 	// ft_printf("first node of a tree - >  %s\n", tree->vertex_name);
 	// free(tree->vertex_name);
