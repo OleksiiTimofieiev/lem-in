@@ -104,30 +104,44 @@ t_tree			*find_tree_element(t_tree *tree, char *str)
 	t_qtnode *node;
 
 	queue = createqueue_t();
+		ft_printf("main tree in search->%p\n", tree);
+
 	enqueue_t(queue, tree);
 
 	while (!isempty_t(queue))
 	{
 		node = dequeue_t(queue);
 		// ft_printf("tree node name ->  %s\n", node->name);
-
 		if (ft_strequ(node->name, str))
 		{
-			t_tree *middle = node->pointer_to_parent;
+			if (tree->child)
+			ft_printf("actual parent address->%p\n", tree->child);
 
-			if (node->next)
-				ft_printf("----------------------%s\n",node->next->name);
-			
+			ft_printf("pointer to parent->%p\n", node->pointer_to_parent);
+			t_tree *middle = node->pointer_to_parent;
+			ft_printf("pointer to parent - middle->%p\n", middle);
+
+
+			// if (node->next)
+				// ft_printf("----------------------%s\n",node->next->name);
 			free(node->name);
+			// free(node->pointer_to_parent);
 			free(node);
-			
-			node = NULL;
+			// node = NULL;
 			// ft_printf("Pointer in searching    - > %p\n", node->pointer_to_parent); // how ?
 			// ft_printf("Pointer in searching    - > %p\n", node); // how ?
-
-			ft_putstr("\n");
+			// ft_putstr("\n");
+			// ft_printf("%p\n", middle);
+			if (queue)
+			{
+				ft_putstr("here\n");
+				free(queue);
+			}
 			return (middle);
+		// system("leaks -q lem-in");
+
 		}
+		// system("leaks -q lem-in");
 
 		// ft_printf("tree node name 2 ->  %s\n", node->pointer_to_parent->vertex_name);
 		// ft_printf("buf->%p\n", node->pointer_to_parent);
@@ -144,15 +158,18 @@ t_tree			*find_tree_element(t_tree *tree, char *str)
 			buf = buf->next;
 		}
 		free(node->name);
-		// free(node->pointer_to_parent);
 		free(node);
+		// free(node->pointer_to_parent);
 		// free(buf);
 		// 	ft_putstr("WTF\n");
 	}
 	if (!isempty_t(queue))
+	{
+		ft_putstr("--------------------------------------------------------------------------------->not empty");
 		ft_clean_queue_qt(&(queue)->front);
+	}
 	free(queue);
-	
+
 	return (NULL);
 }
 
@@ -175,6 +192,7 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 	if (!*tree)
 	{
 		*tree = ft_build_node(node, NULL);
+
 		
 // ft_printf("%s\n", "1.2");
 	}
@@ -187,8 +205,25 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 		// ft_printf("node parent -> %s\n", node->parent);
 		// ft_printf("%s\n", (*tree)->vertex_name);
 // ft_printf("%s\n", "1.4");
-		buf = find_tree_element(*tree, node->parent);
+
+
+
+		ft_printf("main tree->%p\n", *tree);
+
+		// system("leaks -q lem-in");
+
+		buf = find_tree_element(*tree, node->parent); // <-somewhere here;
 			// ft_printf("Pointer after searching - > %p\n", buf);
+		// system("leaks -q lem-in");
+
+
+
+
+
+
+
+
+
 // ft_printf("%s\n", "1.5");
 		if (!*tree)
 		{

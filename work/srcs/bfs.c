@@ -143,14 +143,14 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		// ft_printf("%s\n", "5");
 		node = dequeue(queue);
 // ft_printf("%s\n", "6");
-		ft_printf("--->dequeue %s\n", node->str);
-		ft_printf("--->tree pointer 1 %p\n", tree);
+		// ft_printf("--->dequeue %s\n", node->str);
+		// ft_printf("--->tree pointer 1 %p\n", tree);
 
-	system("leaks -q lem-in");
+	// system("leaks -q lem-in");
 
 		ft_add_to_tree(&tree, node, data);
-		
-	system("leaks -q lem-in");
+
+	// system("leaks -q lem-in");
 
 
 // ft_printf("%s\n", "7");
@@ -167,10 +167,11 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 				tree->child= NULL;
 
 				free(tree->vertex_name);
+				ft_printf("tree in bfs%p\n", tree);
 				free(tree);
 				tree = NULL;
 			}
-				ft_printf("--->tree pointer 2 %p\n", tree);
+				// ft_printf("--->tree pointer 2 %p\n", tree);
 
 			ft_clean_queue(&queue->front);
 			ft_clean_queue(&queue->rear);
@@ -178,15 +179,15 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 			enqueue(queue, data.start, "root");
 				
-			ft_printf("first->%s\n", queue->front->str);
-			ft_printf("rear->%s\n", queue->rear->str);
+			// ft_printf("first->%s\n", queue->front->str);
+			// ft_printf("rear->%s\n", queue->rear->str);
 
 			// node = dequeue(queue);
 			free(node->str);
 			free(node->parent);
 			free(node);
 
-			ft_printf("%s\n", "Woohoo !");
+			// ft_printf("%s\n", "Woohoo !");
 			continue ;
 		}
 
@@ -195,14 +196,14 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 // ft_printf("%s\n", "9");
 		adj_list_vertex = return_corresponding_edge(vertex, node);
 
-		ft_printf("%s\n" , adj_list_vertex->room_name);
+		// ft_printf("%s\n" , adj_list_vertex->room_name);
 			// ft_print_queue(queue->front);
 // ft_printf("%s\n", "10");
 		while (adj_list_vertex) 
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
 			{
-				ft_printf("add ---->>>>%s\n", adj_list_vertex->room_name);
+				// ft_printf("add ---->>>>%s\n", adj_list_vertex->room_name);
 				enqueue(queue, adj_list_vertex->room_name, node->str); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-here
 				ft_visited(vertex, adj_list_vertex->room_name, 'g');
 			}
