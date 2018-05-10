@@ -148,7 +148,8 @@ ft_printf("%s\n", "6");
 		// ft_printf("--->tree pointer 1 %p\n", tree);
 
 	// system("leaks -q lem-in");
-
+	if (!node)
+			ft_printf("%s\n", "7.0");
 		ft_add_to_tree(&tree, node, data);
 
 	// system("leaks -q lem-in");
@@ -192,8 +193,14 @@ ft_printf("%s\n", "7");
 
 			// if (queue->rear)
 				// ft_clean_queue(&queue->rear);
-			ft_putstr("blalallallallalalallalalallan\n");
 			enqueue(queue, data.start, "root");
+			if (queue->front)
+			ft_printf("!!!!!!!!!!!!!!!!!!!!%s\n", queue->front->str);
+			ft_putstr("blalallallallalalallalalallan\n");
+
+			free(node->str);
+			free(node->parent);
+			free(node);
 			// free(queue);
 
 				
@@ -201,9 +208,6 @@ ft_printf("%s\n", "7");
 			// ft_printf("rear->%s\n", queue->rear->str);
 
 			// node = dequeue(queue);
-			free(node->str);
-			free(node->parent);
-			free(node);
 ft_printf("%s\n", "7.2");
 
 

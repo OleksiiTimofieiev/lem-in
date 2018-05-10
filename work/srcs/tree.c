@@ -202,9 +202,9 @@ ft_printf("%s\n", "1.2");
 	{
 		// t_tree *tmp = *tree;
 ft_printf("%s\n", "1.3");
-		// ft_printf("%s\n", "Not empty");
-		// ft_printf("node name -> %s\n", node->str);
-		// ft_printf("node parent -> %s\n", node->parent);
+		ft_printf("%s\n", "Not empty");
+		ft_printf("node name -> %s\n", node->str);
+		ft_printf("node parent -> %s\n", node->parent);
 		// ft_printf("%s\n", (*tree)->vertex_name);
 ft_printf("%s\n", "1.4");
 
@@ -213,9 +213,9 @@ ft_printf("%s\n", "1.4");
 		ft_printf("main tree->%p\n", *tree);
 
 		// system("leaks -q lem-in");
-		if (node)
+		
 		buf = find_tree_element(*tree, node->parent); // <-somewhere here;
-			// ft_printf("Pointer after searching - > %p\n", buf);
+			ft_printf("Pointer after searching - > %p\n", buf);
 		// system("leaks -q lem-in");
 
 ft_printf("%s\n", "1.5");
@@ -228,27 +228,30 @@ ft_printf("%s\n", "1.6");
 		else
 		{
 ft_printf("%s\n", "1.7");
-			// if (buf)
-			// 	ft_printf("buf_pointer->%p\n", buf);
-			// else
-			// 	ft_printf("end not found->%p\n", buf);
-			// if (buf)
-			// 	ft_printf("parent ->>>%s\n", buf->vertex_name);
+			if (buf)
+				ft_printf("buf_pointer->%p\n", buf);
+			else
+				ft_printf("end not found->%p\n", buf);
+			if (buf)
+				ft_printf("parent ->>>%s\n", buf->vertex_name);
 ft_printf("%s\n", "1.8");
 			if (buf)
 			{
 				ft_add_children(buf, node, buf); // if child it doesn`t exists and root;
-				// ft_printf("%s\n", "children have been added");
+				ft_printf("%s\n", "children have been added");
 ft_printf("%s\n", "1.9");
 			}
+
+			// if no buf
+
 			// ft_printf("parent 2->>>%s\n", buf->child->parent->vertex_name);
 			// ft_printf("buf_children_name->%s\n", buf->child->vertex_name);
 
+ft_printf("%s\n", "1.11");
 		}
 		ft_printf("\n");
 	}
 
-ft_printf("%s\n", "1.11");
 
 if (buf && ft_strequ(node->str, data.end)) // add one node to a current buf; i have pointer to 3 but not 5;
 {
