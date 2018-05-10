@@ -94,16 +94,28 @@ void				ft_build_edge_structure(t_init *ini, t_vertex *vertex)
 	t_vertex	*current;
 	char		**medium;
 
+
 	while (ini)
 	{
+	// ft_putstr("seg fault\n");
 		if (ini->type_of_the_line == LINK)
 		{
 			flag = 0;
-			medium = ft_strsplit(ini->valid_line, '-');
+			medium = ft_strsplit(ini->valid_line, '-'); //no split for two lines
+
 			current = ft_find_vertex(vertex, medium[0]);
+			// ft_putstr("seg fault1\n");
+			ft_printf("%s\n", current->vertex_name);
+			// ft_putstr("seg fault2\n");
 			data_to_vertex(current, medium, flag++);
+			
+			ft_putstr("\n");
+
 			current = ft_find_vertex(vertex, medium[1]);
+			ft_printf("%s\n", current->vertex_name);
+
 			data_to_vertex(current, medium, flag);
+
 			ft_clean_2d_char(medium);
 		}
 		ini = ini->next;

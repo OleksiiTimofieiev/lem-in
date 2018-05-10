@@ -257,7 +257,7 @@ if (buf && ft_strequ(node->str, data.end)) // add one node to a current buf; i h
 	while (way)
 	{
 		// ft_printf("%s\n", "1.15");
-		// ft_printf("way node -> %s\n", way->vertex_name);
+		ft_printf("way node -> %s\n", way->vertex_name);
 		// ft_printf("%s\n", "1.16");
 		way = way->parent;
 		// ft_printf("%s\n", "1.17");
