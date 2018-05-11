@@ -152,57 +152,36 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 
 	main_ptr = NULL;
 	add_to_the_key(&main_ptr, "1", "w");
-	// ft_printf("%s\n", "1");
-	// ft_printf("%s\n", "2");
 	queue = createqueue();
-	// ft_printf("%s\n", "3");
 	enqueue(queue, data.start, "root");
-	// ft_printf("%s\n", "4");
 	while (!isempty(queue))
 	{
 		node = dequeue(queue);
 
 		if (ft_strequ(node->str, data.end))
 		{
-			// ft_printf("way from->%s\n", node->str);
 			add_to_way(way, node->str);
-			// if (queue->front)
-			// {
-			// 	free(queue->front);
-			// 	// queue->front = NULL;
-			// }
 			ft_printf("%s\n", "Woohoo !");
 			t_planb *unno = main_ptr;
 			t_planb *unno1;
 			while (unno)
 			{
-				// ft_printf("forvard->%s parent->%s\n", unno->vertex_name, unno->parent);
 				if (ft_strequ(unno->vertex_name, node->str))
 					unno1 = unno;
 				unno = unno->next;
 			}
 			ft_printf("\n");
 			char *first_parent = ft_strdup(unno1->parent);
-			// ft_printf("first_parent->%s\n", first_parent);
-			// ft_printf("first_current->%s\n", unno1->vertex_name);
 			while (unno1)
 			{
 				if (ft_strequ(unno1->vertex_name, first_parent))
 				{
 					first_parent = ft_strdup(unno1->parent);
 					add_to_way(way, unno1->vertex_name);
-					// ft_printf("%s\n", "parent has been found");
-					// ft_printf("current->%s\n", unno1->vertex_name);
 				}
-				// ft_printf("reverse->%s parent->%s\n", unno1->vertex_name, unno1->parent);
 				unno1 = unno1->prev;
 			}
-			// ft_printf("%s\n", "continue");
 			ft_printf("\n");
-			// ft_refresh_vertex(*way);
-
-			// ft_print_lg_1(vertex);
-
 			free(node->str);
 			free(node->parent);
 			free(node);
@@ -212,28 +191,14 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 				free(node->str);
 				free(node);
 			}
-
 			ft_refresh_vertex(vertex, *way, data);
-
 			ft_print_lg_1(vertex);
-			
 			enqueue(queue, data.start, "root");
-			ft_printf("\n");
-			
-			
-
-			ft_printf("\n");
-
-
 			continue ;
 		}
-		// ft_printf("%s\n", "8");		
 		ft_visited(vertex, node->str, 'b');
-			// ft_printf("%s\n", "9");
 		adj_list_vertex = return_corresponding_edge(vertex, node);
-		// ft_printf("%s\n", "10");
 		ft_printf("parent ->%s\n", node->str);
-
 		while (adj_list_vertex) 
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
@@ -246,18 +211,10 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 			adj_list_vertex = adj_list_vertex->next;
 		}
 		ft_printf("\n");
-
 		free(node->str);
 		free(node->parent);
 		free(node);
 	}
-	// ft_printf("first node of a tree - >  %s\n", tree->vertex_name);
-	// free(tree->vertex_name);
-			// ft_clean_queue(&queue->front);
 	if (queue)
 		free(queue); // clean all if not empty;
-	// ft_printf("%s\n", "12");
-
-
-
 }
