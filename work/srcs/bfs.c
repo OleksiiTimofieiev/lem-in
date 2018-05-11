@@ -152,6 +152,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way)
 		}
 		ft_visited(vertex, node->str, 'b');
 		adj_list_vertex = return_corresponding_edge(vertex, node);
+		//create a structure, union or something like that to keep five variables;
 		while (adj_list_vertex) 
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
