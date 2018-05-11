@@ -32,7 +32,6 @@ void	add_to_the_key(t_planb **ptr, char *child_str, char *parent_str)
 	{
 		*ptr = node_constructor(child_str, parent_str);
 		(*ptr)->prev = NULL;
-
 	}
 	else
 	{

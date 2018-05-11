@@ -22,9 +22,6 @@ t_way	*way_node_constructor(char *str)
 	return (tmp);
 }
 
-
-
-
 void	add_to_way(t_way **way, char *str)
 {
 	t_way *buf;
