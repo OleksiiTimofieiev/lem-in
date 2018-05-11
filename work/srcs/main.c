@@ -91,10 +91,11 @@ int		main(void)
 
 
 	bfs(data, graph);
-	ft_putstr("here\n");
 
 	ft_printf("\n");
 	// ft_print_lg(graph);  // intermidiaty function;
+	ft_print_lg(graph);  // intermidiaty function;
+	
 	
 	system("leaks -q lem-in");
 
