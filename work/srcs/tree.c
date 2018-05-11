@@ -33,19 +33,19 @@ t_tree	*ft_build_node(t_qnode *node, t_tree *tree) /* + */
 
 	tmp = (t_tree*)malloc(sizeof(t_tree));
 	tmp->vertex_name = ft_strdup(node->str);
-	tmp->parent = tree;
+	tmp->parent = &tree;
 	tmp->child = NULL;
 	tmp->next = NULL;
 	return (tmp);
 }
 
-t_qtnode	*newnode(t_tree **element) /* + */
+t_qtnode	*newnode(t_tree *element) /* + */
 {
 	t_qtnode *tmp;
 
 	tmp = (t_qtnode*)malloc(sizeof(t_qtnode));
-	tmp->name = ft_strdup((*element)->vertex_name);
-	tmp->pointer_to_parent = element;
+	tmp->name = ft_strdup((element)->vertex_name);
+	tmp->pointer_to_parent = &element;
 	tmp->next = NULL;
 	return (tmp);
 }
@@ -64,7 +64,7 @@ void			enqueue_t(t_qtree *q, t_tree *element) /* + */
 {
 	t_qtnode *tmp;
 
-	tmp = newnode(&element);
+	tmp = newnode(element);
 	if (q->rear == NULL && q->front == NULL)
 	{
 		q->rear = tmp;
@@ -98,7 +98,7 @@ int				isempty_t(t_qtree *q) /* + */
 	return (q->rear == NULL);
 }
 
-t_tree			*find_tree_element(t_tree **tree, char *str)
+t_tree			**find_tree_element(t_tree **tree, char *str)
 {
 	t_qtree *queue;
 	t_qtnode *node;
@@ -146,7 +146,7 @@ t_tree			*find_tree_element(t_tree **tree, char *str)
 				ft_clean_queue_qt(&queue->front);
 				free(queue);
 			}
-			return (middle);
+			return (*middle);
 		// system("leaks -q lem-in");
 
 		}
@@ -235,7 +235,7 @@ void	ft_add_to_tree(t_tree **tree, t_qnode *node, t_data data) // add ways;
 
 		// system("leaks -q lem-in");
 		ft_printf("before finding-------------------------------%p\n", &*tree);
-		buf = find_tree_element(tree, node->parent); // <-somewhere here;
+		buf = &*find_tree_element(tree, node->parent); // <-somewhere here;
 		ft_printf("after finding-------------------------------%p\n", &buf);
 
 			ft_printf("Pointer after searching - > %p\n", buf);
@@ -290,7 +290,7 @@ if (buf && ft_strequ(node->str, data.end)) // add one node to a current buf; i h
 		// ft_printf("%s\n", "1.15");
 		ft_printf("way node -> %s\n", way->vertex_name);
 		// ft_printf("%s\n", "1.16");
-		way = way->parent;
+		way = *way->parent;
 		// ft_printf("%s\n", "1.17");
 		// ft_printf("%s\n", "1.18");
 	}
