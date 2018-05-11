@@ -104,11 +104,11 @@ void	ft_clean_queue_node(t_qnode **node)
 
 void	bfs(t_data data, t_vertex *vertex, t_way **way)
 {
+	char *first_parent;
 	t_queue *queue;
 	t_qnode *node;
 	t_edge 	*adj_list_vertex;
 	t_planb	*main_ptr;
-	char *first_parent;
 
 	main_ptr = NULL;
 	add_to_the_key(&main_ptr, data.start, "start");
@@ -164,7 +164,6 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way)
 		}
 		ft_clean_queue_node(&node);
 	}
-	if (queue)
-		free(queue);
+	(queue) ? free(queue) : 0;
 	deleteList(main_ptr);
 }
