@@ -44,7 +44,7 @@ void	ft_init(t_init **init, t_vertex **vertex)
 {
 	*init = NULL;
 	*vertex = NULL;
-	// *data = NULL;
+
 }
 
 void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
@@ -74,9 +74,8 @@ int		main(void)
 {
 	t_init		*initial_data;
 	t_vertex	*graph;
-	t_data		data;
 	t_way		*way;
-	// ways;
+	t_data		data;
 
 	ft_init_data(&data);
 	ft_init(&initial_data, &graph);
@@ -87,7 +86,7 @@ int		main(void)
 	ft_build_vertex_structure(initial_data, &graph);
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
-
+	
 	ft_print_lg(graph);  // intermidiaty function;
 
 	bfs(data, graph, &way);
