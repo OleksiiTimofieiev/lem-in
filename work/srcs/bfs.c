@@ -12,21 +12,37 @@
 
 #include "lem_in.h"
 
-static void deleteList(t_planb** head_ref) /* + */
+
+static void deleteList(t_planb *head_ref)
 {
-   t_planb* current = *head_ref;
-   t_planb* next;
- 
-   while (current != NULL) 
-   {
-       next = current->next;
-       free(current->vertex_name);
-       free(current->parent);
-       free(current->prev);
-       current = next;
-   }
-   *head_ref = NULL;
+	if (!head_ref)
+		return ;
+	if (head_ref->next)
+		deleteList(head_ref->next);
+	free(head_ref->vertex_name);
+    free(head_ref->parent);
+    free(head_ref);
 }
+
+// static void deleteList(t_planb** head_ref) /* + */
+// {
+//    t_planb* current = *head_ref;
+//    t_planb* next;
+ 
+//    while (current) 
+//    {
+//        next = current->next;
+
+//        free(current->vertex_name);
+//        free(current->prev);
+//        free(current->parent);
+//     	ft_printf(" CHECK %p\n", &current->next);
+//        current = next;
+//    }
+//    // free(next);
+//    // free(head_ref);
+//    *head_ref = NULL;
+// }
 
 // void	ft_clean_queue(t_qnode **front)
 // {
@@ -152,17 +168,20 @@ void	ft_clean_queue_node(t_qnode **node)
 
 void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 {
+
 	t_queue *queue; // has malloc;
 	t_qnode *node; // has malloc;
 	t_edge 	*adj_list_vertex; //no malloc;
 	t_planb	*main_ptr; // has malloc;
 
+
 	main_ptr = NULL;
 
-	add_to_the_key(&main_ptr, data.start, "w"); //update;
+	add_to_the_key(&main_ptr, data.start, "w"); //update; //debug
 
 	queue = createqueue();
 	enqueue(queue, data.start, "root");
+	
 	while (!isempty(queue))
 	{
 		node = dequeue(queue);
@@ -206,14 +225,14 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 
 			enqueue(queue, data.start, "root");
 
-			deleteList(&main_ptr);
+			// deleteList(&main_ptr);
+
 
 			continue ;
 		}
 		ft_visited(vertex, node->str, 'b');
 
 		adj_list_vertex = return_corresponding_edge(vertex, node);
-
 		while (adj_list_vertex) 
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
@@ -236,10 +255,20 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 			// }
 			free(queue);
 	}
-	if (main_ptr)
-	{
-		deleteList(&main_ptr);
-		free(main_ptr);
-	}
+	
+
+
+	// t_planb *buf =main_ptr;
+	// if (main_ptr)
+		deleteList(main_ptr);
+	// while (main_ptr)
+	// {
+	// 	ft_printf("q->%s\n", main_ptr->parent);
+	// 	main_ptr = main_ptr->next;
+	// }
+	// free(main_ptr);
+	// ft_printf("main - %s\n", main_ptr->parent);
+
+	ft_printf("\n");
 	// ft_printf("%s\n", main_ptr->vertex_name);
 }

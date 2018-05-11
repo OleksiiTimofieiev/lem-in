@@ -86,7 +86,7 @@ int		main(void)
 	ft_build_vertex_structure(initial_data, &graph);
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
-	
+
 	ft_print_lg(graph);  // intermidiaty function;
 
 	bfs(data, graph, &way);
@@ -103,6 +103,12 @@ int		main(void)
 
 	
 	system("leaks -q lem-in");
+	// while(1)
+	// {
+	// 	;
+	// }
 
 	return (0);
 }
+
+
