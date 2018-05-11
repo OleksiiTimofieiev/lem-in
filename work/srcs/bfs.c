@@ -12,20 +12,20 @@
 
 #include "lem_in.h"
 
-// static void deleteList(t_qnode** head_ref) /* + */
-// {
-//    t_qnode* current = *head_ref;
-//    t_qnode* next;
+static void deleteList(t_planb** head_ref) /* + */
+{
+   t_planb* current = *head_ref;
+   t_planb* next;
  
-//    while (current != NULL) 
-//    {
-//        next = current->next;
-//        free(current->str);
-//        free(current);
-//        current = next;
-//    }
-//    *head_ref = NULL;
-// }
+   while (current != NULL) 
+   {
+       next = current->next;
+       free(current->vertex_name);
+       free(current->parent);
+       current = next;
+   }
+   *head_ref = NULL;
+}
 
 void	ft_clean_queue(t_qnode **front)
 {
@@ -194,6 +194,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 			}
 			ft_refresh_vertex(vertex, *way, data);
 			enqueue(queue, data.start, "root");
+			deleteList(&main_ptr);
 			continue ;
 		}
 		ft_visited(vertex, node->str, 'b');
@@ -211,5 +212,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 		ft_clean_queue_node(&node);
 	}
 	if (queue)
+	{
 		free(queue);
+	}
 }
