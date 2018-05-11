@@ -93,7 +93,7 @@ int		main(void)
 
 	bfs(data, graph, &way);
 
-	while (way)
+	while (way) //leaks;
 	{
 		ft_printf("way node name -> %s\n", way->way_room);
 		way = way->next;
