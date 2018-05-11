@@ -93,11 +93,11 @@ int		main(void)
 
 	bfs(data, graph, &way);
 
-	while (way) //leaks;
-	{
-		ft_printf("way node name -> %s\n", way->way_room);
-		way = way->next;
-	}
+	// while (way) //leaks;
+	// {
+	// 	ft_printf("way node name -> %s\n", way->way_room);
+	// 	way = way->next;
+	// }
 
 	ft_printf("\n");
 	// ft_print_lg(graph);  // intermidiaty function;

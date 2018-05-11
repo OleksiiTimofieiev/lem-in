@@ -165,22 +165,15 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 		if (ft_strequ(node->str, data.end))
 		{
 			// ft_printf("way from->%s\n", node->str);
-
 			add_to_way(way, node->str);
-
-
-
-
 			// if (queue->front)
 			// {
 			// 	free(queue->front);
 			// 	// queue->front = NULL;
 			// }
 			ft_printf("%s\n", "Woohoo !");
-
 			t_planb *unno = main_ptr;
 			t_planb *unno1;
-
 			while (unno)
 			{
 				// ft_printf("forvard->%s parent->%s\n", unno->vertex_name, unno->parent);
@@ -188,23 +181,18 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 					unno1 = unno;
 				unno = unno->next;
 			}
-
 			ft_printf("\n");
-
 			char *first_parent = ft_strdup(unno1->parent);
 			// ft_printf("first_parent->%s\n", first_parent);
 			// ft_printf("first_current->%s\n", unno1->vertex_name);
-
 			while (unno1)
 			{
 				if (ft_strequ(unno1->vertex_name, first_parent))
 				{
 					first_parent = ft_strdup(unno1->parent);
 					add_to_way(way, unno1->vertex_name);
-
 					// ft_printf("%s\n", "parent has been found");
 					// ft_printf("current->%s\n", unno1->vertex_name);
-
 				}
 				// ft_printf("reverse->%s parent->%s\n", unno1->vertex_name, unno1->parent);
 				unno1 = unno1->prev;
@@ -215,9 +203,14 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 
 			// ft_print_lg_1(vertex);
 
+			free(node->str);
+			free(node->parent);
+			free(node);
 			while (!isempty(queue))
 			{
 				node = dequeue(queue);
+				free(node->str);
+				free(node);
 			}
 
 			ft_refresh_vertex(vertex, *way, data);
@@ -230,9 +223,6 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 			
 
 			ft_printf("\n");
-			free(node->str);
-			free(node->parent);
-			free(node);
 
 
 			continue ;
