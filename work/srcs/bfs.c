@@ -165,7 +165,7 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 				enqueue(queue, adj_list_vertex->room_name, node->str);
 				ft_visited(vertex, adj_list_vertex->room_name, 'g');
 				// ft_printf("to add ->%s\n", adj_list_vertex->room_name);
-				add_to_the_key(&main_ptr, adj_list_vertex->room_name);
+				add_to_the_key(&main_ptr, adj_list_vertex->room_name, node->str);
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
@@ -173,16 +173,29 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 		free(node->parent);
 		free(node);
 	}
-
 	// ft_printf("first node of a tree - >  %s\n", tree->vertex_name);
 	// free(tree->vertex_name);
 			// ft_clean_queue(&queue->front);
 	if (queue)
-	free(queue); // clean all if not empty;
+		free(queue); // clean all if not empty;
 	// ft_printf("%s\n", "12");
-	while (main_ptr)
+
+	t_planb *unno = main_ptr;
+	t_planb *unno1;
+
+	while (unno)
 	{
-		ft_printf("%s\n", main_ptr->vertex_name);
-		main_ptr = main_ptr->next;
+		ft_printf("forvard->%s parent->%s\n", unno->vertex_name, unno->parent);
+		if (unno->next == NULL)
+			unno1 = unno;
+		unno = unno->next;
+	}
+
+	ft_printf("\n");
+
+	while (unno1)
+	{
+		ft_printf("reverse->%s parent->%s\n", unno1->vertex_name, unno1->parent);
+		unno1 = unno1->prev;
 	}
 }

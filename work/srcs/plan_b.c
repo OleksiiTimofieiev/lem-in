@@ -12,26 +12,27 @@
 
 #include "lem_in.h"
 
-t_planb	*node_constructor(char *str)
+t_planb	*node_constructor(char *child_str, char *parent_str)
 {
 	t_planb *tmp;
 
 	tmp = (t_planb*)malloc(sizeof(t_planb));
-	tmp->vertex_name = ft_strdup(str);
+	tmp->vertex_name = ft_strdup(child_str);
+	tmp->parent = ft_strdup(parent_str);
 	tmp->prev = NULL;
 	tmp->next = NULL;
 	return (tmp);
 }
 
-void	add_to_the_key(t_planb **ptr, char *str)
+void	add_to_the_key(t_planb **ptr, char *child_str, char *parent_str)
 {
 	t_planb *buf;
 
 	if (!*ptr)
 	{
 		ft_printf("%s\n", "nope");
-		*ptr = node_constructor(str);
-		ft_printf("after first add - > %s\n", (*ptr)->vertex_name);
+		*ptr = node_constructor(child_str, parent_str);
+		// ft_printf("after first add - > %s\n", (*ptr)->vertex_name);
 		(*ptr)->prev = NULL;
 
 	}
@@ -40,8 +41,9 @@ void	add_to_the_key(t_planb **ptr, char *str)
 		buf = *ptr;
 		while (buf->next)
 			buf = buf->next;
-		buf->next = node_constructor(str);
-		ft_printf("%s\n", buf->next->vertex_name);
+		buf->next = node_constructor(child_str, parent_str);
+		buf->next->prev = buf;
+		// ft_printf("%s\n", buf->next->vertex_name);
 		// buf->prev = buf;
 	}
 }

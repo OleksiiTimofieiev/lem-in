@@ -134,11 +134,12 @@ void					bfs(t_data data, t_vertex *vertex);
 typedef struct			s_planb
 {
 	char				*vertex_name;
+	char				*parent;
 	struct s_planb		*prev;
 	struct s_planb		*next;
 }						t_planb;
 
-void	add_to_the_key(t_planb **ptr, char *str);
+void	add_to_the_key(t_planb **ptr, char *child_str, char *parent_str);
 
 // typedef struct			s_tree
 // {
