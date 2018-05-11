@@ -102,6 +102,15 @@ void	ft_clean_queue_node(t_qnode **node)
 	free(*node);
 }
 
+void ft_start(t_queue **q, t_data data, t_planb	**main_ptr)
+{
+	*main_ptr = NULL;
+	*q = createqueue();
+	enqueue(*q, data.start, "root");
+	add_to_the_key(main_ptr, data.start, "start");
+	
+}
+
 void	bfs(t_data data, t_vertex *vertex, t_way **way)
 {
 	char *first_parent;
@@ -110,10 +119,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way)
 	t_edge 	*adj_list_vertex;
 	t_planb	*main_ptr;
 
-	main_ptr = NULL;
-	add_to_the_key(&main_ptr, data.start, "start");
-	queue = createqueue();
-	enqueue(queue, data.start, "root");
+	ft_start(&queue, data, &main_ptr);
 	while (!isempty(queue))
 	{
 		node = dequeue(queue);
