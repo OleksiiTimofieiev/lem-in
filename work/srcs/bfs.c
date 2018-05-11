@@ -111,12 +111,27 @@ void ft_start_bfs(t_queue **q, t_data data, t_planb	**main_ptr)
 	
 }
 
+void	ft_add_stuff(t_vertex *vertex, t_qnode *node, t_queue *queue, t_planb **main_ptr)
+{
+		t_edge *adj_list_vertex = return_corresponding_edge(vertex, node);
+		while (adj_list_vertex) 
+		{
+			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
+			{
+				enqueue(queue, adj_list_vertex->room_name, node->str);
+				ft_visited(vertex, adj_list_vertex->room_name, 'g');
+				add_to_the_key(main_ptr, adj_list_vertex->room_name, node->str);
+			}
+			adj_list_vertex = adj_list_vertex->next;
+		}
+}
+
 void	bfs(t_data data, t_vertex *vertex, t_way **way)
 {
 	char *first_parent;
 	t_queue *queue;
 	t_qnode *node;
-	t_edge 	*adj_list_vertex;
+	// t_edge 	*adj_list_vertex;
 	t_planb	*main_ptr;
 
 	ft_start_bfs(&queue, data, &main_ptr);
@@ -157,17 +172,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way)
 			enqueue(queue, data.start, "root");
 			continue ;
 		}
-		adj_list_vertex = return_corresponding_edge(vertex, node);
-		while (adj_list_vertex) 
-		{
-			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
-			{
-				enqueue(queue, adj_list_vertex->room_name, node->str);
-				ft_visited(vertex, adj_list_vertex->room_name, 'g');
-				add_to_the_key(&main_ptr, adj_list_vertex->room_name, node->str);
-			}
-			adj_list_vertex = adj_list_vertex->next;
-		}
+		ft_add_stuff(vertex, node, queue, &main_ptr);
 		ft_clean_queue_node(&node);
 	}
 	(queue) ? free(queue) : 0;
