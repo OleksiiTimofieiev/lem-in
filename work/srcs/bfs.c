@@ -117,6 +117,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way)
 	while (!isempty(queue))
 	{
 		node = dequeue(queue);
+		ft_visited(vertex, node->str, 'b');
 		if (ft_strequ(node->str, data.end))
 		{
 			add_to_way(way, node->str);
@@ -150,7 +151,6 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way)
 			enqueue(queue, data.start, "root");
 			continue ;
 		}
-		ft_visited(vertex, node->str, 'b');
 		adj_list_vertex = return_corresponding_edge(vertex, node);
 		while (adj_list_vertex) 
 		{
