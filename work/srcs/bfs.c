@@ -102,7 +102,7 @@ void	ft_clean_queue_node(t_qnode **node)
 	free(*node);
 }
 
-void ft_start(t_queue **q, t_data data, t_planb	**main_ptr)
+void ft_start_bfs(t_queue **q, t_data data, t_planb	**main_ptr)
 {
 	*main_ptr = NULL;
 	*q = createqueue();
@@ -119,7 +119,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way)
 	t_edge 	*adj_list_vertex;
 	t_planb	*main_ptr;
 
-	ft_start(&queue, data, &main_ptr);
+	ft_start_bfs(&queue, data, &main_ptr);
 	while (!isempty(queue))
 	{
 		node = dequeue(queue);
