@@ -130,10 +130,11 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	t_queue *queue;
 	t_qnode *node;
 	t_edge 	*adj_list_vertex;
-	t_tree	*tree;
+	t_planb	*main_ptr;
+
+	main_ptr = NULL;
 	
 	// ft_printf("%s\n", "1");
-	tree = NULL;
 	// ft_printf("%s\n", "2");
 	queue = createqueue();
 	// ft_printf("%s\n", "3");
@@ -163,20 +164,14 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 			{
 				enqueue(queue, adj_list_vertex->room_name, node->str);
 				ft_visited(vertex, adj_list_vertex->room_name, 'g');
+				// ft_printf("to add ->%s\n", adj_list_vertex->room_name);
+				add_to_the_key(&main_ptr, adj_list_vertex->room_name);
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
 		free(node->str);
 		free(node->parent);
 		free(node);
-	}
-	if (tree)
-	{
-		free(tree->vertex_name);
-		if (tree->child)
-			ft_putstr("asdf");
-		free(tree);
-		tree = NULL;
 	}
 
 	// ft_printf("first node of a tree - >  %s\n", tree->vertex_name);
@@ -185,4 +180,9 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 	if (queue)
 	free(queue); // clean all if not empty;
 	// ft_printf("%s\n", "12");
+	while (main_ptr)
+	{
+		ft_printf("%s\n", main_ptr->vertex_name);
+		main_ptr = main_ptr->next;
+	}
 }

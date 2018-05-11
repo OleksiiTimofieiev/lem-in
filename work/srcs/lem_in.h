@@ -128,30 +128,39 @@ int						isempty(t_queue *q);
 void					bfs(t_data data, t_vertex *vertex);
 
 /*
-**---------------------------------------   tree  ------------------------------
+**---------------------------------------   plan_b  ------------------------------
 */
 
-typedef struct			s_tree
+typedef struct			s_planb
 {
 	char				*vertex_name;
-	struct s_tree		**parent;
-	struct s_tree		*child;
-	struct s_tree		*next;
-}						t_tree;
+	struct s_planb		*prev;
+	struct s_planb		*next;
+}						t_planb;
 
-typedef struct			s_qtnode
-{
-	char				*name;
-	t_tree				**pointer_to_parent;
-	struct s_qtnode		*next;
-}						t_qtnode;
+void	add_to_the_key(t_planb **ptr, char *str);
 
-typedef struct			s_qtree
-{
-	t_qtnode			*front;
-	t_qtnode			*rear;
-}						t_qtree;
+// typedef struct			s_tree
+// {
+// 	char				*vertex_name;
+// 	struct s_tree		**parent;
+// 	struct s_tree		*child;
+// 	struct s_tree		*next;
+// }						t_tree;
 
-void					ft_add_to_tree(t_tree **tree, t_qnode *n, t_data data);
+// typedef struct			s_qtnode
+// {
+// 	char				*name;
+// 	t_tree				**pointer_to_parent;
+// 	struct s_qtnode		*next;
+// }						t_qtnode;
+
+// typedef struct			s_qtree
+// {
+// 	t_qtnode			*front;
+// 	t_qtnode			*rear;
+// }						t_qtree;
+
+// void					ft_add_to_tree(t_tree **tree, t_qnode *n, t_data data);
 
 #endif
