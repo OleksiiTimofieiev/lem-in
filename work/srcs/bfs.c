@@ -125,7 +125,7 @@ void	ft_print_queue(t_qnode *front)
 	ft_printf("\n");
 }
 
-void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
+void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 {
 	t_queue *queue;
 	t_qnode *node;
@@ -134,7 +134,6 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 	main_ptr = NULL;
 	add_to_the_key(&main_ptr, "1", "w");
-
 	
 	// ft_printf("%s\n", "1");
 	// ft_printf("%s\n", "2");
@@ -148,7 +147,16 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 
 		if (ft_strequ(node->str, data.end))
 		{
+
+
+
+
+
 			ft_printf("way from->%s\n", node->str);
+
+			add_to_way(way, node->str);
+
+
 			enqueue(queue, data.start, "root");
 			ft_printf("%s\n", "Woohoo !");
 
@@ -178,6 +186,8 @@ void	bfs(t_data data, t_vertex *vertex) // add some possibilities;
 				if (ft_strequ(unno1->vertex_name, first_parent))
 				{
 					first_parent = ft_strdup(unno1->parent);
+					add_to_way(way, unno1->vertex_name);
+
 					ft_printf("%s\n", "parent has been found");
 					ft_printf("current->%s\n", unno1->vertex_name);
 

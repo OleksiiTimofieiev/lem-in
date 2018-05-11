@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plan_b.c                                           :+:      :+:    :+:   */
+/*   ways_construct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otimofie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/11 13:28:07 by otimofie          #+#    #+#             */
-/*   Updated: 2018/05/11 13:28:09 by otimofie         ###   ########.fr       */
+/*   Created: 2018/05/11 15:02:21 by otimofie          #+#    #+#             */
+/*   Updated: 2018/05/11 15:02:22 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_planb	*node_constructor(char *child_str, char *parent_str)
+t_way	*way_node_constructor(char *str)
 {
-	t_planb *tmp;
+	t_way *tmp;
 
-	tmp = (t_planb*)malloc(sizeof(t_planb));
-	tmp->vertex_name = ft_strdup(child_str);
-	tmp->parent = ft_strdup(parent_str);
-	tmp->prev = NULL;
+	tmp = (t_way*)malloc(sizeof(t_way));
+	tmp->way_room = ft_strdup(str);
 	tmp->next = NULL;
 	return (tmp);
 }
 
-void	add_to_the_key(t_planb **ptr, char *child_str, char *parent_str)
+
+
+
+void	add_to_way(t_way **way, char *str)
 {
-	t_planb *buf;
+	t_way *buf;
 
-	if (!*ptr)
+	if (!*way)
 	{
-		*ptr = node_constructor(child_str, parent_str);
-		(*ptr)->prev = NULL;
-
+		*way = way_node_constructor(str);
 	}
 	else
 	{
-		buf = *ptr;
+		buf = *way;
 		while (buf->next)
 			buf = buf->next;
-		buf->next = node_constructor(child_str, parent_str);
-		buf->next->prev = buf;
+		buf->next = way_node_constructor(str);
 	}
 }

@@ -122,13 +122,25 @@ t_qnode					*dequeue(t_queue *q);
 int						isempty(t_queue *q);
 
 /*
+**---------------------------------------   way  -------------------------------
+*/
+
+typedef struct			s_way
+{
+	char				*way_room;
+	struct s_way		*next;
+}						t_way;
+
+void	add_to_way(t_way **way, char *str);
+
+/*
 **-----------------------------------------   bfs  -----------------------------
 */
 
-void					bfs(t_data data, t_vertex *vertex);
+void					bfs(t_data data, t_vertex *vertex, t_way **way);
 
 /*
-**---------------------------------------   plan_b  ------------------------------
+**---------------------------------------   plan_b  ----------------------------
 */
 
 typedef struct			s_planb
@@ -140,6 +152,8 @@ typedef struct			s_planb
 }						t_planb;
 
 void	add_to_the_key(t_planb **ptr, char *child_str, char *parent_str);
+
+
 
 // typedef struct			s_tree
 // {

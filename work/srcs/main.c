@@ -75,6 +75,7 @@ int		main(void)
 	t_init		*initial_data;
 	t_vertex	*graph;
 	t_data		data;
+	t_way		*way;
 	// ways;
 
 	ft_init_data(&data);
@@ -90,12 +91,18 @@ int		main(void)
 	ft_print_lg(graph);  // intermidiaty function;
 
 
-	bfs(data, graph);
+	bfs(data, graph, &way);
+
+	while (way)
+	{
+		ft_printf("way node name -> %s\n", way->way_room);
+		way = way->next;
+	}
 
 	ft_printf("\n");
 	// ft_print_lg(graph);  // intermidiaty function;
 	ft_print_lg(graph);  // intermidiaty function;
-	
+
 	
 	// system("leaks -q lem-in");
 
