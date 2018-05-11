@@ -138,7 +138,6 @@ void	ft_refresh_vertex(t_vertex *vertex, t_way *way, t_data data)
 			}
 			edge = edge->next;
 		}
-		ft_printf("\n");
 		vertex = vertex->v_next;
 	}
 }
@@ -151,17 +150,15 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 	t_planb	*main_ptr;
 
 	main_ptr = NULL;
-	add_to_the_key(&main_ptr, "1", "w");
+	add_to_the_key(&main_ptr, "1", "w"); //update;
 	queue = createqueue();
 	enqueue(queue, data.start, "root");
 	while (!isempty(queue))
 	{
 		node = dequeue(queue);
-
 		if (ft_strequ(node->str, data.end))
 		{
 			add_to_way(way, node->str);
-			ft_printf("%s\n", "Woohoo !");
 			t_planb *unno = main_ptr;
 			t_planb *unno1;
 			while (unno)
@@ -170,7 +167,6 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 					unno1 = unno;
 				unno = unno->next;
 			}
-			ft_printf("\n");
 			char *first_parent = ft_strdup(unno1->parent);
 			while (unno1)
 			{
@@ -181,7 +177,6 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 				}
 				unno1 = unno1->prev;
 			}
-			ft_printf("\n");
 			free(node->str);
 			free(node->parent);
 			free(node);
@@ -192,29 +187,25 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 				free(node);
 			}
 			ft_refresh_vertex(vertex, *way, data);
-			ft_print_lg_1(vertex);
 			enqueue(queue, data.start, "root");
 			continue ;
 		}
 		ft_visited(vertex, node->str, 'b');
 		adj_list_vertex = return_corresponding_edge(vertex, node);
-		ft_printf("parent ->%s\n", node->str);
 		while (adj_list_vertex) 
 		{
 			if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
 			{
 				enqueue(queue, adj_list_vertex->room_name, node->str);
 				ft_visited(vertex, adj_list_vertex->room_name, 'g');
-				ft_printf("to add ->%s\n", adj_list_vertex->room_name);
 				add_to_the_key(&main_ptr, adj_list_vertex->room_name, node->str);
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
-		ft_printf("\n");
 		free(node->str);
 		free(node->parent);
 		free(node);
 	}
 	if (queue)
-		free(queue); // clean all if not empty;
+		free(queue);
 }

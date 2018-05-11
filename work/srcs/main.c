@@ -90,7 +90,6 @@ int		main(void)
 
 	ft_print_lg(graph);  // intermidiaty function;
 
-
 	bfs(data, graph, &way);
 
 	while (way) //leaks;
