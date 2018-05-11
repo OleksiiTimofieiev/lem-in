@@ -131,7 +131,6 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way)
 	char *first_parent;
 	t_queue *queue;
 	t_qnode *node;
-	// t_edge 	*adj_list_vertex;
 	t_planb	*main_ptr;
 
 	ft_start_bfs(&queue, data, &main_ptr);
