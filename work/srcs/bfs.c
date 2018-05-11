@@ -150,7 +150,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 	t_planb	*main_ptr;
 
 	main_ptr = NULL;
-	add_to_the_key(&main_ptr, "1", "w"); //update;
+	add_to_the_key(&main_ptr, "0", "w"); //update;
 	queue = createqueue();
 	enqueue(queue, data.start, "root");
 	while (!isempty(queue))
