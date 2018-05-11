@@ -44,7 +44,6 @@ void	ft_init(t_init **init, t_vertex **vertex)
 {
 	*init = NULL;
 	*vertex = NULL;
-
 }
 
 void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
