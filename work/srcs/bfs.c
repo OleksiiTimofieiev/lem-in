@@ -147,7 +147,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way)
 				node = dequeue(queue);
 				ft_clean_queue_node(&node);
 			}
-			ft_refresh_vertex(vertex, *way, data);
+			ft_refresh_vertex(vertex, way, data);
 			enqueue(queue, data.start, "root");
 			continue ;
 		}
