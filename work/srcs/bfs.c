@@ -142,6 +142,13 @@ void	ft_refresh_vertex(t_vertex *vertex, t_way *way, t_data data)
 	}
 }
 
+void	ft_clean_queue_node(t_qnode **node)
+{
+	free((*node)->str);
+	free((*node)->parent);
+	free(*node);
+}
+
 void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 {
 	t_queue *queue;
@@ -177,14 +184,11 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 				}
 				unno1 = unno1->prev;
 			}
-			free(node->str);
-			free(node->parent);
-			free(node);
+			ft_clean_queue_node(&node);
 			while (!isempty(queue))
 			{
 				node = dequeue(queue);
-				free(node->str);
-				free(node);
+				ft_clean_queue_node(&node);
 			}
 			ft_refresh_vertex(vertex, *way, data);
 			enqueue(queue, data.start, "root");
@@ -202,9 +206,7 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 			}
 			adj_list_vertex = adj_list_vertex->next;
 		}
-		free(node->str);
-		free(node->parent);
-		free(node);
+		ft_clean_queue_node(&node);
 	}
 	if (queue)
 		free(queue);

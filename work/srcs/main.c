@@ -103,7 +103,7 @@ int		main(void)
 	// ft_print_lg(graph);  // intermidiaty function;
 
 	
-	// system("leaks -q lem-in");
+	system("leaks -q lem-in");
 
 	return (0);
 }
