@@ -179,11 +179,13 @@ void	bfs(t_data data, t_vertex *vertex, t_way **way) // add some possibilities;
 			{
 				if (ft_strequ(unno1->vertex_name, first_parent))
 				{
+					free(first_parent);
 					first_parent = ft_strdup(unno1->parent);
 					add_to_way(way, unno1->vertex_name);
 				}
 				unno1 = unno1->prev;
 			}
+			free(first_parent);
 			ft_clean_queue_node(&node);
 			while (!isempty(queue))
 			{
