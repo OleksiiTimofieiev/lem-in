@@ -131,7 +131,7 @@ typedef struct			s_way
 	struct s_way		*next;
 }						t_way;
 
-void	add_to_way(t_way **way, char *str);
+void					add_to_way(t_way **way, char *str);
 
 /*
 **-----------------------------------------   bfs  -----------------------------
@@ -151,31 +151,6 @@ typedef struct			s_planb
 	struct s_planb		*next;
 }						t_planb;
 
-void	add_to_the_key(t_planb **ptr, char *child_str, char *parent_str);
-
-
-
-// typedef struct			s_tree
-// {
-// 	char				*vertex_name;
-// 	struct s_tree		**parent;
-// 	struct s_tree		*child;
-// 	struct s_tree		*next;
-// }						t_tree;
-
-// typedef struct			s_qtnode
-// {
-// 	char				*name;
-// 	t_tree				**pointer_to_parent;
-// 	struct s_qtnode		*next;
-// }						t_qtnode;
-
-// typedef struct			s_qtree
-// {
-// 	t_qtnode			*front;
-// 	t_qtnode			*rear;
-// }						t_qtree;
-
-// void					ft_add_to_tree(t_tree **tree, t_qnode *n, t_data data);
+void					add_to_the_key(t_planb **p, char *chi_s, char *par_s);
 
 #endif
