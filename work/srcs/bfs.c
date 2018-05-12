@@ -129,27 +129,17 @@ void			ft_add_stuff(t_vertex *v, t_qnode *n, t_queue *q, t_planb **m)
 	}
 }
 
-void			bfs(t_data data, t_vertex *vertex, t_way **way)
-{
-	char	*first_parent;
-	t_queue	*queue;
-	t_qnode	*node;
-	t_planb	*main_ptr;
+void			bfs_has_found_the_end(t_way **way, t_qnode **node, t_planb **main_ptr, t_queue **queue)
+{			
+			char	*first_parent;
 
-	ft_start_bfs(&queue, data, &main_ptr);
-	while (!isempty(queue))
-	{
-		node = dequeue(queue);
-		ft_visited(vertex, node->str, 'b');
-		if (ft_strequ(node->str, data.end))
-		{
-			add_to_way(way, node->str);
+			add_to_way(way, (*node)->str);
 			t_planb *unno;
-			unno = main_ptr;
+			unno = *main_ptr;
 			t_planb *unno1;
 			while (unno)
 			{
-				if (ft_strequ(unno->vertex_name, node->str))
+				if (ft_strequ(unno->vertex_name, (*node)->str))
 					unno1 = unno;
 				unno = unno->next;
 			}
@@ -165,12 +155,28 @@ void			bfs(t_data data, t_vertex *vertex, t_way **way)
 				unno1 = unno1->prev;
 			}
 			free(first_parent);
-			ft_clean_queue_node(&node);
-			while (!isempty(queue))
+			ft_clean_queue_node(node);
+			while (!isempty(*queue))
 			{
-				node = dequeue(queue);
-				ft_clean_queue_node(&node);
-			} //till here;
+				*node = dequeue(*queue);
+				ft_clean_queue_node(node);
+			}
+}
+
+void			bfs(t_data data, t_vertex *vertex, t_way **way)
+{
+	t_queue	*queue;
+	t_qnode	*node;
+	t_planb	*main_ptr;
+
+	ft_start_bfs(&queue, data, &main_ptr);
+	while (!isempty(queue))
+	{
+		node = dequeue(queue);
+		ft_visited(vertex, node->str, 'b');
+		if (ft_strequ(node->str, data.end))
+		{
+			bfs_has_found_the_end(way, &node, &main_ptr, &queue);
 			ft_refresh_vertex(vertex, *way, data);
 			enqueue(queue, data.start, "root");
 			continue ;
