@@ -129,38 +129,43 @@ void			ft_add_stuff(t_vertex *v, t_qnode *n, t_queue *q, t_planb **m)
 	}
 }
 
-void			bfs_has_found_the_end(t_way **way, t_qnode **node, t_planb **main_ptr, t_queue **queue)
-{			
-			char	*first_parent;
+void			free_remaining_stuff(char *first_parent, t_qnode *n, t_queue *q)
+{
+	free(first_parent);
+	ft_clean_queue_node(&n);
+	while (!isempty(q))
+	{
+		n = dequeue(q);
+		ft_clean_queue_node(&n);
+	}
+}
 
-			add_to_way(way, (*node)->str);
-			t_planb *unno;
-			unno = *main_ptr;
-			t_planb *unno1;
-			while (unno)
-			{
-				if (ft_strequ(unno->vertex_name, (*node)->str))
-					unno1 = unno;
-				unno = unno->next;
-			}
-			first_parent = ft_strdup(unno1->parent);
-			while (unno1)
-			{
-				if (ft_strequ(unno1->vertex_name, first_parent))
-				{
-					free(first_parent);
-					first_parent = ft_strdup(unno1->parent);
-					add_to_way(way, unno1->vertex_name);
-				}
-				unno1 = unno1->prev;
-			}
+void			bfs_end_det(t_way **w, t_qnode **n, t_planb **m, t_queue **q)
+{
+	char	*first_parent;
+	t_planb *unno;
+	t_planb *unno1;
+
+	add_to_way(w, (*n)->str);
+	unno = *m;
+	while (unno)
+	{
+		if (ft_strequ(unno->vertex_name, (*n)->str))
+			unno1 = unno;
+		unno = unno->next;
+	}
+	first_parent = ft_strdup(unno1->parent);
+	while (unno1)
+	{
+		if (ft_strequ(unno1->vertex_name, first_parent))
+		{
 			free(first_parent);
-			ft_clean_queue_node(node);
-			while (!isempty(*queue))
-			{
-				*node = dequeue(*queue);
-				ft_clean_queue_node(node);
-			}
+			first_parent = ft_strdup(unno1->parent);
+			add_to_way(w, unno1->vertex_name);
+		}
+		unno1 = unno1->prev;
+	}
+	free_remaining_stuff(first_parent, *n, *q);
 }
 
 void			bfs(t_data data, t_vertex *vertex, t_way **way)
@@ -176,7 +181,7 @@ void			bfs(t_data data, t_vertex *vertex, t_way **way)
 		ft_visited(vertex, node->str, 'b');
 		if (ft_strequ(node->str, data.end))
 		{
-			bfs_has_found_the_end(way, &node, &main_ptr, &queue);
+			bfs_end_det(way, &node, &main_ptr, &queue);
 			ft_refresh_vertex(vertex, *way, data);
 			enqueue(queue, data.start, "root");
 			continue ;
