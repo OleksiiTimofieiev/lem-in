@@ -84,8 +84,10 @@ void	ft_detect_bonus(char **argv, t_way *way)
 				way = way->next;
 			}
 		}
-		if (ft_strequ(argv[i], "-l"))
+		else if (ft_strequ(argv[i], "-l"))
 			system("leaks -q lem-in");
+		else if (ft_strequ(argv[i], "-clean"))
+			system("make fclean");
 		i++;
 	}
 }
