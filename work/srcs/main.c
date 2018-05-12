@@ -78,7 +78,7 @@ void	ft_detect_bonus(char **argv, t_way *way)
 	{
 		if (ft_strequ(argv[i], "-show"))
 		{
-			while (way) //leaks;
+			while (way)
 			{
 				ft_printf("way node name -> %s\n", way->way_room);
 				way = way->next;
