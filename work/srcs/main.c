@@ -69,6 +69,27 @@ void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
 	}
 }
 
+void	ft_detect_bonus(char **argv, t_way *way)
+{
+	int i;
+
+	i = 0;
+	while(argv[i])
+	{
+		if (ft_strequ(argv[i], "-show"))
+		{
+			while (way) //leaks;
+			{
+				ft_printf("way node name -> %s\n", way->way_room);
+				way = way->next;
+			}
+		}
+		if (ft_strequ(argv[i], "-l"))
+			system("leaks -q lem-in");
+		i++;
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	t_init		*initial_data;
@@ -89,15 +110,8 @@ int		main(int argc, char **argv)
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
 
-	while (way) //leaks;
-	{
-		ft_printf("way node name -> %s\n", way->way_room);
-		way = way->next;
-	}
-	
-	ft_printf("\n");
 
-	if (ft_strequ(argv[1], "-l"))
-		system("leaks -q lem-in");
+	ft_detect_bonus(argv, way);
+
 	return (0);
 }
