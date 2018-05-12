@@ -117,9 +117,10 @@ typedef	struct			s_queue
 }						t_queue;
 
 t_queue					*createqueue(void);
-void					enqueue(t_queue *q, char *str, char *parent);
 t_qnode					*dequeue(t_queue *q);
+void					enqueue(t_queue *q, char *str, char *parent);
 int						isempty(t_queue *q);
+void					ft_clean_queue_node(t_qnode **node);
 
 /*
 **---------------------------------------   way  -------------------------------
@@ -133,16 +134,6 @@ typedef struct			s_way
 
 void					add_to_way(t_way **way, char *str);
 
-/*
-**-----------------------------------------   bfs  -----------------------------
-*/
-
-void					bfs(t_data data, t_vertex *vertex, t_way **way);
-
-/*
-**---------------------------------------   plan_b  ----------------------------
-*/
-
 typedef struct			s_planb
 {
 	char				*vertex_name;
@@ -152,5 +143,18 @@ typedef struct			s_planb
 }						t_planb;
 
 void					add_to_the_key(t_planb **p, char *chi_s, char *par_s);
+
+/*
+**-----------------------------------------   bfs  -----------------------------
+*/
+
+void					bfs(t_data data, t_vertex *vertex, t_way **way);
+void					b_end(t_way **w, t_qnode **n, t_planb **m, t_queue **q);
+void					add(t_vertex *v, t_qnode *n, t_queue *q, t_planb **m);
+void					ft_visited(t_vertex *vertex, char *str, char c);
+
+/*
+**---------------------------------------   plan_b  ----------------------------
+*/
 
 #endif

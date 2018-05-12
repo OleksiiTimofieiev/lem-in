@@ -23,46 +23,6 @@ static	void	deletelist(t_planb *head_ref)
 	free(head_ref);
 }
 
-void			ft_visited(t_vertex *vertex, char *str, char c)
-{
-	t_edge *tmp;
-
-	while (vertex)
-	{
-		if (ft_strequ(str, vertex->vertex_name))
-			vertex->visited = c;
-		tmp = vertex->e_next;
-		while (tmp)
-		{
-			if (ft_strequ(str, tmp->room_name))
-				tmp->visited = c;
-			tmp = tmp->next;
-		}
-		vertex = vertex->v_next;
-	}
-}
-
-t_edge			*return_corresponding_edge(t_vertex *vertex, t_qnode *node)
-{
-	while (vertex)
-	{
-		if (ft_strequ(vertex->vertex_name, node->str))
-			return (vertex->e_next);
-		vertex = vertex->v_next;
-	}
-	return (NULL);
-}
-
-void			ft_print_queue(t_qnode *front)
-{
-	while (front)
-	{
-		ft_printf("| %s %s | ", front->str, front->parent);
-		front = front->next;
-	}
-	ft_printf("\n");
-}
-
 int				ft_check(char *vertex_name, t_way *way)
 {
 	while (way)
@@ -97,75 +57,12 @@ void			ft_refresh_vertex(t_vertex *vertex, t_way *way, t_data data)
 	}
 }
 
-void			ft_clean_queue_node(t_qnode **node)
-{
-	free((*node)->str);
-	free((*node)->parent);
-	free(*node);
-}
-
 void			ft_start_bfs(t_queue **q, t_data data, t_planb **main_ptr)
 {
 	*main_ptr = NULL;
 	*q = createqueue();
 	enqueue(*q, data.start, "root");
 	add_to_the_key(main_ptr, data.start, "start");
-}
-
-void			ft_add_stuff(t_vertex *v, t_qnode *n, t_queue *q, t_planb **m)
-{
-	t_edge *adj_list_vertex;
-
-	adj_list_vertex = return_corresponding_edge(v, n);
-	while (adj_list_vertex)
-	{
-		if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
-		{
-			enqueue(q, adj_list_vertex->room_name, n->str);
-			ft_visited(v, adj_list_vertex->room_name, 'g');
-			add_to_the_key(m, adj_list_vertex->room_name, n->str);
-		}
-		adj_list_vertex = adj_list_vertex->next;
-	}
-}
-
-void			free_remaining_stuff(char *first_parent, t_qnode *n, t_queue *q)
-{
-	free(first_parent);
-	ft_clean_queue_node(&n);
-	while (!isempty(q))
-	{
-		n = dequeue(q);
-		ft_clean_queue_node(&n);
-	}
-}
-
-void			bfs_end_det(t_way **w, t_qnode **n, t_planb **m, t_queue **q)
-{
-	char	*first_parent;
-	t_planb *unno;
-	t_planb *unno1;
-
-	add_to_way(w, (*n)->str);
-	unno = *m;
-	while (unno)
-	{
-		if (ft_strequ(unno->vertex_name, (*n)->str))
-			unno1 = unno;
-		unno = unno->next;
-	}
-	first_parent = ft_strdup(unno1->parent);
-	while (unno1)
-	{
-		if (ft_strequ(unno1->vertex_name, first_parent))
-		{
-			free(first_parent);
-			first_parent = ft_strdup(unno1->parent);
-			add_to_way(w, unno1->vertex_name);
-		}
-		unno1 = unno1->prev;
-	}
-	free_remaining_stuff(first_parent, *n, *q);
 }
 
 void			bfs(t_data data, t_vertex *vertex, t_way **way)
@@ -181,12 +78,12 @@ void			bfs(t_data data, t_vertex *vertex, t_way **way)
 		ft_visited(vertex, node->str, 'b');
 		if (ft_strequ(node->str, data.end))
 		{
-			bfs_end_det(way, &node, &main_ptr, &queue);
+			b_end(way, &node, &main_ptr, &queue);
 			ft_refresh_vertex(vertex, *way, data);
 			enqueue(queue, data.start, "root");
 			continue ;
 		}
-		ft_add_stuff(vertex, node, queue, &main_ptr);
+		add(vertex, node, queue, &main_ptr);
 		ft_clean_queue_node(&node);
 	}
 	(queue) ? free(queue) : 0;
