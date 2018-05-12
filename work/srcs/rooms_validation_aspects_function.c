@@ -67,7 +67,7 @@ int		ft_aspects_help_1(char *str, int array_size)
 	else if ((!ft_strequ(str, "##start") && !ft_strequ(str, "##end"))
 			&& (str[0] == '#' && str[1] == '#'))
 		return (1);
-	else if (array_size != 3)
+	else if (array_size != 3 && str[0] != '#')
 		return (0);
 	return (1);
 }
@@ -76,7 +76,7 @@ int		ft_aspects_help_2(char **array)
 {
 	if (ft_str_find_chr(array[0], '-'))
 		return (0);
-	else if (ft_2d_arr_size(array) != 1
+	else if (ft_2d_arr_size(array) == 3
 			&& (array[0][0] == '#' || array[0][0] == 'L'
 			|| !ft_line_is_digit(array[1]) || !ft_line_is_digit(array[2])))
 		return (0);
@@ -96,7 +96,7 @@ int		ft_aspects(char *str, t_init *initial_data)
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (!ft_find_space_is_correct_quantity(str) && array_size != 1)
+	else if (!ft_find_space_is_correct_quantity(str) && array_size == 3)
 	{
 		ft_clean_2d_char(array);
 		return (0);

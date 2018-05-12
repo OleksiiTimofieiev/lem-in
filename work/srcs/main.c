@@ -69,12 +69,14 @@ void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
 	}
 }
 
-int		main(void)
+int		main(int argc, char **argv)
 {
 	t_init		*initial_data;
 	t_vertex	*graph;
 	t_way		*way;
 	t_data		data;
+
+	(void)argc;
 
 	ft_init_data(&data);
 	ft_init(&initial_data, &graph);
@@ -87,13 +89,15 @@ int		main(void)
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
 
-	// while (way) //leaks;
-	// {
-	// 	ft_printf("way node name -> %s\n", way->way_room);
-	// 	way = way->next;
-	// }
+	while (way) //leaks;
+	{
+		ft_printf("way node name -> %s\n", way->way_room);
+		way = way->next;
+	}
 	
 	ft_printf("\n");
-	system("leaks -q lem-in");
+
+	if (ft_strequ(argv[1], "-l"))
+		system("leaks -q lem-in");
 	return (0);
 }
