@@ -6,7 +6,7 @@
 /*   By: otimofie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:49:44 by otimofie          #+#    #+#             */
-/*   Updated: 2018/04/18 12:49:46 by otimofie         ###   ########.fr       */
+/*   Updated: 2018/05/13 17:20:19 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int		main(int argc, char **argv)
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
+
 
 
 	ft_detect_bonus(argv, way);
