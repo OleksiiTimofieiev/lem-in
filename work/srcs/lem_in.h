@@ -172,7 +172,7 @@ typedef	struct			s_ways
 	int					way_id;
 	int					way_len;
 	int					way_ants;
-	struct s_way_option	*o_next;
+	struct t_way_option	*o_next;
 	struct s_ways		*next;
 }						t_ways;
 
