@@ -151,7 +151,6 @@ int		main(int argc, char **argv)
 	reverse(&way);
 	multiple_ways(way, &ways, data);
 	ft_print_ways(ways); //intermidiary func;
-
 	// while (ways)
 	// {
 	// 	ft_printf("%d\n", ways->way_id);
