@@ -25,3 +25,5 @@ t_ways			*find_to_add_the_full_path(t_ways **ways, int search)
 	}
 	return (NULL);
 }
+
+// add func of way len;
