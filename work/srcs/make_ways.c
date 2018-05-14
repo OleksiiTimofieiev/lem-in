@@ -25,37 +25,38 @@ t_ways	*build_ways_node(int i)
 	return (tmp);
 }
 
-void	ways_node_constructor(t_ways **ways, int i)
+void	ways_node_constructor(t_ways **ways, int way_id)
 {
 	t_ways *tmp;
 
 	if (!*ways)
-		*ways = build_ways_node(i);
+		*ways = build_ways_node(way_id);
 	else
 	{
 		tmp = *ways;
 		while (tmp->next)
 			tmp = tmp->next;
-		tmp->next = build_ways_node(i);
+		tmp->next = build_ways_node(way_id);
 	}
 }
 
-void	construct_final_ways(t_way *way, t_ways **ways, t_data data, int *i)
+void	construct_final_ways(t_way *way, t_ways **ways, t_data data, int *way_id)
 {
+	int buf;
 	if (ft_strequ(way->way_room, data.start))
-	{
-		ways_node_constructor(ways, (*i)++);
-	}
+		ways_node_constructor(ways, (*way_id)++);
+	else
+		buf = 0;
 }
 
 void	multiple_ways(t_way *way, t_ways **ways, t_data data)
 {
-	int i;
+	int way_id;
 
-	i = 1;
+	way_id = 1;
 	while (way)
 	{
-		construct_final_ways(way, ways, data, &i);
+		construct_final_ways(way, ways, data, &way_id);
 		way = way->next;
 	}
 }
