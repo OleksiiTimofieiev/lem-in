@@ -12,21 +12,39 @@
 
 #include "lem_in.h"
 
-void	ways_node_constructor(t_way *way, t_ways **ways, int i)
+t_ways	*build_ways_node(int i)
 {
-		if (!*ways)
-		{
-			ft_printf("%s\n", "nope");
-			ft_printf("%d\n", i);
-		}
-		ft_printf("%s\n", way->way_room);
+	t_ways *tmp;
+
+	tmp = (t_ways*)malloc(sizeof(t_ways));
+	tmp->way_id = i;
+	tmp->way_len = 0;
+	tmp->way_ants = 0;
+	tmp->o_next = NULL;
+	tmp->next = NULL;
+	return (tmp);
+}
+
+void	ways_node_constructor(t_ways **ways, int i)
+{
+	t_ways *tmp;
+
+	if (!*ways)
+		*ways = build_ways_node(i);
+	else
+	{
+		tmp = *ways;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = build_ways_node(i);
+	}
 }
 
 void	construct_final_ways(t_way *way, t_ways **ways, t_data data, int *i)
 {
 	if (ft_strequ(way->way_room, data.start))
-	{	
-		ways_node_constructor(way, ways, (*i)++);
+	{
+		ways_node_constructor(ways, (*i)++);
 	}
 }
 

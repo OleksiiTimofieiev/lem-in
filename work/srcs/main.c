@@ -114,6 +114,14 @@ int		main(int argc, char **argv)
 	bfs(data, graph, &way);
 	multiple_ways(way, &ways, data);
 
+	while (ways)
+	{
+		ft_printf("%d\n", ways->way_id);
+		ft_printf("%d\n", ways->way_len);
+		ft_printf("%d\n", ways->way_ants);
+		ways = ways->next;
+	}
+
 
 
 	ft_detect_bonus(argv, way);
