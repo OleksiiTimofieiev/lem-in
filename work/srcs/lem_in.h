@@ -134,6 +134,10 @@ typedef struct			s_way
 
 void					add_to_way(t_way **way, char *str);
 
+/*
+**---------------------------------------   plan_b  ----------------------------
+*/
+
 typedef struct			s_planb
 {
 	char				*vertex_name;
@@ -154,7 +158,23 @@ void					add(t_vertex *v, t_qnode *n, t_queue *q, t_planb **m);
 void					ft_visited(t_vertex *vertex, char *str, char c);
 
 /*
-**---------------------------------------   plan_b  ----------------------------
+**-----------------------------------------   ways  ---------------------------
 */
+
+typedef	struct			s_way_option
+{
+	int					node_id;
+	struct s_way_option	*next;
+}						t_way_option;
+
+typedef	struct			s_ways
+{
+	int					way_id;
+	int					way_len;
+	struct s_way_option	*o_next;
+	struct s_ways		*next;
+}						t_ways;
+
+void					multiple_ways(t_way *way, t_ways **ways, t_data data);
 
 #endif

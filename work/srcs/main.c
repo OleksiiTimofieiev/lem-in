@@ -97,6 +97,7 @@ int		main(int argc, char **argv)
 	t_init		*initial_data;
 	t_vertex	*graph;
 	t_way		*way;
+	t_ways		*ways;
 	t_data		data;
 
 	(void)argc;
@@ -111,6 +112,7 @@ int		main(int argc, char **argv)
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
+	multiple_ways(way, &ways, data);
 
 
 

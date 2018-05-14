@@ -28,6 +28,7 @@ SRCS =  ./srcs/general_functions.c \
 		./srcs/ways_construct.c \
 		./srcs/bfs_helper.c \
 		./srcs/add_stuff.c \
+		./srcs/make_ways.c \
 		./srcs/main.c \
 
 CFLAGS = -Wall -Wextra -Werror
