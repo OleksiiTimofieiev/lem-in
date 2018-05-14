@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include <stdio.h>
 
 static	void	ft_print_ways(t_ways *list)
 {
@@ -70,10 +71,19 @@ void	ft_detect_bonus_ways(char **argv, t_ways *ways)
 
 void	activate_ways(t_ways **ways)
 {
-	ft_printf("Please, select the way(-s).\n\n");
+	char *line;
+
+	ft_printf("\nPlease, select the way(-s).\n");
+	ft_printf("--------------------------------\n");
 	ft_printf("List of ways:\n");
 	ft_print_ways(*ways);
+	ft_printf("--------------------------------\n");
 	ft_printf("Input format: 1,...,2.\n");
+	ft_printf("--------------------------------\n");
+	get_next_line(0, &line);
+	
+
+
 
 
 	// while (ways)

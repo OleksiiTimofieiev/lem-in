@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include <stdio.h>
 
 static void reverse(t_way** head_ref)
 {
