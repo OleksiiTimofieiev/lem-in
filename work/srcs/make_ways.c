@@ -20,6 +20,7 @@ t_ways			*build_ways_node(int i)
 	tmp->way_id = i;
 	tmp->way_len = 0;
 	tmp->way_ants = 0;
+	tmp->activation = 1;
 	tmp->o_next = NULL;
 	tmp->next = NULL;
 	return (tmp);

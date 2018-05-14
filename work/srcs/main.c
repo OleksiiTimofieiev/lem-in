@@ -84,30 +84,7 @@ void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
 	}
 }
 
-void	ft_detect_bonus(char **argv, t_way *way)
-{
-	int i;
-
-	i = 0;
-	while(argv[i])
-	{
-		if (ft_strequ(argv[i], "-show"))
-		{
-			while (way)
-			{
-				ft_printf("way node name -> %s\n", way->way_room);
-				way = way->next;
-			}
-		}
-		else if (ft_strequ(argv[i], "-l"))
-			system("leaks -q lem-in");
-		else if (ft_strequ(argv[i], "-clean"))
-			system("make fclean");
-		i++;
-	}
-}
-
-	void	ft_print_ways(t_ways *list) // intermidiaty function;
+void	ft_print_ways(t_ways *list) // intermidiaty function;
 {
 	t_way_option *tmp;
 
@@ -150,15 +127,10 @@ int		main(int argc, char **argv)
 	bfs(data, graph, &way);
 	reverse(&way);
 	multiple_ways(way, &ways, data);
-	ft_print_ways(ways); //intermidiary func;
-	// while (ways)
-	// {
-	// 	ft_printf("%d\n", ways->way_id);
-	// 	ft_printf("%d\n", ways->way_len);
-	// 	ft_printf("%d\n", ways->way_ants);
-	// 	ways = ways->next;
-	// }
-	if (argc)
-		ft_detect_bonus(argv, way);
+	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
+
+
+
+	(argc) ? ft_detect_bonus_adm(argv) : 0 ;
 	return (0);
 }

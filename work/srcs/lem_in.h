@@ -172,6 +172,7 @@ typedef	struct			s_ways
 	int					way_id;
 	int					way_len;
 	int					way_ants;
+	int					activation;
 	struct s_way_option	*o_next;
 	struct s_ways		*next;
 }						t_ways;
@@ -179,5 +180,13 @@ typedef	struct			s_ways
 void					multiple_ways(t_way *way, t_ways **ways, t_data data);
 t_ways					*find_to_add_the_full_path(t_ways **ways, int search);
 void					ways_len(t_ways **ways);
+
+/*
+**-----------------------------------------   bonus  ---------------------------
+*/
+
+void					activate_ways(t_ways **ways);
+void					ft_detect_bonus_adm(char **argv);
+void					ft_detect_bonus_ways(char **argv, t_ways *ways);
 
 #endif

@@ -30,6 +30,7 @@ SRCS =  ./srcs/general_functions.c \
 		./srcs/add_stuff.c \
 		./srcs/make_ways.c \
 		./srcs/make_ways_help.c \
+		./srcs/bonus_ways_selection.c \
 		./srcs/main.c \
 
 CFLAGS = -Wall -Wextra -Werror
