@@ -26,9 +26,9 @@ t_ways	*find_to_add_the_full_path(t_ways **ways, int search)
 	return (NULL);
 }
 
-void		ways_len(t_ways **ways)
+void	ways_len(t_ways **ways)
 {
-	int i;
+	int				i;
 	t_ways			*way_node;
 	t_way_option	*w_option;
 
@@ -46,7 +46,3 @@ void		ways_len(t_ways **ways)
 		way_node = way_node->next;
 	}
 }
-
-// add func of way len;
-// add func to quantity of ants for the way;
-// unique x || unique y;
