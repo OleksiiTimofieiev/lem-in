@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-t_ways			*find_to_add_the_full_path(t_ways **ways, int search)
+t_ways	*find_to_add_the_full_path(t_ways **ways, int search)
 {
 	t_ways *tmp;
 
@@ -24,6 +24,27 @@ t_ways			*find_to_add_the_full_path(t_ways **ways, int search)
 		tmp = tmp->next;
 	}
 	return (NULL);
+}
+
+void		ways_len(t_ways **ways)
+{
+	int i;
+	t_ways			*way_node;
+	t_way_option	*w_option;
+
+	way_node = *ways;
+	while (way_node)
+	{
+		i = 0;
+		w_option = way_node->o_next;
+		while (w_option)
+		{
+			i++;
+			w_option = w_option->next;
+		}
+		way_node->way_len = i;
+		way_node = way_node->next;
+	}
 }
 
 // add func of way len;

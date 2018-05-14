@@ -85,6 +85,7 @@ void			multiple_ways(t_way *way, t_ways **ways, t_data data)
 		construct(way, ways, data, &way_id);
 		way = way->next;
 	}
+	ways_len(ways);
 	// add func of way len;
 	// add func to quantity of ants for the way;
 }
