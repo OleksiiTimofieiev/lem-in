@@ -138,8 +138,6 @@ int		main(int argc, char **argv)
 	t_ways		*ways;
 	t_data		data;
 
-	(void)argc;
-
 	ft_init_data(&data);
 	ft_init(&initial_data, &graph);
 	ft_validation(&initial_data);
@@ -161,8 +159,7 @@ int		main(int argc, char **argv)
 	// 	ft_printf("%d\n", ways->way_ants);
 	// 	ways = ways->next;
 	// }
-
-	ft_detect_bonus(argv, way);
-
+	if (argc)
+		ft_detect_bonus(argv, way);
 	return (0);
 }
