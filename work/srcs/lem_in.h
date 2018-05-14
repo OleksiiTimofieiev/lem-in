@@ -177,5 +177,6 @@ typedef	struct			s_ways
 }						t_ways;
 
 void					multiple_ways(t_way *way, t_ways **ways, t_data data);
+t_ways					*find_to_add_the_full_path(t_ways **ways, int search);
 
 #endif

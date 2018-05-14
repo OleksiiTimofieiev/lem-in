@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-t_ways	*build_ways_node(int i)
+t_ways			*build_ways_node(int i)
 {
 	t_ways *tmp;
 
@@ -35,7 +35,7 @@ t_way_option	*build_option_node(char *str)
 	return (tmp);
 }
 
-void	ways_node_constructor(t_ways **ways, int way_id)
+void			ways_node_constructor(t_ways **ways, int way_id)
 {
 	t_ways *tmp;
 
@@ -50,24 +50,10 @@ void	ways_node_constructor(t_ways **ways, int way_id)
 	}
 }
 
-t_ways	*find_to_add_the_full_path(t_ways **ways, int search)
+void			construct(t_way *way, t_ways **ways, t_data data, int *way_id)
 {
-	t_ways *tmp;
-
-	tmp = *ways;
-	while (tmp)
-	{
-		if (tmp->way_id == search)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
-
-void	construct_final_ways(t_way *way, t_ways **ways, t_data data, int *way_id)
-{
-	t_ways *o_ways;
-	t_way_option *w_option;
+	t_ways			*o_ways;
+	t_way_option	*w_option;
 
 	if (ft_strequ(way->way_room, data.start))
 	{
@@ -78,37 +64,25 @@ void	construct_final_ways(t_way *way, t_ways **ways, t_data data, int *way_id)
 	}
 	else
 	{
-		// ft_printf("iter->%d\n", *way_id);
-		// ft_printf("%s\n", "we have something in it");
-		
 		o_ways = find_to_add_the_full_path(ways, *way_id);
-		if (o_ways->o_next) //while;
+		if (o_ways->o_next)
 		{
 			w_option = o_ways->o_next;
 			while (w_option->next)
 				w_option = w_option->next;
 			w_option->next = build_option_node(way->way_room);
-
 		}
-
-		// if (!o_ways->o_next)
-		// add buider;
 	}
-	//add to o_ways for the current way;
-
 }
 
-void	multiple_ways(t_way *way, t_ways **ways, t_data data)
+void			multiple_ways(t_way *way, t_ways **ways, t_data data)
 {
 	int way_id;
 
 	way_id = 0;
 	while (way)
 	{
-		construct_final_ways(way, ways, data, &way_id);
+		construct(way, ways, data, &way_id);
 		way = way->next;
 	}
-	// ft_printf("%d\n", find_to_add_the_full_path(ways, 1)->way_id);
-	// ft_printf("%d\n", find_to_add_the_full_path(ways, 2)->way_id);
-
 }
