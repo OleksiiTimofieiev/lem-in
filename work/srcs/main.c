@@ -163,9 +163,6 @@ int		main(int argc, char **argv)
 	// 	ways = ways->next;
 	// }
 
-
-
-
 	ft_detect_bonus(argv, way);
 
 	return (0);
