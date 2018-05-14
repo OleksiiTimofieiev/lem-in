@@ -45,8 +45,11 @@ void	construct_final_ways(t_way *way, t_ways **ways, t_data data, int *way_id)
 	int buf;
 	if (ft_strequ(way->way_room, data.start))
 		ways_node_constructor(ways, (*way_id)++);
+	//add to o_ways too;
 	else
 		buf = 0;
+	//add to o_ways for the current way;
+
 }
 
 void	multiple_ways(t_way *way, t_ways **ways, t_data data)
