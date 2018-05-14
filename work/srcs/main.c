@@ -12,6 +12,22 @@
 
 #include "lem_in.h"
 
+/* Function to reverse the linked list */
+static void reverse(t_way** head_ref)
+{
+    t_way* prev   = NULL;
+    t_way* current = *head_ref;
+    t_way* next = NULL;
+    while (current != NULL)
+    {
+        next  = current->next;  
+        current->next = prev;   
+        prev = current;
+        current = next;
+    }
+    *head_ref = prev;
+}
+
 void	ft_to_start(t_init **initial_data) // el kostello ultima;
 {
 	if (*initial_data)
@@ -112,15 +128,16 @@ int		main(int argc, char **argv)
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
+	reverse(&way);
 	multiple_ways(way, &ways, data);
 
-	while (ways)
-	{
-		ft_printf("%d\n", ways->way_id);
-		ft_printf("%d\n", ways->way_len);
-		ft_printf("%d\n", ways->way_ants);
-		ways = ways->next;
-	}
+	// while (ways)
+	// {
+	// 	ft_printf("%d\n", ways->way_id);
+	// 	ft_printf("%d\n", ways->way_len);
+	// 	ft_printf("%d\n", ways->way_ants);
+	// 	ways = ways->next;
+	// }
 
 
 

@@ -60,19 +60,25 @@ void	construct_final_ways(t_way *way, t_ways **ways, t_data data, int *way_id)
 
 	if (ft_strequ(way->way_room, data.start))
 	{
-		ways_node_constructor(ways, ++(*way_id));
-		// ft_printf("iter->%d\n", *way_id);
+		++(*way_id);
+		ways_node_constructor(ways, *way_id);
 		o_ways = find_to_add_the_full_path(ways, *way_id);
 		if (!o_ways->o_next)
 			ft_printf("%s\n", "nope");
-
 		// ft_printf("%d\n", o_ways->way_id);
 
 	}
 	//add to o_ways too;
 	else
 	{
+		// ft_printf("iter->%d\n", *way_id);
+		// ft_printf("%s\n", "we have something in it");
+		
+		o_ways = find_to_add_the_full_path(ways, *way_id);
+		if (o_ways->o_next)
+		ft_printf("%s\n", "we have something in it");
 
+		// if (!o_ways->o_next)
 	}
 	//add to o_ways for the current way;
 
