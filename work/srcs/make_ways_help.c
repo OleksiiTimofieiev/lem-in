@@ -27,3 +27,5 @@ t_ways			*find_to_add_the_full_path(t_ways **ways, int search)
 }
 
 // add func of way len;
+// add func to quantity of ants for the way;
+// unique x || unique y;
