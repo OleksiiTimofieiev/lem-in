@@ -12,7 +12,6 @@
 
 #include "lem_in.h"
 
-/* Function to reverse the linked list */
 static void reverse(t_way** head_ref)
 {
     t_way* prev   = NULL;
