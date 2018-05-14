@@ -25,6 +25,16 @@ t_ways	*build_ways_node(int i)
 	return (tmp);
 }
 
+t_way_option	*build_option_node(char *str)
+{
+	t_way_option *tmp;
+
+	tmp = (t_way_option*)malloc(sizeof(t_way_option));
+	tmp->node_id = ft_strdup(str);
+	tmp->next = NULL;
+	return (tmp);
+}
+
 void	ways_node_constructor(t_ways **ways, int way_id)
 {
 	t_ways *tmp;
@@ -57,28 +67,32 @@ t_ways	*find_to_add_the_full_path(t_ways **ways, int search)
 void	construct_final_ways(t_way *way, t_ways **ways, t_data data, int *way_id)
 {
 	t_ways *o_ways;
+	t_way_option *w_option;
 
 	if (ft_strequ(way->way_room, data.start))
 	{
-		++(*way_id);
-		ways_node_constructor(ways, *way_id);
+		ways_node_constructor(ways, ++(*way_id));
 		o_ways = find_to_add_the_full_path(ways, *way_id);
-		if (!o_ways->o_next)
-			ft_printf("%s\n", "nope");
-		// ft_printf("%d\n", o_ways->way_id);
-
+		if (!(o_ways->o_next))
+			o_ways->o_next = build_option_node(way->way_room);
 	}
-	//add to o_ways too;
 	else
 	{
 		// ft_printf("iter->%d\n", *way_id);
 		// ft_printf("%s\n", "we have something in it");
 		
 		o_ways = find_to_add_the_full_path(ways, *way_id);
-		if (o_ways->o_next)
-		ft_printf("%s\n", "we have something in it");
+		if (o_ways->o_next) //while;
+		{
+			w_option = o_ways->o_next;
+			while (w_option->next)
+				w_option = w_option->next;
+			w_option->next = build_option_node(way->way_room);
+
+		}
 
 		// if (!o_ways->o_next)
+		// add buider;
 	}
 	//add to o_ways for the current way;
 

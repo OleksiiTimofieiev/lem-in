@@ -108,6 +108,28 @@ void	ft_detect_bonus(char **argv, t_way *way)
 	}
 }
 
+	void	ft_print_ways(t_ways *list) // intermidiaty function;
+{
+	t_way_option *tmp;
+
+	while (list)
+	{
+
+		ft_printf("%d -> ", list->way_id);
+
+		tmp = list->o_next;
+		while (tmp)
+		{
+			ft_printf("%s", tmp->node_id);
+			if (tmp->next != NULL)
+				ft_printf("%c", '-');
+			tmp = tmp->next;
+		}
+		ft_printf("\n");
+		list = list->next;
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	t_init		*initial_data;
@@ -130,6 +152,7 @@ int		main(int argc, char **argv)
 	bfs(data, graph, &way);
 	reverse(&way);
 	multiple_ways(way, &ways, data);
+	ft_print_ways(ways); //intermidiary func;
 
 	// while (ways)
 	// {
@@ -138,6 +161,7 @@ int		main(int argc, char **argv)
 	// 	ft_printf("%d\n", ways->way_ants);
 	// 	ways = ways->next;
 	// }
+
 
 
 

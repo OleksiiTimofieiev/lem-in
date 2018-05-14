@@ -163,7 +163,7 @@ void					ft_visited(t_vertex *vertex, char *str, char c);
 
 typedef	struct			s_way_option
 {
-	int					node_id;
+	char				*node_id;
 	struct s_way_option	*next;
 }						t_way_option;
 
@@ -172,7 +172,7 @@ typedef	struct			s_ways
 	int					way_id;
 	int					way_len;
 	int					way_ants;
-	struct t_way_option	*o_next;
+	struct s_way_option	*o_next;
 	struct s_ways		*next;
 }						t_ways;
 
