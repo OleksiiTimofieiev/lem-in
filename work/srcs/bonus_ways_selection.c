@@ -82,20 +82,6 @@ void	activate_ways(t_ways **ways)
 	ft_printf("--------------------------------\n");
 	get_next_line(0, &line);
 	ft_printf("--------------------------------\n");
-	
 
-
-
-
-	// while (ways)
-	// {
-
-
-
-
-
-
-
-	// 	ways = ways->next;
-	// }
+	// change the way data;
 }
