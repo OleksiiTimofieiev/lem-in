@@ -125,7 +125,7 @@ void	ft_detect_bonus(char **argv, t_way *way)
 				ft_printf("%c", '-');
 			tmp = tmp->next;
 		}
-		ft_printf(" | way len == %d", list->way_len);
+		ft_printf(" | way len == %d;", list->way_len);
 		ft_printf("\n");
 		list = list->next;
 	}
