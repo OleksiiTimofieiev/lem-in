@@ -57,12 +57,13 @@ void			ft_refresh_vertex(t_vertex *vertex, t_way *way, t_data data)
 	}
 }
 
-void			ft_start_bfs(t_queue **q, t_data data, t_planb **main_ptr)
+void			ft_start_bfs(t_queue **q, t_data data, t_planb **m, int *wave)
 {
-	*main_ptr = NULL;
+	*wave = 0;
+	*m = NULL;
 	*q = createqueue();
-	enqueue(*q, data.start, "root");
-	add_to_the_key(main_ptr, data.start, "start");
+	enqueue(*q, data.start, "root", 0);
+	add_to_the_key(m, data.start, "start");
 }
 
 void			bfs(t_data data, t_vertex *vertex, t_way **way)
@@ -70,20 +71,23 @@ void			bfs(t_data data, t_vertex *vertex, t_way **way)
 	t_queue	*queue;
 	t_qnode	*node;
 	t_planb	*main_ptr;
+	int		wave;
 
-	ft_start_bfs(&queue, data, &main_ptr);
+	ft_start_bfs(&queue, data, &main_ptr, &wave);
 	while (!isempty(queue))
 	{
 		node = dequeue(queue);
 		ft_visited(vertex, node->str, 'b');
 		if (ft_strequ(node->str, data.end))
 		{
-			ft_putstr("detected\n");
 			b_end(way, &node, &main_ptr, &queue);
+			if (node->wave == 1)
+				break ;
 			ft_refresh_vertex(vertex, *way, data);
-			enqueue(queue, data.start, "root");
+			enqueue(queue, data.start, "root", 0);
 			continue ;
 		}
+		node->wave = ++wave;
 		add(vertex, node, queue, &main_ptr);
 		ft_clean_queue_node(&node);
 	}

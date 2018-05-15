@@ -133,10 +133,15 @@ int		main(int argc, char **argv)
 	ft_build_vertex_structure(initial_data, &graph);
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
-	ft_putstr("here\n");
 	bfs(data, graph, &way);
-	ft_putstr("here\n");
-	
+
+	// while (way)
+	// {
+	// 	ft_printf("name -> %s wave -> %d\n", way->way_room, way->wave);
+	// 	way =way->next;
+	// }
+
+
 	(!way) ? ft_error() : 0 ;
 	reverse(&way);
 	multiple_ways(way, &ways, data);

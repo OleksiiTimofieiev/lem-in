@@ -51,7 +51,7 @@ void			add(t_vertex *v, t_qnode *n, t_queue *q, t_planb **m)
 	{
 		if (adj_list_vertex->visited != 'g' && adj_list_vertex->visited != 'b')
 		{
-			enqueue(q, adj_list_vertex->room_name, n->str);
+			enqueue(q, adj_list_vertex->room_name, n->str, n->wave);
 			ft_visited(v, adj_list_vertex->room_name, 'g');
 			add_to_the_key(m, adj_list_vertex->room_name, n->str);
 		}

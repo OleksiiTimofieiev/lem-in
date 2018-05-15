@@ -12,13 +12,14 @@
 
 #include "lem_in.h"
 
-static	t_qnode	*newnode(char *str, char *parent)
+static	t_qnode	*newnode(char *str, char *parent, int wave)
 {
 	t_qnode *tmp;
 
 	tmp = (t_qnode*)malloc(sizeof(t_qnode));
 	tmp->str = ft_strdup(str);
 	tmp->parent = ft_strdup(parent);
+	tmp->wave = wave;
 	tmp->next = NULL;
 	return (tmp);
 }
@@ -33,11 +34,11 @@ t_queue			*createqueue(void)
 	return (q);
 }
 
-void			enqueue(t_queue *q, char *str, char *parent)
+void			enqueue(t_queue *q, char *str, char *parent, int wave)
 {
 	t_qnode *tmp;
 
-	tmp = newnode(str, parent);
+	tmp = newnode(str, parent, wave);
 	if (q->rear == NULL && q->front == NULL)
 	{
 		q->rear = tmp;

@@ -36,7 +36,7 @@ void			b_end(t_way **w, t_qnode **n, t_planb **m, t_queue **q)
 	t_planb *unno;
 	t_planb *unno1;
 
-	add_to_way(w, (*n)->str);
+	add_to_way(w, (*n)->str, (*n)->wave);
 	unno = *m;
 	while (unno)
 	{
@@ -51,7 +51,7 @@ void			b_end(t_way **w, t_qnode **n, t_planb **m, t_queue **q)
 		{
 			free(first_parent);
 			first_parent = ft_strdup(unno1->parent);
-			add_to_way(w, unno1->vertex_name);
+			add_to_way(w, unno1->vertex_name, (*n)->wave);
 		}
 		unno1 = unno1->prev;
 	}

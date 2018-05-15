@@ -107,6 +107,7 @@ typedef struct			s_qnode
 {
 	char				*str;
 	char				*parent;
+	int					wave;
 	struct s_qnode		*next;
 }						t_qnode;
 
@@ -118,7 +119,7 @@ typedef	struct			s_queue
 
 t_queue					*createqueue(void);
 t_qnode					*dequeue(t_queue *q);
-void					enqueue(t_queue *q, char *str, char *parent);
+void					enqueue(t_queue *q, char *str, char *parent, int wave);
 int						isempty(t_queue *q);
 void					ft_clean_queue_node(t_qnode **node);
 
@@ -129,10 +130,11 @@ void					ft_clean_queue_node(t_qnode **node);
 typedef struct			s_way
 {
 	char				*way_room;
+	int					wave;
 	struct s_way		*next;
 }						t_way;
 
-void					add_to_way(t_way **way, char *str);
+void					add_to_way(t_way **way, char *str, int wave);
 
 /*
 **---------------------------------------   plan_b  ----------------------------
