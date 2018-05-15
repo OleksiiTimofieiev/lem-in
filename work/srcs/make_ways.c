@@ -88,4 +88,5 @@ void			multiple_ways(t_way *way, t_ways **ways, t_data data)
 	}
 	ways_len(ways);
 	// add func to set quantity of ants for the way;
+	ft_ways_distribution();
 }
