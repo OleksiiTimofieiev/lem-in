@@ -129,7 +129,8 @@ int		main(int argc, char **argv)
 	reverse(&way);
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
-	//ants quantity;
+
+	ft_ways_distribution(data, ways);
 
 
 

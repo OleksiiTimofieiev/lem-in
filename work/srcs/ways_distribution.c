@@ -12,72 +12,111 @@
 
 #include "lem_in.h"
 
-void	ft_ways_distribution(void)
+int		ft_quantity_of_active_ways(t_ways *ways)
 {
 	int i;
-	int j = 0;
-	int ants_quantity = 10;
-	
-	int len[3] = {2, 3, 5};
-	int	way[3] = {0, 0, 0};
+
+	i = 0;
+	while (ways)
+	{
+		if (ways->activation == 1)
+			i++;
+		ways = ways->next;
+	}
+	return (i);
+}
+
+// int		ft_find_the_shortest_path(int *arr)
+// {
+// 	int i;
+// 	int min_len;
+
+// 	i = 0;
+// 	min = arr[0];
+// 	while (arr[i])
+// 	{
+// 		if (arr[i] > min)
+// 			min = arr[i];
+// 		i++;
+// 	}
+// 	return (i);
+// }
+
+void	ft_ways_distribution(t_data data, t_ways *ways)
+{
+	int ants_quantity;
+	int	ways_amount;
+	int i;
+	int j;
 
 
-		
-		ft_printf("\n");
+	ants_quantity = data.quantity_of_ants;
+	ways_amount = ft_quantity_of_active_ways(ways);
+	j = 0;
+
+	// ft_printf("%d\n", ft_quantity_of_active_ways(ways));
+
+
+
+	int *len = (int *)malloc(sizeof(int)*ways_amount);
+	len[0] = 5;
+	len[1] = 4;
+
+	int	way[2] = {0, 0};
+
 
 
 	while (ants_quantity)
 	{
 		i = 0;
-
-					// ft_printf("i->%s%d%s\n", CYAN, i, RESET);
-
-
 		if ((way[i] + 1) <= len[j])
 		{
-			ft_printf("len[j] --->%s%d%s\n", YELLOW, len[j], RESET);
-			// ft_printf("j ->%d\n", j);
-
-			// ft_printf("way[i] ->%d\n", way[i]);
-
 			way[i] += 1;
 			ants_quantity--;
-					// ft_printf("\n");
+			// ft_printf("ants_quantity->%d\n", ants_quantity);
 
 		}
 		else
 		{
 			i++;
-			while (i < 3)
+			while (i < 2)
 			{
-					ft_printf("len[j]->%s%d%s\n", GREEN, len[j], RESET);
-				// ft_printf("i ->%d\n", i);
+				ft_printf("way0->%d\n", way[0]);
+				ft_printf("way1->%d\n", way[1]);
+
 				if ((way[i] + 1) <= len[j])
 				{
-					ft_printf("i->%s%d%s\n", RED, i, RESET);
-
-					ft_printf("way[i]->%s%d%s\n", RED, way[i], RESET);
-
 					way[i] += 1;
-					ft_printf("way[i]->%s%d%s\n", RED, way[i], RESET);
-		ants_quantity--;
-
-
+					ants_quantity--;
+					ft_printf("ants_quantity->%d\n", ants_quantity);
 					break;
 				}
+				else if (way[i] + 1 > len[j])
+				{
+					ft_printf("i->%d\n", i);
+
+					ft_printf("way->%d\n", way[i]);
+					ft_printf("len->%d\n", len[j]);
+					ants_quantity--;
+
+					ft_putstr("detected\n");
+					//find the shortest path and add to it;
+				}
+
 				i++;
-					
 			}
-					if (i > j)
-						j++;
-					// ft_printf("j->%s%d%s\n", GREEN, j, RESET);
-			
-					ft_printf("\n");
-			
+
+			if (i > j)
+				j++;
 		}
+
 	}
+		ft_printf("ewwere\n");
+
+
+
 	int b = 0;
-	while (b < 3)
+	while (b < 2)
 	{
 		ft_printf("%d\n", way[b]);
 		b++;
