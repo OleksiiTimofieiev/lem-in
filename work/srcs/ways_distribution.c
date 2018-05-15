@@ -98,6 +98,13 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 	int i;
 	int j;
 
+	if (quantity of ways == ft_quantity_of_active_ways(ways))
+	{
+		node(way)->ants = data.quantity_of_ants;
+		all except necessary one -> deactivate;
+		return ;
+	}
+
 	ants_quantity = data.quantity_of_ants;
 	ways_amount = ft_quantity_of_active_ways(ways);
 	j = 0;
