@@ -19,9 +19,7 @@ static	void	ft_print_ways(t_ways *list)
 
 	while (list)
 	{
-
 		ft_printf("%d -> ", list->way_id);
-
 		tmp = list->o_next;
 		while (tmp)
 		{
@@ -35,18 +33,17 @@ static	void	ft_print_ways(t_ways *list)
 			ft_printf(" | activation == %s;", "true");
 		else
 			ft_printf(" | activation == %s;", "false");
-
 		ft_printf("\n");
 		list = list->next;
 	}
 }
 
-void	ft_detect_bonus_adm(char **argv)
+void			ft_detect_bonus_adm(char **argv)
 {
 	int i;
 
 	i = 0;
-	while(argv[i])
+	while (argv[i])
 	{
 		if (ft_strequ(argv[i], "-l"))
 			system("leaks -q lem-in");
@@ -56,37 +53,26 @@ void	ft_detect_bonus_adm(char **argv)
 	}
 }
 
-void	ft_detect_bonus_ways(char **argv, t_ways *ways)
+void			ft_detect_bonus_ways(char **argv, t_ways *ways)
 {
 	int i;
 
 	i = 0;
-	while(argv[i])
+	while (argv[i])
 	{
-		if(ft_strequ(argv[i], "-ways_select"))
+		if (ft_strequ(argv[i], "-ways_select"))
 			activate_ways(&ways);
 		i++;
 	}
 }
 
-void	ft_deactivate_all_ways(t_ways **ways)
+void			ft_implement_selection(char *line, t_ways **ways)
 {
-	t_ways *head;
-
-	head = *ways;
-	while (head)
-	{
-		head->activation = 0;
-		head = head->next;
-	}
-}
-
-void	ft_implement_selection(char *line, t_ways **ways)
-{
-	t_ways *head;
+	t_ways	*head;
 	int		way_nbr;
-	char *buf = line;
+	char	*buf;
 
+	buf = line;
 	head = *ways;
 	while (*buf && *buf != ' ')
 	{
@@ -102,11 +88,17 @@ void	ft_implement_selection(char *line, t_ways **ways)
 	}
 }
 
-void	activate_ways(t_ways **ways) //norminette;
+void			activate_ways(t_ways **ways)
 {
 	char	*line;
-	
-	ft_deactivate_all_ways(ways)	;
+	t_ways	*head;
+
+	head = *ways;
+	while (head)
+	{
+		head->activation = 0;
+		head = head->next;
+	}
 	ft_printf("\nPlease, select the way(-s).\n");
 	ft_printf("--------------------------------\n");
 	ft_printf("List of ways:\n");
