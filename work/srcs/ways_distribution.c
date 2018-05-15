@@ -76,6 +76,19 @@ void	ft_int_way(int *way, int len)
 	}
 }
 
+void	ft_update_the_ways_data(t_ways *ways, int *way)
+{
+	int i;
+
+	i = 0;
+	while (ways)
+	{
+		if (ways->activation == 1)
+			ways->way_ants = way[i++];
+		ways = ways->next;
+	}
+}
+
 void	ft_ways_distribution(t_data data, t_ways *ways)
 {
 	int ants_quantity;
@@ -114,7 +127,6 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 				}
 				else if (way[i] + 1 > len[j])
 				{
-
 					way[ft_find_the_shortest_path(len)] += 1;
 					ants_quantity--;
 					break;
@@ -122,19 +134,11 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 
 				i++;
 			}
-
 			if (i > j)
 				j++;
 		}
 	}
-
-
-	// int b = 0;
-	// while (b < 2)
-	// {
-	// 	ft_printf("%d\n", way[b]);
-	// 	b++;
-	// }
+	ft_update_the_ways_data(ways, way);
 	free(len);
 	free(way);
 }

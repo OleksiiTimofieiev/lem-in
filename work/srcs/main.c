@@ -13,6 +13,14 @@
 #include "lem_in.h"
 #include <stdio.h>
 
+void	ft_error(void)
+{
+
+		ft_putstr("ERROR\n");
+		exit(0);
+
+}
+
 static void reverse(t_way** head_ref)
 {
     t_way* prev   = NULL;
@@ -102,8 +110,8 @@ void	ft_print_ways(t_ways *list) // intermidiaty function;
 				ft_printf("%c", '-');
 			tmp = tmp->next;
 		}
-		ft_printf(" | way len == %d;", list->way_len);
-		ft_printf("\n");
+		ft_printf(" | way len == %d", list->way_len);
+		ft_printf(" | way ants == %d;\n", list->way_ants);
 		list = list->next;
 	}
 }
@@ -126,14 +134,14 @@ int		main(int argc, char **argv)
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
+	(!way) ? ft_error() : 0 ;
+
 	reverse(&way);
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
-	ft_putstr("stop\n");
 	ft_ways_distribution(data, ways);
-	ft_putstr("stop\n");
 
-
+	ft_print_ways(ways);
 
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);
