@@ -98,6 +98,7 @@ void			activate_ways(t_ways **ways)
 		head->activation = 0;
 		head = head->next;
 	}
+	ft_printf("--------------------------------\n");
 	ft_printf("\nPlease, select the way(-s).\n");
 	ft_printf("--------------------------------\n");
 	ft_printf("List of ways:\n");

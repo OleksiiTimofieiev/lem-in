@@ -47,66 +47,87 @@ int		ft_find_the_shortest_path(int *arr)
 	return (res);
 }
 
-void	ft_ways_distribution(t_data data, t_ways *ways)
+void	ft_init_len(int *len, t_ways *ways)
+{
+	int i;
+
+	i = 0;
+	while (ways)
+	{
+		if (ways->activation == 1)
+		{
+			len[i] = ways->way_len;
+			i++;
+		}
+		ways = ways->next;
+	}
+}
+
+void	ft_int_way(int *way, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		way[i] = 0;
+		i++;
+
+	}
+}
+
+void	ft_ways_distribution(t_data data, t_ways *ways) // if we have only one way;
 {
 	int ants_quantity;
 	int	ways_amount;
 	int i;
 	int j;
 
-
+	// ft_putstr("1\n");
 	ants_quantity = data.quantity_of_ants;
 	ways_amount = ft_quantity_of_active_ways(ways);
 	j = 0;
-
-	// ft_printf("%d\n", ft_quantity_of_active_ways(ways));
-
+	// ft_putstr("2\n");
 
 
 	int *len = (int *)malloc(sizeof(int)*ways_amount);
-	len[0] = 5;
-	len[1] = 4;
+	ft_init_len(len, ways);
+	// ft_putstr("3\n");
 
-	int	way[2] = {0, 0};
+
+	int	*way = (int *)malloc(sizeof(int)*ways_amount);
+	ft_int_way(way, ways_amount);
+	// way[0] = 0;
+	// way[1] = 0;
+	// ft_putstr("4\n");
 
 
 
 	while (ants_quantity)
 	{
 		i = 0;
-		if ((way[i] + 1) <= len[j])
+		if ((way[i] + 1) <= len[j] || ways_amount == 1)
 		{
 			way[i] += 1;
 			ants_quantity--;
-			// ft_printf("ants_quantity->%d\n", ants_quantity);
-
 		}
 		else
 		{
 			i++;
-			while (i < 2)
+			while (i < ways_amount)
 			{
-				ft_printf("way0->%d\n", way[0]);
-				ft_printf("way1->%d\n", way[1]);
-
 				if ((way[i] + 1) <= len[j])
 				{
 					way[i] += 1;
 					ants_quantity--;
-					ft_printf("ants_quantity->%d\n", ants_quantity);
 					break;
 				}
 				else if (way[i] + 1 > len[j])
 				{
-					ft_printf("i->%d\n", i);
 
-					ft_printf("way->%d\n", way[i]);
-					ft_printf("len->%d\n", len[j]);
 					way[ft_find_the_shortest_path(len)] += 1;
 					ants_quantity--;
-
-					ft_putstr("detected\n");
-					//find the shortest path and add to it;
+					break;
 				}
 
 				i++;
@@ -114,17 +135,19 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 
 			if (i > j)
 				j++;
+	// ft_putstr("5\n");
+
 		}
-
+		// ft_printf("%d\n", ants_quantity);
 	}
-		ft_printf("ewwere\n");
 
 
-
-	int b = 0;
-	while (b < 2)
-	{
-		ft_printf("%d\n", way[b]);
-		b++;
-	}
+	// int b = 0;
+	// while (b < 2)
+	// {
+	// 	ft_printf("%d\n", way[b]);
+	// 	b++;
+	// }
+	free(len);
+	free(way);
 }

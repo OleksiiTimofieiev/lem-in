@@ -129,8 +129,9 @@ int		main(int argc, char **argv)
 	reverse(&way);
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
-
+	ft_putstr("stop\n");
 	ft_ways_distribution(data, ways);
+	ft_putstr("stop\n");
 
 
 
