@@ -18,8 +18,8 @@ void	ft_ways_distribution(void)
 	int j = 0;
 	int ants_quantity = 10;
 	
-	int len[2] = {2, 8};
-	int	way[2] = {0, 0};
+	int len[3] = {2, 3, 5};
+	int	way[3] = {0, 0, 0};
 
 
 		
@@ -77,7 +77,7 @@ void	ft_ways_distribution(void)
 		}
 	}
 	int b = 0;
-	while (b < 4)
+	while (b < 3)
 	{
 		ft_printf("%d\n", way[b]);
 		b++;
