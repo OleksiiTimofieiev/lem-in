@@ -133,16 +133,17 @@ int		main(int argc, char **argv)
 	ft_build_vertex_structure(initial_data, &graph);
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
+	ft_putstr("here\n");
 	bfs(data, graph, &way);
+	ft_putstr("here\n");
+	
 	(!way) ? ft_error() : 0 ;
-
 	reverse(&way);
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
 	ft_ways_distribution(data, ways);
 
 	ft_print_ways(ways);
-
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);
 }

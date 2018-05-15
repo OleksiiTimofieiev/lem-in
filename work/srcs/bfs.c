@@ -78,6 +78,7 @@ void			bfs(t_data data, t_vertex *vertex, t_way **way)
 		ft_visited(vertex, node->str, 'b');
 		if (ft_strequ(node->str, data.end))
 		{
+			ft_putstr("detected\n");
 			b_end(way, &node, &main_ptr, &queue);
 			ft_refresh_vertex(vertex, *way, data);
 			enqueue(queue, data.start, "root");
