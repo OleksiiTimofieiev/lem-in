@@ -133,6 +133,6 @@ int		main(int argc, char **argv)
 
 
 
-	(argc) ? ft_detect_bonus_adm(argv) : 0 ;
+	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);
 }
