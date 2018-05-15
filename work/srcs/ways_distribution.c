@@ -26,21 +26,26 @@ int		ft_quantity_of_active_ways(t_ways *ways)
 	return (i);
 }
 
-// int		ft_find_the_shortest_path(int *arr)
-// {
-// 	int i;
-// 	int min_len;
+int		ft_find_the_shortest_path(int *arr)
+{
+	int i;
+	int res;
+	int min_len;
 
-// 	i = 0;
-// 	min = arr[0];
-// 	while (arr[i])
-// 	{
-// 		if (arr[i] > min)
-// 			min = arr[i];
-// 		i++;
-// 	}
-// 	return (i);
-// }
+	i = 0;
+	res = 0;
+	min_len = arr[0];
+	while (arr[i])
+	{
+		if (arr[i] < min_len)
+		{
+			min_len = arr[i];
+			res = i;
+		}
+		i++;
+	}
+	return (res);
+}
 
 void	ft_ways_distribution(t_data data, t_ways *ways)
 {
@@ -97,6 +102,7 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 
 					ft_printf("way->%d\n", way[i]);
 					ft_printf("len->%d\n", len[j]);
+					way[ft_find_the_shortest_path(len)] += 1;
 					ants_quantity--;
 
 					ft_putstr("detected\n");
