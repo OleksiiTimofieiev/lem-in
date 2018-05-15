@@ -76,32 +76,22 @@ void	ft_int_way(int *way, int len)
 	}
 }
 
-void	ft_ways_distribution(t_data data, t_ways *ways) // if we have only one way;
+void	ft_ways_distribution(t_data data, t_ways *ways)
 {
 	int ants_quantity;
 	int	ways_amount;
 	int i;
 	int j;
 
-	// ft_putstr("1\n");
 	ants_quantity = data.quantity_of_ants;
 	ways_amount = ft_quantity_of_active_ways(ways);
 	j = 0;
-	// ft_putstr("2\n");
-
 
 	int *len = (int *)malloc(sizeof(int)*ways_amount);
 	ft_init_len(len, ways);
-	// ft_putstr("3\n");
-
 
 	int	*way = (int *)malloc(sizeof(int)*ways_amount);
 	ft_int_way(way, ways_amount);
-	// way[0] = 0;
-	// way[1] = 0;
-	// ft_putstr("4\n");
-
-
 
 	while (ants_quantity)
 	{
@@ -135,10 +125,7 @@ void	ft_ways_distribution(t_data data, t_ways *ways) // if we have only one way;
 
 			if (i > j)
 				j++;
-	// ft_putstr("5\n");
-
 		}
-		// ft_printf("%d\n", ants_quantity);
 	}
 
 
