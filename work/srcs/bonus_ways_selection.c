@@ -69,11 +69,9 @@ void	ft_detect_bonus_ways(char **argv, t_ways *ways)
 	}
 }
 
-void	activate_ways(t_ways **ways) //norminette;
+void	ft_deactivate_all_ways(t_ways **ways)
 {
-	char	*line;
-	int		way_nbr;
-	t_ways	*head;
+	t_ways *head;
 
 	head = *ways;
 	while (head)
@@ -81,16 +79,15 @@ void	activate_ways(t_ways **ways) //norminette;
 		head->activation = 0;
 		head = head->next;
 	}
-	ft_printf("\nPlease, select the way(-s).\n");
-	ft_printf("--------------------------------\n");
-	ft_printf("List of ways:\n");
-	ft_print_ways(*ways);
-	ft_printf("--------------------------------\n");
-	ft_printf("Input format: 1,...,2 :)\n");
-	ft_printf("--------------------------------\n");
-	get_next_line(0, &line);
-	ft_printf("--------------------------------\n");
+}
+
+void	ft_implement_selection(char *line, t_ways **ways)
+{
+	t_ways *head;
+	int		way_nbr;
 	char *buf = line;
+
+	head = *ways;
 	while (*buf && *buf != ' ')
 	{
 		head = *ways;
@@ -103,6 +100,23 @@ void	activate_ways(t_ways **ways) //norminette;
 		}
 		buf++;
 	}
+}
+
+void	activate_ways(t_ways **ways) //norminette;
+{
+	char	*line;
+	
+	ft_deactivate_all_ways(ways)	;
+	ft_printf("\nPlease, select the way(-s).\n");
+	ft_printf("--------------------------------\n");
+	ft_printf("List of ways:\n");
+	ft_print_ways(*ways);
+	ft_printf("--------------------------------\n");
+	ft_printf("Input format: 1,...,2 :)\n");
+	ft_printf("--------------------------------\n");
+	get_next_line(0, &line);
+	ft_printf("--------------------------------\n");
+	ft_implement_selection(line, ways);
 	free(line);
 	ft_print_ways(*ways);
 	ft_printf("--------------------------------\n");
