@@ -93,19 +93,18 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 {
 	int ants_quantity;
 	int	ways_amount;
+	int *len;
+	int	*way;
 	int i;
 	int j;
 
 	ants_quantity = data.quantity_of_ants;
 	ways_amount = ft_quantity_of_active_ways(ways);
 	j = 0;
-
-	int *len = (int *)malloc(sizeof(int)*ways_amount);
+	len = (int *)malloc(sizeof(int)*ways_amount);
 	ft_init_len(len, ways);
-
-	int	*way = (int *)malloc(sizeof(int)*ways_amount);
+	way = (int *)malloc(sizeof(int)*ways_amount);
 	ft_int_way(way, ways_amount);
-
 	while (ants_quantity)
 	{
 		i = 0;
@@ -131,7 +130,6 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 					ants_quantity--;
 					break;
 				}
-
 				i++;
 			}
 			if (i > j)

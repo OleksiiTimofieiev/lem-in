@@ -133,11 +133,11 @@ int		main(int argc, char **argv)
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
-
-
-
+	//
+	//
 	(!way) ? ft_error() : reverse(&way);
 	multiple_ways(way, &ways, data);
+	ft_print_ways(ways); //delete;
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
 	ft_ways_distribution(data, ways);
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
