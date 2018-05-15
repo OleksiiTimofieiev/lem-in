@@ -69,10 +69,18 @@ void	ft_detect_bonus_ways(char **argv, t_ways *ways)
 	}
 }
 
-void	activate_ways(t_ways **ways)
+void	activate_ways(t_ways **ways) //norminette;
 {
-	char *line;
+	char	*line;
+	int		way_nbr;
+	t_ways	*head;
 
+	head = *ways;
+	while (head)
+	{
+		head->activation = 0;
+		head = head->next;
+	}
 	ft_printf("\nPlease, select the way(-s).\n");
 	ft_printf("--------------------------------\n");
 	ft_printf("List of ways:\n");
@@ -82,6 +90,20 @@ void	activate_ways(t_ways **ways)
 	ft_printf("--------------------------------\n");
 	get_next_line(0, &line);
 	ft_printf("--------------------------------\n");
-
-	// change the way data;
+	char *buf = line;
+	while (*buf && *buf != ' ')
+	{
+		head = *ways;
+		way_nbr = ft_atoi(buf);
+		while (head)
+		{
+			if (head->way_id == way_nbr)
+				head->activation = 1;
+			head = head->next;
+		}
+		buf++;
+	}
+	free(line);
+	ft_print_ways(*ways);
+	ft_printf("--------------------------------\n");
 }
