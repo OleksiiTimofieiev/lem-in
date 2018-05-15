@@ -15,9 +15,8 @@
 
 void	ft_error(void)
 {
-
-		ft_putstr("ERROR\n");
-		exit(0);
+	ft_putstr("ERROR\n");
+	exit(0);
 
 }
 
@@ -135,20 +134,12 @@ int		main(int argc, char **argv)
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
 
-	// while (way)
-	// {
-	// 	ft_printf("name -> %s wave -> %d\n", way->way_room, way->wave);
-	// 	way =way->next;
-	// }
 
 
-	(!way) ? ft_error() : 0 ;
-	reverse(&way);
+	(!way) ? ft_error() : reverse(&way);
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
 	ft_ways_distribution(data, ways);
-
-	ft_print_ways(ways);
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);
 }
