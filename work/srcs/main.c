@@ -102,7 +102,7 @@ void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 	}
 }
 
-void	test(t_ways *ways)
+void	test(t_ways *ways) //print result of movement;
 {
 	t_ways *_ways = ways;
 	t_way_option *opt;
@@ -110,7 +110,6 @@ void	test(t_ways *ways)
 	{
 		if (_ways->way_ants)
 		{
-			// ft_printf("%d\n", _ways->way_ants);
 			ft_printf("\n");
 			opt = _ways->o_next;
 			while (opt)
