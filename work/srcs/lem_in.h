@@ -182,7 +182,13 @@ typedef	struct			s_ways
 void					multiple_ways(t_way *way, t_ways **ways, t_data data);
 t_ways					*find_to_add_the_full_path(t_ways **ways, int search);
 void					ways_len(t_ways **ways);
-void					ft_ways_distribution(t_data data, t_ways *ways, int argc, char **argv);
+void					d1(t_data data, t_ways *ways, int argc, char **argv);
+int						q_of_act_w(t_ways *ways);
+void					ft_init_len(int *len, t_ways *ways);
+void					ft_init_way(int *way, int len);
+void					ways_1(t_data data, t_ways *ways, int *way, int *len);
+void					way_2(int *ants_quantity, int *way, int *len, int *buf);
+void					ft_update_the_ways_data(t_ways *ways, int *way);
 
 /*
 **-----------------------------------------   bonus  ---------------------------
