@@ -167,6 +167,7 @@ void	ft_ways_distribution(t_data data, t_ways *ways, int argc, char **argv)
 	ft_init_len(len, ways);
 	way = (int *)malloc(sizeof(int)*ways_amount);
 	ft_int_way(way, ways_amount);
+	
 	while (ants_quantity)
 	{
 		i = 0;
