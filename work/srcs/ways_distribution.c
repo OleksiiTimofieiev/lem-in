@@ -89,6 +89,49 @@ void	ft_update_the_ways_data(t_ways *ways, int *way)
 	}
 }
 
+int		ft_quantity_of_ways(t_ways *ways)
+{
+	int i;
+
+	i = 0;
+	while (ways)
+	{
+		i++;
+		ways = ways->next;
+	}
+	return (i);
+}
+
+int 	ft_find_the_shortest_way_id(t_ways *ways) //return tmp id;
+{
+	int id;
+	int min;
+
+	id = ways->way_id;
+	min = ways->way_len;
+	while (ways)
+	{
+		if (ways->way_len < min)
+		{
+			min = ways->way_ants;
+			id = ways->way_id;
+		}
+		ways = ways->next;
+	}
+	return (id);
+}
+
+void	ft_apply_quantity_of_ants_to_the_shortest_one(t_ways *ways, int quantity, int id)
+{
+	while (ways)
+	{
+		if (ways->way_id == id)
+			ways->way_ants = quantity;
+		ways = ways->next;
+	}
+}
+
+
 void	ft_ways_distribution(t_data data, t_ways *ways)
 {
 	int ants_quantity;
@@ -98,10 +141,13 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 	int i;
 	int j;
 
-	if (quantity of ways == ft_quantity_of_active_ways(ways))
+	if (ft_quantity_of_ways(ways) == ft_quantity_of_active_ways(ways))
 	{
-		node(way)->ants = data.quantity_of_ants;
-		all except necessary one -> deactivate;
+		ft_apply_quantity_of_ants_to_the_shortest_one(ways, data.quantity_of_ants, ft_find_the_shortest_way_id(ways));
+
+
+		// node(way)->ants = data.quantity_of_ants;
+		// all except necessary one -> deactivate;
 		return ;
 	}
 
