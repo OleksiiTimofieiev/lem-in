@@ -142,6 +142,21 @@ int		main(int argc, char **argv)
 	ft_add_ant_nodes_to_the_ways(ways); //leaks ?
 	ft_print_ways(ways); //delete;
 one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+one_move(ways); //leaks ?
+
+
 
 	ft_print_ways(ways); //delete;
 
