@@ -72,7 +72,6 @@ void	ft_int_way(int *way, int len)
 	{
 		way[i] = 0;
 		i++;
-
 	}
 }
 
@@ -154,7 +153,7 @@ void	ft_ways_distribution(t_data data, t_ways *ways, int argc, char **argv)
 	int i;
 	int j;
 
-	if (ft_quantity_of_ways(ways) == ft_quantity_of_active_ways(ways) && !ft_activation_of_a_ways_select_bonus(argc, argv))
+	if (ft_quantity_of_ways(ways) == ft_quantity_of_active_ways(ways) && !ft_activation_of_a_ways_select_bonus(argc, argv)) // separate func;
 	{
 		ft_printf("%d\n", ft_activation_of_a_ways_select_bonus(argc, argv));
 		ft_apply_quantity_of_ants_to_the_shortest_one(ways, data.quantity_of_ants, ft_find_the_shortest_way_id(ways));
