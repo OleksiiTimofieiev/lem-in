@@ -139,7 +139,7 @@ int		main(int argc, char **argv)
 	(!way) ? ft_error() : reverse(&way);
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
-	ft_ways_distribution(data, ways);
+	ft_ways_distribution(data, ways, argc, argv);
 	ft_print_ways(ways); //delete;
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);

@@ -131,8 +131,21 @@ void	ft_apply_quantity_of_ants_to_the_shortest_one(t_ways *ways, int quantity, i
 	}
 }
 
+int		ft_activation_of_a_ways_select_bonus(int argc, char **argv)
+{
+	int i;
 
-void	ft_ways_distribution(t_data data, t_ways *ways)
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_strequ(argv[i], "-ways_select"))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	ft_ways_distribution(t_data data, t_ways *ways, int argc, char **argv)
 {
 	int ants_quantity;
 	int	ways_amount;
@@ -141,8 +154,9 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 	int i;
 	int j;
 
-	if (ft_quantity_of_ways(ways) == ft_quantity_of_active_ways(ways))
+	if (ft_quantity_of_ways(ways) == ft_quantity_of_active_ways(ways) && !ft_activation_of_a_ways_select_bonus(argc, argv))
 	{
+		ft_printf("%d\n", ft_activation_of_a_ways_select_bonus(argc, argv));
 		ft_apply_quantity_of_ants_to_the_shortest_one(ways, data.quantity_of_ants, ft_find_the_shortest_way_id(ways));
 		return ;
 	}
