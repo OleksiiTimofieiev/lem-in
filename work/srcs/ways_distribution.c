@@ -102,7 +102,7 @@ int		ft_quantity_of_ways(t_ways *ways)
 	return (i);
 }
 
-int 	ft_find_the_shortest_way_id(t_ways *ways) //return tmp id;
+int 	ft_find_the_shortest_way_id(t_ways *ways)
 {
 	int id;
 	int min;
@@ -144,10 +144,6 @@ void	ft_ways_distribution(t_data data, t_ways *ways)
 	if (ft_quantity_of_ways(ways) == ft_quantity_of_active_ways(ways))
 	{
 		ft_apply_quantity_of_ants_to_the_shortest_one(ways, data.quantity_of_ants, ft_find_the_shortest_way_id(ways));
-
-
-		// node(way)->ants = data.quantity_of_ants;
-		// all except necessary one -> deactivate;
 		return ;
 	}
 
