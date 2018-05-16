@@ -48,7 +48,7 @@ void	ft_print_ways(t_ways *list) // intermidiaty function;
 		tmp = list->o_next;
 		while (tmp)
 		{
-			ft_printf("%s", tmp->node_id);
+			ft_printf("%d", tmp->ant_number);
 			if (tmp->next != NULL)
 				ft_printf("%c", '-');
 			tmp = tmp->next;
@@ -69,8 +69,6 @@ void push(t_way_option** head_ref, int new_ant, char *id)
     /* 2. put in the data  */
     new_node->ant_number  = new_ant;
     new_node->node_id  = ft_strdup(id);
-
-  
     /* 3. Make next of new node as head */
     new_node->next = (*head_ref);
   
@@ -80,11 +78,14 @@ void push(t_way_option** head_ref, int new_ant, char *id)
 
 void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 {
+	int i;
+
+	i = 1;
 	while (ways)
 	{
 		while (ways->way_ants)
 		{
-			push(&ways->o_next, 1, "7");
+			push(&ways->o_next, i++, "ant");
 			ways->way_ants--;
 		}
 		ft_printf("\n");

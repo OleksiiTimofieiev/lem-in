@@ -32,6 +32,7 @@ t_way_option	*build_option_node(char *str)
 
 	tmp = (t_way_option*)malloc(sizeof(t_way_option));
 	tmp->node_id = ft_strdup(str);
+	tmp->ant_number = 0;
 	tmp->next = NULL;
 	return (tmp);
 }
