@@ -18,6 +18,7 @@ SRCS =  ./srcs/general_functions.c \
 		./srcs/ants_check.c \
 		./srcs/rooms_validation.c \
 		./srcs/rooms_validation_aspects_function.c \
+		./srcs/rooms_validation_aspects_function_help.c \
 		./srcs/links_check.c \
 		./srcs/validation_core.c \
 		./srcs/before_building_graph.c \

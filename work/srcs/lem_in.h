@@ -100,6 +100,7 @@ int						ft_check_links(char *str, t_init **initial_data);
 void					ft_list_builder(t_init **i, char *v, int iq);
 t_init					*line_builder(char *valid_line, int i);
 void					ft_detect_input(t_init *initial_data);
+int						ft_x_y_unique(char **array, t_init *initial_data);
 
 /*
 **-------------------------   list of functions to build a graph  --------------

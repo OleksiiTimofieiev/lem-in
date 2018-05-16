@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-int		ft_room_and_coord_unique(char **array, t_init *initial_data)
+int		ft_room_unique(char **array, t_init *initial_data)
 {
 	char	**medium;
 	t_init	*current;
@@ -24,8 +24,7 @@ int		ft_room_and_coord_unique(char **array, t_init *initial_data)
 	{
 		medium = ft_strsplit(current->valid_line, 32);
 		if (ft_exclusions(current))
-			if (ft_strequ(array[0], medium[0])
-			|| ft_strequ(array[1], medium[1]) || ft_strequ(array[2], medium[2]))
+			if (ft_strequ(array[0], medium[0]))
 			{
 				ft_clean_2d_char(medium);
 				return (0);
@@ -101,7 +100,8 @@ int		ft_aspects(char *str, t_init *initial_data)
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (array_size != 1 && !ft_room_and_coord_unique(array, initial_data))
+	else if (array_size == 3 && (!ft_room_unique(array, initial_data)
+			|| !ft_x_y_unique(array, initial_data)))
 	{
 		ft_clean_2d_char(array);
 		return (0);
