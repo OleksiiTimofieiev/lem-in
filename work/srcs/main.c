@@ -102,7 +102,7 @@ void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 	}
 }
 
-void	test(t_ways *ways) //print result of movement;
+void	one_move(t_ways *ways) //print result of movement; // how much have null;
 {
 	t_ways *_ways = ways;
 	t_way_option *opt;
@@ -147,9 +147,9 @@ int		main(int argc, char **argv)
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
 	d1(data, ways, argc, argv);
-	ft_add_ant_nodes_to_the_ways(ways);
+	ft_add_ant_nodes_to_the_ways(ways); //leaks ?
 	ft_print_ways(ways); //delete;
-test(ways);
+one_move(ways); //leaks ?
 
 	ft_print_ways(ways); //delete;
 
