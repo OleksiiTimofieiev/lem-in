@@ -79,14 +79,16 @@ void push(t_way_option** head_ref, int new_ant, char *id)
 void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 {
 	int i;
+	int ants_in_a_way;
 
 	i = 1;
 	while (ways)
 	{
-		while (ways->way_ants)
+		ants_in_a_way = ways->way_ants;
+		while (ants_in_a_way)
 		{
 			push(&ways->o_next, i++, "ant");
-			ways->way_ants--;
+			ants_in_a_way--;
 		}
 		ft_printf("\n");
 		ways = ways->next;
