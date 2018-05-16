@@ -13,6 +13,8 @@
 NAME = lem-in
 
 SRCS =  ./srcs/general_functions.c \
+		./srcs/general_stuff_2.c \
+		./srcs/general_stuff_3.c \
 		./srcs/ants_check.c \
 		./srcs/rooms_validation.c \
 		./srcs/rooms_validation_aspects_function.c \

@@ -76,6 +76,16 @@ typedef struct			s_data
 }						t_data;
 
 /*
+**-------------------------   general  -----------------------------------------
+*/
+
+void					ft_print_ll(t_init *data);
+void					ft_error(void);
+void					ft_to_start(t_init **initial_data);
+void					ft_init_data(t_data *data);
+void					ft_init(t_init **init, t_vertex **vertex);
+
+/*
 **-------------------------   list of functions for validation  ----------------
 */
 
@@ -135,6 +145,7 @@ typedef struct			s_way
 }						t_way;
 
 void					add_to_way(t_way **way, char *str, int wave);
+void					reverse(t_way **head_ref);
 
 /*
 **---------------------------------------   plan_b  ----------------------------

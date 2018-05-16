@@ -13,62 +13,6 @@
 #include "lem_in.h"
 #include <stdio.h>
 
-void	ft_error(void)
-{
-	ft_putstr("ERROR\n");
-	exit(0);
-
-}
-
-static void reverse(t_way** head_ref)
-{
-    t_way* prev   = NULL;
-    t_way* current = *head_ref;
-    t_way* next = NULL;
-    while (current != NULL)
-    {
-        next  = current->next;  
-        current->next = prev;   
-        prev = current;
-        current = next;
-    }
-    *head_ref = prev;
-}
-
-void	ft_to_start(t_init **initial_data) // el kostello ultima;
-{
-	if (*initial_data)
-		while ((*initial_data)->prev)
-			(*initial_data) = (*initial_data)->prev;
-	else
-	{
-		ft_printf("\n%s\n", "ERROR");
-		exit(0);
-	}
-}
-
-void	ft_print_ll(t_init *data)
-{
-	while (data)
-	{
-		ft_printf("%s\n", data->valid_line);
-		data = data->next;
-	}
-}
-
-void	ft_init_data(t_data *data)
-{
-	data->start = NULL;
-	data->end = NULL;
-	data->quantity_of_ants = 0;
-}
-
-void	ft_init(t_init **init, t_vertex **vertex)
-{
-	*init = NULL;
-	*vertex = NULL;
-}
-
 void	ft_print_lg(t_vertex *vertex) // intermidiaty function;
 {
 	t_edge *tmp;

@@ -12,12 +12,6 @@
 
 #include "lem_in.h"
 
-static	void	ft_error(void)
-{
-	ft_printf("\n%s\n", "ERROR");
-	exit(0);
-}
-
 static	int		ft_detect_link_start_end(t_init *initial_data)
 {
 	int		ants;
