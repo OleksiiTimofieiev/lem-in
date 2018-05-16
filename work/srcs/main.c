@@ -102,7 +102,7 @@ void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 	}
 }
 
-void	one_move(t_ways *ways) //print result of movement; // how much have null;
+void	one_move(t_ways *ways) //print result of movement; // how much have null; //if it points to vertex node;
 {
 	t_ways *_ways = ways;
 	t_way_option *opt;
