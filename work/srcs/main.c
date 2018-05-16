@@ -49,7 +49,7 @@ void	ft_print_ways(t_ways *list) // intermidiaty function;
 		while (tmp)
 		{
 			if (!tmp->way)
-				ft_putstr("node");
+				ft_printf("node->a:%d", tmp->ant_number);
 			else
 				ft_printf("v:%s->a:%d", tmp->way->node_id, tmp->ant_number);
 			if (tmp->next != NULL)
@@ -72,6 +72,8 @@ void push(t_way_option **head_ref, int new_ant)
     /* 2. put in the data  */
     new_node->ant_number  = new_ant;
     new_node->node_id  = ft_strdup(ft_itoa(new_ant));
+    // new_node->node_id  = ft_strdup("x");
+
     new_node->way = *head_ref;
     /* 3. Make next of new node as head */
     new_node->next = *head_ref;
@@ -100,6 +102,28 @@ void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 	}
 }
 
+void	test(t_ways *ways)
+{
+	t_ways *_ways = ways;
+	t_way_option *opt;
+	while (_ways)
+	{
+		if (_ways->way_ants)
+		{
+			// ft_printf("%d\n", _ways->way_ants);
+			ft_printf("\n");
+			opt = _ways->o_next;
+			while (opt)
+			{
+				if (opt->way)
+					opt->way = opt->way->next;
+				opt = opt->next;
+			}
+		}
+		_ways = _ways->next;
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	t_init		*initial_data;
@@ -120,15 +144,16 @@ int		main(int argc, char **argv)
 	bfs(data, graph, &way);
 	//
 	//
-	//
 	(!way) ? ft_error() : reverse(&way);
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
 	d1(data, ways, argc, argv);
-
-ft_add_ant_nodes_to_the_ways(ways);
+	ft_add_ant_nodes_to_the_ways(ways);
+	ft_print_ways(ways); //delete;
+test(ways);
 
 	ft_print_ways(ways); //delete;
+
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);
 }
