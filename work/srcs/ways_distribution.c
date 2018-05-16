@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-int		ft_quantity_of_active_ways(t_ways *ways)
+int		q_of_act_w(t_ways *ways)
 {
 	int i;
 
@@ -101,7 +101,7 @@ int		ft_quantity_of_ways(t_ways *ways)
 	return (i);
 }
 
-int 	ft_find_the_shortest_way_id(t_ways *ways)
+int		shortest_way_id(t_ways *ways)
 {
 	int id;
 	int min;
@@ -120,7 +120,7 @@ int 	ft_find_the_shortest_way_id(t_ways *ways)
 	return (id);
 }
 
-void	ft_apply_quantity_of_ants_to_the_shortest_one(t_ways *ways, int quantity, int id)
+void	ft_apply_shortest(t_ways *ways, int quantity, int id)
 {
 	while (ways)
 	{
@@ -130,7 +130,7 @@ void	ft_apply_quantity_of_ants_to_the_shortest_one(t_ways *ways, int quantity, i
 	}
 }
 
-int		ft_activation_of_a_ways_select_bonus(int argc, char **argv)
+int		b_detect(int argc, char **argv)
 {
 	int i;
 
@@ -144,61 +144,68 @@ int		ft_activation_of_a_ways_select_bonus(int argc, char **argv)
 	return (0);
 }
 
-void	ft_ways_distribution(t_data data, t_ways *ways, int argc, char **argv)
+void	ft_ways_2(int *ants_quantity, int *way, int *len, int *buf)
+{
+	buf[0]++;
+	while (buf[0] < buf[2])
+	{
+		if ((way[buf[0]] + 1) <= len[buf[1]])
+		{
+			way[buf[0]] += 1;
+			(*ants_quantity)--;
+			break ;
+		}
+		else if (way[buf[0]] + 1 > len[buf[1]])
+		{
+			way[ft_find_the_shortest_path(len)] += 1;
+			(*ants_quantity)--;
+			break ;
+		}
+		buf[0]++;
+	}
+	if (buf[0] > buf[1])
+		buf[1]++;
+}
+
+void	ft_ways_1(t_data data, t_ways *ways, int *way, int *len)
 {
 	int ants_quantity;
-	int	ways_amount;
-	int *len;
-	int	*way;
-	int i;
-	int j;
+	int buf[3];
 
-	if (ft_quantity_of_ways(ways) == ft_quantity_of_active_ways(ways) && !ft_activation_of_a_ways_select_bonus(argc, argv)) // separate func;
-	{
-		ft_printf("%d\n", ft_activation_of_a_ways_select_bonus(argc, argv));
-		ft_apply_quantity_of_ants_to_the_shortest_one(ways, data.quantity_of_ants, ft_find_the_shortest_way_id(ways));
-		return ;
-	}
-
+	buf[0] = 0;
+	buf[1] = 0;
 	ants_quantity = data.quantity_of_ants;
-	ways_amount = ft_quantity_of_active_ways(ways);
-	j = 0;
-	len = (int *)malloc(sizeof(int)*ways_amount);
-	ft_init_len(len, ways);
-	way = (int *)malloc(sizeof(int)*ways_amount);
-	ft_int_way(way, ways_amount);
-	
+	buf[2] = q_of_act_w(ways);
 	while (ants_quantity)
 	{
-		i = 0;
-		if ((way[i] + 1) <= len[j] || ways_amount == 1)
+		buf[0] = 0;
+		if ((way[buf[0]] + 1) <= len[buf[1]] || buf[2] == 1)
 		{
-			way[i] += 1;
+			way[buf[0]] += 1;
 			ants_quantity--;
 		}
 		else
-		{
-			i++;
-			while (i < ways_amount)
-			{
-				if ((way[i] + 1) <= len[j])
-				{
-					way[i] += 1;
-					ants_quantity--;
-					break;
-				}
-				else if (way[i] + 1 > len[j])
-				{
-					way[ft_find_the_shortest_path(len)] += 1;
-					ants_quantity--;
-					break;
-				}
-				i++;
-			}
-			if (i > j)
-				j++;
-		}
+			ft_ways_2(&ants_quantity, way, len, buf);
 	}
+}
+
+void	ft_ways_distribution(t_data data, t_ways *ways, int argc, char **argv)
+{
+	int	ways_amount;
+	int *len;
+	int	*way;
+
+	if (ft_quantity_of_ways(ways) == q_of_act_w(ways) && !b_detect(argc, argv))
+	{
+		ft_apply_shortest(ways, data.quantity_of_ants, shortest_way_id(ways));
+		return ;
+	}
+	ways_amount = q_of_act_w(ways);
+	len = (int *)malloc(sizeof(int) * ways_amount);
+	ft_init_len(len, ways);
+	way = (int *)malloc(sizeof(int) * ways_amount);
+	ft_int_way(way, ways_amount);
+	ft_ways_1(data, ways, way, len);
 	ft_update_the_ways_data(ways, way);
 	free(len);
 	free(way);
