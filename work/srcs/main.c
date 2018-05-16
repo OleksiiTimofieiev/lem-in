@@ -62,23 +62,16 @@ void	ft_print_ways(t_ways *list) // intermidiaty function;
 	}
 }
 
-/* Given a reference (pointer to pointer) to the head of a list
-   and an int,  inserts a new node on the front of the list. */
 void push(t_way_option **head_ref, int new_ant)
 {
-    /* 1. allocate node */
     t_way_option* new_node = (t_way_option*) malloc(sizeof(t_way_option));
   
-    /* 2. put in the data  */
     new_node->ant_number  = new_ant;
     new_node->node_id  = ft_strdup(ft_itoa(new_ant));
-    // new_node->node_id  = ft_strdup("x");
 
     new_node->way = *head_ref;
-    /* 3. Make next of new node as head */
     new_node->next = *head_ref;
   
-    /* 4. move the head to point to the new node */
     (*head_ref) = new_node;
 }
 
@@ -94,7 +87,6 @@ void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 		while (ants_in_a_way)
 		{
 			push(&ways->o_next, i++);
-			// ways->o_next->node_id = ways->o_next->next->node_id;
 			ants_in_a_way--;
 		}
 		ft_printf("\n");
@@ -114,7 +106,7 @@ void	one_move(t_ways *ways) //print result of movement; // how much have null; /
 			opt = _ways->o_next;
 			while (opt)
 			{
-				if (opt->way)
+				if (opt->way) // while null !+ quantity of ants;
 					opt->way = opt->way->next;
 				opt = opt->next;
 			}
