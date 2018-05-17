@@ -66,7 +66,7 @@ union				u_t
 **-------------------------   colors   -------------------------
 */
 
-# define BLACK   "\x1b[30m"
+# define GREY   "\x1b[90m"
 # define RED     "\x1b[31m"
 # define GREEN   "\x1b[32m"
 # define YELLOW  "\x1b[33m"

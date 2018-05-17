@@ -113,9 +113,8 @@ void	ft_color_set(t_ways *ways)
 			if (opt->way_vertex != 1)
 			{
 				opt->color_id = i++;
-				if (i > 8)
+				if (i > 7)
 					i = 1;
-				ft_printf("color -> %d\n", opt->color_id);
 			}
 			opt = opt->next;
 		}
@@ -188,6 +187,24 @@ int		check_ants(t_ways *ways)
 	return (0);
 }
 
+void	ft_color_selector(int id)
+{
+	if (id == 1)
+		ft_putstr(GREY);
+	else if (id == 2)
+		ft_putstr(RED);
+	else if (id == 3)
+		ft_putstr(GREEN);
+	else if (id == 4)
+		ft_putstr(YELLOW);
+	else if (id == 5)
+		ft_putstr(BLUE);
+	else if (id == 6)
+		ft_putstr(MAGENTA);
+	else if (id == 7)
+		ft_putstr(CYAN);
+}
+
 void	print_moves(t_ways *ways)
 {
 	t_way_option *opt;
@@ -199,8 +216,7 @@ void	print_moves(t_ways *ways)
 		{
 			if (opt->way && opt->way->way_vertex == 1)
 			{
-				if (opt->color_id == 1)// func to print a color;
-					ft_printf("%s", CYAN); // func to print a color;
+				ft_color_selector(opt->color_id);
 				ft_printf("L%d-%s ", opt->ant_number, opt->way->node_id);
 				ft_printf("%s", RESET);
 
