@@ -283,7 +283,6 @@ int		main(int argc, char **argv)
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
 	//
-	//
 	(!way) ? ft_error() : reverse(&way);
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
