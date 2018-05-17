@@ -207,14 +207,14 @@ int			ft_detect_bonus_ways_activation(char **argv)
 
 void	ft_print_ants_distributed(t_ways *ways)
 {
-	ft_printf("--------------------------------------------------------------------\n");
+	ft_printf("------------------------------------------------------------\n");
 	while (ways)
 	{
 
 		ft_printf("way -> %d, ants -> %d.\n", ways->way_id, ways->way_ants);
 		ways = ways->next;
 	}
-	ft_printf("--------------------------------------------------------------------\n");
+	ft_printf("------------------------------------------------------------\n");
 
 }
 
