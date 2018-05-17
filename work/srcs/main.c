@@ -124,18 +124,17 @@ void		we_have_ended(t_ways *ways)
 {
 	int i;
 	int j;
+	t_way_option *general_opt;
+	t_way_option *separate_opt;
 
 	i = 0;
 	j = 0;
-	t_ways *_ways = ways;
-	t_way_option *general_opt;
-	t_way_option *separate_opt;
-	while (_ways)
+	while (ways)
 	{
-		if (_ways->way_ants != 0)
+		if (ways->way_ants != 0)
 		{
-			general_opt = _ways->o_next;
-			separate_opt = _ways->o_next;
+			general_opt = ways->o_next;
+			separate_opt = ways->o_next;
 			while (general_opt)
 			{
 				i++;
@@ -147,14 +146,10 @@ void		we_have_ended(t_ways *ways)
 					j++;
 				separate_opt = separate_opt->next;
 			}
-			// ft_printf("i->%d j->%d\n", i, j);
-			if (i == j) //set a mrk to the ways; test different waysl //ants->quantity = 0;
-			{
-				_ways->way_ants = 0;
-				// ft_printf("the end\n");
-			}
+			if (i == j)
+				ways->way_ants = 0;
 		}
-		_ways = _ways->next;
+		ways = ways->next;
 	}
 }
 
@@ -169,7 +164,25 @@ int		check_ants(t_ways *ways)
 	return (0);
 }
 
+void	print_moves(t_ways *ways)
+{
+	t_way_option *opt;
 
+	while (ways)
+	{
+		opt = ways->o_next;
+		while (opt)
+		{
+			if (opt->way)
+			{
+				ft_printf("L%d-%s ", opt->ant_number, opt->way->node_id);
+			}
+			opt = opt->next;
+		}
+		ways = ways->next;
+	}
+	ft_printf("\n");
+}
 
 void	moves(t_ways *ways)
 {
@@ -178,12 +191,14 @@ void	moves(t_ways *ways)
 	i = 0; //nulls
 	while (check_ants(ways)) //each way has no ants
 	{
+		print_moves(ways);
 		one_move(ways);
 		we_have_ended(ways);
 		i++;
 	}
 	// ft_printf("%d\n", i);
 }
+
 
 int		main(int argc, char **argv)
 {
@@ -211,19 +226,7 @@ int		main(int argc, char **argv)
 	d1(data, ways, argc, argv);
 	ft_add_ant_nodes_to_the_ways(ways); //leaks ?
 	ft_print_ways(ways); //delete;
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
-// one_move(ways); //leaks ?
+
 	moves(ways);
 
 			ft_printf("\n");
