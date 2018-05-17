@@ -60,12 +60,12 @@ union				u_t
 # define C_P 1 << 10
 # define F_DOT 1 << 11
 # define F_PR 1 << 12
+# define F_WILD 1 << 14
 
 /*
 **-------------------------   colors   -------------------------
 */
 
-# define F_WILD 1 << 14
 # define BLACK   "\x1b[30m"
 # define RED     "\x1b[31m"
 # define GREEN   "\x1b[32m"
