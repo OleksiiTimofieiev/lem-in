@@ -230,7 +230,7 @@ int		main(int argc, char **argv)
 
 	ft_init(&initial_data, &graph, &data);
 	ft_validation(&initial_data);
-	ft_to_start(&initial_data); // ternary construction;
+	ft_to_start(&initial_data);
 	(ft_detect_input(initial_data)) ? ft_print_ll(initial_data) : ft_error();
 	ft_build_vertex_structure(initial_data, &graph);
 	ft_build_edge_structure(initial_data, graph);
