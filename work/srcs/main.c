@@ -120,7 +120,7 @@ void	one_move(t_ways *ways)
 	}
 }
 
-int		we_have_ended(t_ways *ways)
+void		we_have_ended(t_ways *ways)
 {
 	int i;
 	int j;
@@ -130,11 +130,9 @@ int		we_have_ended(t_ways *ways)
 	t_ways *_ways = ways;
 	t_way_option *general_opt;
 	t_way_option *separate_opt;
-
-
 	while (_ways)
 	{
-		if (_ways->way_ants)
+		if (_ways->way_ants != 0)
 		{
 			general_opt = _ways->o_next;
 			separate_opt = _ways->o_next;
@@ -146,27 +144,45 @@ int		we_have_ended(t_ways *ways)
 			while (separate_opt)
 			{
 				if (!separate_opt->way)
-				j++;
+					j++;
 				separate_opt = separate_opt->next;
+			}
+			// ft_printf("i->%d j->%d\n", i, j);
+			if (i == j) //set a mrk to the ways; test different waysl //ants->quantity = 0;
+			{
+				_ways->way_ants = 0;
+				// ft_printf("the end\n");
 			}
 		}
 		_ways = _ways->next;
 	}
-	if (i == j)
-		return (1);
+}
+
+int		check_ants(t_ways *ways)
+{
+	while (ways)
+	{
+		if (ways->way_ants != 0)
+			return (1);
+		ways = ways->next;
+	}
 	return (0);
 }
+
+
 
 void	moves(t_ways *ways)
 {
 	int i;
 
 	i = 0; //nulls
-	while (i < 13)
+	while (check_ants(ways)) //each way has no ants
 	{
 		one_move(ways);
+		we_have_ended(ways);
 		i++;
 	}
+	// ft_printf("%d\n", i);
 }
 
 int		main(int argc, char **argv)
