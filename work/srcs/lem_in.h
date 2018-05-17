@@ -179,6 +179,7 @@ typedef	struct			s_way_option
 {
 	char				*node_id;
 	int					ant_number;
+	int					way_vertex;
 	struct s_way_option	*way;
 	struct s_way_option	*next;
 }						t_way_option;

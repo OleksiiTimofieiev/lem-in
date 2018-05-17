@@ -70,6 +70,8 @@ void push(t_way_option **head_ref, int new_ant)
     new_node->node_id  = ft_strdup(ft_itoa(new_ant));
 
     new_node->way = *head_ref;
+    new_node->way_vertex = 0;
+
     new_node->next = *head_ref;
   
     (*head_ref) = new_node;
@@ -173,7 +175,7 @@ void	print_moves(t_ways *ways)
 		opt = ways->o_next;
 		while (opt)
 		{
-			if (opt->way)
+			if (opt->way && opt->way->way_vertex == 1)
 			{
 				ft_printf("L%d-%s ", opt->ant_number, opt->way->node_id);
 			}
@@ -191,7 +193,7 @@ void	moves(t_ways *ways)
 	i = 0; //nulls
 	while (check_ants(ways)) //each way has no ants
 	{
-		print_moves(ways);
+		print_moves(ways); // if it is a vertex;
 		one_move(ways);
 		we_have_ended(ways);
 		i++;
