@@ -172,7 +172,12 @@ void	print_moves(t_ways *ways)
 		while (opt)
 		{
 			if (opt->way && opt->way->way_vertex == 1)
+			{
+				ft_printf("%s", CYAN); // func to print a color;
 				ft_printf("L%d-%s ", opt->ant_number, opt->way->node_id);
+				ft_printf("%s", RESET);
+
+			}
 			opt = opt->next;
 		}
 		ways = ways->next;
