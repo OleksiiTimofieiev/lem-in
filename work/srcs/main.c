@@ -246,7 +246,7 @@ int		main(int argc, char **argv)
 	multiple_ways(way, &ways, data);
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
 	d1(data, ways, argc, argv);
-	ft_add_ant_nodes_to_the_ways(ways); //leaks ?
+	ft_add_ant_nodes_to_the_ways(ways);
 	(ft_detect_bonus_ways_activation(argv)) ? ft_print_ants_distributed(ways) : 0 ;
 	shake_it(ways);
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
