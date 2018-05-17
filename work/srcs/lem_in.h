@@ -220,5 +220,7 @@ void					ft_print_ants_distributed(t_ways *ways);
 void					ft_color_set(t_ways *ways);
 void					moves(t_ways *ways);
 void					we_have_ended(t_ways *ways);
+void					push(t_way_option **head_ref, int new_ant);
+void					ft_add_ant_nodes_to_the_ways(t_ways *ways);
 
 #endif
