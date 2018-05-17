@@ -98,7 +98,8 @@ int		ft_aspects(char *str, t_init *initial_data)
 		ft_clean_2d_char(array);
 		return (0);
 	}
-	else if (!ft_find_space_is_correct_quantity(str) && array_size == 3)
+	else if (!ft_find_space_is_correct_quantity(str)
+			&& array_size == 3 && array[0][0] != '#')
 	{
 		ft_clean_2d_char(array);
 		return (0);
