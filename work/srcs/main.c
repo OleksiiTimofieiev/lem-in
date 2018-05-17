@@ -251,6 +251,20 @@ int			ft_detect_bonus_ways_activation(char **argv)
 	return (0);
 }
 
+int			ft_detect_sounds(char **argv)
+{
+	int i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (ft_strequ(argv[i], "-sounds"))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	ft_print_ants_distributed(t_ways *ways)
 {
 	ft_printf("------------------------------------------------------------\n");
@@ -265,6 +279,7 @@ void	ft_print_ants_distributed(t_ways *ways)
 
 
 
+
 int		main(int argc, char **argv)
 {
 	t_init		*initial_data;
@@ -274,6 +289,7 @@ int		main(int argc, char **argv)
 	t_data		data;
 
 	ft_init(&initial_data, &graph, &data);
+	(ft_detect_sounds(argv)) ? data.sounds = 1 : 0;
 	ft_validation(&initial_data);
 	ft_to_start(&initial_data);
 	(ft_detect_input(initial_data)) ? ft_print_ll(initial_data) : ft_error();
@@ -290,6 +306,6 @@ int		main(int argc, char **argv)
 	(ft_detect_bonus_ways_activation(argv)) ? ft_print_ants_distributed(ways) : 0 ;
 	ft_color_set(ways);
 	moves(ways);
-	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
+	(argc) ? ft_detect_bonus_adm(argv) : 0 ;
 	return (0);
 }

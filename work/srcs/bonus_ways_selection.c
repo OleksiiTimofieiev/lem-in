@@ -48,6 +48,11 @@ void			ft_detect_bonus_adm(char **argv)
 			system("leaks -q lem-in");
 		else if (ft_strequ(argv[i], "-clean"))
 			system("make fclean");
+		else if (ft_strequ(argv[i], "-sounds"))
+		{
+			system("say all was cool");
+			system("afplay -t 10 ./man.mp3");
+		}
 		i++;
 	}
 }

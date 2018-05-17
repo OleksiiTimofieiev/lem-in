@@ -73,6 +73,7 @@ typedef struct			s_data
 	char				*start;
 	char				*end;
 	int					quantity_of_ants;
+	int					sounds;
 }						t_data;
 
 /*
