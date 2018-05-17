@@ -57,7 +57,7 @@ void			ft_detect_bonus_adm(char **argv)
 	}
 }
 
-void			ft_detect_bonus_ways(char **argv, t_ways *ways)
+void			ft_detect_bonus_ways(char **argv, t_ways *ways, t_data data)
 {
 	int i;
 
@@ -65,7 +65,7 @@ void			ft_detect_bonus_ways(char **argv, t_ways *ways)
 	while (argv[i])
 	{
 		if (ft_strequ(argv[i], "-ways_select"))
-			activate_ways(&ways);
+			activate_ways(&ways, data);
 		i++;
 	}
 }
@@ -92,7 +92,7 @@ void			ft_implement_selection(char *line, t_ways **ways)
 	}
 }
 
-void			activate_ways(t_ways **ways)
+void			activate_ways(t_ways **ways, t_data data)
 {
 	char	*line;
 	t_ways	*head;
@@ -103,6 +103,7 @@ void			activate_ways(t_ways **ways)
 		head->activation = 0;
 		head = head->next;
 	}
+	(data.sounds) ? system("say Please select the way") : 0;
 	ft_printf("------------------------------------------------------------\n");
 	ft_printf("Please, select the way(-s).\n");
 	ft_printf("------------------------------------------------------------\n");

@@ -72,7 +72,7 @@ void push(t_way_option **head_ref, int new_ant)
     new_node->node_id  = "tmp";
     new_node->way = *head_ref;
     new_node->way_vertex = 0;
-    new_node->color_id = 1;
+    new_node->color_id = 8;
     new_node->next = *head_ref;
     (*head_ref) = new_node;
 }
@@ -202,6 +202,9 @@ void	ft_color_selector(int id)
 		ft_putstr(MAGENTA);
 	else if (id == 7)
 		ft_putstr(CYAN);
+	else if (id == 8)
+		ft_putstr(WHITE);
+
 }
 
 void	print_moves(t_ways *ways)
@@ -265,6 +268,20 @@ int			ft_detect_sounds(char **argv)
 	return (0);
 }
 
+int			ft_detect_colors(char **argv)
+{
+	int i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (ft_strequ(argv[i], "-colors"))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	ft_print_ants_distributed(t_ways *ways)
 {
 	ft_printf("------------------------------------------------------------\n");
@@ -300,11 +317,11 @@ int		main(int argc, char **argv)
 	//
 	(!way) ? ft_error() : reverse(&way);
 	multiple_ways(way, &ways, data);
-	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
+	(argc) ? ft_detect_bonus_ways(argv, ways, data) : 0 ;
 	d1(data, ways, argc, argv);
 	ft_add_ant_nodes_to_the_ways(ways);
 	(ft_detect_bonus_ways_activation(argv)) ? ft_print_ants_distributed(ways) : 0 ;
-	ft_color_set(ways);
+	(ft_detect_colors(argv)) ? ft_color_set(ways) : 0;
 	moves(ways);
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;
 	return (0);
