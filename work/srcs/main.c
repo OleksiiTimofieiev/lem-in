@@ -71,6 +71,7 @@ void push(t_way_option **head_ref, int new_ant)
 
     new_node->way = *head_ref;
     new_node->way_vertex = 0;
+    new_node->color_id = 1;
 
     new_node->next = *head_ref;
   
@@ -98,6 +99,31 @@ void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 	}
 }
 
+void	ft_color_set(t_ways *ways)
+{
+	t_way_option *opt;
+	int i;
+
+	while (ways)
+	{
+		i = 1;
+		opt = ways->o_next;
+		while (opt)
+		{
+			if (opt->way_vertex != 1)
+			{
+				opt->color_id = i++;
+				if (i > 8)
+					i = 1;
+				ft_printf("color -> %d\n", opt->color_id);
+			}
+			opt = opt->next;
+		}
+
+		ways = ways->next;
+	}
+}
+
 void	one_move(t_ways *ways)
 {
 	t_ways *_ways = ways;
@@ -118,7 +144,7 @@ void	one_move(t_ways *ways)
 	}
 }
 
-void		we_have_ended(t_ways *ways)
+void	we_have_ended(t_ways *ways)
 {
 	int i;
 	int j;
@@ -173,6 +199,7 @@ void	print_moves(t_ways *ways)
 		{
 			if (opt->way && opt->way->way_vertex == 1)
 			{
+				if (opt->color_id == 8)
 				ft_printf("%s", CYAN); // func to print a color;
 				ft_printf("L%d-%s ", opt->ant_number, opt->way->node_id);
 				ft_printf("%s", RESET);
@@ -249,6 +276,7 @@ int		main(int argc, char **argv)
 	d1(data, ways, argc, argv);
 	ft_add_ant_nodes_to_the_ways(ways);
 	(ft_detect_bonus_ways_activation(argv)) ? ft_print_ants_distributed(ways) : 0 ;
+	ft_color_set(ways);
 	shake_it(ways);
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);
