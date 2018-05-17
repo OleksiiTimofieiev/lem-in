@@ -64,17 +64,16 @@ void	ft_print_ways(t_ways *list) // intermidiaty function;
 
 void push(t_way_option **head_ref, int new_ant)
 {
-    t_way_option* new_node = (t_way_option*) malloc(sizeof(t_way_option));
+    t_way_option* new_node;
+
+    new_node = (t_way_option*) malloc(sizeof(t_way_option));
   
     new_node->ant_number  = new_ant;
     new_node->node_id  = "tmp";
-
     new_node->way = *head_ref;
     new_node->way_vertex = 0;
     new_node->color_id = 1;
-
     new_node->next = *head_ref;
-  
     (*head_ref) = new_node;
 }
 
