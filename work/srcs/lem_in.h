@@ -218,5 +218,7 @@ int						ft_detect_sounds(char **argv);
 int						ft_detect_colors(char **argv);
 void					ft_print_ants_distributed(t_ways *ways);
 void					ft_color_set(t_ways *ways);
+void					moves(t_ways *ways);
+void					we_have_ended(t_ways *ways);
 
 #endif
