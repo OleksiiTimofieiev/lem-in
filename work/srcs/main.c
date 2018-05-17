@@ -199,8 +199,8 @@ void	print_moves(t_ways *ways)
 		{
 			if (opt->way && opt->way->way_vertex == 1)
 			{
-				if (opt->color_id == 8)
-				ft_printf("%s", CYAN); // func to print a color;
+				if (opt->color_id == 8)// func to print a color;
+					ft_printf("%s", CYAN); // func to print a color;
 				ft_printf("L%d-%s ", opt->ant_number, opt->way->node_id);
 				ft_printf("%s", RESET);
 
