@@ -155,8 +155,7 @@ void	print_moves(t_ways *ways)
 
 void	moves(t_ways *ways)
 {
-		ft_printf("\n");
-	
+	ft_printf("\n");
 	while (check_ants(ways))
 	{
 		one_move(ways);
