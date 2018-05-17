@@ -227,7 +227,7 @@ void	print_moves(t_ways *ways)
 	}
 }
 
-void	shake_it(t_ways *ways)
+void	moves(t_ways *ways)
 {
 	while (check_ants(ways))
 	{
@@ -290,7 +290,7 @@ int		main(int argc, char **argv)
 	ft_add_ant_nodes_to_the_ways(ways);
 	(ft_detect_bonus_ways_activation(argv)) ? ft_print_ants_distributed(ways) : 0 ;
 	ft_color_set(ways);
-	shake_it(ways);
+	moves(ways);
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);
 }
