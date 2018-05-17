@@ -215,7 +215,7 @@ void	ft_print_ants_distributed(t_ways *ways)
 		ways = ways->next;
 	}
 	ft_printf("--------------------------------------------------------------------\n");
-	
+
 }
 
 
@@ -236,7 +236,6 @@ int		main(int argc, char **argv)
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
-	//
 	//
 	//
 	(!way) ? ft_error() : reverse(&way);
