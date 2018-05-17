@@ -176,9 +176,7 @@ void	print_moves(t_ways *ways)
 		while (opt)
 		{
 			if (opt->way && opt->way->way_vertex == 1)
-			{
 				ft_printf("L%d-%s ", opt->ant_number, opt->way->node_id);
-			}
 			opt = opt->next;
 		}
 		ways = ways->next;
