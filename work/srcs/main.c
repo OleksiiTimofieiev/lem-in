@@ -120,6 +120,43 @@ void	one_move(t_ways *ways)
 	}
 }
 
+int		we_have_ended(t_ways *ways)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	t_ways *_ways = ways;
+	t_way_option *general_opt;
+	t_way_option *separate_opt;
+
+
+	while (_ways)
+	{
+		if (_ways->way_ants)
+		{
+			general_opt = _ways->o_next;
+			separate_opt = _ways->o_next;
+			while (general_opt)
+			{
+				i++;
+				general_opt = general_opt->next;
+			}
+			while (separate_opt)
+			{
+				if (!separate_opt->way)
+				j++;
+				separate_opt = separate_opt->next;
+			}
+		}
+		_ways = _ways->next;
+	}
+	if (i == j)
+		return (1);
+	return (0);
+}
+
 void	moves(t_ways *ways)
 {
 	int i;
