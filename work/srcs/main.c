@@ -190,10 +190,6 @@ void	shake_it(t_ways *ways)
 		ft_printf("\n");
 		we_have_ended(ways);
 	}
-	// cleaner;
-	// ft_printf("%s\n",ways->next->o_next->node_id);
-	// free(ways->next->o_next->way);
-	// delete_ways(ways);
 }
 
 int			ft_detect_bonus_ways_activation(char **argv)
