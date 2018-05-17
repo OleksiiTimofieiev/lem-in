@@ -97,12 +97,6 @@ void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 }
 
 void	one_move(t_ways *ways)
- //print result of movement; 
- // how much have null; !!!!!!!!!! null == len; i++ or search;
- //if it points to vertex node;
-  // for each way;
-  // each way has different length;
-//format according to the subject;
 {
 	t_ways *_ways = ways;
 	t_way_option *opt;
@@ -113,7 +107,7 @@ void	one_move(t_ways *ways)
 			opt = _ways->o_next;
 			while (opt)
 			{
-				if (opt->way) // while null !+ quantity of ants;
+				if (opt->way)
 					opt->way = opt->way->next;
 				opt = opt->next;
 			}
@@ -181,22 +175,20 @@ void	print_moves(t_ways *ways)
 		}
 		ways = ways->next;
 	}
-	ft_printf("\n");
 }
 
 void	moves(t_ways *ways)
 {
-	int i;
-
-	i = 0; //nulls
-	while (check_ants(ways)) //each way has no ants
+	ft_printf("\n");
+	
+	while (check_ants(ways))
 	{
-		print_moves(ways); // if it is a vertex;
+		print_moves(ways);
+		ft_printf("\n");
 		one_move(ways);
 		we_have_ended(ways);
-		i++;
 	}
-	// ft_printf("%d\n", i);
+	// cleaner;
 }
 
 
@@ -225,15 +217,7 @@ int		main(int argc, char **argv)
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
 	d1(data, ways, argc, argv);
 	ft_add_ant_nodes_to_the_ways(ways); //leaks ?
-	ft_print_ways(ways); //delete;
-
 	moves(ways);
-
-			ft_printf("\n");
-
-
-	ft_print_ways(ways); //delete;
-
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);
 }
