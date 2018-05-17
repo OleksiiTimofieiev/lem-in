@@ -94,7 +94,6 @@ void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 			push(opt, i++);
 			ants_in_a_way--;
 		}
-		ft_printf("\n");
 		ways = ways->next;
 	}
 }
@@ -121,6 +120,7 @@ void	ft_color_set(t_ways *ways)
 
 		ways = ways->next;
 	}
+	ft_printf("\n");
 }
 
 void	one_move(t_ways *ways)
@@ -229,8 +229,6 @@ void	print_moves(t_ways *ways)
 
 void	shake_it(t_ways *ways)
 {
-	ft_printf("\n");
-	
 	while (check_ants(ways))
 	{
 		one_move(ways);
