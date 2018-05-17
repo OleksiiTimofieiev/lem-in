@@ -200,16 +200,16 @@ int		main(int argc, char **argv)
 	t_ways		*ways;
 	t_data		data;
 
-	ft_init_data(&data);
-	ft_init(&initial_data, &graph);
+	ft_init(&initial_data, &graph, &data);
 	ft_validation(&initial_data);
 	ft_to_start(&initial_data); // ternary construction;
-	ft_detect_input(initial_data); // ternary construction;
-	ft_print_ll(initial_data); // ternary construction;
+	(ft_detect_input(initial_data)) ? ft_print_ll(initial_data) : ft_error();
 	ft_build_vertex_structure(initial_data, &graph);
 	ft_build_edge_structure(initial_data, graph);
 	ft_add_data_to_graph(initial_data, &data);
 	bfs(data, graph, &way);
+	//
+	//
 	//
 	(!way) ? ft_error() : reverse(&way);
 	multiple_ways(way, &ways, data);

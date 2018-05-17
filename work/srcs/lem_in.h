@@ -82,8 +82,7 @@ typedef struct			s_data
 void					ft_print_ll(t_init *data);
 void					ft_error(void);
 void					ft_to_start(t_init **initial_data);
-void					ft_init_data(t_data *data);
-void					ft_init(t_init **init, t_vertex **vertex);
+void					ft_init(t_init **init, t_vertex **vertex, t_data *data);
 
 /*
 **-------------------------   list of functions for validation  ----------------
@@ -99,7 +98,7 @@ int						ft_det_line(char *str, int **c_det);
 int						ft_check_links(char *str, t_init **initial_data);
 void					ft_list_builder(t_init **i, char *v, int iq);
 t_init					*line_builder(char *valid_line, int i);
-void					ft_detect_input(t_init *initial_data);
+int						ft_detect_input(t_init *initial_data);
 int						ft_x_y_unique(char **array, t_init *initial_data);
 
 /*

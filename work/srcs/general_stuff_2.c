@@ -49,15 +49,11 @@ void	ft_to_start(t_init **initial_data)
 	}
 }
 
-void	ft_init_data(t_data *data)
-{
-	data->start = NULL;
-	data->end = NULL;
-	data->quantity_of_ants = 0;
-}
-
-void	ft_init(t_init **init, t_vertex **vertex)
+void	ft_init(t_init **init, t_vertex **vertex, t_data *data)
 {
 	*init = NULL;
 	*vertex = NULL;
+	data->start = NULL;
+	data->end = NULL;
+	data->quantity_of_ants = 0;
 }

@@ -38,10 +38,11 @@ static	int		ft_detect_link_start_end(t_init *initial_data)
 	return (1);
 }
 
-void			ft_detect_input(t_init *initial_data)
+int				ft_detect_input(t_init *initial_data)
 {
 	if (initial_data == NULL)
-		ft_error();
+		return (0);
 	else if (!(ft_detect_link_start_end(initial_data)))
-		ft_error();
+		return (0);
+	return (1);
 }
