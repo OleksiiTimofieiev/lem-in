@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-static	void	deletelist(t_planb *head_ref)
+static void	deletelist(t_planb *head_ref)
 {
 	if (!head_ref)
 		return ;

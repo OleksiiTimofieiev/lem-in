@@ -67,7 +67,7 @@ void push(t_way_option **head_ref, int new_ant)
     t_way_option* new_node = (t_way_option*) malloc(sizeof(t_way_option));
   
     new_node->ant_number  = new_ant;
-    new_node->node_id  = ft_strdup(ft_itoa(new_ant));
+    new_node->node_id  = "tmp";
 
     new_node->way = *head_ref;
     new_node->way_vertex = 0;
@@ -81,14 +81,16 @@ void	ft_add_ant_nodes_to_the_ways(t_ways *ways)
 {
 	int i;
 	int ants_in_a_way;
+	t_way_option **opt;
 
 	i = 1;
 	while (ways)
 	{
 		ants_in_a_way = ways->way_ants;
+		opt = &(ways->o_next);
 		while (ants_in_a_way)
 		{
-			push(&ways->o_next, i++);
+			push(opt, i++);
 			ants_in_a_way--;
 		}
 		ft_printf("\n");
@@ -189,6 +191,9 @@ void	shake_it(t_ways *ways)
 		we_have_ended(ways);
 	}
 	// cleaner;
+	// ft_printf("%s\n",ways->next->o_next->node_id);
+	// free(ways->next->o_next->way);
+	// delete_ways(ways);
 }
 
 int			ft_detect_bonus_ways_activation(char **argv)
@@ -215,7 +220,6 @@ void	ft_print_ants_distributed(t_ways *ways)
 		ways = ways->next;
 	}
 	ft_printf("------------------------------------------------------------\n");
-
 }
 
 
