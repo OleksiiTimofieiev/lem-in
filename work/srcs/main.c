@@ -191,6 +191,34 @@ void	shake_it(t_ways *ways)
 	// cleaner;
 }
 
+int			ft_detect_bonus_ways_activation(char **argv)
+{
+	int i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (ft_strequ(argv[i], "-ways_select"))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	ft_print_ants_distributed(t_ways *ways)
+{
+	ft_printf("--------------------------------------------------------------------\n");
+	while (ways)
+	{
+
+		ft_printf("way -> %d, ants -> %d.\n", ways->way_id, ways->way_ants);
+		ways = ways->next;
+	}
+	ft_printf("--------------------------------------------------------------------\n");
+	
+}
+
+
 
 int		main(int argc, char **argv)
 {
@@ -216,6 +244,7 @@ int		main(int argc, char **argv)
 	(argc) ? ft_detect_bonus_ways(argv, ways) : 0 ;
 	d1(data, ways, argc, argv);
 	ft_add_ant_nodes_to_the_ways(ways); //leaks ?
+	(ft_detect_bonus_ways_activation(argv)) ? ft_print_ants_distributed(ways) : 0 ;
 	shake_it(ways);
 	(argc) ? ft_detect_bonus_adm(argv) : 0 ;	
 	return (0);
