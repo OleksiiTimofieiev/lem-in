@@ -70,6 +70,8 @@ static	int		ft_detect_link_command(char *str)
 {
 	char **array;
 
+	if (str[0] == '#' && str[1] != '#')
+		return (SKIP);
 	array = ft_strsplit(str, '-');
 	if (!ft_strequ(array[0], array[1]))
 	{
