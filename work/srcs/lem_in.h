@@ -212,6 +212,6 @@ void					ft_update_the_ways_data(t_ways *ways, int *way);
 
 void					activate_ways(t_ways **ways, t_data data);
 void					ft_detect_bonus_adm(char **argv);
-void					ft_detect_bonus_ways(char **argv, t_ways *ways, t_data data);
+void					ft_detect_bonus_ways(char **a, t_ways *w, t_data d);
 
 #endif
