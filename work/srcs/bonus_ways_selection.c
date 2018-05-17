@@ -110,7 +110,7 @@ void			activate_ways(t_ways **ways, t_data data)
 	ft_printf("List of ways:\n");
 	ft_print_ways(*ways);
 	ft_printf("------------------------------------------------------------\n");
-	ft_printf("Input format: 1,...,2 :)\n");
+	ft_printf("Input format: 1,...,n :)\n");
 	ft_printf("------------------------------------------------------------\n");
 	get_next_line(0, &line);
 	ft_printf("------------------------------------------------------------\n");
