@@ -83,7 +83,7 @@ typedef struct			s_data
 void					ft_print_ll(t_init *data);
 void					ft_error(void);
 void					ft_to_start(t_init **initial_data);
-void					ft_init(t_init **init, t_vertex **vertex, t_data *data);
+void					ft_init(t_init **i, t_vertex **v, t_data *d, char **a);
 
 /*
 **-------------------------   list of functions for validation  ----------------

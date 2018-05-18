@@ -49,11 +49,36 @@ void	ft_to_start(t_init **initial_data)
 	}
 }
 
-void	ft_init(t_init **init, t_vertex **vertex, t_data *data)
+void	ft_bonus_usage(void)
 {
+	ft_printf("------------------------------------------------------------\n");
+	ft_printf("Usage:\n");
+	ft_printf("        lem-in [flags] [...]\n");
+	ft_printf("Flags:\n");
+	ft_printf("        -colors\n");
+	ft_printf("        -ways_select\n");
+	ft_printf("        -sounds\n");
+	ft_printf("        -l\n");
+	ft_printf("------------------------------------------------------------\n");
+}
+
+void	ft_init(t_init **init, t_vertex **vertex, t_data *data, char **argv)
+{
+	int i;
+
+	i = 0;
 	*init = NULL;
 	*vertex = NULL;
 	data->start = NULL;
 	data->end = NULL;
 	data->quantity_of_ants = 0;
+	while (argv[i])
+	{
+		if (ft_strequ(argv[i], "-usage"))
+		{
+			ft_bonus_usage();
+			exit(0);
+		}
+		i++;
+	}
 }

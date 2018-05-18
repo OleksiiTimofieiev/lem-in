@@ -20,7 +20,7 @@ int		main(int argc, char **argv)
 	t_ways		*ways;
 	t_data		data;
 
-	ft_init(&initial_data, &graph, &data);
+	ft_init(&initial_data, &graph, &data, argv);
 	(ft_detect_sounds(argv)) ? data.sounds = 1 : 0;
 	ft_validation(&initial_data);
 	ft_to_start(&initial_data);
