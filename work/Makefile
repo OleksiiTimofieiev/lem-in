@@ -54,18 +54,18 @@ $(OBJECTS): %.o: %.c
 
 $(NAME): $(OBJECTS)
 	@echo "\033[0;36mCompilation started => [ $(NAME) ]\033[0m"
-	@make -C ft_printf
-	@gcc $(CFLAGS) -I. $(SRCS) -L ./ft_printf -lftprintf -o $(NAME)
+	@make -C libft
+	@gcc $(CFLAGS) -I. $(SRCS) -L ./libft -lftprintf -o $(NAME)
 	@echo "\033[93mCompilation finished => [ $(NAME) ]\033[0m"
 
 clean:
 	@/bin/rm -f $(OBJECTS)
-	@make clean -C ft_printf
+	@make clean -C libft
 	@echo "\033[0;31mDeleted => [ $(NAME) ]\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME) $(LIB)
-	@make fclean -C ft_printf
+	@make fclean -C libft
 	@echo "\033[0;31mFull Deleted => [ $(NAME) ]\033[0m"
 
 re: fclean all
