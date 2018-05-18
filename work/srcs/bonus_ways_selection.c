@@ -51,7 +51,7 @@ void			ft_detect_bonus_adm(char **argv)
 		else if (ft_strequ(argv[i], "-sounds"))
 		{
 			system("say all was cool");
-			system("afplay -t 10 ./man.mp3");
+			system("afplay -t 10 ../sounds/man.mp3");
 		}
 		i++;
 	}

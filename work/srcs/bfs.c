@@ -56,7 +56,7 @@ void			ft_refresh_vertex(t_vertex *vertex, t_way *way, t_data data)
 		vertex = vertex->v_next;
 	}
 	(data.sounds) ? system("say way was found ") : 0;
-	(data.sounds) ? system("afplay -t 5 -v 0.5% ./rumble.mp3 ") : 0;
+	(data.sounds) ? system("afplay -t 5 -v 0.5% ../sounds/rumble.mp3 ") : 0;
 }
 
 void			ft_start_bfs(t_queue **q, t_data data, t_planb **m, int *wave)
@@ -64,7 +64,7 @@ void			ft_start_bfs(t_queue **q, t_data data, t_planb **m, int *wave)
 	if (data.sounds == 1)
 	{
 		system("say breadth first search in action ");
-		system("afplay -t 2.8 ./Flag_raising_1.wav");
+		system("afplay -t 2.8 ../sounds/Flag_raising_1.wav");
 	}
 	*wave = 0;
 	*m = NULL;
